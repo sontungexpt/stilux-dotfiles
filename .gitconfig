@@ -1,0 +1,11 @@
+[user]
+	email = sontungexpt@gmail.com
+	username = Tran Vo Son Tung
+	name = Tran Vo Son Tung
+[safe]
+	directory = /home/stilux/Data/config
+	directory = /home/stilux/Data
+[color]
+	ui = auto
+[init]
+	defaultBranch = main

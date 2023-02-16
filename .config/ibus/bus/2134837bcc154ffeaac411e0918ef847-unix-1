@@ -1,0 +1,7 @@
+# This file is created by ibus-daemon, please do not modify it.
+# This file allows processes on the machine to find the
+# ibus session bus with the below address.
+# If the IBUS_ADDRESS environment variable is set, it will
+# be used rather than this file.
+IBUS_ADDRESS=unix:abstract=/home/stilux/.cache/ibus/dbus-dCn8VPTq,guid=67b2c989c14fe1e6de74da9563bd6b53
+IBUS_DAEMON_PID=1494

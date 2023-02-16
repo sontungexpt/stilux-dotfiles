@@ -1,0 +1,12 @@
+#!/bin/sh
+# Screenshot scripts
+
+output='/tmp/%F_%T_$wx$h.png'
+outputDir='/home/stilux/Pictures/Screenshots/%Y_%m_%d-%T-screentshot.png'
+
+case "$1" in
+	"select") scrot "$outputDir" --select --line mode=edge -e 'xclip -selection clipboard -target image/png -i $f && dunstify "Save $f" -i $f' -a "scrot" ||exit;;
+	"select-clipboard") scrot "$output" --select --line mode=edge -e 'xclip -selection clipboard -target image/png -i $f && dunstify "Copy to clipboard" -i $f -a "scrot" && rm $f' || exit;;
+	"window") scrot "$outputDir" --focused --border -e 'xclip -selection clipboard -target image/png -i $f && dunstify "Save $f" -i $f' -a "scrot" || exit;;
+	*) scrot "$outputDir" -e 'xclip -selection clipboard -target image/png -i $f && dunstify "Save $f" -i $f -a "scrot"' ||exit;;
+esac

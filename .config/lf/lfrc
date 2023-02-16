@@ -1,0 +1,178 @@
+# make sure trash folder exists
+# %mkdir -p ~/.trash
+
+set ratios 1:2:3
+set cleaner ~/.config/lf/cleaner
+set previewer ~/.config/lf/preview
+set shell sh
+set icons true
+set preview true
+set hidden true
+set drawbox true
+set ignorecase true
+# set '-eu' options for shell commands
+# These options are used to have safer shell commands. Option '-e' is used to
+# exit on error and option '-u' is used to give error for unset variables.
+# Option '-f' disables pathname expansion which can be useful when $f, $fs, and
+# $fx variables contain names with '*' or '?' characters. However, this option
+# is used selectively within individual commands as it can be limiting at
+# times.
+set shellopts '-eu'
+# set internal field separator (IFS) to "\n" for shell commands
+# This is useful to automatically split file names in $fs and $fx properly
+# since default file separator used in these variables (i.e. 'filesep' option)
+# is newline. You need to consider the values of these options and create your
+# commands accordingly.
+set ifs "\n"
+# leave some space at the top and the bottom of the screen
+set scrolloff 10
+
+# Remove some defaults mappings
+map m
+map o
+map n
+map "'"
+map '"'
+map d
+map c
+map e
+map f
+
+# Keybindings
+map dd trash
+map D delete
+map <delete> trash
+map p paste
+map x cut
+map yy copy
+map mf mkfile
+map mr sudomkfile
+map md mkdir
+map ch chmod
+map bg setwallpaper
+map nvim $nvim $f
+map r rename
+map gg top
+map G bottom
+map R reload
+map C clear
+map U unselect
+map so sudoopen
+map o open
+map <enter> shell
+map cp copypath
+
+# Movement Keybindings
+map cdc cd ~/.config
+map cdd cd ~/Data
+map cdw cd ~/Data/WorkSpace
+map cdp cd ~/Pictures
+map cdD cd ~/Downloads
+map cdb cd /usr/bin
+
+
+# Archive Keybindings
+map z zip
+map t tar
+map e extract
+
+# Custom Functions
+# Copy Path Command
+cmd copypath %printf "$f" | xclip -selection clipboard -o
+
+# Sudo Open Command
+cmd sudoopen ${{
+  case $(file --mime-type "$f" -bL) in
+    text/*|application/json) sudo $EDITOR "$f";;
+          image/*) feh --auto-zoom --scale-down "$f";;
+         *) xdg-open "$f" ;;
+         esac
+         }}
+
+# Open Command
+cmd open ${{
+case $(file --mime-type "$f" -bL) in
+text/*|application/json) nvim "$f";;
+image/*) feh --auto-zoom --scale-down "$f";;
+         *) xdg-open "$f" ;;
+         esac
+         }}
+
+# Set Background Command
+cmd setwallpaper %cp "$f" ~/.config/backgrounds/wallpaper.jpg && i3 restart
+
+# Chmod Command
+cmd chmod ${{
+printf "Mode Bits: "
+read ans
+
+for file in "$fx"
+do
+chmod $ans $file
+done
+
+lf -remote 'send reload'
+}}
+
+# Make File Command
+cmd mkfile ${{
+printf "File Name: "
+read ans
+$EDITOR $ans
+}}
+
+# Make Directory Command
+cmd mkdir ${{
+printf "Directory Name: "
+read ans
+mkdir $ans
+reload
+}}
+
+# Make File With Sudo Command
+cmd sudomkfile ${{
+printf "File Name: "
+read ans
+sudo $EDITOR $ans
+}}
+
+# Delete Command
+cmd delete ${{
+set -f
+printf "$fx\n"
+printf "delete?[y/n]"
+read ans
+[ "$ans" = "y" ] && rm -rf $fx
+}}
+
+# TrashCli Command
+cmd trash ${{
+files=$(printf "$fx" | tr '\n' ';')
+while [ "$files" ]; do
+file=${files%%;*}
+trash-put "$(basename "$file")"
+if [ "$files" = "$file" ]; then
+files=''
+else
+files="${files#*;}"
+fi
+done
+}}
+
+# Extract Command
+cmd extract ${{
+case "$f" in
+     *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) sudo tar xjvf "$f";;
+      *.tar.gz|*.tgz) sudo tar xzvf "$f";;
+    *.tar.xz|*.txz) sudo tar xJvf "$f";;
+    *.zip) unzip "$f";;
+    *.rar) unrar e "$f";;
+    *) echo "Unsupported format" ;;
+    esac
+}}
+
+# Zip Command
+cmd zip %zip -r "$f" "$f"
+
+# Tar Command
+cmd tar %tar cvf "$f.tar" "$f"

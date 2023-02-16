@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1672910977453083-1</unique-id>
+	<command>kitty %f</command>
+	<description>Example for a custom action</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+	<text-files/>
+</action>
+<action>
+	<icon>user-trash</icon>
+	<name>Move to Trash</name>
+	<submenu></submenu>
+	<unique-id>1675070198456187-1</unique-id>
+	<command>trash-put %F</command>
+	<description>Move to trash</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>application-x-bzip</icon>
+	<name>Zip Folder</name>
+	<submenu></submenu>
+	<unique-id>1675086537727413-1</unique-id>
+	<command>zip %n -r %f %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>application-x-bzip</icon>
+	<name>Extract File</name>
+	<submenu></submenu>
+	<unique-id>1675087108117452-2</unique-id>
+	<command>extract %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*.zip;*.rar;*.tar.bz;*.tar.bz2;*.tbz;*.tbz2;*.tar.gz;*.tgz;*.tar.xz;*.txz</patterns>
+	<other-files/>
+</action>
+<action>
+	<icon>preferences-desktop-wallpaper</icon>
+	<name>Set background</name>
+	<submenu></submenu>
+	<unique-id>1676138041631139-1</unique-id>
+	<command>cp %f ~/.config/backgrounds/wallpaper.jpg &amp;&amp; i3 restart
+</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>edit-copy-path</icon>
+	<name>Copy Current Path</name>
+	<submenu></submenu>
+	<unique-id>1676215990229711-1</unique-id>
+	<command>echo -n %f | xclip -selection &quot;clipboard&quot;</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+</actions>

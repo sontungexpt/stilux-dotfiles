@@ -1,0 +1,12 @@
+# GIMP gimp-clone-tool options
+
+(foreground (color-rgb 0.14117647058823529 0.15686274509803921 0.23137254901960785))
+(background (color-rgb 0.14901960784313725 0.16078431372549021 0.2627450980392157))
+(brush "2. Hardness 050")
+(dynamics "Dynamics Off")
+(pattern "Pine")
+(palette "Color History")
+(brush-size 51)
+(brush-hardness 0.5)
+
+# end of gimp-clone-tool options

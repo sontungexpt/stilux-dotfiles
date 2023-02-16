@@ -1,0 +1,74 @@
+# !/home/stilux/.config/
+# !/home/stilux/.xinitrc
+# !/home/stilux/.bashrc
+# !/home/stilux/.zshrc
+# !/home/stilux/.ssh/config
+# !/home/stilux/.zsh_history_fix
+# !/home/stilux/.fehbg
+
+yay/
+bspwm/
+teams/
+Code/
+coc/
+gtk-3.0/
+gtk-4.0/
+gtk-2.0/
+mpv/
+Microsoft/
+Microsoft Teams - Preview/
+google-chrome/
+autostart/
+dconf/
+cef_user_data/
+BraveSoftware/
+discord/
+Downloads/
+Music/
+Pictures/
+Videos/
+Templates/
+Documents/
+Public/
+snap/
+Steam/
+.cache/
+.gnome/
+.icons/
+.local/
+.npm/
+.nvm/
+.pip/
+.rbenv/
+Data/
+yay/
+.themes/
+.vscode/
+.vim/
+.viminfo
+.pki/
+.rest-client/
+.bash_history
+.bash_logout
+.bash_profile
+.python_history
+.zsh_history
+.quokka/
+.oh-my-zsh/
+.gnupg/
+.mozilla/
+.wallaby/
+.dmrc
+.face
+.gtkrc-2.0
+.shell.pre-oh-my-zsh
+.trash
+.wget-hsts
+.xsession-errors
+.xsession-errors.old
+.zcompdump-stilux-pc-5.9
+.zcompdump-stilux-pc-5.9.zwc
+**bundle/
+
+
+
