@@ -3,16 +3,14 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'windwp/nvim-ts-autotag'
 "  https://github.com/windwp/nvim-ts-autotag
 Plug 'p00f/nvim-ts-rainbow'
-
+"  https://github.com/p00f/nvim-ts-rainbow
 Plug 'Fymyte/tree-sitter-rasi'
-
 Plug 'ap/vim-css-color'
 Plug 'Fymyte/rasi.vim'
-"  https://github.com/p00f/nvim-ts-rainbow
 
 "-----------Tree-sitter-----------"
 function TreesitterSetup()
-  lua << EOF
+lua << EOF
   require('nvim-treesitter.configs').setup {
     ensure_installed = {
       "c",
@@ -44,7 +42,7 @@ function TreesitterSetup()
     ignore_install = { },
     highlight = {
       enable = true,
-      disable ={"html","css"}
+      --disable ={"html","css"}
       --disable = {"html","javascript","css"}
     },
     indent = {
@@ -66,13 +64,13 @@ function TreesitterSetup()
         "#ffbf00",
         "#ffff00",
         "#bfff00",
-        "#00ff00",
+        "#07fc05",
         "#00ffbf",
         "#00ffff",
         "#00bfff",
-        "#0080ff",
-        "#0066ff",
-        "#0000ff",
+        "#087eff",
+        "#0361fd",
+        "#0d0cfa",
         "#8000ff",
         "#bf00ff",
         "#ff00ff",
@@ -96,6 +94,7 @@ EOF
 endfunction
 
 
+" Run tree-sitter setup options when neovim loaded
 augroup TreesitterOverrides
   autocmd!
   autocmd User PlugLoaded call TreesitterSetup()

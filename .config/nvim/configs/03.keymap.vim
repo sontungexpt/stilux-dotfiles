@@ -21,33 +21,43 @@ imap <silent> <A-k> <Up>
 imap <silent> <A-h> <Left>
 imap <silent> <A-l> <Right>
 
-
 "ctrl z to undo
 inoremap <C-z> <C-O>u
 nnoremap <C-z> u
 vnoremap <C-z> <C-O>u
 
+" ctrl a to selected all text in file
+noremap <C-a> <esc>gg0v$G
+inoremap <C-a> <esc>gg0v$G
+
 "change the buffer"
 nnoremap <silent> gt :bnext<CR>
 nnoremap <silent> gT :bNext<CR>
 
-nnoremap cd :cd %:p:h<CR>
-vnoremap cd :cd %:p:h<CR>
+" Go to the current path
+nnoremap <C-d> :cd %:p:h<CR>
+vnoremap <C-d> :cd %:p:h<CR>
 
+" Close Buffer
 nnoremap <silent> Q :bd<CR>
 vnoremap <silent> Q :bd<CR>
 
+" Open the link
 nnoremap <silent> gx :execute 'silent! !xdg-open ' . shellescape(expand('<cWORD>'), 1)<cr>
 vnoremap <silent> gx :execute 'silent! !xdg-open ' . shellescape(expand('<cWORD>'), 1)<cr>
 
+" Clean searching
 nnoremap <silent> C :noh<CR>
 vnoremap <silent> C :noh<CR>
 
-map <C-k> :resize +1<CR>
-map <C-j> :resize -1<CR>
-map <C-l> :vertical resize -1<CR>
-map <C-h> :vertical resize +1<CR>
+" Resize Buffer
+noremap <C-j> :resize +1<CR>
+noremap <C-k> :resize -1<CR>
+noremap <C-l> :vertical resize -1<CR>
+noremap <C-h> :vertical resize +1<CR>
 
+
+" Layout
 "change the layout to horizontal
 map <leader>tv <C-w>t<C-w>H
 "change the layout to vertical

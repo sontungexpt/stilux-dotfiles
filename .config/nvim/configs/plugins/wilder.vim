@@ -5,7 +5,6 @@ if has('nvim')
     UpdateRemotePlugins
   endfunction
   Plug 'gelguy/wilder.nvim', { 'do': function('UpdateRemotePlugins') }
-
 else
   Plug 'gelguy/wilder.nvim'
   "To use Python remote plugin features in Vim, can be skipped"
@@ -16,15 +15,14 @@ endif
 
 "Default keys"
 
-"Disable pineline when you are in NERDtree"
 function SetupWilder()
   call wilder#setup({
-  \ 'modes': [':', '/', '?'],
-  \ 'next_key': '<Tab>',
-  \ 'previous_key': '<S-Tab>',
-  \ 'accept_key': '<Down>',
-  \ 'reject_key': '<Up>',
-  \ 'enable_cmdline_enter': 1,
+    \ 'modes': [':', '/', '?'],
+    \ 'next_key': '<Tab>',
+    \ 'previous_key': '<S-Tab>',
+    \ 'accept_key': '<Down>',
+    \ 'reject_key': '<Up>',
+    \ 'enable_cmdline_enter': 1,
   \ })
   call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_palette_theme({
     \ 'border': 'rounded',
@@ -36,6 +34,7 @@ function SetupWilder()
 endfunction
 
 
+" Run the wilder setup options when neovim loaded
 augroup WilderOvverides
     autocmd!
     autocmd User PlugLoaded call SetupWilder()

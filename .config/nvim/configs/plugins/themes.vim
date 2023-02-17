@@ -2,12 +2,7 @@
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 
-"  augroup ThemeOverrides
-"    autocmd!
-"    autocmd User PlugLoaded ++nested colorscheme dracula
-"  augroup END
-
-
+"----------Themes---------" 
 augroup ThemeOverrides
   autocmd!
   autocmd User PlugLoaded ++nested colorscheme tokyonight
@@ -15,13 +10,12 @@ augroup ThemeOverrides
 augroup END
 
 
-"  let g:lightline = {'colorscheme': 'dracula'}
-
 let g:lightline = {'colorscheme': 'tokyonight'}
+
 
 function! SetUpTokyoTheme()
 lua<<EOF
-require("tokyonight").setup({
+  require("tokyonight").setup({
   -- your configuration comes here
   -- or leave it empty to use the default settings
   style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
@@ -56,7 +50,6 @@ require("tokyonight").setup({
   ---@param colors ColorScheme
   on_highlights = function(highlights, colors) end,
 })
-
 EOF
 endfunction
 

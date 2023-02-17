@@ -1,6 +1,8 @@
 Plug 'uga-rosa/ccc.nvim'
 "  https://github.com/uga-rosa/ccc.nvim
 
+" Mappings
+nnoremap <silent> <A-c> :CccPick<cr>
 
 "----------ccc.nvim----------"
 function SetUpCCC()
@@ -13,10 +15,9 @@ lua<<EOF
 EOF
 endfunction
 
-nnoremap <silent> <A-c> :CccPick<cr>
 
-
-augroup CCCOverride
+" Run ccc setup options when neovim loaded
+augroup CCCOverrides
     autocmd!
     autocmd User PlugLoaded call SetUpCCC()
 augroup END

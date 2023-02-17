@@ -1,5 +1,7 @@
 Plug 'karb94/neoscroll.nvim'
 
+
+"----------NeoScroll-----------"
 function SetupNeoScroll()
 lua << EOF
 require('neoscroll').setup({
@@ -17,6 +19,7 @@ require('neoscroll').setup({
 EOF
 endfunction
 
+" Run the setup options when neovim loaded
 augroup NeoScrollOverrides
     autocmd!
     autocmd User PlugLoaded call SetupNeoScroll()

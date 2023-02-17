@@ -2,12 +2,18 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'nvim-tree/nvim-web-devicons'
 
 
+"-----------NvimTree----------"
+" Mappings 
+nnoremap <silent><C-b> :NvimTreeToggle<CR>
+inoremap <silent><C-b> <ESC>:NvimTreeToggle<CR>
+vnoremap <silent><C-b> <ESC>:NvimTreeToggle<CR>
+
+
 function SetupNvimTree()
 lua << EOF
--- examples for your init.lua
-
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded_netrw = 1
+
 vim.g.loaded_netrwPlugin = 1
 
 -- set termguicolors to enable highlight groups
@@ -68,15 +74,15 @@ require("nvim-tree").setup {
                 { key = "R",                              action = "refresh" },
                 { key = "a",                              action = "create" },
                 { key = "D",                              action = "remove" },
-                { key = "dd",                              action = "trash" },
+                { key = "dd",                             action = "trash" },
                 { key = "r",                              action = "rename" },
                 { key = "<C-r>",                          action = "full_rename" },
                 { key = "e",                              action = "rename_basename" },
                 { key = "x",                              action = "cut" },
-                { key = "yy",                              action = "copy" },
+                { key = "yy",                             action = "copy" },
                 { key = "p",                              action = "paste" },
-                { key = "yn",                              action = "copy_name" },
-                { key = "yp",                              action = "copy_path" },
+                { key = "yn",                             action = "copy_name" },
+                { key = "yp",                             action = "copy_path" },
                 { key = "gy",                             action = "copy_absolute_path" },
                 { key = "[e",                             action = "prev_diag_item" },
                 { key = "[c",                             action = "prev_git_item" },
@@ -206,7 +212,7 @@ require("nvim-tree").setup {
         dotfiles = true,
         git_clean = false,
         no_buffer = false,
-        custom = {"yay","zsh_history_fix","*.exe","Data/$RECYCLE.BIN","Data/Program","Data/System Volume Information","Data/EngBreaking","Data/Game","Data/found.000","Data/IELTS - Links","Data/Shmily"},
+        custom = {"dotfiles","yay","zsh_history_fix","*.exe","Data/$RECYCLE.BIN","Data/Program","Data/System Volume Information","Data/EngBreaking","Data/Game","Data/found.000","Data/IELTS - Links","Data/Shmily"},
         exclude = {".config"},
     },
     filesystem_watchers = {
@@ -300,18 +306,12 @@ require("nvim-tree").setup {
             watcher = false,
         },
     },
-} -- END_DEFAULT_OPTS
-
-
-
+} 
 EOF
 endfunction
 
 
-nnoremap <silent><C-b> :NvimTreeToggle<CR>
-inoremap <silent><C-b> <ESC>:NvimTreeToggle<CR>
-vnoremap <silent><C-b> <ESC>:NvimTreeToggle<CR>
-
+" Run setup option when neovim loaded
 augroup NvimTreeOverrides
     autocmd!
     autocmd User PlugLoaded call SetupNvimTree()

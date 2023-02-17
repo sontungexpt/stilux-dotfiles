@@ -68,11 +68,4 @@ set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*
 " Enable syntax for .json files
 autocmd BufRead,BufNewFile *.json set filetype=jsonc
 
-" Enable syntax for .conf files
-autocmd BufRead,BufNewFile *.conf set filetype=conf
 
-" Enable syntax for .env files
-
-" Enable syntax for bash files
-
-" Enable syntax for .gitignore files
