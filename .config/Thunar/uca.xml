@@ -79,4 +79,20 @@
 	<text-files/>
 	<video-files/>
 </action>
+<action>
+	<icon>filename-title-amarok</icon>
+	<name>Copy name</name>
+	<submenu></submenu>
+	<unique-id>1676722155790669-1</unique-id>
+	<command>echo -n %n | xclip -selection &quot;clipboard&quot;</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
 </actions>

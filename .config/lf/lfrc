@@ -37,6 +37,7 @@ map d
 map c
 map e
 map f
+map w
 
 # Keybindings
 map dd trash
@@ -45,6 +46,7 @@ map <delete> trash
 map p paste
 map x cut
 map yy copy
+map yp copypath
 map mf mkfile
 map mr sudomkfile
 map md mkdir
@@ -60,20 +62,22 @@ map U unselect
 map so sudoopen
 map o open
 map <enter> shell
-map cp copypath
 
 # Movement Keybindings
 map cdc cd ~/.config
 map cdd cd ~/Data
 map cdw cd ~/Data/WorkSpace
+map w cd ~/Data/WorkSpace
 map cdp cd ~/Pictures
 map cdD cd ~/Downloads
 map cdb cd /usr/bin
+map cdv cd ~/.config/nvim
 
 
 # Archive Keybindings
 map z zip
 map t tar
+map a achirve
 map e extract
 
 # Custom Functions
@@ -84,91 +88,95 @@ cmd copypath %printf "$f" | xclip -selection clipboard -o
 cmd sudoopen ${{
   case $(file --mime-type "$f" -bL) in
     text/*|application/json) sudo $EDITOR "$f";;
-          image/*) feh --auto-zoom --scale-down "$f";;
-         *) xdg-open "$f" ;;
-         esac
-         }}
+    image/*) feh --auto-zoom --scale-down "$f";;
+    *) xdg-open "$f" ;;
+  esac
+}}
 
 # Open Command
 cmd open ${{
-case $(file --mime-type "$f" -bL) in
-text/*|application/json) nvim "$f";;
-image/*) feh --auto-zoom --scale-down "$f";;
-         *) xdg-open "$f" ;;
-         esac
-         }}
+  case $(file --mime-type "$f" -bL) in
+    text/*|application/json) nvim "$f";;
+    image/*) feh --auto-zoom --scale-down "$f";;
+    *) xdg-open "$f" ;;
+  esac
+}}
 
 # Set Background Command
 cmd setwallpaper %cp "$f" ~/.config/backgrounds/wallpaper.jpg && i3 restart
 
 # Chmod Command
 cmd chmod ${{
-printf "Mode Bits: "
-read ans
+  printf "Mode Bits: "
+  read ans
 
-for file in "$fx"
-do
-chmod $ans $file
-done
+  for file in "$fx"
+  do
+    chmod $ans $file
+  done
 
-lf -remote 'send reload'
+  lf -remote 'send reload'
 }}
 
 # Make File Command
 cmd mkfile ${{
-printf "File Name: "
-read ans
-$EDITOR $ans
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
 }}
 
 # Make Directory Command
 cmd mkdir ${{
-printf "Directory Name: "
-read ans
-mkdir $ans
-reload
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+  reload
 }}
 
 # Make File With Sudo Command
 cmd sudomkfile ${{
-printf "File Name: "
-read ans
-sudo $EDITOR $ans
+  printf "File Name: "
+  read ans
+  sudo $EDITOR $ans
 }}
 
 # Delete Command
 cmd delete ${{
-set -f
-printf "$fx\n"
-printf "delete?[y/n]"
-read ans
-[ "$ans" = "y" ] && rm -rf $fx
+  set -f
+  printf "$fx\n"
+  printf "delete?[y/n]"
+  read ans
+  [ "$ans" = "y" ] && rm -rf $fx
 }}
+
+
 
 # TrashCli Command
 cmd trash ${{
-files=$(printf "$fx" | tr '\n' ';')
-while [ "$files" ]; do
-file=${files%%;*}
-trash-put "$(basename "$file")"
-if [ "$files" = "$file" ]; then
-files=''
-else
-files="${files#*;}"
-fi
-done
+  files=$(printf "$fx" | tr '\n' ';')
+  while [ "$files" ]; do
+    file=${files%%;*}
+    trash-put "$(basename "$file")"
+    if [ "$files" = "$file" ]; then
+      files=''
+    else
+    files="${files#*;}"
+    fi
+  done
 }}
 
 # Extract Command
 cmd extract ${{
-case "$f" in
-     *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) sudo tar xjvf "$f";;
-      *.tar.gz|*.tgz) sudo tar xzvf "$f";;
+  case "$f" in
+    *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) sudo tar xjvf "$f";;
+    *.tar.gz|*.tgz) sudo tar xzvf "$f";;
     *.tar.xz|*.txz) sudo tar xJvf "$f";;
     *.zip) unzip "$f";;
     *.rar) unrar e "$f";;
+    *.7z) echo "You need to download 7z to extract file";;
+    *.jar) echo "You need to download jar to extract file";;
     *) echo "Unsupported format" ;;
-    esac
+  esac
 }}
 
 # Zip Command
@@ -176,3 +184,19 @@ cmd zip %zip -r "$f" "$f"
 
 # Tar Command
 cmd tar %tar cvf "$f.tar" "$f"
+
+# Archive Command
+cmd achirve ${{
+  printf "File Name: "
+  read -r newname 
+  printf "Type? [1:zip | 2:rar | 3:tar]: "
+  read -r type
+  case "$type" in
+    "1") zip "$newname" -r "$f" "$f";;
+    "2") rar a -r -rr10p "$newname" "$f";;
+    "3") tar cvf "$newname.tar" "$f";;
+    "*") echo "Wrong choice";;
+  esac
+}}
+
+

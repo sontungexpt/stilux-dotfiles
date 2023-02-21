@@ -127,6 +127,12 @@ alias lf="lfrun"
 #export QT_IM_MODULE=”ibus”
 #export XMODIFIERS=”@im=ibus”
 #ibus-daemon -rx
-#
 
+# Git Bare
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+
+# Flutter
+export PATH="$PATH:/home/stilux/.developments/flutter/bin"
+
+export EDITOR=nvim
+export VISUAL=nvim

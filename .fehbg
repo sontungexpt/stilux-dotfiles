@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-fill '/home/stilux/.config/backgrounds/wallpaper.jpg' 
+feh --no-fehbg --bg-fill '/home/stilux/.cache/betterlockscreen/current/wall_dim.png' 

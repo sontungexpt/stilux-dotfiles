@@ -35,8 +35,8 @@ nnoremap <silent> gt :bnext<CR>
 nnoremap <silent> gT :bNext<CR>
 
 " Go to the current path
-nnoremap <C-d> :cd %:p:h<CR>
-vnoremap <C-d> :cd %:p:h<CR>
+nnoremap cd :cd %:p:h<CR>
+vnoremap cd :cd %:p:h<CR>
 
 " Close Buffer
 nnoremap <silent> Q :bd<CR>
@@ -51,14 +51,18 @@ nnoremap <silent> C :noh<CR>
 vnoremap <silent> C :noh<CR>
 
 " Resize Buffer
-noremap <C-j> :resize +1<CR>
-noremap <C-k> :resize -1<CR>
-noremap <C-l> :vertical resize -1<CR>
-noremap <C-h> :vertical resize +1<CR>
+noremap <silent> <C-j> :resize +1<CR>
+noremap <silent> <C-k> :resize -1<CR>
+noremap <silent> <C-l> :vertical resize -1<CR>
+noremap <silent> <C-h> :vertical resize +1<CR>
 
 
 " Layout
 "change the layout to horizontal
-map <leader>tv <C-w>t<C-w>H
+noremap <silent> <leader>tv <C-w>t<C-w>H
 "change the layout to vertical
-map <leader>th <C-w>t<C-w>K
+noremap <silent> <leader>th <C-w>t<C-w>K
+
+" Refresh nvim config
+noremap <leader>c :source ~/.config/nvim/init.vim<CR>
+

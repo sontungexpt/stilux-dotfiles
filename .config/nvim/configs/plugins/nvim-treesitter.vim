@@ -59,23 +59,23 @@ lua << EOF
       extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
       max_file_lines = nil, -- Do not enable for files with more than n lines, int
       colors = {
-        "#DA4E4E",
-        "#ff8000",
-        "#ffbf00",
-        "#ffff00",
-        "#bfff00",
-        "#07fc05",
-        "#00ffbf",
-        "#00ffff",
-        "#00bfff",
-        "#087eff",
-        "#0361fd",
-        "#0d0cfa",
-        "#8000ff",
-        "#bf00ff",
-        "#ff00ff",
-        "#ff00bf",
-        "#ff0080"
+        "#ce4a62",
+        "#e78135",
+        "#f9b71f",
+        "#eddc38",
+        "#EEDF10",
+        "#01AE6E",
+        "#10e8c3",
+        "#169ed8",
+        "#2f73e2",
+        "#1c73e9",
+        "#01519A",
+        "#2d3ae6",
+        "#802ef1",
+        "#b438f3",
+        "#d906f0",
+        "#f404b4",
+        "#f00483"
       }, -- table of hex strings
       -- termcolors = {} -- table of colour name strings
     }

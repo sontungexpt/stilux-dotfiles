@@ -15,10 +15,15 @@ autocmd VimEnter * PlugClean|q
 
 
 call plug#begin('~/.config/nvim/bundle')
-for f in split(glob('~/.config/nvim/configs/plugins/*.vim'), '\n')
-   exe 'source' f
-endfor
-call plug#end()
+  for f in split(glob('~/.config/nvim/configs/plugins/*.vim'), '\n')
+    exe 'source' f
+  endfor
+  if(!empty(glob('~/.config/nvim/configs/plugins/lsp/')))
+    for f in split(glob('~/.config/nvim/configs/plugins/lsp/*.vim'), '\n')
+      exe 'source' f
+    endfor
+  endif
+  call plug#end()
 
 "  autocmd VimEnter * PlugInstall --sync|PlugClean|q
 doautocmd User PlugLoaded

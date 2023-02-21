@@ -1,26 +1,17 @@
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
 
 
 "----------lualine----------"
 function SetupLualine()
 lua<<EOF
-  --local colors = {
-    --blue   = '#80a0ff',
-    --cyan   = '#79dac8',
-    --black  = '#080808',
-    --white  = '#c6c6c6',
-    ---red    = '#ff5189',
-    --violet = '#d183e8',
-    --grey   = '#303030'
-  --}
-
   require('lualine').setup {
     options = {
       icons_enabled = true,
       theme = 'auto',
       section_separators = { left = '', right = '' },
-      --component_separators = { left = '', right = '' },
+      --component_separators = { left = '│', right = '│' },
       component_separators = { left = '', right = '' },
       disabled_filetypes = {
         statusline = {},
@@ -48,7 +39,6 @@ lua<<EOF
           -- icon position can also be set to the right side from table. Example:
           -- {'branch', icon = {'', align='right', color={fg='green'}}}
           icon = nil,
-
 
           separator = { left = '',right ='' },
           -- Determines what separator to use for the component.
@@ -118,7 +108,20 @@ lua<<EOF
       },
       --lualine_b = {'buffers'},
       lualine_b = {
-        {'branch'}, 
+        {
+          'fileformat',
+          component_separators = { left = '', right = '' },
+          symbols = {
+            unix = '', -- e712
+            dos = '',  -- e70f
+            mac = '',  -- e711
+          }
+        },
+        {
+            'branch',
+            colored = true,
+        }, 
+
         {
           'diff',
           colored = true, -- Displays a colored diff status if set to true
@@ -160,13 +163,25 @@ lua<<EOF
           always_visible = false,   -- Show diagnostics even if there are none.
         },
       },
+
       lualine_c = {
+        {
+          'filetype',
+          colored = true,   -- Displays filetype icon in color if set to true
+          icon_only = true, -- Display only an icon for filetype
+          icon = { align = 'center' }, -- Display filetype icon on the right hand side
+          right_padding = 1,
+          left_padding = 2,
+          -- icon =    {'X', align='right'}
+          -- Icon string ^ in table is ignored in filetype component
+        },
+
         {
           'filename',
           file_status = true,      -- Displays file status (readonly status, modified status)
           newfile_status = false,  -- Display new file status (new file means no write after created)
           path = 0,            
-          separator = {left ='', right = '' }, 
+          padding = 0,
           -- 0: Just the filename
           -- 1: Relative path
           -- 2: Absolute path
@@ -181,17 +196,22 @@ lua<<EOF
             unnamed = '[No Name]', -- Text to show for unnamed buffers.
             newfile = '[New]',     -- Text to show for newly created file before first write
           },
-        }
+        },
       },
 
-      lualine_x = {},
+      lualine_x = {
+        {
+          'filesize',
+          --separator = {left ='', right = '' }, 
+          
+        }
+      },
       --lualine_x = {'encoding', 'fileformat', 'filetype'},
-      lualine_y = {},
+      lualine_y = {'encoding'},
       lualine_z = {
         { 
           'location', 
           separator = {left ='', right = '' }, 
-          left_padding = 2 
         },
       },
     },
@@ -203,17 +223,108 @@ lua<<EOF
       lualine_y = {},
       lualine_z = {}
     },
-    --tabline = {},
-    --winbar = {},
-    --inactive_winbar = {},
-    --extensions = {}
+    extensions = {'fzf'}
   }
 EOF
 endfunction
 
+function SetupBufferLine()
+lua<<EOF
+  require('bufferline').setup {
+    options = {
+      mode = "buffers", -- set to "tabs" to only show tabpages instead
+      numbers = "none", 
+      close_command = "bdelete! %d",       -- can be a string | function, see "Mouse actions"
+      right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
+      left_mouse_command = "buffer %d",    -- can be a string | function, see "Mouse actions"
+      middle_mouse_command = nil,          -- can be a string | function, see "Mouse actions"
+      indicator = {
+        icon = '▎ ', -- this should be omitted if indicator style is not 'icon'
+        style = 'icon',
+      },
+      buffer_close_icon = '',
+      modified_icon = '●',
+      close_icon = '',
+      left_trunc_marker = '',
+      right_trunc_marker = '',
+      -- name_formatter can be used to change the buffer's label in the bufferline.
+      -- Please note some names can/will break the
+      -- bufferline so use this at your discretion knowing that it has
+      -- some limitations that will *NOT* be fixed.
+      name_formatter = function(buf)  -- buf contains:
+      -- name                | str        | the basename of the active file
+      -- path                | str        | the full path of the active file
+      -- bufnr (buffer only) | int        | the number of the active buffer
+      -- buffers (tabs only) | table(int) | the numbers of the buffers in the tab
+      -- tabnr (tabs only)   | int        | the "handle" of the tab, can be converted to its ordinal number using: `vim.api.nvim_tabpage_get_number(buf.tabnr)`
+      end,
+      max_name_length = 25,
+      max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
+      truncate_names = true, -- whether or not tab names should be truncated
+      tab_size = 20,
+      diagnostics = "nvim_lsp",
+      diagnostics_update_in_insert = false,
+      -- The diagnostics indicator can be set to nil to keep the buffer name highlight but delete the highlighting
+      diagnostics_indicator = function(count, level, diagnostics_dict, context)
+        return "("..count..")"
+      end,
+      -- NOTE: this will be called a lot so don't do any heavy processing here
+      custom_filter = function(buf_number, buf_numbers)
+        -- filter out filetypes you don't want to see
+        if vim.bo[buf_number].filetype ~= "<i-dont-want-to-see-this>" then
+          return true
+        end
+        -- filter out by buffer name
+        if vim.fn.bufname(buf_number) ~= "<buffer-name-I-dont-want>" then
+          return true
+        end
+        -- filter out based on arbitrary rules
+        -- e.g. filter out vim wiki buffer from tabline in your work repo
+        if vim.fn.getcwd() == "<work-repo>" and vim.bo[buf_number].filetype ~= "wiki" then
+          return true
+        end
+        -- filter out by it's index number in list (don't show first buffer)
+        if buf_numbers[1] ~= buf_number then
+          return true
+        end
+      end,
+      offsets = {
+        {
+          filetype = "NvimTree",
+          text = "File Explorer",
+          highlight = "Directory",
+          text_align = "center",
+          separator = " "
+        }
+      },
+      color_icons = true, -- whether or not to add the filetype icon highlights
+      show_buffer_icons = true, -- disable filetype icons for buffers
+      show_buffer_close_icons = true,
+      show_buffer_default_icon = true, -- whether or not an unrecognised filetype should show a default icon
+      show_close_icon = true,
+      show_tab_indicators = true,
+      show_duplicate_prefix = true, -- whether to show duplicate buffer prefix
+      persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
+      -- can also be a table containing 2 custom separators
+      -- [focused and unfocused]. eg: { '|', '|' }
+      separator_style = "thin",
+      enforce_regular_tabs = false,
+      always_show_bufferline = true,
+      hover = {
+        enabled = true,
+        delay = 1,
+        reveal = {'close'}
+      },
+      sort_by = 'insert_after_current',
 
-" Run the lualine setup options when neovim loaded
-augroup LualineOverrides
+    }
+  }
+EOF
+endfunction
+
+" Run the lualine setup and bufferline setup options when neovim loaded
+augroup LualineAndBufferLineOverrides
   autocmd!
   autocmd User PlugLoaded call SetupLualine()
+  autocmd User PlugLoaded call SetupBufferLine()
 augroup END

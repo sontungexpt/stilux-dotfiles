@@ -5,6 +5,7 @@
 [safe]
 	directory = /home/stilux/Data/config
 	directory = /home/stilux/Data
+	directory = /opt/flutter
 [color]
 	ui = auto
 [init]

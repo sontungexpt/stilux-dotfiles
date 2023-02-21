@@ -14,6 +14,7 @@ set number
 "encoding"
 set encoding=UTF-8
 set mouse=a
+set mousemoveevent
 
 set incsearch
 set hlsearch
