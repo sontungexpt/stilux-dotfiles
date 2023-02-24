@@ -30,7 +30,6 @@ set scrolloff 10
 # Remove some defaults mappings
 map m
 map o
-map n
 map "'"
 map '"'
 map d
@@ -38,6 +37,7 @@ map c
 map e
 map f
 map w
+map y
 
 # Keybindings
 map dd trash
@@ -52,16 +52,20 @@ map mr sudomkfile
 map md mkdir
 map ch chmod
 map bg setwallpaper
-map nvim $nvim $f
+map sa setavatar
 map r rename
 map gg top
 map G bottom
 map R reload
 map C clear
-map U unselect
 map so sudoopen
 map o open
 map <enter> shell
+
+# Select a file
+map <space> :toggle; down
+map U unselect
+map u unselect
 
 # Movement Keybindings
 map cdc cd ~/.config
@@ -82,7 +86,9 @@ map e extract
 
 # Custom Functions
 # Copy Path Command
-cmd copypath %printf "$f" | xclip -selection clipboard -o
+cmd copypath ${{
+  echo -n "$f" | xclip -selection "clipboard"
+}}
 
 # Sudo Open Command
 cmd sudoopen ${{
@@ -105,6 +111,10 @@ cmd open ${{
 # Set Background Command
 cmd setwallpaper %cp "$f" ~/.config/backgrounds/wallpaper.jpg && i3 restart
 
+# Change The Avatar Command
+cmd setavatar ${{
+  setavatar "$f"
+}}
 # Chmod Command
 cmd chmod ${{
   printf "Mode Bits: "
@@ -156,7 +166,7 @@ cmd trash ${{
   files=$(printf "$fx" | tr '\n' ';')
   while [ "$files" ]; do
     file=${files%%;*}
-    trash-put "$(basename "$file")"
+    sudo trash-put "$(basename "$file")"
     if [ "$files" = "$file" ]; then
       files=''
     else

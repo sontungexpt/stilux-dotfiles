@@ -95,4 +95,15 @@
 	<text-files/>
 	<video-files/>
 </action>
+<action>
+	<icon>avatar-default</icon>
+	<name>Change avatar</name>
+	<submenu></submenu>
+	<unique-id>1677154327700108-1</unique-id>
+	<command>/home/stilux/.config/scripts/StiluxScripts/Background-Avatar/setavatar.su %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
 </actions>

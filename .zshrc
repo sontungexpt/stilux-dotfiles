@@ -131,6 +131,9 @@ alias lf="lfrun"
 # Git Bare
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
+# View all installed font
+alias fonts='fc-list'
+
 # Flutter
 export PATH="$PATH:/home/stilux/.developments/flutter/bin"
 

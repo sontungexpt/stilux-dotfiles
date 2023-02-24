@@ -206,6 +206,9 @@ gaps inner 10
 gaps outer 2
 #smart_gaps on
 
+# Ibus
+exec_always ibus restart
+
 # Keyboard Layout
 exec_always setxkbmap us
 
@@ -260,6 +263,8 @@ bindsym XF86MonBrightnessDown exec --no-startup-id light -U 1 # decrease screen 
 bindsym --release $mod+n exec wihotspot 
 for_window [class="Wihotspot-gui"] floating enable 
 
+# Thunar
+bindsym --release $mod+t exec thunar
 
 # Blueman
 bindsym --release $mod+m exec blueman-manager

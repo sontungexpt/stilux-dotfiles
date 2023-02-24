@@ -7,11 +7,11 @@
   <property name="last-window-height" type="int" value="1040"/>
   <property name="last-window-maximized" type="bool" value="true"/>
   <property name="last-show-hidden" type="bool" value="true"/>
-  <property name="last-separator-position" type="int" value="223"/>
+  <property name="last-separator-position" type="int" value="221"/>
   <property name="last-image-preview-visible" type="bool" value="true"/>
   <property name="last-details-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_38_PERCENT"/>
   <property name="last-details-view-visible-columns" type="string" value="THUNAR_COLUMN_DATE_MODIFIED,THUNAR_COLUMN_NAME,THUNAR_COLUMN_SIZE,THUNAR_COLUMN_TYPE"/>
-  <property name="last-details-view-column-widths" type="string" value="50,50,155,50,50,104,50,50,1155,50,50,100,50,182"/>
+  <property name="last-details-view-column-widths" type="string" value="50,50,155,50,50,1588,50,50,574,50,50,100,50,498"/>
   <property name="misc-single-click" type="bool" value="false"/>
   <property name="misc-middle-click-in-tab" type="bool" value="true"/>
   <property name="misc-recursive-permissions" type="string" value="THUNAR_RECURSIVE_PERMISSIONS_NEVER"/>

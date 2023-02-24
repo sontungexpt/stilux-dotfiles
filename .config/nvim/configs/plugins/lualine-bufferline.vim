@@ -6,7 +6,28 @@ Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
 "----------lualine----------"
 function SetupLualine()
 lua<<EOF
-  require('lualine').setup {
+
+  local colors = {
+    bg = "#202328",
+    fg = "#bbc2cf",
+    yellow = "#ECBE7B",
+    cyan = "#008080",
+    darkblue = "#081633",
+    green = "#98be65",
+    orange = "#FF8800",
+    violet = "#a9a1e1",
+    magenta = "#c678dd",
+    blue = "#51afef",
+    red = "#ec5f67",
+  }
+
+  local status_ok, lualine = pcall(require, "lualine")
+  if not status_ok then
+    return
+  end
+
+
+  lualine.setup {
     options = {
       icons_enabled = true,
       theme = 'auto',
@@ -292,7 +313,8 @@ lua<<EOF
         {
           filetype = "NvimTree",
           text = "File Explorer",
-          highlight = "Directory",
+          highlight = "directory",
+          padding = 0,
           text_align = "center",
           separator = " "
         }
@@ -316,7 +338,6 @@ lua<<EOF
         reveal = {'close'}
       },
       sort_by = 'insert_after_current',
-
     }
   }
 EOF

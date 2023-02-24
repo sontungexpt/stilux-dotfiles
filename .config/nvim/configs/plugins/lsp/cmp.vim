@@ -77,7 +77,7 @@ lua <<EOF
         end
       end, {'i', 's'}),
 
-      ['<Tab>'] = cmp.mapping(function(fallback)
+      ['<A-j>'] = cmp.mapping(function(fallback)
         local col = vim.fn.col('.') - 1
 
         if cmp.visible() then
@@ -89,7 +89,7 @@ lua <<EOF
         end
       end, {'i', 's'}),
 
-      ['<S-Tab>'] = cmp.mapping(function(fallback)
+      ['<A-k>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item(select_opts)
         else

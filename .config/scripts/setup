@@ -1,0 +1,66 @@
+#!/bin/bash
+# The scripts is wrote by TranVoSonTung
+
+SCRIPTS_STORAGE=$(readlink -e "StiluxScripts")
+
+# the function that allow all file with the extension .st can execute
+function permit {
+	file_paths=$(find "$1" -type f -name "*.st")
+	for path in $file_paths; do
+		chmod +rwx "$path"
+	done
+}
+
+# Return false if not correct password and return true if correct
+function check_password {
+	# Test that the given password is correct by trying to run a command using it
+	# echo "$password" | su -c true
+	su <<<"$1" -c true
+	local retval=$? #The status of the command if 0 success
+	if [ $retval -eq 0 ]; then
+		#Success
+		echo "true" && return #return value if good input
+	else
+		echo "false" && return
+	fi
+}
+
+function read_password {
+	while :; do # infinite loop
+		read -r -s -p "Enter your password: " pass
+		local status_password
+		status_password=$(check_password "$pass")
+		[[ "$status_password" = "true" ]] && echo "$pass" && return
+	done
+}
+
+# The function that add an "-nopass" flag to execute script with no need pass root
+function setup_flag_nopass {
+	# Take the password string
+	file_paths=$(find "$1" -type f -name "*.st")
+	local pass
+	pass="$(read_password)"
+	clear
+	for path in $file_paths; do
+		local word_to_replace="# PASS=\"\""
+		local word_to_replace1="#PASS=\"\""
+		local word_to_replace2="PASS=\"\""
+		local word_to_insert="PASS=\"$pass\""
+
+		if [[ $pass != "" ]]; then
+			sed -i -e "s/$word_to_replace/$word_to_insert/g" "$path"
+			sed -i -e "s/$word_to_replace1/$word_to_insert/g" "$path"
+			sed -i -e "s/$word_to_replace2/$word_to_insert/g" "$path"
+		fi
+	done
+	echo "Add flag -nopass to all scripts"
+}
+
+# main code
+if [ -d "$SCRIPTS_STORAGE" ]; then
+	# Allow the all script file can execute
+	setup_flag_nopass "$SCRIPTS_STORAGE"
+	permit "$SCRIPTS_STORAGE"
+else
+	echo "The StiluxScripts folder is lost"
+fi

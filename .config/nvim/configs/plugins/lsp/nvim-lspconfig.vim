@@ -115,6 +115,7 @@ lua<<EOF
       bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
     end
   })
+
   local sign = function(opts)
   vim.fn.sign_define(opts.name, {
     texthl = opts.name,
