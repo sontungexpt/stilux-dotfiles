@@ -5,7 +5,7 @@ Plug 'windwp/nvim-ts-autotag'
 Plug 'p00f/nvim-ts-rainbow'
 "  https://github.com/p00f/nvim-ts-rainbow
 Plug 'Fymyte/tree-sitter-rasi'
-Plug 'ap/vim-css-color'
+Plug 'j'
 Plug 'Fymyte/rasi.vim'
 
 "-----------Tree-sitter-----------"

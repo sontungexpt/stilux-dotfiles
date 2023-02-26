@@ -101,13 +101,13 @@ image/jpeg=feh.desktop
 image/png=userapp-feh --auto-zoom --scale-down -LQI1Z1.desktop
 x-scheme-handler/figma=figma-linux.desktop
 application/vnd.ms-publisher=code.desktop
-text/plain=nvim.desktop
+text/plain=code.desktop
 
 [Added Associations]
 image/jpeg=userapp-feh --auto-zoom --scale-down-P08C01.desktop;shotwell-viewer.desktop;feh.desktop;
 video/mp4=mpv.desktop;
 image/webp=shotwell.desktop;shotwell-viewer.desktop;brave-browser.desktop;
-text/plain=nvim.desktop;code.desktop;terminator.desktop;userapp-nvim-H1GH01.desktop;
+text/plain=code.desktop;nvim.desktop;terminator.desktop;userapp-nvim-H1GH01.desktop;
 image/png=shotwell-viewer.desktop;feh.desktop;userapp-feh --auto-zoom --scale-down -LQI1Z1.desktop;userapp-feh --auto-zoom-LG2C01.desktop;
 application/x-shellscript=code.desktop;
 application/vnd.rar=ibus-setup-Bamboo.desktop;

@@ -64,5 +64,5 @@ noremap <silent> <leader>tv <C-w>t<C-w>H
 noremap <silent> <leader>th <C-w>t<C-w>K
 
 " Refresh nvim config
-noremap <leader>c :source ~/.config/nvim/init.vim<CR>
+noremap <leader>c :sgource ~/.config/nvim/init.vim<CR>
 
