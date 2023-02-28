@@ -27,6 +27,9 @@ nvim_treesitter.setup {
     enable = true,
     filetypes = { "html" , "xml" ,"jsx" },
   },
+  autopairs ={
+    enable = true,
+  },
   rainbow = {
     enable = true,
     disable = {"html", "javascript"}, --list of languages you want to disable the plugin for

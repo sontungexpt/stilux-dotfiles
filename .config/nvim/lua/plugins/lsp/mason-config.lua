@@ -1,77 +1,59 @@
- require("mason").setup{
-    ui = {
-		  icons = {
-			  package_pending = " ",
-			  package_installed = " ",
-			  package_uninstalled = " ﮊ",
-		  },
-      
+local mason_status_ok, mason = pcall(require, "mason")
+if not mason_status_ok then
+  return
+end
+
+mason.setup {
+  ui = {
+    icons = {
+      package_pending = " ",
+      package_installed = " ",
+      package_uninstalled = " ",
     },
-    ensure_installed = {
-      "prettierd",
-      "prettier",
-      "clang-format",
-    } 
+  },
+  ensure_installed = {
+    "prettierd",
+    "clang-format",
+    "codespell",
+    "codelldb"
   }
-  require("mason-lspconfig").setup {
-    ensure_installed = {
-      --lua
-      "lua_ls", 
-      
-      --rust
-      "rust_analyzer",
-    
-      --python
-      "pyright",
-     
-      --ruby
-      "ruby_ls",
-    
-      --C,C++,C#,Cmake
-      "clangd",
-      "cmake",
-      "omnisharp",
-     
-      -- web dev
-		  "cssls",
-		  "html",
-		  "eslint",
-      "tsserver",
-		  "denols",
-		  "emmet_ls",
-      "jsonls",
-      
-      --vim
-      "vimls",
-     
-      --prettier
+}
 
-      --shell
+local mason_lspconfig_status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not mason_lspconfig_status_ok then
+  return
+end
 
+mason_lspconfig.setup {
+  ensure_installed = {
+    --lua
+    "lua_ls",
 
-    },
-    automatic_installation = true
-  }
+    --rust
+    "rust_analyzer",
 
----[[
-keymaps = {
-  -- Keymap to expand a package
-  toggle_package_expand = "<CR>",
-  -- Keymap to install the package under the current cursor position
-  install_package = "i",
-  -- Keymap to reinstall/update the package under the current cursor position
-  update_package = "u",
-  -- Keymap to check for new version for the package under the current cursor position
-  check_package_version = "c",
-  -- Keymap to update all installed packages
-  update_all_packages = "U",
-  -- Keymap to check which installed packages are outdated
-  check_outdated_packages = "C",
-  -- Keymap to uninstall a package
-  uninstall_package = "X",
-  -- Keymap to cancel a package installation
-  cancel_installation = "<C-c>",
-  -- Keymap to apply language filter
-  apply_language_filter = "<C-f>",
-},
---]]
+    --python
+    "pyright",
+
+    --ruby
+    "ruby_ls",
+
+    --C,C++,C#,Cmake
+    "clangd",
+    "cmake",
+    "omnisharp",
+
+    -- web dev
+    "cssls",
+    "html",
+    "eslint",
+    "tsserver",
+    "denols",
+    "emmet_ls",
+    "jsonls",
+
+    --vim
+    "vimls",
+  },
+  automatic_installation = true,
+}

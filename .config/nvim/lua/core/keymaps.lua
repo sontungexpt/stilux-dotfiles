@@ -1,27 +1,27 @@
 ----------Example mapping----------
 
 -- Map to a Lua function:
-  --vim.keymap.set('n', 'lhs', function() print("real lua function") end)
+--vim.keymap.set('n', 'lhs', function() print("real lua function") end)
 
 -- Map to multiple modes:
-  --vim.keymap.set({'n', 'v'}, '<leader>lr', vim.lsp.buf.references, { buffer=true })
+--vim.keymap.set({'n', 'v'}, '<leader>lr', vim.lsp.buf.references, { buffer=true })
 
 -- Buffer-local mapping:
-  --vim.keymap.set('n', '<leader>w', "<cmd>w<cr>", { silent = true, buffer = 5 })
+--vim.keymap.set('n', '<leader>w', "<cmd>w<cr>", { silent = true, buffer = 5 })
 
 -- Expr mapping:
-  --vim.keymap.set('i', '<Tab>', function()
-    --return vim.fn.pumvisible() == 1 and "<C-n>" or "<Tab>"
-  --end, { expr = true })
+--vim.keymap.set('i', '<Tab>', function()
+--return vim.fn.pumvisible() == 1 and "<C-n>" or "<Tab>"
+--end, { expr = true })
 
 -- <Plug> mapping:
-  --vim.keymap.set('n', '[%', '<Plug>(MatchitNormalMultiBackward)')
+--vim.keymap.set('n', '[%', '<Plug>(MatchitNormalMultiBackward)')
 
 -----------Mappings----------
 local opts = { noremap = true, silent = true }
 local opts_without_noremap = { noremap = false, silent = true }
 local opts_without_silent = { noremap = true, silent = false }
-local opts_expr = {expr = true, replace_keycodes = true, noremap = true, silent = true}
+local opts_expr = { expr = true, replace_keycodes = true, noremap = true, silent = true }
 local map = vim.api.nvim_set_keymap
 
 --Back to normal mode
@@ -52,10 +52,10 @@ map("i", "<C-a>", "<esc>gg0v$G", opts)
 map("v", "<C-a>", "<esc>gg0v$G", opts)
 
 --The arrow keys in the insert mode
-map("i", "<A-j>", "<Down>", opts_without_noremap)
-map("i", "<A-k>", "<Up>", opts_without_noremap)
-map("i", "<A-h>", "<Left>", opts_without_noremap)
-map("i", "<A-l>", "<Right>", opts_without_noremap)
+map("i", "<C-j>", "<Down>", opts_without_noremap)
+map("i", "<C-k>", "<Up>", opts_without_noremap)
+map("i", "<C-h>", "<Left>", opts_without_noremap)
+map("i", "<C-l>", "<Right>", opts_without_noremap)
 
 --Change the buffer
 map("n", "gt", ":bnext<cr>", opts)
@@ -78,10 +78,13 @@ map("n", "C", ":noh<cr>:set ignorecase<cr>", opts)
 map("v", "C", "<esc>:noh<cr>:set ignorecase<cr>", opts)
 
 --Resize Buffer
-map("n", "<C-j>", ":resize +1<cr>", opts)
-map("n", "<C-k>", ":resize -1<cr>", opts)
-map("n", "<C-l>", ":vertical resize -1<cr>", opts)
-map("n", "<C-h>", ":vertical resize +1<cr>", opts)
+map("n", "<A-j>", ":resize +1<cr>", opts)
+map("n", "<A-k>", ":resize -1<cr>", opts)
+map("n", "<A-l>", ":vertical resize -1<cr>", opts)
+map("n", "<A-h>", ":vertical resize +1<cr>", opts)
+
+--Make all windows (almost) equally high and wide
+map("n", "=", "<C-W>=", opts)
 
 --Change the layout to horizohkkntal
 map("n", "gv", "<C-w>t<C-w>H", opts)
@@ -90,7 +93,8 @@ map("n", "gv", "<C-w>t<C-w>H", opts)
 map("n", "gh", "<C-w>t<C-w>K", opts)
 
 --Refresh nvim config
-map("n", "<leader><cr>", ":luafile $MYVIMRC<CR>:HighlightColorsOn<cr>:lua print('Refresh the neovim configuration')<cr>", opts_without_silent)
+map("n", "<leader><cr>", ":luafile $MYVIMRC<CR>:HighlightColorsOn<cr>:lua print('Refresh the neovim configuration')<cr>",
+  opts_without_silent)
 
 function IsLastLine()
   local last_line = vim.api.nvim_buf_line_count(0)

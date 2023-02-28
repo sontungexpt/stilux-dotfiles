@@ -10,4 +10,3 @@ for k, module in pairs(modules) do
   package.loaded[module] = nil
   require(module)
 end
-

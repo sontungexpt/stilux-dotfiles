@@ -1,9 +1,9 @@
 --Automatically install packer if it's not exist
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
     vim.cmd [[packadd packer.nvim]]
     vim.cmd [[PackerSync]]
     return true
@@ -27,7 +27,7 @@ if not status_ok then
   return
 end
 
-packer.init{
+packer.init {
   max_jobs = nil, -- Limit the number of simultaneous jobs. nil means no limit
   auto_clean = true, -- During sync(), remove unused plugins
   compile_on_sync = true, -- During sync(), run packer.compile()
@@ -38,7 +38,7 @@ packer.init{
   display = {
     -- An optional function to open a window for packer's display
     open_fn = function()
-      return require('packer.util').float {border = "rounded"}
+      return require('packer.util').float { border = "rounded" }
     end,
     jworking_sym = '⟳', -- The symbol for a plugin being installed/updated
     error_sym = '', -- The symbol for a plugin with an error in installation/updating
@@ -112,13 +112,80 @@ return packer.startup(function(use)
     end,
   }
 
-  -- lspconfig
-  -- use {
-  --  'neovim/nvim-lspconfig',
-  --  config = function()
-  --    require("plugins.lsp.nvim-lspconfig-config")
-  --  end,
-  -- }
+  -- Cmp - Lspconfig
+  use {
+    'neovim/nvim-lspconfig',
+    config = function()
+      require("plugins.lsp.nvim-lspconfig-config")
+    end,
+  }
+
+  -- Null-ls
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    config = function()
+      require("plugins.lsp.null-ls-config")
+    end,
+  }
+
+  -- Mason
+  use {
+    "williamboman/mason.nvim",
+    requires = {
+      'williamboman/mason-lspconfig.nvim',
+    },
+    config = function()
+      require("plugins.lsp.mason-config")
+    end,
+  }
+
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'rafamadriz/friendly-snippets',
+
+      -- For vsnip users
+      -- 'hrsh7th/cmp-vsnip',
+      -- 'hrsh7th/vim-vsnip',
+
+      -- For ultisnips users.
+      -- 'SirVer/ultisnips',
+      -- 'quangnguyen30192/cmp-nvim-ultisnips',
+
+      -- For luasnip users
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+
+      -- For snippy users
+      -- 'dcampos/nvim-snippy',
+      -- 'dcampos/cmp-snippy'
+    },
+    config = function()
+      require("plugins.lsp.cmp-config")
+    end,
+  }
+
+
+  -- Dap
+  use {
+    "mfussenegger/nvim-dap",
+    config = function()
+      require("plugins.debugger.nvim-dap-config")
+    end,
+  }
+  use {
+    "rcarriga/nvim-dap-ui",
+    requires = {
+      "mfussenegger/nvim-dap",
+    },
+    config = function()
+      require("plugins.debugger.nvim-dap-ui-config")
+    end,
+  }
 
   -- Wilder
   use {
@@ -163,8 +230,43 @@ return packer.startup(function(use)
     end,
   }
 
+  -- Neoclip
+  use {
+    "AckslD/nvim-neoclip.lua",
+    requires = {
+      {
+        'kkharji/sqlite.lua',
+        module = 'sqlite'
+      },
+      -- you'll need at least one of these
+      {
+        'nvim-telescope/telescope.nvim'
+      },
+      -- {'ibhagwan/fzf-lua'},
+    },
+    config = function()
+      require('plugins.nvim-neoclip-config')
+    end,
+  }
+
+  -- Which-key
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require("plugins.which-key-config")
+    end,
+  }
+
+  -- Nvim-cursorline
+  use {
+    'yamatsum/nvim-cursorline',
+    config = function()
+      require("plugins.nvim-cursorline-config")
+    end,
+  }
+
   --Color Picker
-  use{
+  use {
     'uga-rosa/ccc.nvim',
     config = function()
       require("plugins.color-picker-config")
@@ -173,17 +275,17 @@ return packer.startup(function(use)
 
   -- Pretty-fold - fold-preview
   use { 'anuvyklack/fold-preview.nvim',
-   requires = 'anuvyklack/keymap-amend.nvim',
-   config = function()
+    requires = 'anuvyklack/keymap-amend.nvim',
+    config = function()
       require('plugins.fold.fold-preview-config')
-   end,
+    end,
   }
 
-  use{
+  use {
     'anuvyklack/pretty-fold.nvim',
-   config = function()
+    config = function()
       require('plugins.fold.pretty-fold-config')
-   end
+    end
   }
 
   --Lualine
@@ -197,6 +299,39 @@ return packer.startup(function(use)
       require("plugins.lualine-config")
     end
   }
+
+  --Nvim-autopairs
+  use {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("plugins.nvim-autopairs-config")
+    end
+  }
+
+  --Indent-blankline
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("plugins.indent-blankline-config")
+    end,
+  }
+
+  --Github Copilot
+  use {
+    'github/copilot.vim',
+    config = function()
+      require("plugins.copilot-config")
+    end,
+  }
+
+  -- Nvim-surround
+  use({
+    "kylechui/nvim-surround",
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+      require("plugins.nvim-surround-config")
+    end
+  })
 
   -- Neoscroll
   -- use{
@@ -212,5 +347,3 @@ return packer.startup(function(use)
     require('packer').sync()
   end
 end)
-
-
