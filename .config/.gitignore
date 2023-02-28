@@ -6,8 +6,10 @@
 # !/home/stilux/.zsh_history_fix
 # !/home/stilux/.fehbg
 
-githup-copilot/
-githup-copilot/*
+**/githup-copilot/hosts.json
+**/node_modules/
+**/githup-copilot/
+**/githup-copilot/*
 yay/
 bspwm/
 teams/
