@@ -104,7 +104,7 @@ return packer.startup(function(use)
     end
   }
 
-  -- TokyoTheme
+  -- TokyoNight Theme
   use {
     'folke/tokyonight.nvim',
     config = function()
@@ -112,7 +112,7 @@ return packer.startup(function(use)
     end,
   }
 
-  -- Cmp - Lspconfig
+  -- Lspconfig
   use {
     'neovim/nvim-lspconfig',
     config = function()
@@ -139,6 +139,7 @@ return packer.startup(function(use)
     end,
   }
 
+  -- Cmp
   use {
     'hrsh7th/nvim-cmp',
     requires = {
@@ -168,9 +169,33 @@ return packer.startup(function(use)
       require("plugins.lsp.cmp-config")
     end,
   }
+  -- use {
+  --   "zbirenbaum/copilot-cmp",
+  --   after = { "copilot.lua" },
+  --   config = function()
+  --     require("copilot_cmp").setup {
+  --       formatters = {
+  --         label = require("copilot_cmp.format").format_label_text,
+  --         insert_text = require("copilot_cmp.format").format_insert_text,
+  --         preview = require("copilot_cmp.format").deindent,
+  --       },
+  --     }
+  --   end
+  -- }
 
 
   -- Dap
+  use {
+    "rcarriga/nvim-dap-ui",
+    requires = {
+      "mfussenegger/nvim-dap",
+      "jay-babu/mason-nvim-dap.nvim",
+      "theHamsta/nvim-dap-virtual-text",
+    },
+    config = function()
+      require("plugins.debugger.nvim-dap-ui-config")
+    end,
+  }
   use {
     "mfussenegger/nvim-dap",
     config = function()
@@ -178,13 +203,17 @@ return packer.startup(function(use)
     end,
   }
   use {
-    "rcarriga/nvim-dap-ui",
-    requires = {
-      "mfussenegger/nvim-dap",
-    },
+    "jay-babu/mason-nvim-dap.nvim",
     config = function()
-      require("plugins.debugger.nvim-dap-ui-config")
-    end,
+      require('plugins.debugger.mason-nvim-dap-config')
+    end
+  }
+  use {
+    "theHamsta/nvim-dap-virtual-text",
+    config = function()
+      require("plugins.debugger.nvim-dap-virtual-text-config")
+    end
+
   }
 
   -- Wilder
@@ -317,12 +346,24 @@ return packer.startup(function(use)
   }
 
   --Github Copilot
+  -- use {
+  --   'github/copilot.vim',
+  --   config = function()
+  --     require("plugins.copilot-config")
+  --   end,
+  -- }
   use {
-    'github/copilot.vim',
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
     config = function()
       require("plugins.copilot-config")
     end,
   }
+
+
+
+
 
   -- Nvim-surround
   use({

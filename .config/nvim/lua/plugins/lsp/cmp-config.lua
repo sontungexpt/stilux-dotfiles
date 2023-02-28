@@ -59,7 +59,8 @@ cmp.setup({
     { name = 'path' },
     { name = 'nvim_lsp', keyword_length = 1 },
     { name = 'buffer',   keyword_length = 3 },
-    { name = 'luasnip',  keyword_length = 2 },
+    { name = 'luasnip',  keyword_length = 4 },
+    { name = "copilot",  group_index = 2 },
   },
   window = {
     documentation = cmp.config.window.bordered(),
@@ -78,6 +79,9 @@ cmp.setup({
             luasnip = " ",
             buffer = "Ω ",
             path = "󱘎",
+            nvim_lua = " ",
+            copilot = " ",
+            Copilot = " ",
           })[entry.source.name]
       return vim_item
     end,
@@ -122,5 +126,8 @@ cmp.setup({
         fallback()
       end
     end, { "i", "s", }),
+  },
+  sorting = {
+    priority_weight = 2,
   },
 })

@@ -1,4 +1,8 @@
 <application>
+  <component name="NotRoamableUiSettings">
+    <option name="fontScale" value="1.0" />
+    <option name="fontSize" value="19.0" />
+  </component>
   <component name="PropertyService"><![CDATA[{
   "keyToString": {
     "AndroidInitConfigurator.V1": "true",
@@ -10,7 +14,7 @@
     "PluginConfigurable.selectionTab": "1",
     "android.sdk.path": "/home/stilux/Android/Sdk",
     "ask.about.ctrl.y.shortcut.v2": "true",
-    "bundled.plugins.list.saved.version": "AI-221.6008.13.2211.9514443",
+    "bundled.plugins.list.saved.version": "AI-221.6008.13.2211.9619390",
     "com.intellij.ide.projectWizard.generators.JavaNewProjectWizard$Step.selectedStep": "IntelliJ",
     "com.intellij.ide.wizard.NewProjectWizardLanguageStep.selectedStep": "Java",
     "defaultJdkConfigured": "true",

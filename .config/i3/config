@@ -192,6 +192,7 @@ client.focused          $bg_color     $bg_color          $text_color         $bg
 client.unfocused        $ibg_color    $ibg_color         $text_color         $ibg_color
 client.focused_inactive $ibg_color    $ibg_color         $text_color         $ibg_color
 client.urgent           $ubg_color    $ubg_color         $text_color         $ubg_color
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 # bar {
@@ -260,8 +261,8 @@ bindsym XF86MonBrightnessUp exec --no-startup-id light -A 1 # increase screen br
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 1 # decrease screen brightness
 
 # Wifi hotspot
-bindsym --release $mod+n exec wihotspot 
-for_window [class="Wihotspot-gui"] floating enable 
+bindsym --release $mod+n exec wihotspot
+for_window [class="Wihotspot-gui"] floating enable
 
 # Thunar
 bindsym --release $mod+t exec thunar
@@ -269,3 +270,6 @@ bindsym --release $mod+t exec thunar
 # Blueman
 bindsym --release $mod+m exec blueman-manager
 for_window [class="Blueman-manager"] floating enable resize set 30ppt 40ppt
+
+#Vscode
+bindsym --release $mod+c exec code

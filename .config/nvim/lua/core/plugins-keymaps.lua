@@ -19,9 +19,9 @@
 
 -----------Mappings----------
 local opts = { noremap = true, silent = true }
-local opts_without_noremap = { noremap = false, silent = true }
-local opts_without_silent = { noremap = true, silent = false }
-local opts_expr = { expr = true, replace_keycodes = true, noremap = true, silent = true }
+-- local opts_without_noremap = { noremap = false, silent = true }
+-- local opts_without_silent = { noremap = true, silent = false }
+-- local opts_expr = { expr = true, replace_keycodes = true, noremap = true, silent = true }
 local map = vim.api.nvim_set_keymap
 
 --NvimTree
@@ -58,6 +58,10 @@ map("v", "<A-c>", "<esc>:CccPick<cr>", opts)
 
 
 --Debugging
-map("n", "<Leader>do", "<cmd> lua require('dapui').open()<cr>", opts)
-map("n", "<Leader>dc", "<cmd> lua require('dapui').close()<cr>", opts)
-map("n", "<Leader>db", "<cmd> lua require('dapui').toggle()<cr>", opts)
+map("n", "<Leader>do", ":lua require('dapui').open()<cr>", opts)
+map("n", "<Leader>dc", ":lua require('dapui').close()<cr>", opts)
+map("n", "<Leader>db", ":lua require('dapui').toggle()<cr>", opts)
+map("n", "<Leader>b", ":lua require'dap'.toggle_breakpoint()<cr>", opts)
+map("n", "<F5>", ":lua require'dap'.continue()<cr>", opts)
+map("n", "<F10>", ":lua require'dap'.step_over()<cr>", opts)
+map("n", "<F11>", ":lua require'dap'.step_into()<cr>", opts)
