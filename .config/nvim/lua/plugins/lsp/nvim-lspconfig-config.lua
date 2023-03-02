@@ -11,6 +11,7 @@ lsp_defaults.capabilities = vim.tbl_deep_extend(
   require('cmp_nvim_lsp').default_capabilities()
 )
 
+
 -- LSP Servers
 lspconfig.lua_ls.setup({
   on_attach = on_attach,

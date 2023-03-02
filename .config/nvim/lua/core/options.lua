@@ -40,7 +40,7 @@ options.backspace = "indent,eol,start"
 options.undofile = true
 
 --Update time
-options.updatetime = 300  --default 4000ms
+options.updatetime = 300 --default 4000ms
 
 --Line wrapping
 options.wrap = false
@@ -61,21 +61,27 @@ options.cursorcolumn = true
 --Appearance
 options.termguicolors = true
 cmd [[set t_Co=256]]
-options.background="dark"
-options.signcolumn="yes"
+options.background = "dark"
+options.signcolumn = "yes"
 
 --List
 options.list = true
 cmd [[set listchars=tab:▸\ ,trail:·]]
 
 --Clipboard
-options.clipboard:append{"unnamedplus"}
+options.clipboard:append { "unnamedplus" }
 cmd [[set go+=a]]
 
 --Split window
 options.splitbelow = true
 options.splitright = true
 
+--Collapse block of code
+options.foldenable = true
+options.foldmethod = "indent"
+options.foldlevel = 99
+options.foldlevelstart = 10
+options.foldcolumn = "0"
 
 options.wildignore:append {
   "*.pyc",
@@ -111,4 +117,3 @@ autocmd('BufWritePre', {
   pattern = '',
   command = ":%s/\\s\\+$//e"
 })
-

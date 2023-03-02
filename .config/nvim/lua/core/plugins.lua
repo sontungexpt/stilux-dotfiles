@@ -185,36 +185,36 @@ return packer.startup(function(use)
 
 
   -- Dap
-  use {
-    "rcarriga/nvim-dap-ui",
-    requires = {
-      "mfussenegger/nvim-dap",
-      "jay-babu/mason-nvim-dap.nvim",
-      "theHamsta/nvim-dap-virtual-text",
-    },
-    config = function()
-      require("plugins.debugger.nvim-dap-ui-config")
-    end,
-  }
-  use {
-    "mfussenegger/nvim-dap",
-    config = function()
-      require("plugins.debugger.nvim-dap-config")
-    end,
-  }
-  use {
-    "jay-babu/mason-nvim-dap.nvim",
-    config = function()
-      require('plugins.debugger.mason-nvim-dap-config')
-    end
-  }
-  use {
-    "theHamsta/nvim-dap-virtual-text",
-    config = function()
-      require("plugins.debugger.nvim-dap-virtual-text-config")
-    end
+  -- use {
+  --   "rcarriga/nvim-dap-ui",
+  --   requires = {
+  --     "mfussenegger/nvim-dap",
+  --     "jay-babu/mason-nvim-dap.nvim",
+  --     "theHamsta/nvim-dap-virtual-text",
+  --   },
+  --   config = function()
+  --     require("plugins.debugger.nvim-dap-ui-config")
+  --   end,
+  -- }
+  -- use {
+  --   "mfussenegger/nvim-dap",
+  --   config = function()
+  --     require("plugins.debugger.nvim-dap-config")
+  --   end,
+  -- }
+  -- use {
+  --   "jay-babu/mason-nvim-dap.nvim",
+  --   config = function()
+  --     require('plugins.debugger.mason-nvim-dap-config')
+  --   end
+  -- }
+  -- use {
+  --   "theHamsta/nvim-dap-virtual-text",
+  --   config = function()
+  --     require("plugins.debugger.nvim-dap-virtual-text-config")
+  --   end
 
-  }
+  -- }
 
   -- Wilder
   use {
@@ -316,6 +316,15 @@ return packer.startup(function(use)
       require('plugins.fold.pretty-fold-config')
     end
   }
+
+  -- use {
+  --   'kevinhwang91/nvim-ufo',
+  --   requires = 'kevinhwang91/promise-async',
+  --   config = function()
+  --     require('plugins.fold.nvim-ufo-config')
+  --   end
+  -- }
+
 
   --Lualine
   use {

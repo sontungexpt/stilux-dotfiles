@@ -5,6 +5,8 @@ if not status_ok then
   return
 end
 
+
+
 copilot.setup({
   panel = {
     enabled = true,
@@ -26,7 +28,7 @@ copilot.setup({
     auto_trigger = true,
     debounce = 75,
     keymap = {
-      accept = "<Tab>",
+      accept = "<M-Tab>",
       accept_word = false,
       accept_line = false,
       next = "<M-]>",

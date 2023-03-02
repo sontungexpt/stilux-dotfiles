@@ -45,13 +45,13 @@ nvim_tree.setup {
     relativenumber = false,
     signcolumn = "yes",
     mappings = {
-    custom_only = false,
-    list = {
+      custom_only = false,
+      list = {
         { key = { "<CR>", "o", "<2-LeftMouse>" }, action = "edit" },
         { key = "<C-e>",                          action = "edit_in_place" },
         { key = "O",                              action = "edit_no_picker" },
         { key = { "cd" },                         action = "cd" },
-        { key  = "vs",                            action = "vsplit"},
+        { key = "vs",                             action = "vsplit" },
         { key = "s",                              action = "split" },
         { key = "<C-t>",                          action = "tabnew" },
         { key = "<",                              action = "prev_sibling" },
@@ -88,7 +88,7 @@ nvim_tree.setup {
         { key = "q",                              action = "close" },
         { key = "W",                              action = "collapse_all" },
         { key = "E",                              action = "expand_all" },
-        { key = "/",                          action = "search_node" },
+        { key = "/",                              action = "search_node" },
         { key = ".",                              action = "run_file_command" },
         { key = "<C-k>",                          action = "toggle_file_info" },
         { key = "g?",                             action = "toggle_help" },
@@ -226,12 +226,12 @@ nvim_tree.setup {
       "Data/Shmily",
       "Data/Ảnh cá nhân",
     },
-    exclude = {".config"},
+    exclude = { ".config" },
   },
   filesystem_watchers = {
     enable = true,
     debounce_delay = 50,
-    ignore_dirs = {"node_modules",".git", ".cache", "target", "dist"},
+    ignore_dirs = { "node_modules", ".git", ".cache", "target", "dist" },
   },
   git = {
     enable = true,
@@ -258,11 +258,11 @@ nvim_tree.setup {
     },
     file_popup = {
       open_win_config = {
-      col = 1,
-      row = 1,
-      relative = "cursor",
-      border = "shadow",
-      style = "minimal",
+        col = 1,
+        row = 1,
+        relative = "cursor",
+        border = "shadow",
+        style = "minimal",
       },
     },
     open_file = {
@@ -273,7 +273,7 @@ nvim_tree.setup {
         picker = "default",
         chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
         exclude = {
-          filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame", "exe"},
+          filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame", "exe" },
           buftype = { "nofile", "terminal", "help" },
         },
       },

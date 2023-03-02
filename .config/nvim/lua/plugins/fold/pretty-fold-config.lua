@@ -7,16 +7,17 @@ end
 pretty_fold.setup {
   sections = {
     left = {
-      '+', function() return string.rep('-', vim.v.foldlevel) end,
-      ' ', 'number_of_folded_lines', ':', ' ', 'content',
-    },
-    right = {
-      ' ', 'number_of_folded_lines', ': ', 'percentage', ' ',
-      function(config) return config.fill_char:rep(3) end
+      --[[  ' ', function() return string.rep('-', vim.v.foldlevel) end, ]]
+      ' 󱈔 ', 'number_of_folded_lines', ':', ' ', 'content',
     }
+
+    -- right = {
+    --   ' ', 'number_of_folded_lines', ': ', 'percentage', ' ',
+    --   function(config) return config.fill_char:rep(3) end
+    -- }
   },
-  --fill_char = '•',
-  fill_char = '',
+
+  fill_char = '•',
 
   remove_fold_markers = true,
 
@@ -40,23 +41,23 @@ pretty_fold.setup {
   add_close_pattern = true, -- true, 'last_line' or false
 
   matchup_patterns = {
-    { '^%s*do$', 'end' }, -- `do ... end` blocks
+    { '^%s*do$',       'end' }, -- `do ... end` blocks
 
     -- ╟─ Start of line ──╭───────╮── "if" ─╢
     --                    ╰─ WSP ─╯
-    { '^%s*if', 'end' },
+    { '^%s*if',        'end' },
 
     -- ╟─ Start of line ──╭───────╮── "for" ─╢
     --                    ╰─ WSP ─╯
-    { '^%s*for', 'end' },
+    { '^%s*for',       'end' },
 
     -- ╟─ "function" ──╭───────╮── "(" ─╢
     --                 ╰─ WSP ─╯
     { 'function%s*%(', 'end' }, -- 'function(' or 'function ('
 
-    { '{', '}' },
-    { '%(', ')' }, -- % to escape lua pattern char
-    { '%[', ']' }, -- % to escape lua pattern char
+    { '{',             '}' },
+    { '%(',            ')' }, -- % to escape lua pattern char
+    { '%[',            ']' }, -- % to escape lua pattern char
   },
 
   ft_ignore = { '' },
