@@ -22,7 +22,7 @@ comment.setup {
   ---  if vim.bo.filetype == 'lua' then
   ---    return '^$'
   ---  end
-  ---end,
+  --end,
   ignore = "^$",
   ---LHS of toggle mappings in NORMAL mode
   toggler = {

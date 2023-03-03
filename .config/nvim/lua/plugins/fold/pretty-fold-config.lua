@@ -8,7 +8,7 @@ pretty_fold.setup {
   sections = {
     left = {
       --[[  ' ', function() return string.rep('-', vim.v.foldlevel) end, ]]
-      ' 󱈔 ', 'number_of_folded_lines', ':', ' ', 'content',
+      ' ', 'number_of_folded_lines', ':', ' ', 'content',
     }
 
     -- right = {

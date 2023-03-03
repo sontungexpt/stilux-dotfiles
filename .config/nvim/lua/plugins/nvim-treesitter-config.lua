@@ -1,19 +1,19 @@
-vim.api.nvim_create_autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEnter'}, {
-  group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),
-  callback = function()
-    vim.opt.foldmethod     = 'expr'
-    vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
-  end
-})
-
 local status_ok, nvim_treesitter = pcall(require, "nvim-treesitter.configs")
 if not status_ok then
   return
 end
 
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufAdd', 'BufNew', 'BufNewFile', 'BufWinEnter' }, {
+  group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),
+  callback = function()
+    vim.opt.foldmethod = 'expr'
+    vim.opt.foldexpr   = 'nvim_treesitter#foldexpr()'
+  end
+})
+
 nvim_treesitter.setup {
   ensure_installed = "all",
-  ignore_install = { },
+  ignore_install = {},
   highlight = {
     enable = true,
     --disable ={"html","css"}
@@ -25,14 +25,14 @@ nvim_treesitter.setup {
   additional_vim_regex_highlighting = false,
   autotag = {
     enable = true,
-    filetypes = { "html" , "xml" ,"jsx" },
+    filetypes = { "html", "xml", "jsx" },
   },
-  autopairs ={
+  autopairs = {
     enable = true,
   },
   rainbow = {
     enable = true,
-    disable = {"html", "javascript"}, --list of languages you want to disable the plugin for
+    disable = { "html", "javascript" }, --list of languages you want to disable the plugin for
     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
     max_file_lines = nil, -- Do not enable for files with more than n lines, int
     colors = {
@@ -59,12 +59,13 @@ nvim_treesitter.setup {
   }
 }
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-vim.lsp.diagnostic.on_publish_diagnostics,
-{
-  underline = true,
-  virtual_text = {
-    spacing = 5,
-    severity_limit = 'Warning',
-  },
-  update_in_insert = true,
-})
+
+  vim.lsp.diagnostic.on_publish_diagnostics,
+  {
+    underline = true,
+    virtual_text = {
+      spacing = 5,
+      severity_limit = 'Warning',
+    },
+    update_in_insert = true,
+  })

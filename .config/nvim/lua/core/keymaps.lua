@@ -66,8 +66,8 @@ map("n", "cd", ":cd %:p:h<cr>:pwd<cr>", opts_without_silent)
 map("v", "cd", "<esc>:cd %:p:h<cr>:pwd<cr>", opts_without_silent)
 
 --Close Buffer
-map("n", "Q", ":q<cr>", opts)
-map("v", "Q", "<esc>:q<cr>", opts)
+map("n", "Q", ":bd<cr>", opts)
+map("v", "Q", "<esc>:bd<cr>", opts)
 
 --Open the link with default browser
 map("n", "gx", ":execute 'silent! !xdg-open ' . shellescape(expand('<cWORD>'), 1)<cr>", opts)

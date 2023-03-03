@@ -338,6 +338,15 @@ return packer.startup(function(use)
     end
   }
 
+  -- using packer.nvim
+  use {
+    'akinsho/bufferline.nvim', tag = "v3.*",
+    requires = 'nvim-tree/nvim-web-devicons',
+    config = function()
+      require("plugins.bufferline-config")
+    end
+  }
+
   --Nvim-autopairs
   use {
     "windwp/nvim-autopairs",

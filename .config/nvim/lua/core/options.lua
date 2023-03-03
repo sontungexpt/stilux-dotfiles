@@ -108,7 +108,7 @@ cmd([[
 cmd([[
   augroup AutoChangeDirectory
     autocmd!
-    autocmd VimEnter * :cd %:p:h|:pwd
+    autocmd VimEnter * cd %:p:h|pwd
   augroup END
 ]])
 
