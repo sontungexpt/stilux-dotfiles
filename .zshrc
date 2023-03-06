@@ -155,3 +155,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# Google-chrome
+export CHROME_EXECUTABLE="/usr/bin/google-chrome-stable"
