@@ -271,5 +271,12 @@ bindsym --release $mod+t exec thunar
 bindsym --release $mod+m exec blueman-manager
 for_window [class="Blueman-manager"] floating enable resize set 30ppt 40ppt
 
-#Vscode
+# Anaconda
 bindsym --release $mod+c exec code
+
+# Open github website
+bindsym --release $mod+g exec brave https://github.com
+
+# Open UIT website
+bindsym --release $mod+u exec brave https://courses.uit.edu.vn/
+bindsym --release $mod+shift+u exec brave https://daa.uit.edu.vn/

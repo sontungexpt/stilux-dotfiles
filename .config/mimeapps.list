@@ -95,13 +95,15 @@ application/wps-office.wpt=wps-office-prometheus.desktop
 application/wps-office.wpss=wps-office-prometheus.desktop
 application/wps-office.wpso=wps-office-prometheus.desktop
 application/vnd.rar=ibus-setup-Bamboo.desktop
-text/x-c++src=nvim.desktop
+text/x-c++src=code.desktop
 application/pdf=wps-office-pdf.desktop
 image/jpeg=feh.desktop
 image/png=userapp-feh --auto-zoom --scale-down -LQI1Z1.desktop
 x-scheme-handler/figma=figma-linux.desktop
 application/vnd.ms-publisher=code.desktop
 text/plain=code.desktop
+application/zip=figma-linux.desktop
+application/x-trash=nvim.desktop
 
 [Added Associations]
 image/jpeg=userapp-feh --auto-zoom --scale-down-P08C01.desktop;shotwell-viewer.desktop;feh.desktop;
@@ -111,6 +113,8 @@ text/plain=code.desktop;nvim.desktop;terminator.desktop;userapp-nvim-H1GH01.desk
 image/png=shotwell-viewer.desktop;feh.desktop;userapp-feh --auto-zoom --scale-down -LQI1Z1.desktop;userapp-feh --auto-zoom-LG2C01.desktop;
 application/x-shellscript=code.desktop;
 application/vnd.rar=ibus-setup-Bamboo.desktop;
-text/x-c++src=nvim.desktop;userapp-nvim-H1GH01.desktop;userapp-nvim %f-ME8C01.desktop;
+text/x-c++src=code.desktop;nvim.desktop;userapp-nvim-H1GH01.desktop;userapp-nvim %f-ME8C01.desktop;
 application/pdf=wps-office-pdf.desktop;
 application/vnd.ms-publisher=code.desktop;
+application/zip=figma-linux.desktop;
+application/x-trash=nvim.desktop;

@@ -6,6 +6,7 @@
 	directory = /home/stilux/Data/config
 	directory = /home/stilux/Data
 	directory = /opt/flutter
+	directory = /usr/share/fonts
 [color]
 	ui = auto
 [init]

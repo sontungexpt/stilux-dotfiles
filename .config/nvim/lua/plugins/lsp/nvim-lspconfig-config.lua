@@ -1,4 +1,5 @@
 local status_ok, lspconfig = pcall(require, "lspconfig")
+
 if not status_ok then
   return
 end
@@ -10,7 +11,6 @@ lsp_defaults.capabilities = vim.tbl_deep_extend(
   lsp_defaults.capabilities,
   require('cmp_nvim_lsp').default_capabilities()
 )
-
 
 -- LSP Servers
 lspconfig.lua_ls.setup({
@@ -27,6 +27,21 @@ lspconfig.vimls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
+
+-- lspconfig.golangci_lint_ls.setup({
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+-- })
+
+lspconfig.ruby_ls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+-- lsconfig.jdtls.setup({
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+-- })
 
 lspconfig.cmake.setup({
   on_attach = on_attach,

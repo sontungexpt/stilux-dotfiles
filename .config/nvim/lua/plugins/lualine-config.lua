@@ -70,8 +70,8 @@ local mode_custom = {
   end,
   color = function()
     local mode_color = {
-      n = colors.green,
-      i = colors.blue,
+      n = colors.blue,
+      i = colors.green,
       v = colors.magenta,
       [""] = colors.blue,
       V = colors.blue,
@@ -198,7 +198,7 @@ lualine.setup({
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     -- disabled_filetypes = { "alpha", 'packer', 'NvimTree', 'toggleterm' },
-    disabled_filetypes = { "floaterm", "NvimTree" },
+    disabled_filetypes = { "floaterm", "NvimTree", "packer", "mason" },
     always_divide_middle = true,
   },
   sections = {

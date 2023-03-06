@@ -14,6 +14,9 @@ null_ls.setup({
   debug = true,
   sources = {
 
+    --blade
+    formatting.blade_formatter.with({ extra_args = { "--style", "{IndentWidth: 2}" } }),
+
     --deno
     formatting.deno_fmt.with({ extra_args = { "--style", "{IndentWidth: 2}" } }),
 
@@ -24,7 +27,17 @@ null_ls.setup({
     formatting.dart_format.with({ extra_args = { "--style", "{IndentWidth: 2}" } }),
 
     --go
-    --formatting.gofmt.with({extra_args = { "--style", "{IndentWidth: 2}" } }),
+    formatting.goimports_reviser.with({ extra_args = { "--style", "{IndentWidth: 2}" } }),
+    diagnostics.golangci_lint.with({ diagnostics_format = "#{m} [#{c}]" }),
+
+    --rust
+    formatting.rustfmt.with({ extra_args = { "--style", "{IndentWidth: 2}" } }),
+
+    --java
+    formatting.google_java_format.with({ extra_args = { "--style", "{IndentWidth: 2}" } }),
+
+    --ruby
+    formatting.rubocop.with({ extra_args = { "--style", "{IndentWidth: 2}" } }),
 
     -- Lua
     formatting.stylua.with({ extra_args = { "--style", "{IndentWidth: 2}" } }),

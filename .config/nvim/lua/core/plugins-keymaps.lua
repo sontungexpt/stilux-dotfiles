@@ -34,11 +34,11 @@ map("c", "<C-b>", "<esc>:NvimTreeToggle<cr>", opts)
 vim.g.floaterm_keymap_toggle = "<C-t>"
 vim.g.floaterm_keymap_new = "<C-n><C-t>"
 
-map("t", "gt", "<C-\\><C-n>:FloatermNext<cr>", opts)
+map("t", "<Leader>]", "<C-\\><C-n>:FloatermNext<cr>", opts)
 
-map("t", "gT", "<C-\\><C-n>:FloatermPrev<cr>", opts)
+map("t", "<Leader>[", "<C-\\><C-n>:FloatermPrev<cr>", opts)
 
-map("t", "kk", "<C-\\><C-n>:FloatermKill<cr>:FloatermToggle<cr>", opts)
+map("t", "<Leader>k", "<C-\\><C-n>:FloatermKill<cr>:FloatermToggle<cr>", opts)
 
 --Telescope
 map("n", "<C-p>", ":Telescope find_files<cr>", opts)
@@ -55,7 +55,6 @@ map("n", "<leader>fc", "<esc>:Telescope neoclip<cr>", opts)
 map("n", "<A-c>", ":CccPick<cr>", opts)
 map("i", "<A-c>", "<esc>:CccPick<cr>", opts)
 map("v", "<A-c>", "<esc>:CccPick<cr>", opts)
-
 
 --Debugging
 map("n", "<Leader>do", ":lua require('dapui').open()<cr>", opts)

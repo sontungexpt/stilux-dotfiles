@@ -35,6 +35,12 @@ mason_lspconfig.setup {
     --python
     "pyright",
 
+    --go
+    --"golangci-lint-langserver",
+
+    --java
+    "jdtls",
+
     --ruby
     "ruby_ls",
 
