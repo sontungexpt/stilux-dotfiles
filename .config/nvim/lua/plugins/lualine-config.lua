@@ -233,8 +233,14 @@ lualine.setup({
       },
     },
     lualine_c = {
-      branch,
-      diff,
+      {
+        "branch",
+        color = { fg = colors.magenta, },
+      },
+      {
+        "diff",
+        -- color = { bg = "#272640", fg = colors.fg, gui = "bold" },
+      }
       -- {
       --   function()
       --     return " "

@@ -2,7 +2,7 @@
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # If you come from bash you might have to change your $PATH.
@@ -76,7 +76,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -122,6 +122,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 alias lf="lfrun"
+
 # Ibus-bamboo
 #export GTK_IM_MODULE=”ibus”
 #export QT_IM_MODULE=”ibus”
@@ -157,3 +158,9 @@ unset __conda_setup
 
 # Google-chrome
 export CHROME_EXECUTABLE="/usr/bin/google-chrome-stable"
+
+# Rclone
+alias uitpush='rclone sync ~/Data/UIT/ uit-drive:UIT/'
+alias uitpull='rclone sync uit-drive:UIT/ ~/Data/UIT/'
+alias sontungpush='rclone sync ~/Data/SonTung/ sontungexpt-drive:SonTung/'
+alias sontungpull='rclone sync sontungexpt-drive:SonTung/ ~/Data/SonTung/'

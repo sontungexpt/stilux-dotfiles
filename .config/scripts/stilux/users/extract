@@ -1,0 +1,29 @@
+#!/bin/sh
+# Extracts most common archive formats
+
+un_zip() {
+	destination="$(echo $1 | sed -e 's/.zip//')"
+	if [ ! -d "$destination" ]; then
+		mkdir "$destination"
+	fi
+	unzip "$1" -d "$destination"
+}
+
+un_rar() {
+	destination="$(echo $1 | sed -e 's/.rar//')"
+	if [ ! -d "$destination" ]; then
+		mkdir "$destination"
+	fi
+	unrar e "$1" "$destination"
+}
+
+case "$1" in
+*.tar.bz | *.tar.bz2 | *.tbz | *.tbz2) tar xjvf "$1" ;;
+*.tar.gz | *.tgz) tar xzvf "$1" ;;
+*.tar.xz | *.txz) tar xJvf "$1" ;;
+*.zip) unzip "$1" ;;
+*.rar) un_rar "$1" ;;
+*.7z) echo "You need to download 7z to extract file" ;;
+*.jar) echo "You need to download jar to extract file" ;;
+*) echo "Unsupported format" ;;
+esac

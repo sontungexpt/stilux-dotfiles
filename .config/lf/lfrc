@@ -61,6 +61,7 @@ map C clear
 map so sudoopen
 map o open
 map <enter> shell
+map O nvim
 
 # Select a file
 map <space> :toggle; down
@@ -81,8 +82,13 @@ map cdv cd ~/.config/nvim
 # Archive Keybindings
 map z zip
 map t tar
-map a achirve
+map A achirve
 map e extract
+
+# Open file with neovim
+cmd nvim ${{
+  nvim "$f"
+}}
 
 # Custom Functions
 # Copy Path Command
@@ -103,6 +109,7 @@ cmd sudoopen ${{
 cmd open ${{
   case $(file --mime-type "$f" -bL) in
     text/*|application/json) nvim "$f";;
+    text/*|application/txt) nvim "$f";;
     image/*) feh --auto-zoom --scale-down "$f";;
     *) xdg-open "$f" ;;
   esac
@@ -115,8 +122,9 @@ cmd setwallpaper %cp "$f" ~/.config/backgrounds/wallpaper.jpg && i3 restart
 cmd setavatar ${{
   setavatar "$f"
 }}
+
 # Chmod Command
-cmd chmod ${{
+cmd chmod %{{
   printf "Mode Bits: "
   read ans
 
@@ -136,7 +144,7 @@ cmd mkfile ${{
 }}
 
 # Make Directory Command
-cmd mkdir ${{
+cmd mkdir %{{
   printf "Directory Name: "
   read ans
   mkdir $ans
@@ -166,7 +174,7 @@ cmd trash ${{
   files=$(printf "$fx" | tr '\n' ';')
   while [ "$files" ]; do
     file=${files%%;*}
-    sudo trash-put "$(basename "$file")"
+    trash-put "$(basename "$file")"
     if [ "$files" = "$file" ]; then
       files=''
     else
@@ -175,14 +183,24 @@ cmd trash ${{
   done
 }}
 
+
+
 # Extract Command
 cmd extract ${{
+  un_rar() {
+	  destination="$(echo $1 | sed -e 's/.rar//')"
+	  if [ ! -d "$destination" ]; then
+		  mkdir "$destination"
+	  fi
+	  unrar e "$1" "$destination"
+  }
+
   case "$f" in
-    *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) sudo tar xjvf "$f";;
-    *.tar.gz|*.tgz) sudo tar xzvf "$f";;
-    *.tar.xz|*.txz) sudo tar xJvf "$f";;
+    *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf "$f";;
+    *.tar.gz|*.tgz) tar xzvf "$f";;
+    *.tar.xz|*.txz) tar xJvf "$f";;
     *.zip) unzip "$f";;
-    *.rar) unrar x "$f";;
+    *.rar) un_rar "$f";;
     *.7z) echo "You need to download 7z to extract file";;
     *.jar) echo "You need to download jar to extract file";;
     *) echo "Unsupported format" ;;
@@ -196,7 +214,7 @@ cmd zip %zip -r "$f" "$f"
 cmd tar %tar cvf "$f.tar" "$f"
 
 # Archive Command
-cmd achirve ${{
+cmd achirve %{{
   printf "File Name: "
   read -r newname
   printf "Type? [1:zip | 2:rar | 3:tar]: "
@@ -205,8 +223,7 @@ cmd achirve ${{
     "1") zip "$newname" -r "$f" "$f";;
     "2") rar a -r -rr10p "$newname" "$f";;
     "3") tar cvf "$newname.tar" "$f";;
-    "*") echo "Wrong choice";;
+    "*") printf "Wrong choice";;
   esac
 }}
-
 
