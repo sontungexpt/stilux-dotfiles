@@ -1,0 +1,77 @@
+#!/bin/bash
+# The scripts is written by TranVoSonTung
+
+STORAGE=$(readlink -e "scripts/stilux")
+SYSTEMS_STORAGE="$STORAGE/systems"
+USERS_STORAGE="$STORAGE/users"
+SYSTEMS_STORAGE_FILENAMES="$(ls $SYSTEMS_STORAGE | sort -V)"
+
+# The function that allow all scripts file can execute
+function permit {
+	file_paths=$(find "$1" -type f)
+	for path in $file_paths; do
+		chmod +x "$path"
+	done
+}
+
+function check_password {
+	# Test that the given password is correct by trying to run a command using it
+	# echo "$password" | su -c true
+	su <<<"$1" -c true
+	local retval=$? #The status of the command if 0 success
+	if [ $retval -eq 0 ]; then
+		#Success
+		echo "true" && return #return value if good input
+	else
+		echo "false" && return
+	fi
+}
+
+function read_password {
+	while :; do # infinite loop
+		read -r -s -p "Enter your password: " pass
+		local status_password
+		status_password=$(check_password "$pass")
+		[[ "$status_password" = "true" ]] && echo "$pass" && return
+	done
+}
+
+# The function that add an "-nopass" flag to execute script with no need pass root
+function setup_flag_nopass {
+	# Take the password string
+	file_paths=$(find "$1" -type f)
+	local pass
+	pass="$(read_password)"
+	clear
+	for path in $file_paths; do
+		local word_to_replace="# PASS=\"\""
+		local word_to_replace1="#PASS=\"\""
+		local word_to_replace2="PASS=\"\""
+		local word_to_insert="PASS=\"$pass\""
+
+		if [[ $pass != "" ]]; then
+			sed -i -e "s/$word_to_replace/$word_to_insert/g" "$path"
+			sudo sed -i -e "s/^$word_to_replace\s*=\s*\(.*\)/$word_to_insert/g" "$path"
+			sudo sed -i -e "s/^$word_to_replace1\s*=\s*\(.*\)/$word_to_insert/g" "$path"
+			sudo sed -i -e "s/^$word_to_replace2\s*=\s*\(.*\)/$word_to_insert/g" "$path"
+		fi
+	done
+	echo "Add flag -nopass to all scripts"
+}
+
+# main code
+if [ -d "$STORAGE" ]; then
+	setup_flag_nopass "$USERS_STORAGE"
+
+	# Allow the all script file can execute
+	permit "$USERS_STORAGE"
+	permit "$SYSTEMS_STORAGE"
+
+	# Install apps
+	for filename in $SYSTEMS_STORAGE_FILENAMES; do
+		./"$SYSTEMS_STORAGE_FILENAMES/$filename" -nopass
+	done
+
+else
+	echo "The stilux folder is lost"
+fi
