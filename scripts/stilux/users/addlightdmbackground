@@ -1,7 +1,8 @@
 #!/bin/bash
+
 STOREDDIR="/usr/share/backgrounds/"
-PASS="STTX300191"
 PICTURETOCHANGE=$(readlink -e "$1")
+PASS=""
 
 if [[ ! -d "$STOREDDIR" ]]; then
 	echo "$PASS" | sudo -S -k mkdir "$STOREDDIR"

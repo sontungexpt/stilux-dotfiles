@@ -1,7 +1,6 @@
 #!/bin/bash
 # The scripts is written by TranVoSonTung
 # The scripts will change the avatar of the lightdm with the theme "lightdm-webkit2-greeter wget"
-# The instruction to custom lightdm https://terminalroot.com/customize-lightdm-on-arch-linux/
 
 FLAG="-nopass"
 PASS=""
@@ -10,13 +9,12 @@ PASS=""
 SUDO_COMMAND="echo \"$PASS\" | sudo -S -k"
 
 USERNAME=$(whoami)
-LIGHTDM_EXISTED=$(pacman -Q lightdm)
 AVATARSTOREDPATH="/var/lib/AccountsService/icons/$USERNAME"
 STOREDDIR=/var/lib/AccountsService/icons
 AVATAR=""
 
 # main code
-if [ "$LIGHTDM_EXISTED" != "" ]; then
+if [ -x "$(command -v lightdm)" ]; then
 	if [[ ! -d "$STOREDDIR" ]]; then
 		if [ "$FLAG" = "$1" ] && [ "$PASS" != "" ]; then
 			eval "$SUDO_COMMAND mkdir $STOREDDIR"
@@ -38,7 +36,7 @@ if [ "$LIGHTDM_EXISTED" != "" ]; then
 				echo -e "\n"
 				echo "Change the avatar to $AVATAR"
 			else
-				echo "The picture is not exist"
+				echo "The picture path is not exist"
 			fi
 		else
 			echo "Syntax error"
@@ -52,17 +50,33 @@ if [ "$LIGHTDM_EXISTED" != "" ]; then
 			echo -e "\n"
 			echo "Changed the avatar to $AVATAR"
 		else
-			echo "The picture is not exist"
+			echo "The picture path is not exist"
 		fi
 	else
 		echo "Syntax error"
 		echo "The syntax form: setavatar.st -nopass <picuter-path> or setavatar.st <picture-path>"
 	fi
 else
-	echo "You need to installed lightdm: try pacman -S lightdm lightdm-webkit2-greeter wget"
-	read -p -r "Do you want to installed it now: y/n" status
-	if [ "$status" = "y" ]; then
-		sudo pacman -Syu
-		sudo pacman -S lightdm lightdm-webkit2-greeter wget
+	echo "You need to installed lightdm"
+	# Ask to install lightdm
+	echo "Do you want to install lightdm? (y/n)"
+	read -r answer
+	if [[ "$answer" == "y" ]]; then
+		echo "Installing lightdm, lightdm-webkit2-greeter..."
+		sudo pacman -S lightdm lightdm-webkit2-greeter
+
+		# Check if installed lightdm, enable service
+		if [ -x "$(command -v lightdm)" ]; then
+			sudo systemctl enable lightdm.service
+		fi
+
+		echo "Installing lightdm-webkit2-theme-glorious..."
+		yay -S lightdm-webkit2-theme-glorious
+
+		# Set default lightdm greeter to lightdm-webkit2-greeter
+		sudo sed -i -e "s/^#greeter-session\s*=\s*\(.*\)/greeter-session=lightdm-webkit2-greeter/g" "/etc/lightdm/lightdm.conf"
+		# Set default lightdm-webkit2-greeter theme to Glorious
+		sudo sed -i -e "s/^webkit_theme\s*=\s*\(.*\)/webkit_theme = glorious/g" "/etc/lightdm/lightdm-webkit2-greeter.conf"
+		sudo sed -i -e "s/^debug_mode\s*=\s*\(.*\)/debug_mode = true/g" "/etc/lightdm/lightdm-webkit2-greeter.conf"
 	fi
 fi

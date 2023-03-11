@@ -18,5 +18,4 @@ yay -S ttf-jetbrains-mono
 yay -S ttf-ms-win11
 yay -S ttf-adobe-source-code-pro-fonts
 yay -S ttf-fira-code
-yay -S nerd-fonts-git
 yay -S ttf-hack-nerd

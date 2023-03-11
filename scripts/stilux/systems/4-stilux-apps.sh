@@ -19,6 +19,12 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 
 	echo "Installing stilux apps..."
 
+	# Create dotfiles folder
+	git init --bare "$HOME/dotfiles"
+	zsh
+	source "$HOME/.zshrc"
+	config config --local status.showUntrackedFiles no
+
 	# Calendar apps
 	echo "Installing calcurse..."
 	sudo pacman -S calcurse
@@ -34,6 +40,7 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 
 	# Install social apps
 	echo "Installing social apps..."
+	echo "Installing discord, teams..."
 	sudo pacman -S discord teams
 
 	# Install development apps
@@ -42,19 +49,25 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 
 	# Install dev environment
 	echo "Installing dev environment..."
-	# python
+
+	# Python
+	echo "Installing python, pip..."
 	sudo pacman -S python python-pip
 	pip install pynvim
-	# nodejs
+
+	# Nodejs
+	ehco "Installing nodejs, npm..."
 	sudo pacman -S nodejs npm
 	npm install -g neovim
+
 	# ruby
+	echo "Installing ruby, rbenv..."
 	yay -S rbenv-git
 	rbenv install "$(rbenv install -l | grep -v - | tail -1)"
 
 	# Flutter
 	echo "Installing flutter..."
-	mkdir "$HOME/.developments"
+	mkdir -p "$HOME/.developments"
 	cd "$HOME/.developments" || exit
 	git clone https://github.com/flutter/flutter.git
 	cd "$HOME" || exit

@@ -75,10 +75,9 @@ alias lf="lfrun"
 
 # Git Bare
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
-
+alias config-add-setup='cp $HOME/scripts/setup $HOME/setup && config add setup && config commit -m "update setup file scripts" && config push && rm ~/setup'
 # Rclone
 alias uitpush='rclone sync ~/Data/UIT/ uit-drive:UIT/'
 alias uitpull='rclone sync uit-drive:UIT/ ~/Data/UIT/'
 alias sontungpush='rclone sync ~/Data/SonTung/ sontungexpt-drive:SonTung/'
 alias sontungpull='rclone sync sontungexpt-drive:SonTung/ ~/Data/SonTung/'
-

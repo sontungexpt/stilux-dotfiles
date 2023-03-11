@@ -1,19 +1,19 @@
 #!/bin/bash
 # The scripts is written by TranVoSonTung
 
-SCRIPTS_STORAGE=$(readlink -e "stilux")
-SYSTEMS_SCRIPTS_STORAGE="$SCRIPTS_STORAGE/systems"
-USERS_SCRIPTS_STORAGE="$SCRIPTS_STORAGE/user"
+STORAGE=$(readlink -e "scripts/stilux")
+SYSTEMS_STORAGE="$STORAGE/systems"
+USERS_STORAGE="$STORAGE/users"
+SYSTEMS_STORAGE_FILENAMES="$(ls $SYSTEMS_STORAGE | sort -V)"
 
-# The function that allow all file with the extension .st can execute
+# The function that allow all scripts file can execute
 function permit {
-	file_paths=$(find "$1" -type f -name "*.st")
+	file_paths=$(find "$1" -type f)
 	for path in $file_paths; do
-		chmod +rwx "$path"
+		chmod +x "$path"
 	done
 }
 
-# Return false if not correct password and return true if correct
 function check_password {
 	# Test that the given password is correct by trying to run a command using it
 	# echo "$password" | su -c true
@@ -39,7 +39,7 @@ function read_password {
 # The function that add an "-nopass" flag to execute script with no need pass root
 function setup_flag_nopass {
 	# Take the password string
-	file_paths=$(find "$1" -type f -name "*.st")
+	file_paths=$(find "$1" -type f)
 	local pass
 	pass="$(read_password)"
 	clear
@@ -51,18 +51,27 @@ function setup_flag_nopass {
 
 		if [[ $pass != "" ]]; then
 			sed -i -e "s/$word_to_replace/$word_to_insert/g" "$path"
-			sed -i -e "s/$word_to_replace1/$word_to_insert/g" "$path"
-			sed -i -e "s/$word_to_replace2/$word_to_insert/g" "$path"
+			sudo sed -i -e "s/^$word_to_replace\s*=\s*\(.*\)/$word_to_insert/g" "$path"
+			sudo sed -i -e "s/^$word_to_replace1\s*=\s*\(.*\)/$word_to_insert/g" "$path"
+			sudo sed -i -e "s/^$word_to_replace2\s*=\s*\(.*\)/$word_to_insert/g" "$path"
 		fi
 	done
 	echo "Add flag -nopass to all scripts"
 }
 
 # main code
-if [ -d "$SCRIPTS_STORAGE" ]; then
+if [ -d "$STORAGE" ]; then
+	setup_flag_nopass "$USERS_STORAGE"
+
 	# Allow the all script file can execute
-	setup_flag_nopass "$SCRIPTS_STORAGE"
-	permit "$SCRIPTS_STORAGE"
+	permit "$USERS_STORAGE"
+	permit "$SYSTEMS_STORAGE"
+
+	# Install apps
+	for filename in $SYSTEMS_STORAGE_FILENAMES; do
+		./"$SYSTEMS_STORAGE_FILENAMES/$filename" -nopass
+	done
+
 else
-	echo "The StiluxScripts folder is lost"
+	echo "The stilux folder is lost"
 fi

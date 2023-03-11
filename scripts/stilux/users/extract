@@ -1,6 +1,6 @@
 #!/bin/sh
+# The scripts is written by Tran Vo Son Tung
 # Extracts most common archive formats
-
 un_zip() {
 	destination="$(echo $1 | sed -e 's/.zip//')"
 	if [ ! -d "$destination" ]; then

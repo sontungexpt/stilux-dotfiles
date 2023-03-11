@@ -14,7 +14,8 @@ fi
 
 # Check if install git, if not install it
 if ! [ -x "$(command -v git)" ]; then
-	sudo pacman -S --needed git
+	echo "Installing git..."
+	sudo pacman -S git
 fi
 
 # UI
@@ -22,6 +23,9 @@ sudo pacman -S polybar picom rofi xorg-xrandr
 
 # System info
 sudo pacman -S --needed neofetch
+
+# g++ compiler
+sudo pacman -S --needed gcc
 
 # User directories folder
 sudo pacman -S xdg-user-dirs
@@ -33,7 +37,11 @@ sudo pacman -S --needed trash-cli
 # Login manager
 echo "Installing lightdm, lightdm-webkit2-greeter..."
 sudo pacman -S lightdm lightdm-webkit2-greeter
-sudo systemctl enable lightdm.service
+
+# Check if installed lightdm, enable service
+if [ -x "$(command -v lightdm)" ]; then
+	sudo systemctl enable lightdm.service
+fi
 
 echo "Installing lightdm-webkit2-theme-glorious..."
 yay -S lightdm-webkit2-theme-glorious
@@ -49,20 +57,28 @@ echo "You should reboot your system to apply changes."
 
 # Lock screen
 yay -S betterlockscreen-git
-sudo systemctl enable betterlockscreen@"$USER"
-# sudo systemctl enable betterlockscreen@$USER
+# Check if installed betterlockscreen, enable service
+if [ -x "$(command -v betterlockscreen)" ]; then
+	sudo systemctl enable "betterlockscreen@$USER"
+fi
 
 # Sound
 sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-media-session pipewire-audio pavucontrol
 
-sudo systemctl enable pipewire pipewire-pulse
-sudo systemctl start pipewire pipewire-pulse
+# Check if installed pipewire, enable service
+if [ -x "$(command -v pipewire)" ]; then
+	sudo systemctl enable pipewire pipewire-pulse
+	sudo systemctl start pipewire pipewire-pulse
+fi
 
 # Bluetooth
 sudo pacman -S bluez bluez-utils blueman pipewire-audio pipewire-pulse
 
-sudo systemctl enable bluetooth.service
-sudo systemctl start bluetooth.service
+# Check if installed bluez, enable service
+if [ -x "$(command -v bluez)" ]; then
+	sudo systemctl enable bluetooth.service
+	sudo systemctl start bluetooth.service
+fi
 
 # Vietnamese input
 echo "Installing ibus, ibus-bamboo..."
@@ -95,6 +111,10 @@ sudo pacman -S mpv
 # Disk manager
 echo "Installing gparted..."
 sudo pacman -S gparted
+
+# NTFS support
+echo "Installing ntfs-3g..."
+sudo pacman -S ntfs-3g
 
 # Grub manager
 echo "Installing grub-customizer..."

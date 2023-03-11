@@ -79,11 +79,15 @@ map cdb cd /usr/bin
 map cdv cd ~/.config/nvim
 
 
+
 # Archive Keybindings
 map z zip
 map t tar
 map A achirve
 map e extract
+
+map ] createform
+cmd createform %cp ~/scripts/form ~/scripts/stilux/users/
 
 # Open file with neovim
 cmd nvim ${{
@@ -117,6 +121,7 @@ cmd open ${{
 
 # Set Background Command
 cmd setwallpaper %cp "$f" ~/.config/background/wallpaper.jpg && i3 restart
+
 
 # Change The Avatar Command
 cmd setavatar ${{
