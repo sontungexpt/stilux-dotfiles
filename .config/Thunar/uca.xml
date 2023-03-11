@@ -56,7 +56,7 @@
 	<name>Set background</name>
 	<submenu></submenu>
 	<unique-id>1676138041631139-1</unique-id>
-	<command>cp %f ~/.config/backgrounds/wallpaper.jpg &amp;&amp; i3 restart
+	<command>cp %f ~/.config/background/wallpaper.jpg &amp;&amp; i3 restart
 </command>
 	<description></description>
 	<range>*</range>
@@ -100,7 +100,7 @@
 	<name>Change avatar</name>
 	<submenu></submenu>
 	<unique-id>1677154327700108-1</unique-id>
-	<command>/home/stilux/.config/scripts/StiluxScripts/Background-Avatar/setavatar.su %f</command>
+	<command>~/.config/scripts/StiluxScripts/Background-Avatar/setavatar.su %f</command>
 	<description></description>
 	<range>*</range>
 	<patterns>*</patterns>

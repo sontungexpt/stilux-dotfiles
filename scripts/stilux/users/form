@@ -1,5 +1,5 @@
 #!/bin/bash
-# The scripts is wrote by TranVoSonTung
+# The scripts is written by TranVoSonTung
 
 FLAG="-nopass"
 PASS=""

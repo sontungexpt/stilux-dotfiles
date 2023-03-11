@@ -3,25 +3,29 @@
     <location key="WELCOME_SCREEN.0.0.1920.1080" x="1596" y="525" />
   </component>
   <component name="WindowStateApplicationService">
-    <state x="-1" y="-28" width="1920" height="1080" key="FileChooserDialogImpl" timestamp="1676719626633">
+    <state x="-1" y="-28" width="1920" height="1080" key="FileChooserDialogImpl" timestamp="1678436490547">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="-1" y="-28" width="1920" height="1080" key="FileChooserDialogImpl/0.0.1920.1080" timestamp="1676719626633" />
-    <state x="0" y="0" width="1920" height="1080" key="SettingsEditor" timestamp="1678115339179">
+    <state x="-1" y="-28" width="1920" height="1080" key="FileChooserDialogImpl/0.0.1920.1080" timestamp="1678436490547" />
+    <state x="0" y="0" width="1920" height="1080" key="SettingsEditor" timestamp="1678432687442">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="0" y="0" width="1920" height="1080" key="SettingsEditor/0.0.1920.1080" timestamp="1678115339179" />
-    <state x="960" y="526" width="1922" height="1109" key="WELCOME_SCREEN" timestamp="1678115360526">
+    <state x="0" y="0" width="1920" height="1080" key="SettingsEditor/0.0.1920.1080" timestamp="1678432687442" />
+    <state x="960" y="542" width="1896" height="1051" key="WELCOME_SCREEN" timestamp="1678440343237">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="960" y="526" width="1922" height="1109" key="WELCOME_SCREEN/0.0.1920.1080" timestamp="1678115360526" />
+    <state x="960" y="542" width="1896" height="1051" key="WELCOME_SCREEN/0.0.1920.1080" timestamp="1678440343237" />
+    <state x="965" y="17" width="943" height="1051" key="com.android.tools.idea.devicemanager.DeviceManagerWelcomeScreenFrame" timestamp="1678440343259">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="965" y="17" width="943" height="1051" key="com.android.tools.idea.devicemanager.DeviceManagerWelcomeScreenFrame/0.0.1920.1080" timestamp="1678440343259" />
     <state x="193" y="435" width="1526" height="182" key="ide.config.custom.settings" timestamp="1677559267717">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="193" y="435" width="1526" height="182" key="ide.config.custom.settings/0.0.1920.1080" timestamp="1677559267717" />
-    <state x="560" y="226" key="new project wizard" timestamp="1676719628097">
+    <state x="560" y="226" width="967" height="600" key="new project wizard" timestamp="1678436529938">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="560" y="226" key="new project wizard/0.0.1920.1080" timestamp="1676719628097" />
+    <state x="560" y="226" width="967" height="600" key="new project wizard/0.0.1920.1080" timestamp="1678436529938" />
   </component>
 </application>

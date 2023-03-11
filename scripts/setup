@@ -1,9 +1,11 @@
 #!/bin/bash
-# The scripts is wrote by TranVoSonTung
+# The scripts is written by TranVoSonTung
 
-SCRIPTS_STORAGE=$(readlink -e "StiluxScripts")
+SCRIPTS_STORAGE=$(readlink -e "stilux")
+SYSTEMS_SCRIPTS_STORAGE="$SCRIPTS_STORAGE/systems"
+USERS_SCRIPTS_STORAGE="$SCRIPTS_STORAGE/user"
 
-# the function that allow all file with the extension .st can execute
+# The function that allow all file with the extension .st can execute
 function permit {
 	file_paths=$(find "$1" -type f -name "*.st")
 	for path in $file_paths; do

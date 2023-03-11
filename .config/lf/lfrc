@@ -116,7 +116,7 @@ cmd open ${{
 }}
 
 # Set Background Command
-cmd setwallpaper %cp "$f" ~/.config/backgrounds/wallpaper.jpg && i3 restart
+cmd setwallpaper %cp "$f" ~/.config/background/wallpaper.jpg && i3 restart
 
 # Change The Avatar Command
 cmd setavatar ${{
@@ -167,9 +167,7 @@ cmd delete ${{
   [ "$ans" = "y" ] && rm -rf $fx
 }}
 
-
-
-# TrashCli Command
+# Trash-cli Command
 cmd trash ${{
   files=$(printf "$fx" | tr '\n' ';')
   while [ "$files" ]; do
@@ -182,8 +180,6 @@ cmd trash ${{
     fi
   done
 }}
-
-
 
 # Extract Command
 cmd extract ${{

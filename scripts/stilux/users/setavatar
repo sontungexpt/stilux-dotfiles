@@ -1,10 +1,10 @@
 #!/bin/bash
-# The scripts is wrote by TranVoSonTung
+# The scripts is written by TranVoSonTung
 # The scripts will change the avatar of the lightdm with the theme "lightdm-webkit2-greeter wget"
 # The instruction to custom lightdm https://terminalroot.com/customize-lightdm-on-arch-linux/
 
 FLAG="-nopass"
-PASS="STTX300191"
+PASS=""
 
 # Use eval "$SUDO_COMMAND <Your command>" to exec the command with no password
 SUDO_COMMAND="echo \"$PASS\" | sudo -S -k"

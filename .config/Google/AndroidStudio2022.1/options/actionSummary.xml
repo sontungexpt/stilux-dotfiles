@@ -4,13 +4,16 @@
       <i c="1" l="1677559265272" />
     </e>
     <e n="EditorBackSpace">
-      <i c="1" l="1677559317868" />
+      <i c="16" l="1678436518831" />
     </e>
     <e n="EditorPaste">
-      <i c="1" l="1676719385405" />
+      <i c="2" l="1678436512821" />
     </e>
     <e n="WelcomeScreen.RunAndroidSdkManager">
-      <i c="3" l="1678115106105" />
+      <i c="5" l="1678432662818" />
+    </e>
+    <e n="WelcomeScreen.RunDeviceManager">
+      <i c="1" l="1678439914313" />
     </e>
     <e n="com.intellij.openapi.wm.impl.welcomeScreen.WelcomeScreenComponentFactory$3">
       <i c="2" l="1677559271882" />
