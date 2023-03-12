@@ -1,4 +1,4 @@
-<h1 align="center" style="color:#f2b0ff">--------- Stilux Arch Config --------</h1>
+<h1 align="center" style="color:#f2b0ff">--------<image border-radius="50%" height="30px" width="30px" src="./scripts/images/sontung.jpg"/> Stilux Arch Config --------</h1>
 
 ## 1. Information
 #### Basic applications
