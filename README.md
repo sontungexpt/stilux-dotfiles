@@ -1,4 +1,4 @@
-<h1 style="text-align: center">Stilux Arch Config</h1>
+<h1 align="center">Stilux Arch Config</h1>
 
 ## 1. Information
 #### Basic applications
