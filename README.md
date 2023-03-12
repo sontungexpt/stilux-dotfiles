@@ -59,10 +59,15 @@
 [brave](https://aur.archlinux.org/packages/brave-bin),
 [google-chrome](https://aur.archlinux.org/packages/google-chrome)
 - **Calendar Manager**: [calcurse](https://github.com/lfos/calcurse)
-- Manager dotfiles: [git bare](https://www.youtube.com/watch?v=tBoLDpTWVOM)
+- Dotfiles Manager: [git bare](https://www.youtube.com/watch?v=tBoLDpTWVOM)
 
 ## 2. Preview
 
 
 
 ## 3. How to install
+- Clone the repo by:
+  - Open terminal by type $Mod(win)+enter
+  ```
+  git clone https://github.com/sontungexpt/stilux-dotfiles.git
+  ```
