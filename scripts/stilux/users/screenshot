@@ -1,12 +1,21 @@
 #!/bin/sh
+# The scripts is wtitten by Tran Vo Son Tung
 # Screenshot scripts
+# Dependencies: scrot, xclip, dunstify
+# Usage: scrot [select-save|select-clipboard|window]
+# select-save: select an area and save it to the directory
+# select-clipboard: select an area and copy it to the select-clipboard
+# window: capture the focused window and save it to the directory
+
+# Make sure the directory exists
+mkdir -p ~/Pictures/Screenshots
 
 output='/tmp/%F_%T_$wx$h.png'
 outputDir='/home/stilux/Pictures/Screenshots/%Y_%m_%d-%T-screentshot.png'
 
 case "$1" in
-"select") scrot "$outputDir" --select --line mode=edge -e 'xclip -selection clipboard -target image/png -i $f && dunstify "Save $f" -i $f' -a "scrot" || exit ;;
+"select-save") scrot "$outputDir" --select --line mode=edge -e 'xclip -selection clipboard -target image/png -i $f && dunstify "Save $f" -i $f -a "scrot"' || exit ;;
 "select-clipboard") scrot "$output" --select --line mode=edge -e 'xclip -selection clipboard -target image/png -i $f && dunstify "Copy to clipboard" -i $f -a "scrot" && rm $f' || exit ;;
-"window") scrot "$outputDir" --focused --border -e 'xclip -selection clipboard -target image/png -i $f && dunstify "Save $f" -i $f' -a "scrot" || exit ;;
+"window") scrot "$outputDir" --focused --border -e 'xclip -selection clipboard -target image/png -i $f && dunstify "Save $f" -i $f -a "scrot"' || exit ;;
 *) scrot "$outputDir" -e 'xclip -selection clipboard -target image/png -i $f && dunstify "Save $f" -i $f -a "scrot"' || exit ;;
 esac

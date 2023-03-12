@@ -43,6 +43,10 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	echo "Installing discord, teams..."
 	sudo pacman -S discord teams
 
+  # Cloud sync tools
+  echo "Installing cloud sync tools..."
+  sudo pacman -S rclone
+
 	# Install development apps
 	echo "Installing development apps..."
 	sudo pacman -S --needed code neovim

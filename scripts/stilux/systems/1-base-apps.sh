@@ -153,9 +153,6 @@ yay -S rar unrar
 echo "Installing onlyffice..."
 yay -S onlyoffice-bin
 
-# Cloud sync tools
-sudo pacman -S rclone
-
 # Themes manager
 sudo pacman -S lxappearance-gtk3
 

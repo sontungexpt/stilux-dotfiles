@@ -42,6 +42,9 @@
 [zip](https://archlinux.org/packages/?name=zip),
 [unzip](https://archlinux.org/packages/?name=unzip),
 [tar](https://archlinux.org/packages/?name=tar)
+- **Trash Manager*: [trash-cli](https://github.com/andreafrancia/trash-cli)
+- **Clipboard Manager**: [xclip](https://github.com/astrand/xclip)
+- **Ntfs Support**: [ntfs-3g](https://github.com/tuxera/ntfs-3g)
 
 #### Sitlux applications
 - **Desired Apps**:
@@ -65,13 +68,19 @@
 [brave](https://aur.archlinux.org/packages/brave-bin),
 [google-chrome](https://aur.archlinux.org/packages/google-chrome)
 - **Calendar Manager**: [calcurse](https://github.com/lfos/calcurse)
-- Dotfiles Manager: [git bare](https://www.youtube.com/watch?v=tBoLDpTWVOM)
+- **Dotfiles Manager**: [git bare](https://www.youtube.com/watch?v=tBoLDpTWVOM)
+- **Cloud Sync Tools**: [rclone](https://github.com/rclone/rclone)
 
 #### Scripts
 - **screenshot**: the scripts to screenshot and copy the picture to clipboard
+- **setavatar**: the scripts to change avatar lightdm
+- **extract**: the scripts to extract file
+- **zsh-history-fix**: the scripts to solve zsh history error
+- **showwifipass**: the scripts to show the pass of logged in wifi
+
 
 ## 2. Preview
-
+<image src="./scripts/images/overview-desktop.png" width="100%">
 
 
 ## 3. Install arch linux and i3 wm
