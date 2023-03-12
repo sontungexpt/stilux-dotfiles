@@ -1,0 +1,29 @@
+#!/bin/bash
+# This scripts is wtitten by Tran Vo Son Tung
+# This script is used to change the wallpaper of i3wm
+# Dependencies: feh, i3wm
+# Usage: setwallpaper <path_to_image>
+
+# Make sure the wallpaper directory exists
+mkdir -p ~/.config/background
+
+if [[ "$#" -eq 1 ]]; then
+	if cat "$HOME/.config/i3/config" | tr "," "\n" | grep -xqF "set $wallpaper ~/.config/background/wallpaper.jpg"; then
+    # Check if the path is correct
+    if [[ ! -f "$1" ]]; then
+      echo "Error: Invalid path"
+      exit 1
+    fi
+    cp "$1" ~/.config/background/wallpaper.jpg && i3 restart
+  else
+    echo "Error: Wallpaper is not set in i3 config"
+    echo "Please add the following line to your i3 config file"
+    echo "set $wallpaper ~/.config/background/wallpaper.jpg"
+    echo "exec_always feh --bg-fill $wallpaper"
+    echo "remove your other lines that you use to set wallpaper in your i3 config file to use this scripts"
+    exit 1
+  fi
+else
+  echo "Error: Invalid number of arguments"
+  echo "Usage: setwallpaper <path_to_image>"
+fi

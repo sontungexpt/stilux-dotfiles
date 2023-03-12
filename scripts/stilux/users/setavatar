@@ -1,6 +1,7 @@
 #!/bin/bash
 # The scripts is written by TranVoSonTung
 # The scripts will change the avatar of the lightdm with the theme "lightdm-webkit2-greeter wget"
+# Dependencies: lightdm, lightdm-webkit2-greeter, lightdm-webkit2-theme-glorious
 
 FLAG="-nopass"
 PASS=""

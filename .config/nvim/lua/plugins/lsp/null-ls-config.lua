@@ -43,7 +43,7 @@ null_ls.setup({
     formatting.stylua.with({ extra_args = { "--style", "{IndentWidth: 2}" } }),
 
     --Shell
-    formatting.shfmt.with({ extra_args = { "--style", "{IndentWidth: 2}" } }),
+    formatting.shfmt,
     diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
 
     --python
