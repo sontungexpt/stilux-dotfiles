@@ -1,4 +1,4 @@
-<h1 align="center" style="color:#f2b0ff">-------- Stilux Arch Config --------</h1>
+<h1 align="center" style="color:#e5b0ff">-------- Stilux Arch Config --------</h1>
 
 ## 1. Information
 #### Basic applications
@@ -36,6 +36,12 @@
 - **Vietnamese Input**: [ibus-bamboo](https://github.com/BambooEngine/ibus-bamboo)
 - **System Monitor**: [btop](https://github.com/aristocratos/btop)
 - **Volume Control**: [pavucontrol](https://github.com/pulseaudio/pavucontrol)
+- **Achrive Manager**
+[rar](https://aur.archlinux.org/packages/rar),
+[unrar](https://archlinux.org/packages/extra/x86_64/unrar/),
+[zip](https://archlinux.org/packages/?name=zip),
+[unzip](https://archlinux.org/packages/?name=unzip),
+[tar](https://archlinux.org/packages/?name=tar)
 
 #### Sitlux applications
 - **Desired Apps**:
@@ -61,13 +67,37 @@
 - **Calendar Manager**: [calcurse](https://github.com/lfos/calcurse)
 - Dotfiles Manager: [git bare](https://www.youtube.com/watch?v=tBoLDpTWVOM)
 
+#### Scripts
+- **screenshot**: the scripts to screenshot and copy the picture to clipboard
+
 ## 2. Preview
 
 
 
-## 3. How to install
-- Clone the repo by:
-  - Open terminal by type $Mod(win)+enter
+## 3. Install arch linux and i3 wm
+
+## 4. Setup stilux-dotfiles
+- You need to install **arch linux** and **i3 window manager** before setup this config
+- Open terminal and copy this command
   ```
-  git clone https://github.com/sontungexpt/stilux-dotfiles.git
+  git clone https://github.com/sontungexpt/stilux-dotfiles.git && cd stilux-dotfiles && chmod +x setup && ./setup
   ```
+- Follow the instructions in the terminal when the scripts is running
+
+## 5. The stilux's key-binding
+
+#### i3 key-bindings
+- h, j, k, l for right, down, up, left
+- mod + shift + s to print a select area and copy it to clipboard, no save the picture
+- printscr to print the full-screen desktop
+- shift + printscr to print a select area and save it to Pictures/Screenshots
+- crtl + printscr to print a window and save it to Pictures/Screenshots
+- mod + shift + f to open flameshot gui
+- mod + t to open thunar file manager
+- mod + g to open github
+- mod + m to open bluetooth manager
+- mod + n to open wifi-hotspot
+- mod + d to open rofi
+- mod + b to open brave
+- mod + u to open UIT school web (remove it if you not a student of University of Information Of Technology)
+- mod + shift + u to open UIT course (remove it if you not a student of University of Information Of Technology)

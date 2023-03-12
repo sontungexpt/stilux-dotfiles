@@ -199,14 +199,12 @@ client.urgent           $ubg_color    $ubg_color         $text_color         $ub
 #  status_command i3status
 # }
 
-# Open brave browser
-bindsym $mod+b exec brave
-
 # i3-gaps config
 gaps inner 10
 gaps outer 2
 #smart_gaps on
 
+# User config
 # Ibus
 exec_always ibus restart
 
@@ -241,7 +239,8 @@ for_window [class="Pycalendar.py"] floating enable move to position 1399px 38px
 # Print Screen
 # Scrot
 bindsym --release $mod+Shift+s exec screenshot select-clipboard
-bindsym --release Shift+Print exec screenshot select
+bindsym --release Shift+Print exec screenshot select-save
+bindsym --release Ctrl+Print exec screenshot window
 bindsym --release Print exec screenshot full
 
 # Flameshot
@@ -255,6 +254,9 @@ exec --no-startup-id betterlockscreen -w dim
 exec --no-startup-id source ~/.fehbg
 # KeyBinding For BetterLockScreen
 bindsym $mod+x exec betterlockscreen -l dim
+
+# Open brave browser
+bindsym $mod+b exec brave
 
 # Keybinding for light screen
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 1 # increase screen brightness
