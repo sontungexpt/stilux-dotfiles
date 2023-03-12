@@ -49,6 +49,7 @@ map yy copy
 map yp copypath
 map mf mkfile
 map mr sudomkfile
+map ms create_script_form
 map md mkdir
 map ch chmod
 map bg setwallpaper
@@ -77,6 +78,7 @@ map cdp cd ~/Pictures
 map cdD cd ~/Downloads
 map cdb cd /usr/bin
 map cdv cd ~/.config/nvim
+map cds cd ~/scripts
 
 
 
@@ -86,9 +88,39 @@ map t tar
 map A achirve
 map e extract
 
-map ] createform
-cmd createform %cp ~/scripts/form ~/scripts/stilux/users/
+cmd create_script_form %{{
+  create_form(){
+    path="$HOME/scripts/stilux/users/$1"
 
+    # check if the file exists
+    if [ -f "$path" ]; then
+      printf "Script file already exists."
+    else
+      touch $path
+      chmod +x $path
+      echo "#!/bin/bash" >> $path
+	    echo "# The scripts is written by TranVoSonTung" >> $path
+	    echo "FLAG=\"-nopass\"" >> $path
+	    echo "PASS=\"\"" >> $path
+	    echo -e "\n# Use eval \"\$SUDO_COMMAND <Your command>\" to exec the command with no password" >> $path
+	    echo "SUDO_COMMAND=\"echo \\\"\$PASS\\\" | sudo -S -k\"" >> $path
+	    echo -e "\nif [ \"\$FLAG\" = \"\$1\" ] && [ \"\$PASS\" != \"\" ]; then" >> $path
+	    echo "	# The scripts when  use flag \"-nopass\"" >> $path
+	    echo "	echo \"\$2\"" >> $path
+	    echo "else" >> $path
+	    echo "	# The scripts when not use flag \"-nopass\"" >> $path
+	    echo "	echo \"\$2\"" >> $path
+	    echo "fi" >> $path
+
+      #  move to the Directory
+      kitty nvim "$path"
+    fi
+
+  }
+  printf "File Name: "
+  read filename
+  create_form "$filename"
+}}
 # Open file with neovim
 cmd nvim ${{
   nvim "$f"
