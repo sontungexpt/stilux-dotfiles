@@ -1,7 +1,9 @@
 #!/bin/bash
+# This scripts is written by Tran Vo Son Tung
+# This scripts is used to add more background to LightDM
 
 STOREDDIR="/usr/share/backgrounds/"
-PICTURETOCHANGE=$(readlink -e "$1")
+PICTURE_ADDING=$(readlink -e "$1")
 PASS=""
 
 if [[ ! -d "$STOREDDIR" ]]; then
@@ -11,13 +13,14 @@ if [[ ! -d "$STOREDDIR" ]]; then
 fi
 
 if [[ "$#" -eq 1 ]]; then
-	if [[ -f "$PICTURETOCHANGE" ]]; then
-		echo "$PASS" | sudo -S -k cp -i "$PICTURETOCHANGE" "$STOREDDIR"
+	if [[ -f "$PICTURE_ADDING" ]]; then
+		echo "$PASS" | sudo -S -k cp -i "$PICTURE_ADDING" "$STOREDDIR"
 		echo -e '\n'
-		echo "Add $PICTURETOCHANGE to LightDM"
+		echo "Add $PICTURE_ADDING to LightDM"
 	else
 		echo "The picture is not exist"
 	fi
 else
-	echo "Only one variable is allowed"
+	echo "Usage: $0 <picture>"
+	echo "Example: $0 ~/Pictures/1.jpg"
 fi

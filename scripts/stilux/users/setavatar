@@ -1,6 +1,6 @@
 #!/bin/bash
-# The scripts is written by TranVoSonTung
-# The scripts will change the avatar of the lightdm with the theme "lightdm-webkit2-greeter wget"
+# This scripts is written by TranVoSonTung
+# The scripts will change the avatar of the lightdm with the theme "lightdm-webkit2-greeter"
 # Dependencies: lightdm, lightdm-webkit2-greeter, lightdm-webkit2-theme-glorious
 
 FLAG="-nopass"
@@ -14,20 +14,48 @@ AVATARSTOREDPATH="/var/lib/AccountsService/icons/$USERNAME"
 STOREDDIR=/var/lib/AccountsService/icons
 AVATAR=""
 
+help() {
+	echo "This scripts is written by Tran Vo Son Tung"
+	echo "The scripts will change the avatar of the lightdm with the theme 'lightdm-webkit2-greeter'"
+	echo "Usage: setavatar -nopass(optional) <picuter-path> or setavatar <picture-path>"
+	echo "-nopass: Use this flag to exec the command with no password"
+	echo "Example: setavatar -nopass ~/Pictures/avatar.png"
+	echo "Example: setavatart ~/Pictures/avatar.png"
+}
+
 # main code
+# If installed lightdm
 if [ -x "$(command -v lightdm)" ]; then
+
+	# Check if the icons directory is exist, if not create it
 	if [[ ! -d "$STOREDDIR" ]]; then
 		if [ "$FLAG" = "$1" ] && [ "$PASS" != "" ]; then
 			eval "$SUDO_COMMAND mkdir $STOREDDIR"
 		else
 			sudo mkdir "$STOREDDIR"
 		fi
-		clear
 		echo "Create $STOREDDIR"
 	fi
 
 	# Change avatar
-	if [[ "$#" -eq 2 ]]; then
+	if [[ "$#" -eq 0 ]]; then
+		help
+		exit 1
+	elif [[ "$#" -eq 1 ]]; then
+		if [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]; then
+			help
+			exit 1
+		else
+			AVATAR=$(readlink -e "$1")
+			if [[ -f "$AVATAR" ]]; then
+				sudo cp "$AVATAR" "$AVATARSTOREDPATH"
+				echo -e "\n"
+				echo "Changed the avatar to $AVATAR"
+			else
+				echo "The picture path is not exist"
+			fi
+		fi
+	elif [[ "$#" -eq 2 ]]; then
 		# Have the flag
 		# The flag must be the first parameter
 		if [[ "$1" == "$FLAG" ]]; then
@@ -41,22 +69,14 @@ if [ -x "$(command -v lightdm)" ]; then
 			fi
 		else
 			echo "Syntax error"
-			echo "The syntax form: setavatar.st -nopass <picuter-path>"
-		fi
-	elif [[ "$#" -eq 1 ]]; then
-		# No flag
-		AVATAR=$(readlink -e "$1")
-		if [[ -f "$AVATAR" ]]; then
-			sudo cp "$AVATAR" "$AVATARSTOREDPATH"
-			echo -e "\n"
-			echo "Changed the avatar to $AVATAR"
-		else
-			echo "The picture path is not exist"
+			echo "Use setavatar -h or setavatar --help to see the help"
 		fi
 	else
-		echo "Syntax error"
-		echo "The syntax form: setavatar.st -nopass <picuter-path> or setavatar.st <picture-path>"
+		echo "Invalid number of parameters"
+		echo "Use setavatar -h or setavatar --help to see the help"
 	fi
+
+# If not installed lightdm
 else
 	echo "You need to installed lightdm"
 	# Ask to install lightdm

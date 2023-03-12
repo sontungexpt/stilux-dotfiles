@@ -1,15 +1,22 @@
-#!/bin/sh
-# The scripts is written by Tran Vo Son Tung
+#!/bin/bash
+# This scripts is written by Tran Vo Son Tung
 # Extracts most common archive formats
+
 un_zip() {
-	destination="$(echo $1 | sed -e 's/.zip//')"
-	if [ ! -d "$destination" ]; then
-		mkdir "$destination"
+	if [ ! -f "/usr/bin/unzip" ]; then
+		echo "You need to install unzip to extract file"
+		exit 1
 	fi
+
 	unzip "$1" -d "$destination"
 }
 
 un_rar() {
+	if [ ! -f "/usr/bin/unrar" ]; then
+		echo "You need to install unrar to extract file"
+		exit 1
+	fi
+
 	destination="$(echo $1 | sed -e 's/.rar//')"
 	if [ ! -d "$destination" ]; then
 		mkdir "$destination"
@@ -17,13 +24,43 @@ un_rar() {
 	unrar e "$1" "$destination"
 }
 
-case "$1" in
-*.tar.bz | *.tar.bz2 | *.tbz | *.tbz2) tar xjvf "$1" ;;
-*.tar.gz | *.tgz) tar xzvf "$1" ;;
-*.tar.xz | *.txz) tar xJvf "$1" ;;
-*.zip) unzip "$1" ;;
-*.rar) un_rar "$1" ;;
-*.7z) echo "You need to download 7z to extract file" ;;
-*.jar) echo "You need to download jar to extract file" ;;
-*) echo "Unsupported format" ;;
-esac
+un_7z() {
+	if [ ! -f "/usr/bin/7z" ]; then
+		echo "You need to install 7z to extract file"
+		exit 1
+	fi
+
+	destination="$(echo $1 | sed -e 's/.7z//')"
+	if [ ! -d "$destination" ]; then
+		mkdir "$destination"
+	fi
+	7z x "$1" -o"$destination"
+}
+
+help() {
+	echo "This scripts is written by Tran Vo Son Tung"
+	echo "Extracts most common archive formats"
+	echo "Usage: extract <file>"
+	echo "Supported formats: .tar.bz, .tar.bz2, .tbz, .tbz2, .tar.gz, .tgz, .tar.xz, .txz, .zip, .rar, .7z"
+}
+
+if [[ "$#" -eq 0 ]]; then
+	help
+	exit 1
+elif [[ "$#" -eq 1 ]]; then
+	case "$1" in
+	*.tar.bz | *.tar.bz2 | *.tbz | *.tbz2) tar xjvf "$1" ;;
+	*.tar.gz | *.tgz) tar xzvf "$1" ;;
+	*.tar.xz | *.txz) tar xJvf "$1" ;;
+	*.zip) unzip "$1" ;;
+	*.rar) un_rar "$1" ;;
+	*.7z) un_7z "$1" ;;
+	"--help" | "-h") help ;;
+	*) echo "Unsupported format" ;;
+	esac
+else
+	echo "Error: Invalid number of arguments"
+	echo "Usage: extract <file>"
+	echo "Use --help or -h to see usage"
+	exit 1
+fi

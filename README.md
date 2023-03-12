@@ -19,10 +19,10 @@
 - **Image Viewer**: [feh](https://github.com/derf/feh)
 - **Video Player**: [mpv](https://github.com/mpv-player/mpv)
 - **Aur, Download Helper**:
-  - [yay](https://github.com/Jguer/yay)
-  - [git](https://git-scm.com/)
-  - [curl](https://github.com/curl/curl)
-  - [wget](https://github.com/jay/wget)
+[yay](https://github.com/Jguer/yay),
+[git](https://git-scm.com/),
+[curl](https://github.com/curl/curl),
+[wget](https://github.com/jay/wget)
 - **Terminal**: [kitty](https://github.com/kovidgoyal/kitty)
 - **Icons Theme**: [WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme)
 - **Main Theme**: [catppuccin-gtk-theme-mocha](https://github.com/catppuccin/gtk)
@@ -40,9 +40,10 @@
   - [rar](https://aur.archlinux.org/packages/rar), [unrar](https://archlinux.org/packages/extra/x86_64/unrar/)
   - [zip](https://archlinux.org/packages/?name=zip), [unzip](https://archlinux.org/packages/?name=unzip)
   - [tar](https://archlinux.org/packages/?name=tar)
-- **Trash Manager*: [trash-cli](https://github.com/andreafrancia/trash-cli)
+- **Trash Manager**: [trash-cli](https://github.com/andreafrancia/trash-cli)
 - **Clipboard Manager**: [xclip](https://github.com/astrand/xclip)
 - **Ntfs Support**: [ntfs-3g](https://github.com/tuxera/ntfs-3g)
+- **System Information Tool**: [neofetch](https://github.com/dylanaraps/neofetch)
 
 #### Sitlux applications
 - **Desired Apps**:
@@ -63,8 +64,8 @@
   - [gcc](https://archlinux.org/packages/core/x86_64/gcc/), [cmake](https://archlinux.org/packages/extra/x86_64/cmake/)
   - [nodejs](https://archlinux.org/packages/community/x86_64/nodejs/) with [npm](https://archlinux.org/packages/community/any/npm/)
 - **Brownser**:
-  - [brave](https://aur.archlinux.org/packages/brave-bin)
-  - [google-chrome](https://aur.archlinux.org/packages/google-chrome)
+[brave](https://aur.archlinux.org/packages/brave-bin),
+[google-chrome](https://aur.archlinux.org/packages/google-chrome)
 - **Calendar Manager**: [calcurse](https://github.com/lfos/calcurse)
 - **Dotfiles Manager**: [git bare](https://www.youtube.com/watch?v=tBoLDpTWVOM)
 - **Cloud Sync Tools**: [rclone](https://github.com/rclone/rclone)
@@ -72,9 +73,10 @@
 #### Scripts
 - **screenshot**: the scripts to screenshot and copy the picture to clipboard
 - **setavatar**: the scripts to change avatar lightdm
-- **extract**: the scripts to extract file
+- **extract**: the scripts to unachrive file
 - **zsh-history-fix**: the scripts to solve zsh history error
 - **showwifipass**: the scripts to show the pass of logged in wifi
+- **setwallpaper**: the scripts to set wallpaper of i3 wm
 
 
 ## 2. Preview
@@ -101,7 +103,7 @@
 - mod + shift + s to print a select area and copy it to clipboard, no save the picture
 - printscr to print the full-screen desktop
 - shift + printscr to print a select area and save it to Pictures/Screenshots
-- crtl + printscr to print a window and save it to Pictures/Screenshots
+- crtl + printscr to capture the focused window and save it to the directory
 - mod + shift + f to open flameshot gui
 - mod + t to open thunar file manager
 - mod + g to open github
