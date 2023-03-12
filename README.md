@@ -1,4 +1,4 @@
-<h1 align="center">Stilux Arch Config</h1> `#ff99ff`
+<h1 align="center" color="#f2b0ff">Stilux Arch Config</h1>
 
 ## 1. Information
 #### Basic applications
