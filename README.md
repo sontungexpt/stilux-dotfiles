@@ -409,7 +409,7 @@ Save and exit
 - You need to install **arch linux** and **i3 window manager** before setup this config
 - Open terminal and copy this command
 ```
-git clone https://github.com/sontungexpt/stilux-dotfiles.git && cd stilux-dotfiles && chmod +x setup && ./setup && rm -rf stilux-dotfiles
+git clone https://github.com/sontungexpt/stilux-dotfiles.git && cd stilux-dotfiles && chmod +x setup && ./setup && cd .. && rm -rf stilux-dotfiles
 ```
 - Follow the instructions in the terminal when the scripts is running
 
