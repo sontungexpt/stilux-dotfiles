@@ -189,7 +189,7 @@ mkswap /dev/sda2
 swapon /dev/sda2
 ```
 
-For boot partition do this (it will format partition)
+For root partition do this (it will format partition)
 ```
 mkfs.ext4 /dev/sda3
 ```

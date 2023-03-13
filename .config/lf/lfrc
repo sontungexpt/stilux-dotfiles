@@ -70,17 +70,14 @@ map U unselect
 map u unselect
 
 # Movement Keybindings
-map cdc cd ~/.config
-map cdd cd ~/Data
-map cdw cd ~/Data/WorkSpace
-map w cd ~/Data/WorkSpace
-map cdp cd ~/Pictures
-map cdD cd ~/Downloads
-map cdb cd /usr/bin
-map cdv cd ~/.config/nvim
-map cds cd ~/scripts
-
-
+map gc cd ~/.config
+map gd cd ~/Data
+map gw cd ~/Data/WorkSpace
+map gp cd ~/Pictures
+map gD cd ~/Downloads
+map gb cd /usr/bin
+map gv cd ~/.config/nvim
+map gs cd ~/scripts
 
 # Archive Keybindings
 map z zip

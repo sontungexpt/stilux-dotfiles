@@ -1,0 +1,38 @@
+#!/bin/bash
+# The scripts is written by TranVoSonTung
+# This script is used to clean cache and unneeded packages
+# This script is tested on Arch Linux
+
+help() {
+	echo "This scripts is written by TranVoSonTung"
+	echo "This script is used to clean cache and unneeded packages"
+	echo "This script is tested on Arch Linux"
+}
+
+if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+	help
+	exit 0
+fi
+
+# Check if install pacman
+if [ -f /usr/bin/pacman ]; then
+	echo "Clean pacman cache and remove unneeded packages"
+	sudo pacman -Scc
+	sudo pacman -Rns "$(sudo pacman -Qtdq)"
+fi
+
+# Check if install yay
+if [ -f /usr/bin/yay ]; then
+	echo "Clean yay cache"
+	yay -Scc
+fi
+
+# Clean cache
+echo "Clean cache"
+sudo du -sh ~/.cache/
+rm -rf ~/.cache/*
+
+# Clean journalctl and limit size
+echo "Clean journalctl and limit size"
+sudo journalctl --vacuum-size=50M
+SystemMaxUse=50M
