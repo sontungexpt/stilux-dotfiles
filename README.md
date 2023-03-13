@@ -402,6 +402,7 @@ poweroff
 #### Install i3 window manager ( you can follow the instruction below or this [video](https://www.youtube.com/watch?v=sE3LHJ8lEss) to install i3 )
 
 <details><summary>Install i3</summary><blockquote>
+
 ```
 sudo pacman -S xorg xorg-xinit i3-wm i3lock i3blocks dmenu kitty
 ```
@@ -409,9 +410,15 @@ sudo pacman -S xorg xorg-xinit i3-wm i3lock i3blocks dmenu kitty
 ```
 sudo cp /etc/X11/xinit/xinitrc ~/.xinitrc
 ```
-Add **exec i3** to the end of file
 
-Save and exit
+```
+echo -e "\n# I3 window manager" >>"$HOME/.xinitrc"
+```
+
+```
+echo "exec i3" >>"$HOME/.xinitrc"
+```
+
 
 </blockquote></details>
 
