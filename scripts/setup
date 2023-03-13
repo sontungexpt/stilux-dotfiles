@@ -59,7 +59,7 @@ function setup_flag_nopass {
 	echo "Add flag -nopass to all scripts"
 }
 
-help() {
+function help {
 	echo "This script is written by TranVoSonTung"
 	echo "This script is used to install all apps that stilux use"
 }

@@ -4,20 +4,6 @@ if not status_ok then
   return
 end
 
-local colors = {
-  bg = "#202328",
-  fg = "#bbc2cf",
-  yellow = "#ECBE7B",
-  cyan = "#008080",
-  darkblue = "#081633",
-  green = "#98be65",
-  orange = "#FF8800",
-  violet = "#a9a1e1",
-  magenta = "#c678dd",
-  blue = "#51afef",
-  red = "#ec5f67",
-  gray = "#66615c"
-}
 
 bufferline.setup {
   options = {
@@ -29,14 +15,17 @@ bufferline.setup {
     middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
     indicator = {
       -- icon = '▎ ', -- this should be omitted if indicator style is not 'icon'
-      icon = '▎ ', -- this should be omitted if indicator style is not 'icon'
+      icon = ' ', -- this should be omitted if indicator style is not 'icon'
       style = 'icon',
     },
+    icon_close_tab = '',
+    icon_close_tab_modified = '●',
+    icon_pinned = '車',
     buffer_close_icon = '',
     modified_icon = '●',
     close_icon = '',
-    left_trunc_marker = '',
-    right_trunc_marker = '',
+    left_trunc_marker = '',
+    right_trunc_marker = '',
     -- name_formatter can be used to change the buffer's label in the bufferline.
     -- Please note some names can/will break the
     -- bufferline so use this at your discretion knowing that it has
@@ -48,7 +37,7 @@ bufferline.setup {
       -- buffers (tabs only) | table(int) | the numbers of the buffers in the tab
       -- tabnr (tabs only)   | int        | the "handle" of the tab, can be converted to its ordinal number using: `vim.api.nvim_tabpage_get_number(buf.tabnr)`
     end,
-    max_name_length = 20,
+    max_name_length = 30,
     max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
     truncate_names = true, -- whether or not tab names should be truncated
     tab_size = 15,
@@ -91,7 +80,7 @@ bufferline.setup {
         highlight = "directory",
         padding = 0,
         text_align = "center",
-        separator = " "
+        separator = ""
       }
     },
     color_icons = true, -- whether or not to add the filetype icon highlights
@@ -105,7 +94,7 @@ bufferline.setup {
     -- can also be a table containing 2 custom separators
     -- [focused and unfocused]. eg: { '|', '|' }
     -- separator_style = "thin",
-    separator_style = { '|', '|' },
+    separator_style = { '▎', '▎' },
     enforce_regular_tabs = false,
     always_show_bufferline = true,
     hover = {

@@ -183,6 +183,15 @@ return packer.startup(function(use)
   --   end
   -- }
 
+  -- Shade
+  -- use {
+  --   'sunjon/shade.nvim',
+  --   config = function()
+  --     require("plugins.shade-config")
+  --   end,
+  -- }
+
+
   -- Markdown-preview
   -- install without yarn or npm
   use(
@@ -239,6 +248,13 @@ return packer.startup(function(use)
       require("plugins.floaterm-config")
     end
   }
+
+  -- Toggleterm
+  -- use { "akinsho/toggleterm.nvim", tag = '*', config = function()
+  --   config = function()
+  --     require("plugins.toggleterm-config")
+  --   end
+  -- end }
 
   -- Comment
   use {
@@ -387,10 +403,6 @@ return packer.startup(function(use)
     end,
   }
 
-
-
-
-
   -- Nvim-surround
   use({
     "kylechui/nvim-surround",
@@ -401,7 +413,7 @@ return packer.startup(function(use)
   })
 
   -- Neoscroll
-  -- use{
+  -- use {
   --   'karb94/neoscroll.nvim',
   --   config = function()
   --     require("plugins.neoscroll-config")

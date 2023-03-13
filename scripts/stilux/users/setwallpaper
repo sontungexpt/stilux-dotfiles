@@ -7,10 +7,25 @@
 help() {
 	echo "This scripts is wtitten by Tran Vo Son Tung"
 	echo "This script is used to change the wallpaper of i3wm"
+	echo "Dependencies: feh, i3wm"
 	echo "Usage: setwallpaper <path_to_image>"
 	echo "Example: setwallpaper ~/Pictures/wallpaper.jpg"
 }
 
+# Check if install feh
+if [ ! -x "$(command -v feh)" ]; then
+	echo "Please install feh to use this scripts"
+	exit 1
+fi
+
+# Check if install i3wm
+if [ ! -x "$(command -v i3)" ]; then
+	echo "You don't use i3wm"
+	echo "Please install i3wm to use this scripts, or you can customize this scripts to use with your window manager"
+	exit 1
+fi
+
+# Main code
 # Make sure the wallpaper directory exists
 mkdir -p ~/.config/background
 
