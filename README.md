@@ -87,7 +87,10 @@
 
 
 ## 3. Install arch linux and i3 wm
-#### Install arch (you can follow this video to [dual boot with window](https://www.youtube.com/watch?v=JRdYSGh-g3s))
+
+#### Install arch ( you can follow the instruction below or this [video](https://www.youtube.com/watch?v=JRdYSGh-g3s) to dual boot with window)
+
+<details><summary>Install arch</summary><blockquote>
 
 - **Step 1: Setup Time**
 ```
@@ -394,8 +397,11 @@ Turn off the system
 poweroff
 ```
 
-#### Install i3 window manager (you can follow this video to [install i3](https://www.youtube.com/watch?v=sE3LHJ8lEss))
+</blockquote></details>
 
+#### Install i3 window manager ( you can follow the instruction below or this [video](https://www.youtube.com/watch?v=sE3LHJ8lEss) to install i3 )
+
+<details><summary>Install i3</summary><blockquote>
 ```
 sudo pacman -S xorg xorg-xinit i3-wm i3lock i3blocks dmenu kitty
 ```
@@ -406,6 +412,8 @@ sudo cp /etc/X11/xinit/xinitrc ~/.xinitrc
 Add **exec i3** to the end of file
 
 Save and exit
+
+</blockquote></details>
 
 ## 4. Setup stilux-dotfiles
 - You need to install **arch linux** and **i3 window manager** before setup this config
@@ -418,7 +426,9 @@ git clone https://github.com/sontungexpt/stilux-dotfiles.git && cd stilux-dotfil
 
 ## 5. The stilux's key-binding
 
-#### i3 key-bindings
+#### i3 key binding
+<details><blockquote>
+
 - h, j, k, l for right, down, up, left
 - mod + shift + s to print a select area and copy it to clipboard, no save the picture
 - printscr to print the full-screen desktop
@@ -435,3 +445,4 @@ git clone https://github.com/sontungexpt/stilux-dotfiles.git && cd stilux-dotfil
 - mod + shift + u to open UIT course (remove it if you not a student of University of Information Of Technology)
 - mod +x to lock screen
 
+</blockquote></details>
