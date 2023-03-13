@@ -77,6 +77,8 @@
 - **zsh-history-fix**: the scripts to solve zsh history error
 - **showwifipass**: the scripts to show the pass of logged in wifi
 - **setwallpaper**: the scripts to set wallpaper of i3 wm
+- **add-background-lightdm**: the scripts to auto add background to usr/share/backgrounds after that you can change the background for lightdm
+- **cleanarch**: the scripts to clean your arch linux
 
 
 ## 2. Preview
