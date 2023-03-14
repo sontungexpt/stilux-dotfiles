@@ -36,7 +36,7 @@ elif [[ "$#" -eq 1 ]] && [[ "$1" == "-h" ]]; then
 elif [[ "$#" -eq 1 ]] && [[ "$1" == "--help" ]]; then
 	help
 elif [[ "$#" -eq 1 ]]; then
-	if cat "$HOME/.config/i3/config" | tr "," "\n" | grep -xqF "set $wallpaper ~/.config/background/wallpaper.jpg"; then
+	if cat "$HOME/.config/i3/config" | tr "," "\n" | grep -xqF "set \$wallpaper ~/.config/background/wallpaper.jpg"; then
 		# Check if the path is correct
 		if [[ ! -f "$1" ]]; then
 			echo "Error: Invalid path"
@@ -46,8 +46,8 @@ elif [[ "$#" -eq 1 ]]; then
 	else
 		echo "Error: Wallpaper is not set in i3 config"
 		echo "Please add the following line to your i3 config file"
-		echo "set $wallpaper ~/.config/background/wallpaper.jpg"
-		echo "exec_always feh --bg-fill $wallpaper"
+		echo "set \$wallpaper ~/.config/background/wallpaper.jpg"
+		echo "exec_always feh --bg-fill \$wallpaper"
 		echo "remove your other lines that you use to set wallpaper in your i3 config file to use this scripts"
 		exit 1
 	fi

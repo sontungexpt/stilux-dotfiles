@@ -97,27 +97,27 @@ cmd create_script_form %{{
       chmod +x $path
       echo "#!/bin/bash" >> $path
 	    echo "# The scripts is written by TranVoSonTung" >> $path
-	    echo "FLAG=\"-nopass\"" >> $path
+	    echo "FLAG=\"--nopass\"" >> $path
 	    echo "PASS=\"\"" >> $path
 	    echo -e "\n# Use eval \"\$SUDO_COMMAND <Your command>\" to exec the command with no password" >> $path
 	    echo "SUDO_COMMAND=\"echo \\\"\$PASS\\\" | sudo -S -k\"" >> $path
 	    echo -e "\nif [ \"\$FLAG\" = \"\$1\" ] && [ \"\$PASS\" != \"\" ]; then" >> $path
-	    echo "	# The scripts when  use flag \"-nopass\"" >> $path
+	    echo "	# The scripts when  use flag \"--nopass\"" >> $path
 	    echo "	echo \"\$2\"" >> $path
 	    echo "else" >> $path
-	    echo "	# The scripts when not use flag \"-nopass\"" >> $path
+	    echo "	# The scripts when not use flag \"--nopass\"" >> $path
 	    echo "	echo \"\$2\"" >> $path
 	    echo "fi" >> $path
 
-      #  move to the Directory
-      kitty nvim "$path"
+      kitty "$EDITOR" "$path"
     fi
-
   }
   printf "File Name: "
-  read filename
+  read -r filename
+  lf -remote 'send reload'
   create_form "$filename"
 }}
+
 # Open file with neovim
 cmd nvim ${{
   nvim "$f"

@@ -3,7 +3,7 @@
 # The scripts will change the avatar of the lightdm with the theme "lightdm-webkit2-greeter"
 # Dependencies: lightdm, lightdm-webkit2-greeter, lightdm-webkit2-theme-glorious
 
-FLAG="-nopass"
+FLAG="--nopass"
 PASS=""
 
 # Use eval "$SUDO_COMMAND <Your command>" to exec the command with no password
@@ -17,10 +17,13 @@ AVATAR=""
 help() {
 	echo "This scripts is written by Tran Vo Son Tung"
 	echo "The scripts will change the avatar of the lightdm with the theme 'lightdm-webkit2-greeter'"
-	echo "Usage: setavatar -nopass(optional) <picuter-path> or setavatar <picture-path>"
-	echo "-nopass: Use this flag to exec the command with no password"
-	echo "Example: setavatar -nopass ~/Pictures/avatar.png"
-	echo "Example: setavatart ~/Pictures/avatar.png"
+	echo "Dependencies: lightdm, lightdm-webkit2-greeter, lightdm-webkit2-theme-glorious"
+	echo "Usage: setavatar [OPTION] [FILE]"
+	echo "Options:"
+	echo "-h, --help: Show this help"
+	echo "--nopass: Use this flag to exec the command with no password"
+	echo "Example: setavatar ~/Pictures/avatar.png"
+	echo "Example: setavatar --nopass ~/Pictures/avatar.png"
 }
 
 # main code
@@ -69,10 +72,12 @@ if [ -x "$(command -v lightdm)" ]; then
 			fi
 		else
 			echo "Syntax error"
+			echo "Usage: setavatar [OPTION] [FILE]"
 			echo "Use setavatar -h or setavatar --help to see the help"
 		fi
 	else
 		echo "Invalid number of parameters"
+		echo "Usage: setavatar [OPTION] [FILE]"
 		echo "Use setavatar -h or setavatar --help to see the help"
 	fi
 

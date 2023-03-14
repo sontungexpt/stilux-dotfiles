@@ -9,30 +9,66 @@ help() {
 	echo "This script is tested on Arch Linux"
 }
 
+note() {
+	echo "If you have issue when use pacman -Syu after run this scripts please try pacman -Syyu it maybe help you fix your issue"
+	echo "If you have issue when use yay -Syu after run this scripts please try yay -Syyu it maybe help you fix your issue"
+}
+
 if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
 	help
 	exit 0
 fi
 
 # Check if install pacman
-if [ -f /usr/bin/pacman ]; then
-	echo "Clean pacman cache and remove unneeded packages"
-	sudo pacman -Scc
-	sudo pacman -Rns "$(sudo pacman -Qtdq)"
+clean_pacman_cache() {
+	if [ -f /usr/bin/pacman ]; then
+		echo -e "\n----------Clean pacman cache----------"
+		sudo pacman -Scc
+	fi
+}
+
+clean_yay_cache() {
+	if [ -f /usr/bin/yay ]; then
+		echo -e "\n-----------Clean yay cache-----------"
+		yay -Scc
+	fi
+}
+
+clean_home_cache() {
+	echo -e "\n----------Clean home cache-----------"
+	rm -rf ~/.cache/*
+}
+
+clean_unused_packages() {
+	echo -e "\n-----------Clean unused packages----------"
+	local unused_packages
+	unused_packages="$(sudo pacman -Qtdq)"
+
+	if [ -n "$unused_packages" ]; then
+		sudo pacman -Rns "$unused_packages"
+	else
+		echo "No unused packages to remove"
+	fi
+}
+
+clean_journalctl() {
+	echo -e "\n----------Clean journalctl----------"
+	sudo journalctl --vacuum-size=50M
+}
+
+# Main code
+# Check the os is Arch Linux
+kenel_name="$(uname -r)"
+# Check if in kenel_name has arch in it
+if [[ "$kenel_name" == *"arch"* ]]; then
+	clean_pacman_cache
+	clean_yay_cache
+	clean_home_cache
+	clean_unused_packages
+	clean_journalctl
+	note
+	exit 1
+else
+	echo "This script is only tested on Arch Linux OS"
+	exit 0
 fi
-
-# Check if install yay
-if [ -f /usr/bin/yay ]; then
-	echo "Clean yay cache"
-	yay -Scc
-fi
-
-# Clean cache
-echo "Clean cache"
-sudo du -sh ~/.cache/
-rm -rf ~/.cache/*
-
-# Clean journalctl and limit size
-echo "Clean journalctl and limit size"
-sudo journalctl --vacuum-size=50M
-SystemMaxUse=50M

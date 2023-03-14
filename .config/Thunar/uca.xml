@@ -56,9 +56,8 @@
 	<name>Set background</name>
 	<submenu></submenu>
 	<unique-id>1676138041631139-1</unique-id>
-	<command>cp %f ~/.config/background/wallpaper.jpg &amp;&amp; i3 restart
-</command>
-	<description></description>
+	<command>setwallpaper %f</command>
+	<description>Change the wallpaper of i3 window manager</description>
 	<range>*</range>
 	<patterns>*</patterns>
 	<image-files/>
@@ -97,11 +96,22 @@
 </action>
 <action>
 	<icon>avatar-default</icon>
-	<name>Change avatar</name>
+	<name>Change Avatar</name>
 	<submenu></submenu>
-	<unique-id>1677154327700108-1</unique-id>
-	<command>~/.config/scripts/StiluxScripts/Background-Avatar/setavatar.su %f</command>
-	<description></description>
+	<unique-id>1678792596514365-1</unique-id>
+	<command>setavatar --nopass %f</command>
+	<description>Change the lightdm avatar</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>draw-trace-background</icon>
+	<name>Add LightDM Background</name>
+	<submenu></submenu>
+	<unique-id>1678793094957291-2</unique-id>
+	<command>add-lightdm-background --nopass %f</command>
+	<description>Add the picture to the lightdm background folder</description>
 	<range>*</range>
 	<patterns>*</patterns>
 	<image-files/>
