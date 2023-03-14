@@ -241,23 +241,8 @@ lualine.setup({
         "diff",
         -- color = { bg = "#272640", fg = colors.fg, gui = "bold" },
       }
-      -- {
-      --   function()
-      --     return " "
-      --   end,
-      --   -- separator = { left = "", right = "" },
-      --   separator = { left = "", right = "" },
-      --   color = { bg = colors.blue, fg = "#000000" },
-      -- }
     },
     lualine_x = {
-      -- {
-      --   function()
-      --     return " "
-      --   end,
-      --   separator = { left = "", right = "" },
-      --   color = { bg = colors.yellow, fg = "#000000" },
-      -- },
       diagnostics,
       {
         lsp_progess,
@@ -272,14 +257,6 @@ lualine.setup({
         color = { bg = colors.blue, fg = "#000000" },
       },
       indent,
-      -- {
-      --     function()
-      --         return ""
-      --     end,
-      --     separator = { left = "", right = "" },
-      --     color = { bg = colors.yellow, fg = "#000000" },
-      -- },
-      -- "progress",
       {
         'encoding',
         separator = { left = "", right = "" },

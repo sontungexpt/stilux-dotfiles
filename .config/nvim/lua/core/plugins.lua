@@ -362,7 +362,7 @@ return packer.startup(function(use)
     end
   }
 
-  -- using packer.nvim
+  -- Bufferline
   use {
     'akinsho/bufferline.nvim', tag = "v3.*",
     requires = 'nvim-tree/nvim-web-devicons',

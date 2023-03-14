@@ -1,48 +1,44 @@
 local status_ok, bufferline = pcall(require, "bufferline")
-
 if not status_ok then
   return
 end
 
+local colors = {
+  yellow = "#ECBE7B",
+  cyan = "#008080",
+  blue = "#51afef",
+  red = "#ec5f67",
+}
 
-bufferline.setup {
+
+bufferline.setup({
   options = {
     mode = "buffers", -- set to "tabs" to only show tabpages instead
-    numbers = "none",
-    close_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
-    right_mouse_command = nil, -- can be a string | function, see "Mouse actions"
-    left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
-    middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
+    numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
+    close_command = "bdelete %d",
+    -- right_mouse_command = "Bdelete! %d",
+    right_mouse_command = nil,
+    left_mouse_command = "buffer %d",
+    middle_mouse_command = nil,
     indicator = {
-      -- icon = '▎ ', -- this should be omitted if indicator style is not 'icon'
-      icon = ' ', -- this should be omitted if indicator style is not 'icon'
-      style = 'icon',
+      -- icon = "▍",
+      icon = " ",
+      style = "icon",
     },
     icon_close_tab = '',
     icon_close_tab_modified = '●',
     icon_pinned = '車',
-    buffer_close_icon = '',
-    modified_icon = '●',
     close_icon = '',
-    left_trunc_marker = '',
-    right_trunc_marker = '',
-    -- name_formatter can be used to change the buffer's label in the bufferline.
-    -- Please note some names can/will break the
-    -- bufferline so use this at your discretion knowing that it has
-    -- some limitations that will *NOT* be fixed.
-    name_formatter = function(buf) -- buf contains:
-      -- name                | str        | the basename of the active file
-      -- path                | str        | the full path of the active file
-      -- bufnr (buffer only) | int        | the number of the active buffer
-      -- buffers (tabs only) | table(int) | the numbers of the buffers in the tab
-      -- tabnr (tabs only)   | int        | the "handle" of the tab, can be converted to its ordinal number using: `vim.api.nvim_tabpage_get_number(buf.tabnr)`
-    end,
-    max_name_length = 30,
-    max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
+    buffer_close_icon = '',
+    modified_icon = "● ",
+    left_trunc_marker = "",
+    right_trunc_marker = "",
     truncate_names = true, -- whether or not tab names should be truncated
-    tab_size = 15,
+    max_name_length = 30,
+    max_prefix_length = 13,
+    tab_size = 25,
     diagnostics = "nvim_lsp",
-    diagnostics_update_in_insert = false,
+    diagnostics_update_in_insert = true,
     -- The diagnostics indicator can be set to nil to keep the buffer name highlight but delete the highlighting
     -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
     --   if context.buffer:current() then
@@ -50,58 +46,340 @@ bufferline.setup {
     --   end
     --   return ''
     -- end,
-    diagnostics_indicator = function(count, level, diagnostics_dict, context)
+    diagnostics_indicator = function(count)
       return "(" .. count .. ")"
-    end,
-    -- NOTE: this will be called a lot so don't do any heavy processing here
-    custom_filter = function(buf_number, buf_numbers)
-      -- filter out filetypes you don't want to see
-      if vim.bo[buf_number].filetype ~= "NvimTree" then
-        return true
-      end
-      -- filter out by buffer name
-      if vim.fn.bufname(buf_number) ~= "NvimTree" then
-        return true
-      end
-      -- filter out based on arbitrary rules
-      -- e.g. filter out vim wiki buffer from tabline in your work repo
-      if vim.fn.getcwd() == "<work-repo>" and vim.bo[buf_number].filetype ~= "wiki" then
-        return true
-      end
-      -- filter out by it's index number in list (don't show first buffer)
-      if buf_numbers[1] ~= buf_number then
-        return true
-      end
     end,
     offsets = {
       {
         filetype = "NvimTree",
-        text = "File Explorer",
-        highlight = "directory",
-        padding = 0,
-        text_align = "center",
-        separator = ""
-      }
+        text = "Explorer",
+        padding = 1,
+        highlight = "TabLine",
+        separator = false,
+      },
     },
-    color_icons = true, -- whether or not to add the filetype icon highlights
-    show_buffer_icons = true, -- disable filetype icons for buffers
+    show_buffer_icons = true,
     show_buffer_close_icons = true,
-    show_buffer_default_icon = true, -- whether or not an unrecognised filetype should show a default icon
-    show_close_icon = true,
+    show_close_icon = false,
     show_tab_indicators = true,
-    show_duplicate_prefix = true, -- whether to show duplicate buffer prefix
     persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
-    -- can also be a table containing 2 custom separators
-    -- [focused and unfocused]. eg: { '|', '|' }
-    -- separator_style = "thin",
-    separator_style = { '▎', '▎' },
-    enforce_regular_tabs = false,
+    separator_style = "thin", -- | "thick" | "thin" | { 'any', 'any' },
+    enforce_regular_tabs = true,
     always_show_bufferline = true,
     hover = {
       enabled = true,
-      delay = 1,
+      delay = 0,
       reveal = { 'close' }
     },
     sort_by = 'insert_after_current',
-  }
-}
+  },
+  highlights = {
+    fill = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    background = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    buffer_visible = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    buffer_selected = {
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "Normal" },
+      bold = true,
+      italic = true,
+    },
+    close_button = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    close_button_visible = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    close_button_selected = {
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "Normal" },
+    },
+
+    tab = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    tab_close = {
+      fg = { attribute = 'fg', highlight = 'LspDiagnosticsDefaultError' },
+      -- fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "Normal" },
+      -- bg = { attribute = "bg", highlight = "Tabline" },
+    },
+
+    tab_selected = {
+      -- fg = { attribute = "fg", highlight = "TabLine" },
+      fg = { attribute = "fg", highlight = "Normal" },
+      -- bg = { attribute = "bg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "Normal" },
+    },
+
+    duplicate_selected = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+      bold = true,
+      italic = true,
+    },
+
+    duplicate_visible = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+      bold = true,
+      italic = true,
+    },
+
+    duplicate = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+      bold = true,
+      italic = true,
+    },
+
+    modified = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    modified_selected = {
+      -- fg = { attribute = "fg", highlight = "TabLine" },
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "Normal" },
+      -- bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    modified_visible = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    separator = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    separator_selected = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      -- fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+      -- bg = { attribute = "bg", highlight = "Normal" },
+    },
+
+    separator_visible = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    indicator_selected = {
+      fg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
+      -- bg = { attribute = "bg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "Normal" },
+    },
+
+    numbers = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    numbers_visible = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    numbers_selected = {
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "Normal" },
+      bold = true,
+      italic = true,
+    },
+
+    diagnostic = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    diagnostic_visible = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    diagnostic_selected = {
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "Normal" },
+      bold = true,
+      italic = true,
+    },
+
+    hint = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    hint_visible = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    hint_selected = {
+      fg = colors.cyan,
+      bg = { attribute = "bg", highlight = "Normal" },
+      bold = true,
+      italic = true,
+    },
+
+    hint_diagnostic = {
+      fg = colors.cyan,
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    hint_diagnostic_visible = {
+      fg = colors.cyan,
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    hint_diagnostic_selected = {
+      fg = colors.cyan,
+      bg = { attribute = "bg", highlight = "Normal" },
+      bold = true,
+      italic = true,
+    },
+
+    info = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    info_visible = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    info_selected = {
+      fg = colors.blue,
+      bg = { attribute = "bg", highlight = "Normal" },
+      bold = true,
+      italic = true,
+    },
+
+    info_diagnostic = {
+      fg = colors.blue,
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    info_diagnostic_visible = {
+      fg = colors.blue,
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    info_diagnostic_selected = {
+      fg = colors.blue,
+      bg = { attribute = "bg", highlight = "Normal" },
+      bold = true,
+      italic = true,
+    },
+
+    warning = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    warning_visible = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    warning_selected = {
+      fg = colors.yellow,
+      bg = { attribute = "bg", highlight = "Normal" },
+      bold = true,
+      italic = true,
+    },
+
+    warning_diagnostic = {
+      fg = colors.yellow,
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    warning_diagnostic_visible = {
+      fg = colors.yellow,
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    warning_diagnostic_selected = {
+      fg = colors.yellow,
+      bg = { attribute = "bg", highlight = "Normal" },
+      bold = true,
+      italic = true,
+    },
+
+    error = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    error_visible = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    error_selected = {
+      fg = colors.red,
+      bg = { attribute = "bg", highlight = "Normal" },
+      bold = true,
+      italic = true,
+    },
+
+    error_diagnostic = {
+      fg = colors.red,
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    error_diagnostic_visible = {
+      fg = colors.red,
+      bg = { attribute = "bg", highlight = "TabLine" },
+    },
+
+    error_diagnostic_selected = {
+      fg = colors.red,
+      bg = { attribute = "bg", highlight = "Normal" },
+      bold = true,
+      italic = true,
+    },
+
+    pick = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+      bold = true,
+      italic = true,
+    },
+
+    pick_selected = {
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "Normal" },
+      bold = true,
+      italic = true,
+    },
+
+    pick_visible = {
+      fg = { attribute = "fg", highlight = "TabLine" },
+      bg = { attribute = "bg", highlight = "TabLine" },
+      bold = true,
+      italic = true,
+    },
+
+  },
+})
