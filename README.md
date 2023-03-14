@@ -65,7 +65,7 @@
   - [nodejs](https://archlinux.org/packages/community/x86_64/nodejs/) with [npm](https://archlinux.org/packages/community/any/npm/)
 - **Brownser**:
 [brave](https://aur.archlinux.org/packages/brave-bin),
-[google-chrome](https://aur.archlinux.org/packages/google-chrome)
+ [google-chrome](https://aur.archlinux.org/packages/google-chrome)
 - **Calendar Manager**: [calcurse](https://github.com/lfos/calcurse)
 - **Dotfiles Manager**: [git bare](https://www.youtube.com/watch?v=tBoLDpTWVOM)
 - **Cloud Sync Tools**: [rclone](https://github.com/rclone/rclone)
