@@ -51,6 +51,21 @@ map("n", "<leader>fh", "<esc>:Telescope help_tags<cr>", opts)
 map("n", "<leader>fp", "<esc>:Telescope project<cr>", opts)
 map("n", "<leader>fc", "<esc>:Telescope neoclip<cr>", opts)
 
+-- Todo-comments
+map("n", "<Leader>ft", ":TodoTelescope<cr>", opts)
+map("n", "]t", ":lua require('todo-comments').jump_next()<cr>", opts)
+map("n", "[t", ":lua require('todo-comments').jump_prev()<cr>", opts)
+
+vim.keymap.set("n", "[t", function()
+  require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
+
+-- You can also specify a list of valid jump keywords
+
+vim.keymap.set("n", "]t", function()
+  require("todo-comments").jump_next({ keywords = { "ERROR", "WARNING" } })
+end, { desc = "Next error/warning todo comment" })
+
 --ccc (Color-picker)
 map("n", "<A-c>", ":CccPick<cr>", opts)
 map("i", "<A-c>", "<esc>:CccPick<cr>", opts)

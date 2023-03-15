@@ -241,7 +241,7 @@ return packer.startup(function(use)
     end,
   }
 
-  -- Floaterm
+  -- -- Floaterm
   use {
     'voldikss/vim-floaterm',
     config = function()
@@ -261,6 +261,15 @@ return packer.startup(function(use)
     'numToStr/Comment.nvim',
     config = function()
       require("plugins.comment-config")
+    end
+  }
+
+  -- Todo-comments
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("plugins.todo-comments-config")
     end
   }
 

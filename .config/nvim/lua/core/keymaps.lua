@@ -83,6 +83,7 @@ map("n", "<A-k>", ":resize -1<cr>", opts)
 map("n", "<A-l>", ":vertical resize -1<cr>", opts)
 map("n", "<A-h>", ":vertical resize +1<cr>", opts)
 
+--Layout
 --Make all windows (almost) equally high and wide
 map("n", "=", "<C-W>=", opts)
 
@@ -91,6 +92,12 @@ map("n", "gv", "<C-w>t<C-w>H", opts)
 
 --Change the layout to vertical
 map("n", "gh", "<C-w>t<C-w>K", opts)
+
+-- Split horizontally
+map("n", "<Leader>h", "<C-w>s", opts)
+
+-- Split vertically
+map("n", "<Leader>v", "<C-w>v", opts)
 
 --Refresh nvim config
 map("n", "<leader><cr>", ":luafile $MYVIMRC<CR>:HighlightColorsOn<cr>:lua print('Refresh the neovim configuration')<cr>",
