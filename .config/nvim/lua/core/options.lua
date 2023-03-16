@@ -2,7 +2,6 @@ local options = vim.opt
 local autocmd = vim.api.nvim_create_autocmd
 local cmd = vim.cmd
 
-
 --leader key
 --let mapleader = "\<Space>"
 
@@ -108,7 +107,7 @@ cmd([[
 cmd([[
   augroup AutoChangeDirectory
     autocmd!
-    autocmd VimEnter * cd %:p:h|pwd
+    autocmd BufEnter *.* cd %:p:h|pwd
   augroup END
 ]])
 

@@ -230,7 +230,6 @@ return packer.startup(function(use)
   --   config = function()
   --     require("plugins.debugger.nvim-dap-virtual-text-config")
   --   end
-
   -- }
 
   -- Wilder
@@ -326,6 +325,7 @@ return packer.startup(function(use)
       require("plugins.nvim-cursorline-config")
     end,
   }
+
 
   --Color Picker
   use {

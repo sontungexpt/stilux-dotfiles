@@ -199,4 +199,3 @@ tabdo %s/foo/bar/g → You can use the above command whenever you want to execut
 
 !}fmt → Use it whenever you need to align all lines at the current position of your cursor.
 :set autoindent → This is one of the most commonly used Vim commands that you will use during your time in Vim. It sets autoindent for your current session. Final thoughts
-

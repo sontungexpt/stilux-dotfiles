@@ -422,6 +422,7 @@ echo "exec i3" >>"$HOME/.xinitrc"
 
 </blockquote></details>
 
+
 ## 4. Setup stilux-dotfiles
 - You need to install **arch linux** and **i3 window manager** before setup this config
 - Open terminal and copy this command
@@ -430,8 +431,17 @@ git clone https://github.com/sontungexpt/stilux-dotfiles.git && cd stilux-dotfil
 ```
 - Follow the instructions in the terminal when the scripts is running
 
+<!-- ## 5. Neovim Features -->
+<!-- <details><blockquote> -->
 
-## 5. The stilux's key-binding
+<!-- - **Theme**: tokyostorm -->
+<!-- - **Git**: no configured yet -->
+<!-- - **Debugger**: no conifgured yet -->
+<!-- - **Ai**: Github copilot -->
+
+<!-- </blockquote></details> -->
+
+## 6. The stilux's key-binding
 
 #### i3 key binding
 <details><blockquote>

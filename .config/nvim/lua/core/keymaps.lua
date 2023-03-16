@@ -33,7 +33,7 @@ map("s", "<C-e>", "<esc>", opts_without_noremap)
 map("v", "i", "<esc>i", opts_without_noremap)
 
 --Move  to the commad mode when in visual mode
-map("v", ":", "<esc>:", opts_without_noremap)
+-- map("v", ":", "<esc>:", opts_without_norejkjkkap)
 
 --Save file as the traditional way
 map("n", "<C-s>", ":w<cr>", opts_without_noremap)
@@ -47,9 +47,9 @@ map("i", "<C-z>", "<C-O>u", opts)
 map("v", "<C-z>", "<esc>u", opts)
 
 --ctrl a to selected all text in file
-map("n", "<C-a>", "<esc>gg0v$G", opts)
-map("i", "<C-a>", "<esc>gg0v$G", opts)
-map("v", "<C-a>", "<esc>gg0v$G", opts)
+map("n", "<C-a>", "<esc>ggVG", opts)
+map("i", "<C-a>", "<esc>ggVG", opts)
+map("v", "<C-a>", "<esc>ggVG", opts)
 
 --The arrow keys in the insert mode
 map("i", "<C-j>", "<Down>", opts_without_noremap)
@@ -115,21 +115,12 @@ function IsFirstLine()
 end
 
 --Swap up one row
-vim.keymap.set("", "<A-Up>", function()
-  if IsLastLine() then
-    return "<esc>ddP"
-  elseif IsFirstLine() then
-    return "<esc>"
-  else
-    return "<esc>dd<Up>P"
-  end
-end, opts_expr)
+map("n", "<A-Up>", ":m .-2<CR>==", opts)
+map("v", "<A-Up>", ":m '<-2<CR>gv=gv", opts)
 
 --Swap down one row
-vim.keymap.set("", "<A-Down>", function()
-  if IsLastLine() then
-    return "<esc>"
-  else
-    return "<esc>ddp"
-  end
-end, opts_expr)
+map("n", "<A-Down>", ":m .+1<CR>==", opts)
+map("v", "<A-Down>", ":m '>+1<CR>gv=gv", opts)
+
+-- Replace the word under the cursor
+vim.keymap.set("n", "<C-h>", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
