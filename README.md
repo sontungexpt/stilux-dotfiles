@@ -441,7 +441,7 @@ git clone https://github.com/sontungexpt/stilux-dotfiles.git && cd stilux-dotfil
 
 <!-- </blockquote></details> -->
 
-## 6. The stilux's key-binding
+## 5. The stilux's key-binding
 
 #### i3 key binding
 <details><blockquote>
