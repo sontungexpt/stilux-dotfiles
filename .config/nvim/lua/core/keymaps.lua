@@ -1,21 +1,21 @@
 ----------Example mapping----------
 
 -- Map to a Lua function:
---vim.keymap.set('n', 'lhs', function() print("real lua function") end)
+-- vim.keymap.set('n', 'lhs', function() print("real lua function") end)
 
 -- Map to multiple modes:
---vim.keymap.set({'n', 'v'}, '<leader>lr', vim.lsp.buf.references, { buffer=true })
+-- vim.keymap.set({'n', 'v'}, '<leader>lr', vim.lsp.buf.references, { buffer=true })
 
 -- Buffer-local mapping:
---vim.keymap.set('n', '<leader>w', "<cmd>w<cr>", { silent = true, buffer = 5 })
+-- vim.keymap.set('n', '<leader>w', "<cmd>w<cr>", { silent = true, buffer = 5 })
 
 -- Expr mapping:
---vim.keymap.set('i', '<Tab>', function()
---return vim.fn.pumvisible() == 1 and "<C-n>" or "<Tab>"
---end, { expr = true })
+-- vim.keymap.set('i', '<Tab>', function()
+-- return vim.fn.pumvisible() == 1 and "<C-n>" or "<Tab>"
+-- end, { expr = true })
 
 -- <Plug> mapping:
---vim.keymap.set('n', '[%', '<Plug>(MatchitNormalMultiBackward)')
+-- vim.keymap.set('n', '[%', '<Plug>(MatchitNormalMultiBackward)')
 
 -----------Mappings----------
 local opts = { noremap = true, silent = true }
@@ -99,28 +99,70 @@ map("n", "<Leader>h", "<C-w>s", opts)
 -- Split vertically
 map("n", "<Leader>v", "<C-w>v", opts)
 
+--Move between windows
+map("n", "<C-h>", "<C-w>h", opts)
+map("n", "<C-j>", "<C-w>j", opts)
+map("n", "<C-k>", "<C-w>k", opts)
+map("n", "<C-l>", "<C-w>l", opts)
+
 --Refresh nvim config
 map("n", "<leader><cr>", ":luafile $MYVIMRC<CR>:HighlightColorsOn<cr>:lua print('Refresh the neovim configuration')<cr>",
   opts_without_silent)
 
-function IsLastLine()
-  local last_line = vim.api.nvim_buf_line_count(0)
-  local current_line = vim.api.nvim__buf_stats(0).current_lnum
-  return last_line == current_line
-end
+-- function IsLastLine()
+--   local last_line = vim.api.nvim_buf_line_count(0)
+--   local current_line = vim.api.nvim__buf_stats(0).current_lnum
+--   return last_line == current_line
+-- end
 
-function IsFirstLine()
+-- function IsFirstLine()
+--   local current_line = vim.api.nvim__buf_stats(0).current_lnum
+--   return current_line == 1
+-- end
+
+function IsBlankLine()
   local current_line = vim.api.nvim__buf_stats(0).current_lnum
-  return current_line == 1
+  local line = vim.api.nvim_buf_get_lines(0, current_line - 1, current_line, false)[1]
+  return line == nil or line:match("^%s*$") ~= nil
 end
 
 --Swap up one row
-map("n", "<A-Up>", ":m .-2<CR>==", opts)
-map("v", "<A-Up>", ":m '<-2<CR>gv=gv", opts)
+-- map("n", "<A-Up>", ":m .-2<CR>==", opts)
+-- map("v", "<A-Up>", ":m '<-2<CR>gv=gv", opts)
+
+-- Swap up one row if the line is not blank
+vim.keymap.set('n', '<A-Up>', function()
+  if not IsBlankLine() then
+    return ":m .-2<CR>=="
+  end
+end, { expr = true, noremap = true, silent = true })
+
+vim.keymap.set('v', '<A-Up>', function()
+  if not IsBlankLine() then
+    return ":m '<-2<CR>gv=gv"
+  end
+end, { expr = true, noremap = true, silent = true })
 
 --Swap down one row
-map("n", "<A-Down>", ":m .+1<CR>==", opts)
-map("v", "<A-Down>", ":m '>+1<CR>gv=gv", opts)
+-- map("n", "<A-Down>", ":m .+1<CR>==", opts)
+-- map("v", "<A-Down>", ":m '>+1<CR>gv=gv", opts)
 
--- Replace the word under the cursor
-vim.keymap.set("n", "<C-h>", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- Swap down one row if the line is not blank
+vim.keymap.set('n', '<A-Down>', function()
+  if not IsBlankLine() then
+    return ":m .+1<CR>=="
+  end
+end, { expr = true, noremap = true, silent = true })
+
+vim.keymap.set('v', '<A-Down>', function()
+  if not IsBlankLine() then
+    return ":m '>+1<CR>gv=gv"
+  end
+end, { expr = true, noremap = true, silent = true })
+
+-- Replace the word under the cursor if the word is not blank
+vim.keymap.set('n', '<Leader>s', function()
+  if vim.fn.expand("<cword>") ~= "" then
+    return [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]
+  end
+end, { expr = true, noremap = true, silent = true })
