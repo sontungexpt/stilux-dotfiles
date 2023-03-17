@@ -282,3 +282,7 @@ bindsym --release $mod+g exec brave https://github.com
 # Open UIT website
 bindsym --release $mod+u exec brave https://courses.uit.edu.vn/
 bindsym --release $mod+shift+u exec brave https://daa.uit.edu.vn/
+
+# Emulator
+for_window [title="Android Emulator - Pixel_4_API_30:5554"] resize set 547 px
+

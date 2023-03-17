@@ -34,9 +34,9 @@ map("c", "<C-b>", "<esc>:NvimTreeToggle<cr>", opts)
 vim.g.floaterm_keymap_toggle = "<C-t>"
 vim.g.floaterm_keymap_new = "<C-n><C-t>"
 
-map("t", "<Leader>]", "<C-\\><C-n>:FloatermNext<cr>", opts)
+map("t", "]t", "<C-\\><C-n>:FloatermNext<cr>", opts)
 
-map("t", "<Leader>[", "<C-\\><C-n>:FloatermPrev<cr>", opts)
+map("t", "[t", "<C-\\><C-n>:FloatermPrev<cr>", opts)
 
 map("t", "<Leader>k", "<C-\\><C-n>:FloatermKill<cr>:FloatermToggle<cr>", opts)
 
@@ -87,6 +87,7 @@ map("n", "<F11>", "<CMD>lua require('dap').step_into()<CR>", opts)
 map("n", "<Leader>do", "<CMD>lua require('dap').step_out()<CR>", opts)
 map("n", "<F10>", "<CMD>lua require('dap').step_over()<CR>", opts)
 map("n", "<Leader>dt", "<CMD>lua require('dap').terminate()<CR>", opts)
+
 -- Bufferline
 map("n", "<Leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>", opts)
 map("n", "<Leader>2", "<Cmd>BufferLineGoToBuffer 2<CR>", opts)

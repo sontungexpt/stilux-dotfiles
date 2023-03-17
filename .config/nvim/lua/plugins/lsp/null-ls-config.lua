@@ -22,6 +22,7 @@ null_ls.setup({
 
     --prettier
     formatting.prettierd.with({ extra_args = { "--style", "{IndentWidth: 2}" } }),
+    -- formatting.prettier.with({ extra_args = { "--style", "{IndentWidth: 2}" } }),
 
     --dart
     formatting.dart_format.with({ extra_args = { "--style", "{IndentWidth: 2}" } }),

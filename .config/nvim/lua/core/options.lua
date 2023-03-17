@@ -103,13 +103,14 @@ cmd([[
   augroup END
 ]])
 
---Cd to the directory after open file
-cmd([[
-  augroup AutoChangeDirectory
-    autocmd!
-    autocmd BufEnter *.* cd %:p:h|pwd
-  augroup END
-]])
+-- Cd to the directory after open file exclude copilot
+-- cmd([[
+--   augroup AutoChangeDirectory
+--     autocmd!
+--     autocmd BufReadPost *.* cd %:p:h|pwd
+--   augroup END
+-- ]])
+
 
 --Remove whitespace on save
 autocmd('BufWritePre', {

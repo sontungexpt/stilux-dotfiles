@@ -1,4 +1,15 @@
 <application>
+  <component name="DynamicPluginEnabler">
+    <trackers>
+      <map>
+        <entry key="2N8CiHXRLSH8xAU4kP5uHQsAf8n">
+          <value>
+            <ProjectPluginTracker />
+          </value>
+        </entry>
+      </map>
+    </trackers>
+  </component>
   <component name="NotRoamableUiSettings">
     <option name="fontScale" value="1.0" />
     <option name="fontSize" value="19.0" />
@@ -8,26 +19,39 @@
     "AndroidInitConfigurator.V1": "true",
     "AndroidInitConfigurator.V3": "true",
     "AndroidInitConfigurator.V5": "true",
+    "AndroidPlatformName": "Android API 33, extension level 4 Platform",
     "FileChooser.ShowPath": "true",
+    "InstalledPluginsSearchHistory": "n\nna\nnat\nnati\nnativ",
     "MarketplacePluginsSearchHistory": "flutter",
     "NonModalCommitCustomization.IsApplied": "true",
     "PluginConfigurable.selectionTab": "1",
-    "SettingsSearchHistory": "q",
+    "RunOnceActivity.cidr.test.framework.showIndexingAsTask": "true",
+    "RunOnceActivity.se.text.search": "true",
+    "SAVED_ANDROID_NPW_LANGUAGE": "Kotlin",
+    "SettingsSearchHistory": "jdk\nq",
     "android.sdk.path": "/home/stilux/Android/Sdk",
+    "appcds.runOnSecondStart": "AI-221.6008.13.2211.9619390-63072b6e2fd852e2c6d3ca0a87766a56820f346f88ab3b9f6174d1d2c2e6436a",
     "ask.about.ctrl.y.shortcut.v2": "true",
     "bundled.plugins.list.saved.version": "AI-221.6008.13.2211.9619390",
     "com.intellij.ide.projectWizard.generators.JavaNewProjectWizard$Step.selectedStep": "IntelliJ",
     "com.intellij.ide.wizard.NewProjectWizardLanguageStep.selectedStep": "Java",
     "defaultJdkConfigured": "true",
+    "file.gist.reindex.count": "20",
     "fileTypeChangedCounter": "1",
+    "gotit.previous.run": "AI-221.6008.13.2211.9619390",
     "input.method.disabler.muted": "true",
+    "installed.kotlin.plugin.version": "221-1.8.0-release-for-android-studio-AS5591.52",
+    "io.flutter.analytics.toastShown": "true",
+    "io.flutter.console.preferencesSet": "true",
     "jdk.selected.JAVA_MODULE": "11",
-    "last_opened_file_path": "/home/stilux/Android/Sdk",
+    "last_opened_file_path": "/home/stilux/Data/UIT-Workspaces/LapTrinhTrenThietBiDiDong/AwesomeProject",
     "project.wizard.group": "JAVA_MODULE_io.flutter.module.FlutterModuleBuilder",
+    "registry.to.advanced.settings.migration.build": "AI-221.6008.13.2211.9619390",
     "tasks.pass.word.conversion.enforced": "true"
   },
   "keyToStringList": {
     "file.chooser.recent.files": [
+      "/home/stilux/Data/UIT-Workspaces/LapTrinhTrenThietBiDiDong/AwesomeProject",
       "/home/stilux/Android/Sdk",
       "/home/stilux/.developments/flutter/bin"
     ],

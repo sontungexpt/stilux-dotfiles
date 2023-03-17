@@ -198,10 +198,10 @@ nvim_tree.setup {
       max = vim.diagnostic.severity.ERROR,
     },
     icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
+      hint = " ",
+      info = " ",
+      warning = " ",
+      error = " ",
     },
   },
   filters = {
@@ -269,7 +269,7 @@ nvim_tree.setup {
       quit_on_open = false,
       resize_window = true,
       window_picker = {
-        enable = true,
+        enable = false,
         picker = "default",
         chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
         exclude = {

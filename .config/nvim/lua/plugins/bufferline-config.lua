@@ -10,7 +10,6 @@ local colors = {
   red = "#ec5f67",
 }
 
-
 bufferline.setup({
   options = {
     mode = "buffers", -- set to "tabs" to only show tabpages instead
@@ -52,7 +51,7 @@ bufferline.setup({
     offsets = {
       {
         filetype = "NvimTree",
-        text = "Explorer",
+        text = "File Explorer",
         padding = 1,
         highlight = "TabLine",
         separator = false,

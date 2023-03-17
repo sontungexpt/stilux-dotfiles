@@ -30,7 +30,7 @@ copilot.setup({
       accept_line = false,
       next = "<M-]>",
       prev = "<M-[>",
-      dismiss = "<M-Tab><S-Tab>",
+      dismiss = "<S-Tab><M-Tab>",
     },
   },
   filetypes = {

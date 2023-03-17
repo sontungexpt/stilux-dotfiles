@@ -1,22 +1,55 @@
 <application>
   <component name="ActionsLocalSummary">
+    <e n="Android.DeviceManager">
+      <i c="3" l="1679038638206" />
+    </e>
+    <e n="CheckinProject">
+      <i c="1" l="1679036671404" />
+    </e>
     <e n="EditCustomProperties">
       <i c="1" l="1677559265272" />
     </e>
     <e n="EditorBackSpace">
-      <i c="16" l="1678436518831" />
+      <i c="36" l="1679036021156" />
+    </e>
+    <e n="EditorEnter">
+      <i c="2" l="1679036608503" />
     </e>
     <e n="EditorPaste">
       <i c="2" l="1678436512821" />
+    </e>
+    <e n="ShowSettings">
+      <i c="2" l="1679038382526" />
+    </e>
+    <e n="WelcomeScreen.CreateNewProject">
+      <i c="1" l="1679035985102" />
+    </e>
+    <e n="WelcomeScreen.OpenProject">
+      <i c="1" l="1679036431909" />
     </e>
     <e n="WelcomeScreen.RunAndroidSdkManager">
       <i c="5" l="1678432662818" />
     </e>
     <e n="WelcomeScreen.RunDeviceManager">
-      <i c="1" l="1678439914313" />
+      <i c="2" l="1679036311496" />
+    </e>
+    <e n="com.intellij.framework.detection.impl.FrameworkDetectionManager$4">
+      <i c="1" l="1679036478758" />
+    </e>
+    <e n="com.intellij.openapi.editor.impl.EditorMarkupModelImpl$StatusAction">
+      <i c="1" l="1679036654076" />
+    </e>
+    <e n="com.intellij.openapi.ui.DialogWrapper$4">
+      <i c="5" l="1679038995184" />
+    </e>
+    <e n="com.intellij.openapi.ui.impl.DialogWrapperPeerImpl$AnCancelAction">
+      <i c="1" l="1679038679035" />
     </e>
     <e n="com.intellij.openapi.wm.impl.welcomeScreen.WelcomeScreenComponentFactory$3">
       <i c="2" l="1677559271882" />
+    </e>
+    <e n="com.intellij.toolWindow.ToolWindowHeader$HideAction">
+      <i c="2" l="1679036657491" />
     </e>
     <e n="flutter.NewProject.welcome">
       <i c="2" l="1676719567597" />

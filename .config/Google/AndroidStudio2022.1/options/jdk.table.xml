@@ -92,6 +92,7 @@
     <jdk version="2">
       <name value="Android Studio default JDK" />
       <type value="JavaSDK" />
+      <version value="version 11.0.15" />
       <homePath value="$APPLICATION_HOME_DIR$/jbr" />
       <roots>
         <annotationsPath>

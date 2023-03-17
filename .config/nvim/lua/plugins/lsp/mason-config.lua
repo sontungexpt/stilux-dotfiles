@@ -29,6 +29,9 @@ mason_lspconfig.setup {
     --lua
     "lua_ls",
 
+    -- bash
+    "bashls",
+
     --rust
     "rust_analyzer",
 
@@ -57,9 +60,11 @@ mason_lspconfig.setup {
     "denols",
     "emmet_ls",
     "jsonls",
+    "tailwindcss",
 
     --vim
     "vimls",
+
   },
   automatic_installation = true,
 }
