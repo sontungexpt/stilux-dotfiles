@@ -14,6 +14,9 @@ null_ls.setup({
   debug = true,
   sources = {
 
+    --git sign
+    code_actions.gitsigns,
+
     --blade
     formatting.blade_formatter.with({ extra_args = { "--style", "{IndentWidth: 2}" } }),
 
@@ -21,8 +24,14 @@ null_ls.setup({
     formatting.deno_fmt.with({ extra_args = { "--style", "{IndentWidth: 2}" } }),
 
     --prettier
+    -- formatting.prettierd.with({
+    --   extra_args = { "--style", "{IndentWidth: 2}" },
+    --   condition = function(utils)
+    --     return utils.root_has_file(".pretterc.js") -- change file extension if you use something else
+    --   end,
+    -- }
+    -- ),
     formatting.prettierd.with({ extra_args = { "--style", "{IndentWidth: 2}" } }),
-    -- formatting.prettier.with({ extra_args = { "--style", "{IndentWidth: 2}" } }),
 
     --dart
     formatting.dart_format.with({ extra_args = { "--style", "{IndentWidth: 2}" } }),

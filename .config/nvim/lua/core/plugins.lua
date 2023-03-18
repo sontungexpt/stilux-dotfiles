@@ -108,7 +108,7 @@ return packer.startup(function(use)
   use {
     'folke/tokyonight.nvim',
     config = function()
-      require("plugins.tokyonight-config")
+      require("plugins.ui.tokyonight-config")
     end,
   }
 
@@ -259,7 +259,7 @@ return packer.startup(function(use)
   use {
     'numToStr/Comment.nvim',
     config = function()
-      require("plugins.comment-config")
+      require("plugins.comments.comment-config")
     end
   }
 
@@ -268,7 +268,7 @@ return packer.startup(function(use)
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
     config = function()
-      require("plugins.todo-comments-config")
+      require("plugins.comments.todo-comments-config")
     end
   }
 
@@ -367,7 +367,7 @@ return packer.startup(function(use)
       opt = true
     },
     config = function()
-      require("plugins.lualine-config")
+      require("plugins.ui.lualine-config")
     end
   }
 
@@ -376,7 +376,7 @@ return packer.startup(function(use)
     'akinsho/bufferline.nvim', tag = "v3.*",
     requires = 'nvim-tree/nvim-web-devicons',
     config = function()
-      require("plugins.bufferline-config")
+      require("plugins.ui.bufferline-config")
     end
   }
 
@@ -397,12 +397,6 @@ return packer.startup(function(use)
   }
 
   --Github Copilot
-  -- use {
-  --   'github/copilot.vim',
-  --   config = function()
-  --     require("plugins.copilot-config")
-  --   end,
-  -- }
   use {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
@@ -420,6 +414,18 @@ return packer.startup(function(use)
       require("plugins.nvim-surround-config")
     end
   })
+
+  -- Git Signs
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('plugins.git.gitsigns-config')
+    end
+  }
+  -- Git Conflict
+  use { 'akinsho/git-conflict.nvim', tag = "*", config = function()
+    require('plugins.git.git-conflict-config')
+  end }
 
   -- Neoscroll
   -- use {

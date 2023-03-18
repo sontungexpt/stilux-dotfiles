@@ -64,7 +64,8 @@ cmp.setup({
   },
   window = {
     documentation = cmp.config.window.bordered(),
-    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    border = "single"
   },
   formatting = {
     fields = { "kind", "abbr", "menu" },
@@ -102,7 +103,7 @@ cmp.setup({
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
 
     -- ['<CR>'] = cmp.mapping.confirm({ select = false }),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
 
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then

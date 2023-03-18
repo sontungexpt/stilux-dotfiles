@@ -9,8 +9,8 @@ copilot.setup({
     enabled = true,
     auto_refresh = true,
     keymap = {
-      jump_prev = "[[",
-      jump_next = "]]",
+      jump_prev = "<M-[>",
+      jump_next = "<M-]>",
       accept = "<CR>",
       refresh = "R",
       open = "<M-CR>"
