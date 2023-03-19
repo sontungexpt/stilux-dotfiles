@@ -107,7 +107,8 @@ map("n", "<C-l>", "<C-w>l", opts)
 
 --Refresh nvim config
 map("n", "<leader><cr>", ":luafile $MYVIMRC<CR>:HighlightColorsOn<cr>:lua print('Refresh the neovim configuration')<cr>",
-  opts_without_silent)
+  opts)
+
 
 -- function IsLastLine()
 --   local last_line = vim.api.nvim_buf_line_count(0)

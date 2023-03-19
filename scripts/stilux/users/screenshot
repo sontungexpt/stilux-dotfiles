@@ -42,7 +42,7 @@ fi
 # Make sure the directory exists
 mkdir -p ~/Pictures/Screenshots
 
-output='/tmp/%F_%T_$wx$h.png'
+output="/tmp/%F_%T_$wx$h.png"
 outputDir='/home/stilux/Pictures/Screenshots/%Y_%m_%d-%T-screentshot.png'
 
 case "$1" in

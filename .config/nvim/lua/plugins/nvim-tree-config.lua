@@ -88,7 +88,7 @@ nvim_tree.setup {
         { key = "q",                              action = "close" },
         { key = "W",                              action = "collapse_all" },
         { key = "E",                              action = "expand_all" },
-        { key = "/",                              action = "search_node" },
+        { key = "<C-f>",                          action = "search_node" },
         { key = ".",                              action = "run_file_command" },
         { key = "<C-k>",                          action = "toggle_file_info" },
         { key = "g?",                             action = "toggle_help" },

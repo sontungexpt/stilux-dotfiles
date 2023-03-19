@@ -12,6 +12,7 @@ SUDO_COMMAND="echo \"$PASS\" | sudo -S -k"
 help() {
 	echo "This scripts is written by TranVoSonTung"
 	echo "Dependencies: lightdm, lightdm-webkit2-greeter, lightdm-webkit2-theme-glorious"
+	echo "THe background will be added to /usr/share/backgrounds/"
 	echo "Usage: add-lightdm-background [OPTION] [FILE]"
 	echo "Add more background to lightdm with the theme \"lightdm-webkit2-greeter\""
 	echo "Options:"
@@ -25,6 +26,8 @@ help() {
 # Main code
 STOREDDIR="/usr/share/backgrounds/"
 PICTURE_ADDING=""
+CURRENT_DATE=$(date +"%Y_%m_%d-%T")
+BACKGROUND_NAME="$STOREDDIR/$CURRENT_DATE-background.png"
 
 if [ ! -x "$(command -v lightdm)" ]; then
 	echo "lightdm is not installed"
@@ -43,7 +46,7 @@ elif [[ "$#" -eq 1 ]]; then
 		if [[ -f "$PICTURE_ADDING" ]]; then
 			# Make sure that the directory is exist
 			sudo mkdir -p "$STOREDDIR"
-			sudo cp -i "$PICTURE_ADDING" "$STOREDDIR"
+			sudo cp -i "$PICTURE_ADDING" "$BACKGROUND_NAME"
 			echo "Add $PICTURE_ADDING to LightDM"
 		else
 			echo "The picture is not exist"
@@ -58,7 +61,7 @@ elif [[ "$#" -eq 2 ]]; then
 		if [[ -f "$PICTURE_ADDING" ]]; then
 			# Make sure that the directory is exist
 			eval "$SUDO_COMMAND mkdir -p $STOREDDIR"
-			eval "$SUDO_COMMAND cp -i $PICTURE_ADDING $STOREDDIR"
+			eval "$SUDO_COMMAND cp -i $PICTURE_ADDING $BACKGROUND_NAME"
 			echo "Add $PICTURE_ADDING to LightDM"
 		else
 			echo "The picture is not exist"

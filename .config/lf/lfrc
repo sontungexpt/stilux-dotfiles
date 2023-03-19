@@ -41,7 +41,7 @@ map y
 
 # Keybindings
 map dd trash
-map D delete
+map DD delete
 map <delete> trash
 map p paste
 map x cut
@@ -72,7 +72,7 @@ map u unselect
 # Movement Keybindings
 map gc cd ~/.config
 map gd cd ~/Data
-map gw cd ~/Data/WorkSpace
+map gw cd ~/Data/My-WorkSpace
 map gp cd ~/Pictures
 map gD cd ~/Downloads
 map gb cd /usr/bin

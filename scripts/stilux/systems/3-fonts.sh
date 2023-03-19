@@ -19,3 +19,8 @@ yay -S ttf-ms-win11
 yay -S ttf-adobe-source-code-pro-fonts
 yay -S ttf-fira-code
 yay -S ttf-hack-nerd
+yay -S ttf-iosevka-nerd
+yay -S ttf-material-design-icons
+yay -S siji-git
+yay -S otf-japanese-radicals-font
+yay -S ttf-font-awesome

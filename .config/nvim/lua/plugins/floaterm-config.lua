@@ -8,6 +8,5 @@ vim.g.floaterm_shell = "zsh"
 --vim.cmd[[hi Floaterm guibg=black]]
 
 --Set floating window border line color to cyan, and background to orange
-vim.cmd[[hi FloatermBorder guifg=#ffffff]]
+vim.cmd [[hi FloatermBorder guifg=#ffffff]]
 --vim.cmd[[hi FloatermBorder guibg=orange]]
-

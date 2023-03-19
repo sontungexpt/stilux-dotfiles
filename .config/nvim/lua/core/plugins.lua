@@ -60,7 +60,6 @@ packer.init {
   autoremove = true, -- Remove disabled or unused plugins without prompting the user
 }
 
-
 return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
@@ -240,7 +239,7 @@ return packer.startup(function(use)
     end,
   }
 
-  -- -- Floaterm
+  -- Floaterm
   use {
     'voldikss/vim-floaterm',
     config = function()
