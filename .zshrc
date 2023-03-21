@@ -88,6 +88,6 @@ alias uitpull='rclone sync uit-drive:UIT/ ~/Data/UIT/'
 alias sontungpush='rclone sync ~/Data/SonTung/ sontungexpt-drive:SonTung/'
 alias sontungpull='rclone sync sontungexpt-drive:SonTung/ ~/Data/SonTung/'
 # Neovim config
-alias nvimconfig='cd ~/.config/nvim/ && nvim'
+alias nvimconfig='nvim ~/.config/nvim/init.lua'
 
 

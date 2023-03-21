@@ -441,7 +441,7 @@ git clone https://github.com/sontungexpt/stilux-dotfiles.git && cd stilux-dotfil
 
 <!-- </blockquote></details> -->
 
-## 5. The stilux's key-binding
+## 5. Usage
 
 #### i3 key binding
 <details><blockquote>
@@ -461,5 +461,19 @@ git clone https://github.com/sontungexpt/stilux-dotfiles.git && cd stilux-dotfil
 - mod + u to open UIT school web (remove it if you not a student of University of Information Of Technology)
 - mod + shift + u to open UIT course (remove it if you not a student of University of Information Of Technology)
 - mod +x to lock screen
+
+</blockquote></details>
+
+#### Neovim
+<details><blockquote>
+
+- Support copilot
+- Highlighting with tree-sitter
+- File Explorer: nvim-tree
+- Support autocomplete
+- Support telescope
+- Theme: Tokyostorm
+- Status line: lualine
+- Tab line: bufferline
 
 </blockquote></details>

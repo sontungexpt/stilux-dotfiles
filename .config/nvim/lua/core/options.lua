@@ -2,8 +2,10 @@ local options = vim.opt
 local autocmd = vim.api.nvim_create_autocmd
 local cmd = vim.cmd
 
+
 --leader key
 --let mapleader = "\<Space>"
+
 
 cmd("filetype plugin on")
 cmd("filetype plugin indent on")
@@ -11,6 +13,9 @@ cmd("filetype plugin indent on")
 --Syntax
 cmd("syntax enable")
 cmd("syntax on")
+
+-- Ruler
+options.ruler = true
 
 --Line number
 options.number = true
@@ -103,17 +108,31 @@ cmd([[
   augroup END
 ]])
 
--- Cd to the directory after open file exclude copilot
--- cmd([[
---   augroup AutoChangeDirectory
---     autocmd!
---     autocmd BufReadPost *.* cd %:p:h|pwd
---   augroup END
--- ]])
-
-
 --Remove whitespace on save
 autocmd('BufWritePre', {
   pattern = '',
   command = ":%s/\\s\\+$//e"
 })
+
+--Check if change to visual mode then set relativenumber else set norelativenumber
+cmd([[ autocmd ModeChanged * if mode() == 'v' | set relativenumber | else | set norelativenumber | endif ]])
+
+-- cd to the directory after open file exclude copilot
+-- cmd([[
+--   augroup autochangedirectory
+--     autocmd!
+--     autocmd bufreadpost *.* cd %:p:h|pwd
+--   augroup end
+-- ]])
+
+
+-- Set norelative number on insert mode else set relative number
+-- cmd([[
+--   augroup setrelative
+--     autocmd!
+--     autocmd VimEnter * set relativenumber
+--     autocmd InsertLeave * set relativenumber
+--     autocmd InsertEnter * set norelativenumber
+--   augroup end
+-- ]])
+

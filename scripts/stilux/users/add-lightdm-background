@@ -12,7 +12,7 @@ SUDO_COMMAND="echo \"$PASS\" | sudo -S -k"
 help() {
 	echo "This scripts is written by TranVoSonTung"
 	echo "Dependencies: lightdm, lightdm-webkit2-greeter, lightdm-webkit2-theme-glorious"
-	echo "THe background will be added to /usr/share/backgrounds/"
+	echo "The background will be added to /usr/share/backgrounds/"
 	echo "Usage: add-lightdm-background [OPTION] [FILE]"
 	echo "Add more background to lightdm with the theme \"lightdm-webkit2-greeter\""
 	echo "Options:"

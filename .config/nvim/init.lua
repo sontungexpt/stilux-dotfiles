@@ -5,9 +5,12 @@ local modules = {
   "core.plugins-keymaps"
 }
 
+function GetAllChildFileInDir(dirUrl)
+  return io.popen('find "' .. dirUrl .. '" -type f')
+end
+
 function SourceConfigFile(dirUrl)
-  -- Get all files in directory
-  local files = io.popen('find "' .. dirUrl .. '" -type f')
+  local files = GetAllChildFileInDir(dirUrl)
 
   if files ~= nil then
     for file in files:lines() do
