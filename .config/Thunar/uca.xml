@@ -34,7 +34,7 @@
 	<name>Zip Folder</name>
 	<submenu></submenu>
 	<unique-id>1675086537727413-1</unique-id>
-	<command>zip %n -r %f %f</command>
+	<command>zip -r %f %f</command>
 	<description></description>
 	<range>*</range>
 	<patterns>*</patterns>

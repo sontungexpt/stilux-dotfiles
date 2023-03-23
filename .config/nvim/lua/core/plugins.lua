@@ -234,6 +234,7 @@ return packer.startup(function(use)
   -- Wilder
   use {
     'gelguy/wilder.nvim',
+    requires = { 'romgrk/fzy-lua-native' },
     config = function()
       require("plugins.wilder-config")
     end,
@@ -286,7 +287,7 @@ return packer.startup(function(use)
       'sharkdp/fd'
     },
     config = function()
-      require("plugins.telescope-config")
+      require("plugins.telescope.telescope-config")
     end,
   }
 
@@ -305,7 +306,7 @@ return packer.startup(function(use)
       -- {'ibhagwan/fzf-lua'},
     },
     config = function()
-      require('plugins.nvim-neoclip-config')
+      require('plugins.telescope.nvim-neoclip-config')
     end,
   }
 

@@ -50,7 +50,6 @@ gitsigns.setup {
       opts = vim.tbl_extend('force', { noremap = true, silent = true }, opts or {})
       vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
     end
-
     -- Navigation
     map('n', ']g', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
     map('n', '[g', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })
@@ -67,8 +66,8 @@ gitsigns.setup {
     map('n', '<leader>gd', '<cmd>Gitsigns toggle_deleted<CR>')
 
     -- Text object
-    map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-    map('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+    -- map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+    -- map('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
   end
 }
 

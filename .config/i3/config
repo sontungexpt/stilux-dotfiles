@@ -231,9 +231,23 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 # Auto Start Dunst
 exec_always --no-startup-id dunst
 
-# Assign Program To Workspace
-#for_window [class="Brave-browser"] move to workspace $ws2
-#for_window [class="discord"] move to workspace $ws3
+# Assign programs to workspace
+# assign [class="firefox"] → number 2
+# assign [class="code"] → number 4
+# assign [class="discord"] → number 5
+# assign [class="Spotify"] → number 6
+# assign [class="Audacity"] → number 6
+# assign [class="Gmpc"] → number 6
+# assign [class="ario"] → number 6
+# assign [class="Thunderbird"] → number 8
+# assign [class="Bitwarden"] → number 9
+# # Some programs can be stubborn since they open a splash window before opening
+# for_window [class="discord"] move to workspace number 5
+# for_window [class="Spotify"] move to workspace number 6
+# for_window [class="Gimp-2.10"] move to workspace number 7
+# for_window [class="Gimp"] move to workspace number 7
+
+
 for_window [class="Pycalendar.py"] floating enable move to position 1399px 38px
 
 # Print Screen
@@ -271,9 +285,10 @@ bindsym --release $mod+t exec thunar
 
 # Blueman
 bindsym --release $mod+m exec blueman-manager
-for_window [class="Blueman-manager"] floating enable resize set 30ppt 40ppt
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Blueman-manager"] resize set 1000 500
 
-# Anaconda
+# Open code
 bindsym --release $mod+c exec code
 
 # Open github website
@@ -284,5 +299,22 @@ bindsym --release $mod+u exec brave https://courses.uit.edu.vn/
 bindsym --release $mod+shift+u exec brave https://daa.uit.edu.vn/
 
 # Emulator
-for_window [title="Android Emulator - Pixel_4_API_30:5554"] resize set 547 px
+for_window [title="Android Emulator - Pixel_4_API_30:5554"] resize set 547
+for_window [title="Android Emulator - Pixel_4_API_30:5554"] border pixel 0
+
+# Picture-in-picture
+for_window [title="Picture-in-picture"] floating enable
+
+# Mpv
+for_window [class="mpv"] floating enable
+for_window [class="mpv"] resize set 960 540
+for_window [class="mpv"] border pixel 0
+
+# Pavucontrol
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Pavucontrol"] resize set 1200 800
+
+# Arandr
+for_window [class="Arandr"] floating enable
+for_window [class="Arandr"] resize set 1000 600
 

@@ -21,6 +21,9 @@ fi
 # UI
 sudo pacman -S polybar picom rofi xorg-xrandr
 
+# Manage multiple monitors
+sudo pacman -S arandr
+
 # System info
 sudo pacman -S --needed neofetch
 

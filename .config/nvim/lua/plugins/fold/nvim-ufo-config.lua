@@ -4,7 +4,6 @@ if not status_ok then
 end
 
 
-
 local handler = function(virtText, lnum, endLnum, width, truncate)
   local newVirtText = {}
   local suffix = ('  %d '):format(endLnum - lnum)

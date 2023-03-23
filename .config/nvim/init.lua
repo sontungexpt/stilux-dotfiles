@@ -5,12 +5,12 @@ local modules = {
   "core.plugins-keymaps"
 }
 
-function GetAllChildFileInDir(dirUrl)
-  return io.popen('find "' .. dirUrl .. '" -type f')
+local function GetLuaFilesInDir(dirUrl)
+  return io.popen('find "' .. dirUrl .. '" -type f' .. ' -name "*.lua"')
 end
 
-function SourceConfigFile(dirUrl)
-  local files = GetAllChildFileInDir(dirUrl)
+local function SourceConfigFile(dirUrl)
+  local files = GetLuaFilesInDir(dirUrl)
 
   if files ~= nil then
     for file in files:lines() do
@@ -28,4 +28,5 @@ for _, module in pairs(modules) do
   require(module)
 end
 
+-- Source all files in config dir
 SourceConfigFile(vim.fn.stdpath('config') .. '/lua/plugins/')

@@ -10,18 +10,10 @@ hightlight_colors.setup {
   enable_tailwind = true
 }
 
-
 vim.cmd([[
   augroup HightlightColors
   autocmd!
-  autocmd  VimEnter, BufEnter * HightligtColorsOn
+  autocmd  VimEnter, BufEnter, BufLeave *.* HightligtColorsOn
   augroup END
 ]])
 
--- vim.api.nvim_create_autocmd(
---   "VimEnter",
---   {
---     pattern = '',
---     command = 'HighlightColorsOn'
---   }
--- )
