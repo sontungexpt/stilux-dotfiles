@@ -44,6 +44,7 @@
 - **Clipboard Manager**: [xclip](https://github.com/astrand/xclip)
 - **Ntfs Support**: [ntfs-3g](https://github.com/tuxera/ntfs-3g)
 - **System Information Tool**: [neofetch](https://github.com/dylanaraps/neofetch)
+- **Multi monitors tools**: [arandr](https://archlinux.org/packages/?name=arandr)
 
 #### Sitlux applications
 - **Desired Apps**:
