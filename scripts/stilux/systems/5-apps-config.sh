@@ -123,6 +123,12 @@ if [ ! -f /usr/bin/polybar ]; then
 	echo "polybar is not installed"
 else
 	rm -rf ~/.config/polybar/ && cp -r "$configs_dir/polybar/" ~/.config/
+	if [ -d "$HOME/.config/polybar/gmail/authenticates/" ]; then
+		mv "$HOME/polybar/gmail/authenticates/" "$HOME/.config/polybar/gmail/authenticates-backup/"
+	fi
+	mkdir -p "$HOME/.config/polybar/gmail/authenticates/"
+	# Change color echo
+	echo -e "\e[1;32mNOTE: If you are stilux you can exec this command gmailpolybar to setup email authenticate for polybar"
 fi
 
 # Check if install rofi

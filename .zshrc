@@ -89,5 +89,4 @@ alias sontungpush='rclone sync ~/Data/SonTung/ sontungexpt-drive:SonTung/'
 alias sontungpull='rclone sync sontungexpt-drive:SonTung/ ~/Data/SonTung/'
 # Neovim config
 alias nvimconfig='nvim ~/.config/nvim/init.lua'
-
-
+alias gmailpolybar='unzip $HOME/polybar/gmail/authenticates-pwd.zip -d $HOME/.config/polybar/gmail/authenticates/'

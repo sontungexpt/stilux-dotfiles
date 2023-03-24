@@ -102,7 +102,7 @@ image/png=userapp-feh --auto-zoom --scale-down -LQI1Z1.desktop
 x-scheme-handler/figma=figma-linux.desktop
 application/vnd.ms-publisher=code.desktop
 text/plain=userapp-kitty nvim-4LOI11.desktop
-application/zip=figma-linux.desktop
+application/zip=userapp-kitty-9WSX11.desktop
 application/x-trash=nvim.desktop
 application/x-shellscript=userapp-kitty nvim-4LOI11.desktop
 
@@ -117,7 +117,7 @@ application/vnd.rar=ibus-setup-Bamboo.desktop;
 text/x-c++src=userapp-kitty nvim-4LOI11.desktop;code.desktop;nvim.desktop;userapp-nvim-H1GH01.desktop;userapp-nvim %f-ME8C01.desktop;
 application/pdf=wps-office-pdf.desktop;
 application/vnd.ms-publisher=code.desktop;
-application/zip=figma-linux.desktop;
+application/zip=userapp-kitty unzip –l-WAJ911.desktop;userapp-kitty zip –sf-RHV511.desktop;figma-linux.desktop;userapp-kitty-9WSX11.desktop;
 application/x-trash=nvim.desktop;
 text/html=userapp-kitty nvim-4LOI11.desktop;
 application/json=userapp-kitty nvim-4LOI11.desktop;

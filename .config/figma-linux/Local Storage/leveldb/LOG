@@ -1,3 +1,3 @@
-2023/03/21-23:02:33.929 b4682 Reusing MANIFEST /home/stilux/.config/figma-linux/Local Storage/leveldb/MANIFEST-000001
-2023/03/21-23:02:33.929 b4682 Recovering log #3
-2023/03/21-23:02:33.929 b4682 Reusing old log /home/stilux/.config/figma-linux/Local Storage/leveldb/000003.log 
+2023/03/25-02:08:18.509 34c92 Reusing MANIFEST /home/stilux/.config/figma-linux/Local Storage/leveldb/MANIFEST-000001
+2023/03/25-02:08:18.509 34c92 Recovering log #3
+2023/03/25-02:08:18.509 34c92 Reusing old log /home/stilux/.config/figma-linux/Local Storage/leveldb/000003.log 

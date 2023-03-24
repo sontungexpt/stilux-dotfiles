@@ -284,15 +284,18 @@ for_window [class="Wihotspot-gui"] move to position center
 
 # Thunar
 bindsym --release $mod+t exec thunar
-for_window [class="Thunar"] floating enable
-for_window [class="Thunar"] resize set 1600 950
-for_window [class="Thunar"] move to position center
-for_window [class="Thunar" title="Custom Actions"] floating enable
-for_window [class="Thunar" title="Custom Actions"] resize set 700 600
-for_window [class="Thunar" title="Custom Actions"] move to position center
-for_window [class="Thunar" title="Create Action"] floating enable
-for_window [class="Thunar" title="Create Action"] resize set 700 600
-for_window [class="Thunar" title="Create Action"] move to position center
+# for_window [class="Thunar"] floating enable
+# for_window [class="Thunar"] resize set 1600 950
+# for_window [class="Thunar"] move to position center
+# for_window [class="Thunar" title="Custom Actions"] floating enable
+# for_window [class="Thunar" title="Custom Actions"] resize set 700 600
+# for_window [class="Thunar" title="Custom Actions"] move to position center
+# for_window [class="Thunar" title="Create Action"] floating enable
+# for_window [class="Thunar" title="Create Action"] resize set 700 600
+# for_window [class="Thunar" title="Create Action"] move to position center
+# for_window [class="Thunar" title="Rename *"] floating enable
+# for_window [class="Thunar" title="Rename *"] resize set 500 200
+# for_window [class="Thunar" title="Rename *"] move to position center
 
 # Blueman
 bindsym --release $mod+m exec blueman-manager
