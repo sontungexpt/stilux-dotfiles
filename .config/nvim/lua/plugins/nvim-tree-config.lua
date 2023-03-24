@@ -226,7 +226,7 @@ nvim_tree.setup {
       "Data/Shmily",
       "Data/Ảnh cá nhân",
     },
-    exclude = { ".config" },
+    exclude = { ".config", ".prettierrc.js", ".gitignore", ".eslintrc.js" },
   },
   filesystem_watchers = {
     enable = true,

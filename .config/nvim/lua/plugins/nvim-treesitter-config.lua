@@ -25,7 +25,7 @@ nvim_treesitter.setup {
   additional_vim_regex_highlighting = false,
   autotag = {
     enable = true,
-    filetypes = { "html", "xml", "jsx" },
+    filetypes = { "html", "xml", "jsx", "javascriptreact", "javascript", "typescriptreact", "typescript", "tsx" },
   },
   autopairs = {
     enable = true,

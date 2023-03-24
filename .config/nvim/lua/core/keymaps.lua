@@ -167,3 +167,9 @@ vim.keymap.set('n', '<Leader>s', function()
     return [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]
   end
 end, { expr = true, noremap = true, silent = true })
+
+-- vim.keymap.set('v', '<Leader>s', function()
+--   if vim.fn.expand("<cword>") ~= "" then
+--     return [[:s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]
+--   end
+-- end, { expr = true, noremap = true, silent = true })
