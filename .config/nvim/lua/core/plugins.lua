@@ -38,7 +38,7 @@ packer.init {
   display = {
     -- An optional function to open a window for packer's display
     open_fn = function()
-      return require('packer.util').float { border = "rounded" }
+      return require('packer.util').float { border = "single" }
     end,
     jworking_sym = '⟳', -- The symbol for a plugin being installed/updated
     error_sym = '', -- The symbol for a plugin with an error in installation/updating
@@ -241,19 +241,19 @@ return packer.startup(function(use)
   }
 
   -- Floaterm
-  use {
-    'voldikss/vim-floaterm',
-    config = function()
-      require("plugins.floaterm-config")
-    end
-  }
+  -- use {
+  --   'voldikss/vim-floaterm',
+  --   config = function()
+  --     require("plugins.terminal.floaterm-config")
+  --   end
+  -- }
 
   -- Toggleterm
-  -- use { "akinsho/toggleterm.nvim", tag = '*', config = function()
-  --   config = function()
-  --     require("plugins.toggleterm-config")
-  --   end
-  -- end }
+  use { "akinsho/toggleterm.nvim", tag = '*', config = function()
+    config = function()
+      require("plugins.terminal.toggleterm-config")
+    end
+  end }
 
   -- Comment
   use {

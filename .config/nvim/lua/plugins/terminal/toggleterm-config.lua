@@ -1,5 +1,3 @@
--- BUG: Don't know why, but this plugin doesn't work
-
 local status_ok, toggleterm = pcall(require, "toggleterm")
 if not status_ok then
   return
@@ -16,13 +14,19 @@ toggleterm.setup {
   end,
   open_mapping = [[<C-t>]],
   ---@diagnostic disable-next-line: unused-local
-  -- on_open = function(term)
-  --   require('shade').toggle();
-  -- end,
-  -- ---@diagnostic disable-next-line: unused-local
-  -- on_close = function(term)
-  --   require('shade').toggle();
-  -- end,
+  on_open = function(term)
+    local status_shade_ok, shade = pcall(require, "shade")
+    if status_shade_ok then
+      shade.toggle();
+    end
+  end,
+  ---@diagnostic disable-next-line: unused-local
+  on_close = function(term)
+    local status_shade_ok, shade = pcall(require, "shade")
+    if status_shade_ok then
+      shade.toggle();
+    end
+  end,
   highlights = {
     -- highlights which map to a highlight group name and a table of it's values
     -- NOTE: this is only a subset of values, any group placed here will be set for the terminal window split
@@ -38,13 +42,15 @@ toggleterm.setup {
       link = 'FloatBorder'
     },
   },
+  hide_numbers = false, -- hide the number column in toggleterm buffers
+  autochdir = true, -- when neovim changes it current directory the terminal will change it's own when next it's opened
   shade_filetypes = {},
   shade_terminals = false,
   shading_factor = 1, -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
   start_in_insert = true,
   insert_mappings = true, -- whether or not the open mapping applies in insert mode
   persist_size = true,
-  direction = 'horizontal', -- | 'horizontal' | 'window' | 'float',
+  direction = 'float', -- | 'horizontal' | 'window' | 'float',
   close_on_exit = true, -- close the terminal window when the process exits
   shell = vim.o.shell, -- change the default shell
   -- This field is only relevant if direction is set to 'float'
@@ -53,20 +59,23 @@ toggleterm.setup {
     -- see :h nvim_win_open for details on borders however
     -- the 'curved' border is a custom border type
     -- not natively supported but implemented in this plugin.
-    border = 'curved', -- single/double/shadow/curved
-    width = math.floor(0.7 * vim.fn.winwidth(0)),
-    height = math.floor(0.8 * vim.fn.winheight(0)),
-    winblend = 4,
+    border = 'single', -- single/double/shadow/curved
+    width = math.floor(0.9 * vim.fn.winwidth(0)),
+    height = math.floor(0.85 * vim.fn.winheight(0)),
+    winblend = 3,
   },
   winbar = {
     enabled = true,
+    name_formatter = function(term)
+      return ""
+    end
   },
 }
 
 function _G.set_terminal_keymaps()
   local opts = { buffer = 0 }
   vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
-  vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', 'jj', [[<C-\><C-n>]], opts)
   vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
   vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
   vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
@@ -75,4 +84,11 @@ function _G.set_terminal_keymaps()
 end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
-vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+vim.cmd([[
+  augroup Terminal
+    autocmd!
+    autocmd TermOpen term://* lua set_terminal_keymaps()
+    autocmd TermOpen term://* set nonumber norelativenumber
+    autocmd TermEnter term://*toggleterm#* tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+  augroup END
+]])

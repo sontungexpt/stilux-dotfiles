@@ -31,26 +31,19 @@ map("v", "<C-b>", "<esc>:NvimTreeToggle<cr>", opts)
 map("c", "<C-b>", "<esc>:NvimTreeToggle<cr>", opts)
 
 --Floaterm
-vim.g.floaterm_keymap_toggle = "<C-t>"
-vim.g.floaterm_keymap_new = "<C-n><C-t>"
+-- vim.g.floaterm_keymap_toggle = "<C-t>"
+-- vim.g.floaterm_keymap_new = "<C-n><C-t>"
 
-map("t", "<C-n>", "<C-\\><C-n>:FloatermNext<cr>", opts)
+-- map("t", "<C-n>", "<C-\\><C-n>:FloatermNext<cr>", opts)
 
-map("t", "<C-b>", "<C-\\><C-n>:FloatermPrev<cr>", opts)
+-- map("t", "<C-b>", "<C-\\><C-n>:FloatermPrev<cr>", opts)
 
-map("t", "<C-k>", "<C-\\><C-n>:FloatermKill<cr>:FloatermToggle<cr>", opts)
+-- map("t", "<C-k>", "<C-\\><C-n>:FloatermKill<cr>:FloatermToggle<cr>", opts)
 
 -- Toggle Term
--- vim.cmd([[
---   augroup ToggleTerm
---     autocmd!
---     autocmd TermEnter term://*toggleterm#* tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
---   augroup END
--- ]])
-
--- map("n", "<C-t>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", opts)
--- map("n", "<C-t>", "<ESC><Cmd>exe v:count1 . 'ToggleTerm'<CR>", opts)
--- map("v", "<C-t>", "<ESC><Cmd>exe v:count1 . 'ToggleTerm'<CR>", opts)
+map("n", "<C-t>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", opts)
+map("n", "<C-t>", "<ESC><Cmd>exe v:count1 . 'ToggleTerm'<CR>", opts)
+map("v", "<C-t>", "<ESC><Cmd>exe v:count1 . 'ToggleTerm'<CR>", opts)
 
 --Telescope
 map("n", "<C-p>", ":Telescope find_files<cr>", opts)

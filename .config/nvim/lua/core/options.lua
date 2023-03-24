@@ -6,7 +6,6 @@ local cmd = vim.cmd
 --leader key
 --let mapleader = "\<Space>"
 
-
 cmd("filetype plugin on")
 cmd("filetype plugin indent on")
 
@@ -135,4 +134,3 @@ cmd([[ autocmd ModeChanged * if mode() == 'v' | set relativenumber | else | set 
 --     autocmd InsertEnter * set norelativenumber
 --   augroup end
 -- ]])
-
