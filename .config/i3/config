@@ -297,7 +297,7 @@ for_window [class="Thunar" title="Create Action"] move to position center
 # Blueman
 bindsym --release $mod+m exec blueman-manager
 for_window [class="Blueman-manager"] floating enable
-for_window [class="Blueman-manager"] resize set 1000 500
+for_window [class="Blueman-manager"] resize set 1000 800
 for_window [class="Blueman-manager"] move to position center
 
 # Open code
