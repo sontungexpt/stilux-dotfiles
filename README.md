@@ -478,3 +478,11 @@ git clone https://github.com/sontungexpt/stilux-dotfiles.git && cd stilux-dotfil
 - Tab line: bufferline
 
 </blockquote></details>
+
+#### Polybar
+<details><blockquote>
+
+- [The full instructions to setup gmail for polybar](https://github.com/crabvk/polybar-gmail)
+- [The full instructions to setup calendar for polybar](https://github.com/nevarman/polybar-calendar)
+
+</blockquote></details>

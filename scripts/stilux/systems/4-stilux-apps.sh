@@ -83,6 +83,48 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	sudo pacman -S openjdk11-src
 	yay -S android-studio
 
+	# Setup polybar-calendar
+	echo "Setup polybar-calendar..."
+	sudo pacman -S --needed python-wheel
+	sudo pacman -S --needed base-devel openssl zlib git gobject-introspection
+	sudo pacman -S --needed python-gobject gtk4
+	sudo pacman -S --needed python cairo pkgconf gobject-introspection gtk4
+	if ! [ -x "$(command -v pip3)" ]; then
+		sudo pacman -S python-pip
+	fi
+	if [ -x "$(command -v pip3)" ]; then
+		pip3 install pycairo
+		pip3 install PyGObject
+	fi
+	if [ -f "$HOME/.config/polybar/scripts/polybar-calendar/calendar.sh" ]; then
+		chmod +x "$HOME/.config/polybar/scripts/polybar-calendar/calendar.sh"
+	else
+		echo "ERROR: File $HOME/.config/polybar/scripts/polybar-calendar/calendar.sh not found"
+	fi
+
+	# Install dependencies for polybar gmail
+	echo "Installing dependencies for polybar gmail..."
+	if ! [ -x "$(command -v pip)" ]; then
+		pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+		if [ -f "$HOME/.config/polybar/gmail/auth.py" ]; then
+			chmod +x "$HOME/.config/polybar/gmail/auth.py"
+		else
+			echo "ERROR: File $HOME/.config/polybar/gmail/auth.py not found"
+		fi
+		if [ -f "$HOME/.config/polybar/gmail/launch.py" ]; then
+			chmod +x "$HOME/.config/polybar/gmail/launch.py"
+		else
+			echo "ERROR: File $HOME/.config/polybar/gmail/launch.py not found"
+		fi
+		if [ -f "$HOME/.config/polybar/gmail/list_labels.py" ]; then
+			chmod +x "$HOME/.config/polybar/gmail/list_labels.py"
+		else
+			echo "ERROR: File $HOME/.config/polybar/gmail/list_labels.py not found"
+		fi
+	else
+		echo "ERROR while installing dependencies for polybar gmail"
+	fi
+
 else
 	echo "Skip installing stilux apps"
 fi
