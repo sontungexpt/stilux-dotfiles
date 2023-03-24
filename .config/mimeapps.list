@@ -120,3 +120,4 @@ application/vnd.ms-publisher=code.desktop;
 application/zip=figma-linux.desktop;
 application/x-trash=nvim.desktop;
 text/html=userapp-kitty nvim-4LOI11.desktop;
+application/json=userapp-kitty nvim-4LOI11.desktop;

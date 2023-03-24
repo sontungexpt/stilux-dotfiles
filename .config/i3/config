@@ -248,8 +248,6 @@ exec_always --no-startup-id dunst
 # for_window [class="Gimp"] move to workspace number 7
 
 
-for_window [class="Pycalendar.py"] floating enable move to position 1399px 38px
-
 # Print Screen
 # Scrot
 bindsym --release $mod+Shift+s exec screenshot select-clipboard
@@ -273,20 +271,34 @@ bindsym $mod+x exec betterlockscreen -l dim
 bindsym $mod+b exec brave
 
 # Keybinding for light screen
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 1 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 1 # decrease screen brightness
+# Increase screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 1
+# Decrease screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 1
 
 # Wifi hotspot
 bindsym --release $mod+n exec wihotspot
 for_window [class="Wihotspot-gui"] floating enable
+for_window [class="Wihotspot-gui"] resize set 1000 500
+for_window [class="Wihotspot-gui"] move to position center
 
 # Thunar
 bindsym --release $mod+t exec thunar
+for_window [class="Thunar"] floating enable
+for_window [class="Thunar"] resize set 1600 950
+for_window [class="Thunar"] move to position center
+for_window [class="Thunar" title="Custom Actions"] floating enable
+for_window [class="Thunar" title="Custom Actions"] resize set 700 600
+for_window [class="Thunar" title="Custom Actions"] move to position center
+for_window [class="Thunar" title="Create Action"] floating enable
+for_window [class="Thunar" title="Create Action"] resize set 700 600
+for_window [class="Thunar" title="Create Action"] move to position center
 
 # Blueman
 bindsym --release $mod+m exec blueman-manager
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Blueman-manager"] resize set 1000 500
+for_window [class="Blueman-manager"] move to position center
 
 # Open code
 bindsym --release $mod+c exec code
@@ -307,14 +319,37 @@ for_window [title="Picture-in-picture"] floating enable
 
 # Mpv
 for_window [class="mpv"] floating enable
-for_window [class="mpv"] resize set 960 540
-for_window [class="mpv"] border pixel 0
+# for_window [class="mpv"] resize set 1200 200
+for_window [class="mpv"] move to position center
 
 # Pavucontrol
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Pavucontrol"] resize set 1200 800
+for_window [class="Pavucontrol"] move to position center
 
 # Arandr
 for_window [class="Arandr"] floating enable
 for_window [class="Arandr"] resize set 1000 600
+for_window [class="Arandr"] move to position center
 
+# Firefox
+for_window [class="firefox" title="Firefox — Sharing Indicator"] floating enable
+for_window [class="firefox" title="Picture-in-Picture"] floating enable
+for_window [class="firefox" title="Pushbullet – Mozilla Firefox"] floating enable
+for_window [class="firefox" title="About Mozilla Firefox"] floating enable
+
+# Gimp
+for_window [class="Gimp-2.10"] floating disable
+for_window [class="Gimp-2.10" title="New Image"] floating enable
+for_window [class="Gimp-2.10" title="Layer"] floating enable
+for_window [class="Gimp-2.10" title="Tool"] floating enable
+for_window [class="Gimp-2.10" title="Option"] floating enable
+for_window [class="Gimp-2.10" title="Change"] floating enable
+
+# Lxappearance
+for_window [class="Lxappearance"] floating enable
+for_window [class="Lxappearance"] resize set 1400 800
+for_window [class="Lxappearance"] move to position center
+
+# Pycalendar
+for_window [class="Pycalendar.py"] floating enable move to position 1399px 38px
