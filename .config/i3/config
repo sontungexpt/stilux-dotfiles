@@ -204,7 +204,10 @@ gaps inner 10
 gaps outer 2
 #smart_gaps on
 
+############################################################
 # User config
+############################################################
+
 # Ibus
 exec_always ibus restart
 
@@ -215,7 +218,7 @@ exec_always setxkbmap us
 exec_always xrandr --output eDP1 --mode 1920x1080
 
 # Display Wallpaper
-set $wallpaper ~/.config/background/wallpaper.jpg
+set $wallpaper ~/.config/wallpaper/wallpaper.jpg
 exec_always feh --bg-fill $wallpaper
 
 # Diasable title-bar

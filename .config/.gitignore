@@ -15,10 +15,10 @@ bspwm/
 teams/
 Code/
 coc/
-gtk-3.0/
-gtk-4.0/
-gtk-2.0/
-mpv/
+# gtk-3.0/
+# gtk-4.0/
+# gtk-2.0/
+# mpv/
 Microsoft/
 Microsoft Teams - Preview/
 google-chrome/

@@ -118,7 +118,6 @@ nvim_tree.setup {
     --highlight_opened_files = "none",
     highlight_opened_files = "none",
     highlight_modified = "none",
-    --root_folder_label = ":~:s?$?/..?",
     root_folder_label = ":~:s?$?/..?",
     indent_width = 2,
     indent_markers = {
@@ -215,7 +214,6 @@ nvim_tree.setup {
       "*.pdf",
       "*.ppt",
       "*.exe",
-      "Android",
       "Data/$RECYCLE.BIN",
       "Data/Program",
       "Data/System Volume Information",
