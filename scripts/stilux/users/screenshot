@@ -8,15 +8,19 @@
 # window: capture the focused window and save it to the directory
 
 help() {
-	echo "This script is written by Tran Vo Son Tung"
-	echo "Dependencies: scrot, xclip, dunstify"
-	echo "Usage: scrot [select-save|select-clipboard|window]"
-	echo "select-save: select an area and save it to the directory"
-	echo "select-clipboard: select an area and copy it to the select-clipboard"
-	echo "window: capture the focused window and save it to the directory"
-	echo "the default option of scrot can use to capture the screen"
+	echo " This script is written by Tran Vo Son Tung"
+	echo " Dependencies: scrot, xclip, dunstify"
+	printf "\nUSAGE: screenshot [OPTIONS] [FUNCTION]\n"
+	printf "\nOPTIONS:\n"
+	echo "  -h, --help           show help"
+	printf "\nFUNCTION:\n"
+	echo "  select-save          select an area and save it to the directory"
+	echo "  select-clipboard     select an area and copy it to the select-clipboard"
+	echo "  window               capture the focused window and save it to the directory"
+	echo "  NOTE: The default function of scrot can use to capture the screen"
 }
 
+# Show help if no arguments
 if [ "$#" -eq 0 ]; then
 	help
 	exit 1
@@ -25,17 +29,17 @@ fi
 # Check if install scrot, xclip, dunstify
 if [ ! -x "$(command -v scrot)" ]; then
 	echo "Please install scrot to use this scripts"
-	exit 1
+	exit 0
 fi
 
 if [ ! -x "$(command -v xclip)" ]; then
 	echo "please install xclip to use this scripts"
-	exit 1
+	exit 0
 fi
 
 if [ ! -x "$(command -v dunstify)" ]; then
 	echo "please install dunst to use this scripts"
-	exit 1
+	exit 0
 fi
 
 # Main screenshot script
