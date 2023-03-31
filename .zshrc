@@ -52,8 +52,10 @@ export VISUAL=nvim
 
 # Flutter
 export PATH="$PATH:/home/stilux/.developments/flutter/bin"
-export PATH="$PATH:/usr/bin/java"
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+export PATH=$PATH:$JAVA_HOME/bin
 
+# Emulator
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
