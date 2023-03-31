@@ -36,10 +36,10 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	echo "Do you want to install edge or chrome? (e/c)"
 	read -r answer
 	if [ "$answer" != "${answer#[Ee]}" ]; then
-		echo "Installing edge..."
+		echo "Installing microsoft edge..."
 		yay -S microsoft-edge-stable-bin
 	else
-		echo "Installing chrome..."
+		echo "Installing google chrome..."
 		yay -S google-chrome
 	fi
 
@@ -87,6 +87,10 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	cd "$HOME" || exit
 	sudo pacman -S clang cmake ninja pkgconf gtk3 xz
 	flutter doctor --android-licenses
+
+	# Kvm
+	echo "Installing winapps through kvm..."
+	sudo pacman -S qemu virt-manager virt-viewer freerdp dnsmasq vde2 bridge-utils openbsd-netcat libguestfs ebtables iptables
 
 	# Install android studio
 	echo "Installing android studio, jdk11..."
