@@ -91,6 +91,16 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	# Kvm
 	echo "Installing winapps through kvm..."
 	sudo pacman -S qemu virt-manager virt-viewer freerdp dnsmasq vde2 bridge-utils openbsd-netcat libguestfs ebtables iptables
+	echo '''
+unix_sock_rw_perms = "0770"
+unix_sock_group = "libvirt"
+''' | sudo tee -a /etc/libvirt/libvirtd.conf &>/dev/null
+
+	mkdir -p ~/.config/libvirt/
+	echo 'uri_default = "qemu:///system"' >>~/.config/libvirt/libvirt.conf
+
+	newgrp libvirt
+	sudo usermod -aG libvirt "$(whoami)"
 
 	# Install android studio
 	echo "Installing android studio, jdk11..."
