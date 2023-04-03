@@ -24,6 +24,16 @@ local opts_without_silent = { noremap = true, silent = false }
 local opts_expr = { expr = true, replace_keycodes = true, noremap = true, silent = true }
 local map = vim.api.nvim_set_keymap
 
+-- local function map(mode, lhs, rhs, opts)
+--   local keys = require("lazy.core.handler").handlers.keys
+--
+--   if not keys.active[keys.parse({ lhs, mode = mode }).id] then
+--     opts = opts or {}
+--     opts.silent = opts.silent ~= false
+--     vim.keymap.set(mode, lhs, rhs, opts)
+--   end
+-- end
+
 --Back to normal mode
 map("i", "jj", "<esc>", opts_without_noremap)
 map("c", "jj", "<esc>", opts_without_noremap)
@@ -40,7 +50,6 @@ map("n", "<C-s>", ":w<cr>", opts_without_noremap)
 map("i", "<C-s>", "<esc>:w<cr>", opts_without_noremap)
 map("v", "<C-s>", "<esc>:w<cr>", opts_without_noremap)
 map("c", "<C-s>", "<esc>:w<cr>", opts_without_noremap)
-
 --ctrl z to undo and move to normal mode
 map("n", "<C-z>", "u", opts)
 map("i", "<C-z>", "<C-O>u", opts)
@@ -106,7 +115,7 @@ map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
 
 --Refresh nvim config
-map("n", "<leader><cr>", ":luafile $MYVIMRC<CR>:HighlightColorsOn<cr>:lua print('Refresh the neovim configuration')<cr>",
+map("n", " ", ":luafile $MYVIMRC<CR>:HighlightColorsOn<cr>:lua print('Refresh the neovim configuration')<cr>",
   opts)
 
 

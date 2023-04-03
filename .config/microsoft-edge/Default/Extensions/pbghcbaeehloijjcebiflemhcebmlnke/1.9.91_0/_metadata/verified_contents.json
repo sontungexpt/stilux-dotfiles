@@ -1,0 +1,24 @@
+[
+  {
+    "description": "treehash per file",
+    "signed_content": {
+      "payload": "eyJpdGVtX2lkIjoicGJnaGNiYWVlaGxvaWpqY2ViaWZsZW1oY2VibWxua2UiLCJpdGVtX3ZlcnNpb24iOiIxLjkuOTEiLCJwcm90b2NvbF92ZXJzaW9uIjoxLCJjb250ZW50X2hhc2hlcyI6W3siZm9ybWF0IjoidHJlZWhhc2giLCJkaWdlc3QiOiJzaGEyNTYiLCJibG9ja19zaXplIjo0MDk2LCJoYXNoX2Jsb2NrX3NpemUiOjQwOTYsImZpbGVzIjpbeyJwYXRoIjoiYmcuanMiLCJyb290X2hhc2giOiJsbzlsQXR6Z0FPckFpbGVPa3VqX21MNkNIXzZRR3VhTllMZ1ZWTktPM3R3In0seyJwYXRoIjoiY3QuanMiLCJyb290X2hhc2giOiJ0TGJERjRmOVg1d0lreE9rMkZjcV9IU0oxOVZUSHFCRGh3Tng2aS1fNFpBIn0seyJwYXRoIjoiaW1nL2Nsb3NlMTYucG5nIiwicm9vdF9oYXNoIjoiRlRSQV93eS1hSUNjVVViano1VFpyc210elBGVnY1MjNqRGVLYjB3SmNkYyJ9LHsicGF0aCI6ImltZy9jbG9zZTE2XzJ4LnBuZyIsInJvb3RfaGFzaCI6IkZUUkFfd3ktYUlDY1VVYmp6NVRacnNtdHpQRlZ2NTIzakRlS2Iwd0pjZGMifSx7InBhdGgiOiJpbWcvaWNvbjEyOC5wbmciLCJyb290X2hhc2giOiJYbmZLRUhHN2ZaUm5qcEwyc09RaEhqenZTWHU3MTI2bFdFM19nMGtLUFlBIn0seyJwYXRoIjoiaW1nL2ljb24xNi5wbmciLCJyb290X2hhc2giOiJEaEx0eWtmT25SSWR2S2pEamszYmk3S3F5UlYyMEhnM0F3V1BNd3BhSmNRIn0seyJwYXRoIjoiaW1nL2ljb24xNl8yeC5wbmciLCJyb290X2hhc2giOiJEaEx0eWtmT25SSWR2S2pEamszYmk3S3F5UlYyMEhnM0F3V1BNd3BhSmNRIn0seyJwYXRoIjoiaW1nL2ljb240OC5wbmciLCJyb290X2hhc2giOiJmZmVWM0VrVGxzeERXMzFjaVpSWkFyZWdfWEg4Ukc3OGVBRXlWYXV2aGJ3In0seyJwYXRoIjoibWFuaWZlc3QuanNvbiIsInJvb3RfaGFzaCI6ImxfZy1BcWpiWGwzaldiTC1EcjFjQmc3Y1F6UFBmb1dGZUZZX3AyOGc4RHcifV19XX0",
+      "signatures": [
+        {
+          "header": {
+            "kid": "publisher"
+          },
+          "protected": "eyJhbGciOiJSUzI1NiJ9",
+          "signature": "IvvXxR3Cec39oMkNdzujyppUkfiNpYWvTO6LZr6ANLTeZUz5sJvJcL8DHZQ8N9ReRy2dZH7z2Ca7O7dn5zKO4ilKM_l_kzWIRseH1LGMazMI6QQRysIm0teNGKlQlV5wt3NgxoJ5NvC2nRUKAvXrhSOhAjDY4EjNd9bzuTh2qaY_yiLakalsG8hPFaNbMaZGHMw-5iu9YDE_z_OwP5K-MmjOVspG8mWiXQELG9WkgEo9AQWQdgzzL343-VLYdyLSWoI_oGTaGMZhg4WSv6WPmaAjIjgFYE7WP-3yM73Pb8lovFyY48-_2dln-SsPgJ_GQVHCJDz0P2HV3hxo7cI6Lg"
+        },
+        {
+          "header": {
+            "kid": "webstore"
+          },
+          "protected": "eyJhbGciOiJSUzI1NiJ9",
+          "signature": "TZvz-rnLvB_5W-XW11ZsCuEaZJSJAxK3oienqgM1GEcG_y0HSYCNufhZfKbgxLgDx062WwQLe2AHi1Jhc0-iYH_TdvvyLqKakW5bEmbE5YiCjE1jBAp_EQK8DZaNdCnUEgBdIOkhLJL4xGDXFtufnYTzqmUfrFR4Sm5oMdIF93COBZYDVD2FdQn5JnDNa3c5AdHtf8i3gJRKCpYE3-xSLvpHqQW_4X91OGv04YxcfpigpZ3X-1kH1AWOI7UZm0q-5Qi72VAGu7AYxlYdEQnUYgIG_X-7Dg1Fqcp1b8fsZYmLtcwvvc6hJcAlnYeTI-DVxD1i2-1vtnLUwOaHfneWKg"
+        }
+      ]
+    }
+  }
+]

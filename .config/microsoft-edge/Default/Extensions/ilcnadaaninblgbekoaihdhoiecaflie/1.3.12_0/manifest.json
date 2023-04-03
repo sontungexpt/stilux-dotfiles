@@ -1,0 +1,33 @@
+{
+   "action": {
+      "default_icon": "icon.png",
+      "default_title": "Better Ruler"
+   },
+   "author": "paul",
+   "background": {
+      "service_worker": "./background.js"
+   },
+   "commands": {
+      "_execute_action": {
+         "description": "Toggle Ruler",
+         "suggested_key": {
+            "default": "Alt+Z",
+            "linux": "Alt+Z",
+            "mac": "Alt+Z",
+            "windows": "Alt+Z"
+         }
+      }
+   },
+   "default_locale": "zh_CN",
+   "description": "__MSG_pluginDesc__",
+   "icons": {
+      "128": "icon.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiPbG0iXlGKFSSR/Xv9Zasmxfe7tmFUqUhD+Hlk5qlEeV2R+9Z0Cz1FAnMB0vFyqqA6XzTPk++73TxZLhFvpJ/CV4rpdzFA9E5yjeG7f/BT9r1M+ogtX0Uy96JbXblrN7H4MSq53VGYMfR57puSlDrMhDckTHxQQrqgRuwujwgDeRuCnyi0YRD2VfSW/jmYmtCm591ZBsrO/8Z2hM9WWTqVeoluYI264XIzYdlUp06mUuNcDBGnbto3Uqgb8ACMwi0aikwa6AbipnA2bgAlUCk8D17nOC1oM1cAdgpRhxvuTc4DlnpPTK01AGtSplm6NptmvAKM5C0ggKAHoC785bNQIDAQAB",
+   "manifest_version": 3,
+   "name": "Better Ruler",
+   "permissions": [ "activeTab", "storage", "scripting" ],
+   "short_name": "Ruler",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.3.12"
+}

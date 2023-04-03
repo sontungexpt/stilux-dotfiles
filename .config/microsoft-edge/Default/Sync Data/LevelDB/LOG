@@ -1,0 +1,24 @@
+2023/04/02-19:42:47.569 405b2 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/Sync Data/LevelDB/MANIFEST-000001
+2023/04/02-19:42:47.569 405b2 Recovering log #10
+2023/04/02-19:42:47.569 405b2 Reusing old log /home/stilux/.config/microsoft-edge/Default/Sync Data/LevelDB/000010.log 
+2023/04/02-19:43:23.689 405b0 Level-0 table #14: started
+2023/04/02-19:43:23.693 405b0 Level-0 table #14: 149098 bytes OK
+2023/04/02-19:43:23.695 405b0 Delete type=0 #10
+2023/04/02-19:45:48.302 405b0 Level-0 table #16: started
+2023/04/02-19:45:48.317 405b0 Level-0 table #16: 128542 bytes OK
+2023/04/02-19:45:48.320 405b0 Delete type=0 #13
+2023/04/02-19:47:15.741 405af Level-0 table #18: started
+2023/04/02-19:47:15.754 405af Level-0 table #18: 166491 bytes OK
+2023/04/02-19:47:15.757 405af Delete type=0 #15
+2023/04/02-19:47:15.758 405af Compacting 4@0 + 1@1 files
+2023/04/02-19:47:15.761 405af Generated table #19@0: 112 keys, 16865 bytes
+2023/04/02-19:47:15.761 405af Compacted 4@0 + 1@1 files => 16865 bytes
+2023/04/02-19:47:15.764 405af compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/04/02-19:47:15.764 405af Delete type=2 #8
+2023/04/02-19:47:15.764 405af Delete type=2 #11
+2023/04/02-19:47:15.764 405af Delete type=2 #18
+2023/04/02-19:47:15.764 405af Delete type=2 #16
+2023/04/02-19:47:15.764 405af Delete type=2 #14
+2023/04/02-19:48:25.572 405b0 Level-0 table #21: started
+2023/04/02-19:48:25.575 405b0 Level-0 table #21: 170980 bytes OK
+2023/04/02-19:48:25.578 405b0 Delete type=0 #17

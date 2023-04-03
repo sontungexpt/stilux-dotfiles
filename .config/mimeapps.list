@@ -106,6 +106,7 @@ application/zip=userapp-kitty-9WSX11.desktop
 application/x-trash=nvim.desktop
 application/x-shellscript=userapp-kitty nvim-4LOI11.desktop
 application/x-zerosize=userapp-kitty nvim-4LOI11.desktop
+application/x-executable=userapp-kitty nvim-4LOI11.desktop
 
 [Added Associations]
 image/jpeg=userapp-feh --auto-zoom --scale-down-P08C01.desktop;shotwell-viewer.desktop;feh.desktop;
@@ -123,3 +124,4 @@ application/x-trash=nvim.desktop;
 text/html=userapp-kitty nvim-4LOI11.desktop;
 application/json=userapp-kitty nvim-4LOI11.desktop;
 application/x-zerosize=userapp-kitty nvim-4LOI11.desktop;
+application/x-executable=nvim.desktop;userapp-kitty nvim-4LOI11.desktop;

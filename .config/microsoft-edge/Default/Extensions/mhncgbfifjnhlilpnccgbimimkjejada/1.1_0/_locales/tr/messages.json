@@ -1,0 +1,326 @@
+{
+   "addonPageLabel": {
+      "message": "Eklenti sayfası"
+   },
+   "addonUrl": {
+      "message": "https://addons.mozilla.org/en-US/firefox/addon/simple-translate/?src=optionpage"
+   },
+   "amazonTitleLabel": {
+      "message": "amazon.co.jp eGift Cards"
+   },
+   "amazonUrl": {
+      "message": "https://www.amazon.co.jp/dp/B004N3APGO?language=en_US"
+   },
+   "backersLabel": {
+      "message": "Destekleyenler"
+   },
+   "bgColorLabel": {
+      "message": "Arka plan rengi"
+   },
+   "bottomLabel": {
+      "message": "Alt"
+   },
+   "bottomLeftLabel": {
+      "message": "Sol alt"
+   },
+   "bottomRightLabel": {
+      "message": "Sağ alt"
+   },
+   "bottomSelectedTextLabel": {
+      "message": "Seçili metnin altı"
+   },
+   "buttonPositionLabel": {
+      "message": "Görüntü konumu"
+   },
+   "buttonSizeLabel": {
+      "message": "Boyut"
+   },
+   "buttonStyleCaptionLabel": {
+      "message": "Web sayfasında görüntülenen çeviri düğmesinin biçimini belirleyin."
+   },
+   "buttonStyleLabel": {
+      "message": "Çeviri butonu"
+   },
+   "candidateFontColorLabel": {
+      "message": "Çeviri adaylarının yazı tipi rengi"
+   },
+   "clear": {
+      "message": "Temizle"
+   },
+   "clickedPointLabel": {
+      "message": "Tıklanan nokta"
+   },
+   "copiedLabel": {
+      "message": "Kopyalandı."
+   },
+   "copyLabel": {
+      "message": "Kopyala"
+   },
+   "disableOnThisPage": {
+      "message": "Çeviriyi bu sayfada devre dışı bırakın"
+   },
+   "disableUrlListCaptionLabel": {
+      "message": "Sayfa URL’si listeyle eşleşirse, web sayfasındaki çeviri devre dışı bırakılır. Liste özel karakterlere \"*\"  izin verir."
+   },
+   "disableUrlListLabel": {
+      "message": "Çeviriyi devre dışı bırakmak için URL listesi"
+   },
+   "displayDirectionLabel": {
+      "message": "Görüntü konumu - Yön"
+   },
+   "donateLabel": {
+      "message": "Bağış"
+   },
+   "donateWithpaypal__________Label": {
+      "message": "paypal__________ ile bağış yapın"
+   },
+   "donationCaptionLabel": {
+      "message": "Translate Options'i kullandığınız için teşekkür ederiz.\u003Cbr>Eklentileri geliştirmeye devam ettikçe, destekleriniz bizim için büyük bir teşvik olacaktır.\u003Cbr> Simpe Translate'i beğendiyseniz, bağış yaparak bizi mutlu edebilirsiniz."
+   },
+   "donationLabel": {
+      "message": "Lütfen bağış yapın"
+   },
+   "dontshowbuttonCaptionlabel": {
+      "message": "Çeviri butonunu veya çeviri panelini görüntülemeyin."
+   },
+   "dontshowbuttonlabel": {
+      "message": "Butonu veya paneli görüntüleme"
+   },
+   "enableOnThisPage": {
+      "message": "Çeviriyi bu sayfada etkinleştirin"
+   },
+   "extDescription": {
+      "message": "Seçilen metni web sayfasında hızlıca çevirin. Araç çubuğu penceresinde giriş metnini çevirebilirsiniz."
+   },
+   "extName": {
+      "message": "Translate Options"
+   },
+   "extensionPageLabel": {
+      "message": "Uzantı sayfası"
+   },
+   "fontSizeLabel": {
+      "message": "Yazı tipi boyutu"
+   },
+   "generalLabel": {
+      "message": "Genel"
+   },
+   "heightLabel": {
+      "message": "Yükseklik"
+   },
+   "ifAutoTranslateCaptionLabel": {
+      "message": "Butonu görüntülemeden çeviri panelini doğrudan görüntüleyin."
+   },
+   "ifAutoTranslateLabel": {
+      "message": "Çeviri panelini görüntüle"
+   },
+   "ifChangeSecondLangCaptionLabel": {
+      "message": "Giriş metninin dilini algılar, varsayılan hedef dili ile aynıysa ikinci dile çevirir."
+   },
+   "ifChangeSecondLangLabel": {
+      "message": "İkinci dile otomatik geç"
+   },
+   "ifChangeSecondLangOnPageCaptionLabel": {
+      "message": "Seçili metnin dilini algılar ve varsayılan hedef dille aynıysa, ikinci dile çevirir."
+   },
+   "ifCheckLangCaptionLabel": {
+      "message": "Seçilen metnin dilini algılar ve hedef dil ile aynıysa, buton görüntülenmez."
+   },
+   "ifCheckLangLabel": {
+      "message": "Çeviri gerekli değilse butonu görüntülemeyin"
+   },
+   "ifShowButtonCaptionLabel": {
+      "message": "Tıklandığında paneli açmak için çeviri butonunu görüntüleyin."
+   },
+   "ifShowButtonLabel": {
+      "message": "Çeviri butonunu göster"
+   },
+   "ifShowCandidateCaptionLabel": {
+      "message": "Tek bir kelime çevrildiğinde çoklu çeviri önerilerini göster."
+   },
+   "ifShowCandidateLabel": {
+      "message": "Çeviri önerilerini göster"
+   },
+   "ifShowMenuCaptionLabel": {
+      "message": "Web sayfasına veya sekmeye sağ tıkladığınızda görüntülenen içerik menüsüne öğe ekleyin."
+   },
+   "ifShowMenuLabel": {
+      "message": "İçerik menüsünü görüntüle"
+   },
+   "includeMacModifierKeysMessage": {
+      "message": "Command tuşunu, Ctrl veya Alt'ı dahil edin"
+   },
+   "includeModifierKeysMessage": {
+      "message": "Ctrl veya Alt’ı dahil et"
+   },
+   "informationLabel": {
+      "message": "Bilgi"
+   },
+   "initialTextArea": {
+      "message": "Metin girin"
+   },
+   "invalidLetterMessage": {
+      "message": "Harf kullanılamaz"
+   },
+   "invalidShortcutMessage": {
+      "message": "Kısayol kullanılamaz"
+   },
+   "isDebugModeCaptionLabel": {
+      "message": "Hata ayıklama modu etkin olduğunda, sistem günlüğü hata ayıklayıcısına verilir."
+   },
+   "isDebugModeLabel": {
+      "message": "Hata ayıklama modunu etkinleştir"
+   },
+   "isDisabledInTextFieldsCaptionLabel": {
+      "message": "Bir metin alanında metin seçerken çeviri butonunu veya paneli görüntülemeyin."
+   },
+   "isDisabledInTextFieldsLabel": {
+      "message": "Metin alanlarındaki çeviriyi devre dışı bırakın"
+   },
+   "isShowOptionsPageWhenUpdatedCaptionLabel": {
+      "message": "Translate Options güncellendiğinde seçenekler sayfasını görüntüleyin. Güncelleme içeriğini hızlı bir şekilde öğrenebilirsiniz."
+   },
+   "isShowOptionsPageWhenUpdatedLabel": {
+      "message": "Güncelleme yaparken seçenekler sayfasını görüntüle"
+   },
+   "keyboardShortcutsLabel": {
+      "message": "Klavye kısayolları"
+   },
+   "langList": {
+      "message": "af:Afrikaanca, sq:Arnavutça, am:Amharca, ar:Arapça, hy:Ermenice, az:Azerice, eu:Baskça, be:Belarusça, bn:Bengalce, bs:Boşnakça, bg:Bulgarca, ca:Katalanca, ceb:Sabuanca, ny:Çevaca, zh-CN:Çince (Çin Halk Cumhuriyeti), zh-TW:Çince (Tayvan), co:Korsikaca, hr:Hırvatça, cs:Çekçe, da:Danimarkaca, nl:Flemenkçe, en:İngilizce, eo:Esperanto, et:Estonca, fi:Fince, fr:Fransızca, fy:Frizce, gl:Galiçyaca, ka:Gürcüce, de:Almanca, el:Yunanca, gu:Guceratça, ht:Haitice, ha:Hausaca, haw:Hawai Dili, he:İbranice, hi:Hintçe, hu:Macarca, is:İzlandaca, ig:İgbo Dili, id:Endonezyaca, ga:İrlandaca, it:İtalyanca, ja:Japonca, jv:Cavaca, kn:Kannada Dili, kk:Kazakça, km:Kmerce, ky:Kırgızca, ko:Korece, ku:Kürtçe, lo:Laoca, la:Latince, lv:Letonca, lt:Litvanca, lb:Lüksemburgca, mk:Makedonca, mg:Malgaşça, ms:Malayca, ml:Malayalamca, mt:Maltaca, mi:Maorice, mr:Marathi, mn:Moğolca, hmn:Monk Dili, my:Birmanca, ne:Nepalce, no:Norveççe, fa:Farsça, pl:Polonyaca, pt:Portekizce, pa:Pencapça, ps:Peştuca, ro:Rumence, ru:Rusça, sm:Samoaca, gd:İskoçça, sr:Sırpça, sn:Shona Dili, sd:Sindhi, si:Seylanca, sk:Slovakça, sl:Slovence, so:Somalice, sx:Sotho Dili, es:İspanyolca, su:Sundaca, sw:Svahili, sv:İsveççe, tl:Tagalogca, tg:Tacikçe, ta:Tamilce, te:Teluguca, th:Tayca, tr:Türkçe, uk:Ukraynaca, ur:Urduca, uz:Özbekçe, vi:Vietnamca, cy:Galce, xh:Xosa Dili, yi:Yidiş, yo:Yoruba Dili, zu:Zuluca"
+   },
+   "leftLabel": {
+      "message": "Sol"
+   },
+   "licenseLabel": {
+      "message": "Lisans"
+   },
+   "listenLabel": {
+      "message": "Listen"
+   },
+   "menuLabel": {
+      "message": "İçerik menüsü"
+   },
+   "networkError": {
+      "message": "Hata: Ağ bağlantısı durumunu kontrol edin."
+   },
+   "openInGoogleLabel": {
+      "message": "Google Translate'de aç"
+   },
+   "openPopupDescription": {
+      "message": "Araç çubuğu penceresini aç"
+   },
+   "otherLabel": {
+      "message": "Diğer"
+   },
+   "panelStyleCaptionLabel": {
+      "message": "Web sayfasında görüntülenen çeviri panelinin biçimini belirleyin."
+   },
+   "panelStyleLabel": {
+      "message": "Çeviri paneli"
+   },
+   "positionOffsetLabel": {
+      "message": "Görüntü konumu - Kaydırma"
+   },
+   "referencePointLabel": {
+      "message": "Görüntü konumu - Referans noktası"
+   },
+   "reset": {
+      "message": "Sıfırla"
+   },
+   "resetSettingsButtonLabel": {
+      "message": "Sıfırla"
+   },
+   "resetSettingsCaptionLabel": {
+      "message": "Tüm ayarları varsayılana sıfırla."
+   },
+   "resetSettingsLabel": {
+      "message": "Ayarları sıfırla"
+   },
+   "resultFontColorLabel": {
+      "message": "Çeviri sonucunun yazı tipi rengi"
+   },
+   "rightLabel": {
+      "message": "Sağ"
+   },
+   "secondTargetLangCaptionLabel": {
+      "message": "İkinci hedef dilini seçin."
+   },
+   "secondTargetLangLabel": {
+      "message": "İkinci dil"
+   },
+   "setKeyboardShortCutsMessage": {
+      "message": "Klavye kısayollarını ayarlayın."
+   },
+   "settingsLabel": {
+      "message": "Ayarlar"
+   },
+   "shortcutsLabel": {
+      "message": "Kısayollar"
+   },
+   "showLink": {
+      "message": "Bu sayfayı çevir"
+   },
+   "styleLabel": {
+      "message": "Biçim"
+   },
+   "targetLangCaptionLabel": {
+      "message": "Varsayılan hedef dilini seçin."
+   },
+   "targetLangLabel": {
+      "message": "Hedef dil"
+   },
+   "toolbarLabel": {
+      "message": "Araç çubuğu penceresi"
+   },
+   "topLabel": {
+      "message": "Üst"
+   },
+   "topLeftLabel": {
+      "message": "Sol üst"
+   },
+   "topRightLabel": {
+      "message": "Sağ üst"
+   },
+   "topSelectedTextLabel": {
+      "message": "Seçili metnin üstü"
+   },
+   "translateLinkMenu": {
+      "message": "Seçilen linki çevir"
+   },
+   "translatePageMenu": {
+      "message": "Bu sayfayı çevir"
+   },
+   "translateTextMenu": {
+      "message": "Seçilen metni çevir"
+   },
+   "typeLetterMessage": {
+      "message": "Bir harf yazın"
+   },
+   "typeShortcutMessage": {
+      "message": "Bir kısayol yazın"
+   },
+   "unavailableError": {
+      "message": "Hata: Servis kullanım limitine ulaşıldı. Lütfen biraz bekleyin ve tekrar deneyin."
+   },
+   "unknownError": {
+      "message": "Hata: Bilinmeyen hata"
+   },
+   "waitTime2CaptionLabel": {
+      "message": "Kısa sürede birçok kez çevirirseniz, bir süre kullanılamaz hale gelebilir."
+   },
+   "waitTimeCaptionLabel": {
+      "message": "Bir karakterin girişinden çevirinin başlangıcına kadar olan bekleme süresini belirtin. (milisaniye)"
+   },
+   "waitTimeLabel": {
+      "message": "Çevirmek için bekleme süresi"
+   },
+   "webPageLabel": {
+      "message": "İnternet sayfası"
+   },
+   "whenSelectTextLabel": {
+      "message": "Metin seçerken davranış"
+   },
+   "widthLabel": {
+      "message": "Genişlik"
+   }
+}

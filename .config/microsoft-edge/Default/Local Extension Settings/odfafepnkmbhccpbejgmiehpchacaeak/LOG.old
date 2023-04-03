@@ -1,0 +1,18 @@
+2023/04/02-17:32:32.202 1238f Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/Local Extension Settings/odfafepnkmbhccpbejgmiehpchacaeak/MANIFEST-000001
+2023/04/02-17:32:32.202 1238f Recovering log #13
+2023/04/02-17:32:32.213 1238f Reusing old log /home/stilux/.config/microsoft-edge/Default/Local Extension Settings/odfafepnkmbhccpbejgmiehpchacaeak/000013.log 
+2023/04/02-17:34:18.231 1238f Level-0 table #17: started
+2023/04/02-17:34:18.262 1238f Level-0 table #17: 2482993 bytes OK
+2023/04/02-17:34:18.266 1238f Delete type=0 #13
+2023/04/02-17:34:18.267 1238f Compacting 4@0 + 1@1 files
+2023/04/02-17:34:18.290 1238f Generated table #18@0: 12 keys, 2231807 bytes
+2023/04/02-17:34:18.314 1238f Generated table #19@0: 10 keys, 2368506 bytes
+2023/04/02-17:34:18.332 1238f Generated table #20@0: 2 keys, 2191342 bytes
+2023/04/02-17:34:18.347 1238f Generated table #21@0: 15 keys, 1904462 bytes
+2023/04/02-17:34:18.347 1238f Compacted 4@0 + 1@1 files => 8696117 bytes
+2023/04/02-17:34:18.350 1238f compacted to: files[ 0 4 1 0 0 0 0 ]
+2023/04/02-17:34:18.350 1238f Delete type=2 #8
+2023/04/02-17:34:18.350 1238f Delete type=2 #17
+2023/04/02-17:34:18.350 1238f Delete type=2 #10
+2023/04/02-17:34:18.350 1238f Delete type=2 #12
+2023/04/02-17:34:18.350 1238f Delete type=2 #14

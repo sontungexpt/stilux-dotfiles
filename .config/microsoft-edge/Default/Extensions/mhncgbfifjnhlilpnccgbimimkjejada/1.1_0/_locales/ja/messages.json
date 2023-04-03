@@ -1,0 +1,326 @@
+{
+   "addonPageLabel": {
+      "message": "アドオンページ"
+   },
+   "addonUrl": {
+      "message": "https://addons.mozilla.org/ja/firefox/addon/simple-translate/?src=optionpage"
+   },
+   "amazonTitleLabel": {
+      "message": "Amazonギフト券 Eメールタイプ"
+   },
+   "amazonUrl": {
+      "message": "https://www.amazon.co.jp/dp/B004N3APGO?language=ja_JP"
+   },
+   "backersLabel": {
+      "message": "支援者"
+   },
+   "bgColorLabel": {
+      "message": "背景色"
+   },
+   "bottomLabel": {
+      "message": "下"
+   },
+   "bottomLeftLabel": {
+      "message": "左下"
+   },
+   "bottomRightLabel": {
+      "message": "右下"
+   },
+   "bottomSelectedTextLabel": {
+      "message": "選択されたテキストの下"
+   },
+   "buttonPositionLabel": {
+      "message": "表示位置"
+   },
+   "buttonSizeLabel": {
+      "message": "サイズ"
+   },
+   "buttonStyleCaptionLabel": {
+      "message": "webページ上で表示される翻訳ボタンのスタイルを指定します。"
+   },
+   "buttonStyleLabel": {
+      "message": "翻訳ボタン"
+   },
+   "candidateFontColorLabel": {
+      "message": "翻訳候補の文字色"
+   },
+   "clear": {
+      "message": "クリア"
+   },
+   "clickedPointLabel": {
+      "message": "クリックされた点"
+   },
+   "copiedLabel": {
+      "message": "コピーしました。"
+   },
+   "copyLabel": {
+      "message": "コピー"
+   },
+   "disableOnThisPage": {
+      "message": "このページでの翻訳を無効化"
+   },
+   "disableUrlListCaptionLabel": {
+      "message": "ページURLがリストに一致する場合，Webページ上での翻訳を無効にします。リストにはワイルドカード \"*\" を使用できます。"
+   },
+   "disableUrlListLabel": {
+      "message": "翻訳を無効にするURLリスト"
+   },
+   "displayDirectionLabel": {
+      "message": "表示位置 - 方向"
+   },
+   "donateLabel": {
+      "message": "寄付する"
+   },
+   "donateWithpaypal__________Label": {
+      "message": "paypal__________で寄付"
+   },
+   "donationCaptionLabel": {
+      "message": "Translate Optionsをご利用いただきありがとうございます。\u003Cbr>アドオンの開発を続けていく上で，皆様のご支援が大きな励みになります。\u003Cbr>もしあなたがTranslate Optionsを気に入ってくれたなら，ご寄付をご検討いただけると幸いです。"
+   },
+   "donationLabel": {
+      "message": "ご寄付のお願い"
+   },
+   "dontshowbuttonCaptionlabel": {
+      "message": "翻訳ボタンや翻訳パネルを表示しません。"
+   },
+   "dontshowbuttonlabel": {
+      "message": "ボタンやパネルを表示しない"
+   },
+   "enableOnThisPage": {
+      "message": "このページでの翻訳を有効化"
+   },
+   "extDescription": {
+      "message": "Webページ上の選択されたテキストを瞬時に翻訳します。ツールバーポップアップではテキストを入力して翻訳できます。"
+   },
+   "extName": {
+      "message": "Translate Options"
+   },
+   "extensionPageLabel": {
+      "message": "拡張機能ページ"
+   },
+   "fontSizeLabel": {
+      "message": "フォントサイズ"
+   },
+   "generalLabel": {
+      "message": "全般"
+   },
+   "heightLabel": {
+      "message": "高さ"
+   },
+   "ifAutoTranslateCaptionLabel": {
+      "message": "ボタンを表示せずに直接翻訳パネルを表示します。"
+   },
+   "ifAutoTranslateLabel": {
+      "message": "翻訳パネルを表示する"
+   },
+   "ifChangeSecondLangCaptionLabel": {
+      "message": "入力されたテキストの言語を検出し，デフォルトの翻訳先言語と同じ場合には第二言語に翻訳します。"
+   },
+   "ifChangeSecondLangLabel": {
+      "message": "自動的に第二言語に切り替える"
+   },
+   "ifChangeSecondLangOnPageCaptionLabel": {
+      "message": "選択されたテキストの言語を検出し，デフォルトの翻訳先言語と同じ場合には第二言語に翻訳します。"
+   },
+   "ifCheckLangCaptionLabel": {
+      "message": "選択したテキストの言語を検出し，翻訳先言語と同じ場合はボタンを表示しません。"
+   },
+   "ifCheckLangLabel": {
+      "message": "翻訳の必要がなければボタンを表示しない"
+   },
+   "ifShowButtonCaptionLabel": {
+      "message": "クリックすると翻訳パネルが開くボタンを表示します。"
+   },
+   "ifShowButtonLabel": {
+      "message": "翻訳ボタンを表示する"
+   },
+   "ifShowCandidateCaptionLabel": {
+      "message": "一つの語句が翻訳された時に複数の候補を表示します。"
+   },
+   "ifShowCandidateLabel": {
+      "message": "翻訳候補を表示する"
+   },
+   "ifShowMenuCaptionLabel": {
+      "message": "ページやタブ上で右クリックした時に表示されるコンテキストメニューに項目を追加します。"
+   },
+   "ifShowMenuLabel": {
+      "message": "コンテキストメニューを表示する"
+   },
+   "includeMacModifierKeysMessage": {
+      "message": "Commandキー，CtrlキーまたはAltキーが必要です"
+   },
+   "includeModifierKeysMessage": {
+      "message": "CtrlキーまたはAltキーが必要です"
+   },
+   "informationLabel": {
+      "message": "情報"
+   },
+   "initialTextArea": {
+      "message": "テキストを入力"
+   },
+   "invalidLetterMessage": {
+      "message": "この文字は使用できません"
+   },
+   "invalidShortcutMessage": {
+      "message": "このショートカットは使用できません"
+   },
+   "isDebugModeCaptionLabel": {
+      "message": "デバッグモードを有効にすると，デバッガーにログが出力されます。"
+   },
+   "isDebugModeLabel": {
+      "message": "デバッグモードを有効にする"
+   },
+   "isDisabledInTextFieldsCaptionLabel": {
+      "message": "テキストフィールド内のテキストが選択されたとき、翻訳ボタンや翻訳パネルを表示しません。"
+   },
+   "isDisabledInTextFieldsLabel": {
+      "message": "テキストフィールド内での翻訳を無効にする"
+   },
+   "isShowOptionsPageWhenUpdatedCaptionLabel": {
+      "message": "Translate Optionsが更新されたときにオプションページを表示します。更新内容をすぐに知ることができます。"
+   },
+   "isShowOptionsPageWhenUpdatedLabel": {
+      "message": "更新時にオプションページを表示する"
+   },
+   "keyboardShortcutsLabel": {
+      "message": "キーボードショートカット"
+   },
+   "langList": {
+      "message": "af:アフリカーンス語, sq:アルバニア語, am:アムハラ語, ar:アラビア語, hy:アルメニア語, az:アゼルバイジャン語, eu:バスク語, be:ベラルーシ語, bn:ベンガル語, bs:ボスニア語, bg:ブルガリア語, ca:カタルーニャ語, ceb:セブアノ語, ny:チェワ語, zh-CN:中国語 (簡体), zh-TW:中国語 (繁体), co:コルシカ語, hr:クロアチア語, cs:チェコ語, da:デンマーク語, nl:オランダ語, en:英語, eo:エスペラント語, et:エストニア語, fi:フィンランド語, fr:フランス語, fy:フリジア語, gl:ガリシア語, ka:ジョージア(グルジア)語, de:ドイツ語, el:ギリシャ語, gu:グジャラト語, ht:ハイチ語, ha:ハウサ語, haw:ハワイ語, he:ヘブライ語, hi:ヒンディー語, hu:ハンガリー語, is:アイスランド語, ig:イボ語, id:インドネシア語, ga:アイルランド語, it:イタリア語, ja:日本語, jv:ジャワ語, kn:カンナダ語, kk:カザフ語, km:クメール語, ky:キルギス語, ko:韓国語, ku:クルド語, lo:ラオ語, la:ラテン語, lv:ラトビア語, lt:リトアニア語, lb:ルクセンブルク語, mk:マケドニア語, mg:マラガシ語, ms:マレー語, ml:マラヤーラム語, mt:マルタ語, mi:マオリ語, mr:マラーティー語, mn:モンゴル語, hmn:モン語, my:ミャンマー語, ne:ネパール語, no:ノルウェー語, fa:ペルシャ語, pl:ポーランド語, pt:ポルトガル語, pa:パンジャブ語, ps:パシュト語, ro:ルーマニア語, ru:ロシア語, sm:サモア語, gd:スコットランド ゲール語, sr:セルビア語, sn:ショナ語, sd:シンド語, si:シンハラ語, sk:スロバキア語, sl:スロベニア語, so:ソマリ語, sx:ソト語, es:スペイン語, su:スンダ語, sw:スワヒリ語, sv:スウェーデン語, tl:タガログ語, tg:タジク語, ta:タミル語, te:テルグ語, th:タイ語, tr:トルコ語, uk:ウクライナ語, ur:ウルドゥ語, uz:ウズベク語, vi:ベトナム語, cy:ウェールズ語, xh:コーサ語, yi:イディッシュ語, yo:ヨルバ語, zu:ズールー語"
+   },
+   "leftLabel": {
+      "message": "左"
+   },
+   "licenseLabel": {
+      "message": "ライセンス"
+   },
+   "listenLabel": {
+      "message": "音声を聴く"
+   },
+   "menuLabel": {
+      "message": "コンテキストメニュー"
+   },
+   "networkError": {
+      "message": "エラー: ネットワークの接続状態を確認してください。"
+   },
+   "openInGoogleLabel": {
+      "message": "Google Translateで開く"
+   },
+   "openPopupDescription": {
+      "message": "ツールバーポップアップを開く"
+   },
+   "otherLabel": {
+      "message": "その他"
+   },
+   "panelStyleCaptionLabel": {
+      "message": "webページ上で表示される翻訳パネルのスタイルを指定します。"
+   },
+   "panelStyleLabel": {
+      "message": "翻訳パネル"
+   },
+   "positionOffsetLabel": {
+      "message": "表示位置 - オフセット"
+   },
+   "referencePointLabel": {
+      "message": "表示位置 - 基準点"
+   },
+   "reset": {
+      "message": "リセット"
+   },
+   "resetSettingsButtonLabel": {
+      "message": "リセット"
+   },
+   "resetSettingsCaptionLabel": {
+      "message": "全ての設定をデフォルトに戻します。"
+   },
+   "resetSettingsLabel": {
+      "message": "設定をリセット"
+   },
+   "resultFontColorLabel": {
+      "message": "翻訳結果の文字色"
+   },
+   "rightLabel": {
+      "message": "右"
+   },
+   "secondTargetLangCaptionLabel": {
+      "message": "第二言語を指定します。"
+   },
+   "secondTargetLangLabel": {
+      "message": "第二言語"
+   },
+   "setKeyboardShortCutsMessage": {
+      "message": "キーボードショートカットを設定します。"
+   },
+   "settingsLabel": {
+      "message": "設定"
+   },
+   "shortcutsLabel": {
+      "message": "ショートカット"
+   },
+   "showLink": {
+      "message": "このページを翻訳"
+   },
+   "styleLabel": {
+      "message": "スタイル"
+   },
+   "targetLangCaptionLabel": {
+      "message": "デフォルトの翻訳先の言語を選択します。"
+   },
+   "targetLangLabel": {
+      "message": "翻訳先の言語"
+   },
+   "toolbarLabel": {
+      "message": "ツールバーポップアップ"
+   },
+   "topLabel": {
+      "message": "上"
+   },
+   "topLeftLabel": {
+      "message": "左上"
+   },
+   "topRightLabel": {
+      "message": "右上"
+   },
+   "topSelectedTextLabel": {
+      "message": "選択されたテキストの上"
+   },
+   "translateLinkMenu": {
+      "message": "選択したリンクを翻訳"
+   },
+   "translatePageMenu": {
+      "message": "ページ全体を翻訳"
+   },
+   "translateTextMenu": {
+      "message": "選択したテキストを翻訳"
+   },
+   "typeLetterMessage": {
+      "message": "文字を入力してください"
+   },
+   "typeShortcutMessage": {
+      "message": "ショートカットを入力"
+   },
+   "unavailableError": {
+      "message": "エラー: サービスの利用制限に達しました。しばらく待ってからもう一度お試しください。"
+   },
+   "unknownError": {
+      "message": "エラー: 不明なエラー"
+   },
+   "waitTime2CaptionLabel": {
+      "message": "短時間に何度も翻訳すると，しばらくの間利用できなくなることがあります。"
+   },
+   "waitTimeCaptionLabel": {
+      "message": "文字が入力されてから翻訳を開始するまでの待ち時間を指定します。 (ミリ秒)"
+   },
+   "waitTimeLabel": {
+      "message": "翻訳までの待ち時間"
+   },
+   "webPageLabel": {
+      "message": "webページ"
+   },
+   "whenSelectTextLabel": {
+      "message": "テキスト選択時の動作"
+   },
+   "widthLabel": {
+      "message": "幅"
+   }
+}

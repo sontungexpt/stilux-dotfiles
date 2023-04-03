@@ -1,0 +1,7 @@
+2023/03/29-08:58:08.137 792 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/03/29-08:58:08.137 792 Recovering log #3
+2023/03/29-08:58:08.139 792 Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000003.log 
+2023/03/29-08:58:17.170 792 Level-0 table #5: started
+2023/03/29-08:58:17.178 792 Level-0 table #5: 627383 bytes OK
+2023/03/29-08:58:17.183 792 Delete type=0 #3
+2023/03/29-08:58:17.184 792 Manual compaction at level-0 from '\x00\x02\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x03\x00\x00\x00' @ 0 : 0; will stop at (end)

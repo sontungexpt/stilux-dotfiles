@@ -1,0 +1,6 @@
+2023/04/02-17:32:31.572 1238f Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/EdgeCoupons/coupons_data.db/MANIFEST-000001
+2023/04/02-17:32:31.572 1238f Recovering log #4
+2023/04/02-17:32:31.575 1238f Reusing old log /home/stilux/.config/microsoft-edge/Default/EdgeCoupons/coupons_data.db/000004.log 
+2023/04/02-17:32:33.858 1238f Level-0 table #8: started
+2023/04/02-17:32:33.861 1238f Level-0 table #8: 660684 bytes OK
+2023/04/02-17:32:33.865 1238f Delete type=0 #4

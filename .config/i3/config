@@ -306,8 +306,8 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="Blueman-manager"] resize set 1000 800
 for_window [class="Blueman-manager"] move to position center
 
-# Open code
-bindsym --release $mod+c exec code
+# Open vs-code
+# bindsym --release $mod+shift+c exec code
 
 # Open github website
 bindsym --release $mod+g exec brave https://github.com
@@ -359,3 +359,6 @@ for_window [class="Lxappearance"] move to position center
 
 # Pycalendar
 for_window [class="Pycalendar.py"] floating enable move to position 1399px 38px
+
+# Chat Gpt
+bindsym --release $mod+c exec brave https://voicegpt.us/chatgpt

@@ -1,0 +1,6 @@
+2023/04/02-17:32:31.581 1238e Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/Sync Data/LevelDB/MANIFEST-000001
+2023/04/02-17:32:31.581 1238e Recovering log #7
+2023/04/02-17:32:31.585 1238e Reusing old log /home/stilux/.config/microsoft-edge/Default/Sync Data/LevelDB/000007.log 
+2023/04/02-17:33:02.719 1238f Level-0 table #11: started
+2023/04/02-17:33:02.733 1238f Level-0 table #11: 126422 bytes OK
+2023/04/02-17:33:02.737 1238f Delete type=0 #7

@@ -63,6 +63,7 @@ map so sudoopen
 map o open
 map <enter> shell
 map O nvim
+map T thunar
 
 # Select a file
 map <space> :toggle; down
@@ -127,6 +128,11 @@ cmd nvim ${{
 # Copy Path Command
 cmd copypath ${{
   echo -n "$f" | xclip -selection "clipboard"
+}}
+
+# Open the path in thunar
+cmd thunar %{{
+  thunar "$f"
 }}
 
 # Sudo Open Command
@@ -256,4 +262,5 @@ cmd achirve %{{
     "*") printf "Wrong choice";;
   esac
 }}
+
 
