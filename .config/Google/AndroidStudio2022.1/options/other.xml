@@ -1,0 +1,27 @@
+<application>
+  <component name="PropertyService"><![CDATA[{
+  "keyToString": {
+    "AndroidInitConfigurator.V1": "true",
+    "AndroidInitConfigurator.V3": "true",
+    "AndroidInitConfigurator.V5": "true",
+    "NonModalCommitCustomization.IsApplied": "true",
+    "android.sdk.path": "/home/stilux/Android/Sdk",
+    "ask.about.ctrl.y.shortcut.v2": "true",
+    "bundled.plugins.list.saved.version": "AI-221.6008.13.2211.9619390",
+    "fileTypeChangedCounter": "1",
+    "input.method.disabler.muted": "true",
+    "newly.installed.api.level": "33",
+    "tasks.pass.word.conversion.enforced": "true",
+    "updater.configure.tools.details.checkbox.selected": "true"
+  },
+  "keyToStringList": {
+    "fileTypeDetectors": [
+      "com.intellij.ide.scratch.ScratchFileServiceImpl$Detector",
+      "com.jetbrains.cidr.lang.OCHeaderFileTypeDetector",
+      "com.android.tools.idea.sqlite.fileType.SqliteFileTypeDetector",
+      "com.android.tools.idea.profilers.capture.MemoryCaptureFileType$Detector",
+      "org.jetbrains.plugins.textmate.TextMateFileType$TextMateFileDetector"
+    ]
+  }
+}]]></component>
+</application>

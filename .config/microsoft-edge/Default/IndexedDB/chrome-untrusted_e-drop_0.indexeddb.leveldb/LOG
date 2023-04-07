@@ -1,0 +1,6 @@
+2023/04/06-01:15:46.452 12d0 Creating DB /home/stilux/.config/microsoft-edge/Default/IndexedDB/chrome-untrusted_e-drop_0.indexeddb.leveldb since it was missing.
+2023/04/06-01:15:46.458 12d0 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/chrome-untrusted_e-drop_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/06-01:28:56.927 12d0 Level-0 table #5: started
+2023/04/06-01:28:56.929 12d0 Level-0 table #5: 838 bytes OK
+2023/04/06-01:28:56.932 12d0 Delete type=0 #3
+2023/04/06-01:28:56.932 12d0 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

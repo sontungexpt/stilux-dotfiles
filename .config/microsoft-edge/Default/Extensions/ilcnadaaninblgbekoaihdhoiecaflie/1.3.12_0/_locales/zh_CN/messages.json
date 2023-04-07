@@ -1,0 +1,32 @@
+{
+   "bgOpacity": {
+      "message": "透明度"
+   },
+   "close": {
+      "message": "关闭"
+   },
+   "color": {
+      "message": "颜色"
+   },
+   "overlay": {
+      "message": "显示灰色蒙层"
+   },
+   "pluginDesc": {
+      "message": "一款网页测量工具，支持吸附测量。为前端开发和ui设计提供便利。"
+   },
+   "reset": {
+      "message": "重置"
+   },
+   "snapToBorder": {
+      "message": "边界吸附"
+   },
+   "snapToVertex": {
+      "message": "顶点吸附"
+   },
+   "toggleApp": {
+      "message": "激活/关闭(双击)"
+   },
+   "toggleToolbar": {
+      "message": "显示工具栏"
+   }
+}

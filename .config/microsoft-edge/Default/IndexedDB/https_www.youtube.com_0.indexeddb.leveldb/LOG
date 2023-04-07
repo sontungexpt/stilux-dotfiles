@@ -1,0 +1,12 @@
+2023/04/07-10:03:27.983 d69 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/07-10:03:27.984 d69 Recovering log #46
+2023/04/07-10:03:27.989 d69 Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000046.log 
+2023/04/07-10:14:00.078 d68 Level-0 table #51: started
+2023/04/07-10:14:00.088 d68 Level-0 table #51: 1238439 bytes OK
+2023/04/07-10:14:00.091 d68 Delete type=0 #46
+2023/04/07-10:17:26.020 d69 Compacting 1@1 + 1@2 files
+2023/04/07-10:17:26.034 d69 Generated table #52@1: 415 keys, 49571 bytes
+2023/04/07-10:17:26.034 d69 Compacted 1@1 + 1@2 files => 49571 bytes
+2023/04/07-10:17:26.037 d69 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/07-10:17:26.038 d69 Delete type=2 #51
+2023/04/07-10:17:26.038 d69 Delete type=2 #48

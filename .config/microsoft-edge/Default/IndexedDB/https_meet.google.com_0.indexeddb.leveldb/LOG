@@ -1,0 +1,7 @@
+2023/04/06-16:01:55.621 3a0f Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_meet.google.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/06-16:01:55.621 3a0f Recovering log #3
+2023/04/06-16:01:55.621 3a0f Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_meet.google.com_0.indexeddb.leveldb/000003.log 
+2023/04/06-17:35:17.028 3a10 Level-0 table #5: started
+2023/04/06-17:35:17.030 3a10 Level-0 table #5: 11512 bytes OK
+2023/04/06-17:35:17.034 3a10 Delete type=0 #3
+2023/04/06-17:35:17.034 3a10 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

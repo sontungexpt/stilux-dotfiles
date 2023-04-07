@@ -1,0 +1,326 @@
+{
+   "addonPageLabel": {
+      "message": "Tilläggssida"
+   },
+   "addonUrl": {
+      "message": "https://addons.mozilla.org/en-US/firefox/addon/simple-translate/?src=optionpage"
+   },
+   "amazonTitleLabel": {
+      "message": "amazon.co.jp eGift Cards"
+   },
+   "amazonUrl": {
+      "message": "https://www.amazon.co.jp/dp/B004N3APGO?language=en_US"
+   },
+   "backersLabel": {
+      "message": "Backers"
+   },
+   "bgColorLabel": {
+      "message": "Bakgrundsfärg"
+   },
+   "bottomLabel": {
+      "message": "Nederst"
+   },
+   "bottomLeftLabel": {
+      "message": "Nere till vänster"
+   },
+   "bottomRightLabel": {
+      "message": "Nere till höger"
+   },
+   "bottomSelectedTextLabel": {
+      "message": "Nederst av markerad text"
+   },
+   "buttonPositionLabel": {
+      "message": "Visa position"
+   },
+   "buttonSizeLabel": {
+      "message": "Storlek"
+   },
+   "buttonStyleCaptionLabel": {
+      "message": "Ange stilen för översättningsknappen som visas på webbsidan."
+   },
+   "buttonStyleLabel": {
+      "message": "Översättningsknapp"
+   },
+   "candidateFontColorLabel": {
+      "message": "Typsnittsfärg på översättningskandidater"
+   },
+   "clear": {
+      "message": "Rensa"
+   },
+   "clickedPointLabel": {
+      "message": "Tryckt punkt"
+   },
+   "copiedLabel": {
+      "message": "Kopierad."
+   },
+   "copyLabel": {
+      "message": "Kopiera"
+   },
+   "disableOnThisPage": {
+      "message": "Inaktivera översättning på den här sidan"
+   },
+   "disableUrlListCaptionLabel": {
+      "message": "Om sidans webbadress matchar listan, inaktiveras översättningen på webbsidan. Listan tillåter \"*\" jokertecken."
+   },
+   "disableUrlListLabel": {
+      "message": "Webbadresslista för att inaktivera översättning"
+   },
+   "displayDirectionLabel": {
+      "message": "Visa position - Riktning"
+   },
+   "donateLabel": {
+      "message": "Donera"
+   },
+   "donateWithpaypal__________Label": {
+      "message": "Donera via paypal__________"
+   },
+   "donationCaptionLabel": {
+      "message": "Tack för att du använder Translate Options.\u003Cbr>Ditt stöd är ett stort främjande, eftersom vi fortsätter att utveckla tillägget.\u003Cbr>Om du gillar Translate Options, skulle vi uppskatta om du donerar."
+   },
+   "donationLabel": {
+      "message": "Donera gärna"
+   },
+   "dontshowbuttonCaptionlabel": {
+      "message": "Visa inte översättningsknapp eller översättningspanel."
+   },
+   "dontshowbuttonlabel": {
+      "message": "Visa inte knappen eller panelen"
+   },
+   "enableOnThisPage": {
+      "message": "Aktivera översättning på den här sidan"
+   },
+   "extDescription": {
+      "message": "Översätt markerad text på en hemsida.. I verktygsfältspopupen, kan du översätta inmatad text."
+   },
+   "extName": {
+      "message": "Translate Options"
+   },
+   "extensionPageLabel": {
+      "message": "Tilläggssida"
+   },
+   "fontSizeLabel": {
+      "message": "Typsnittsstorlek"
+   },
+   "generalLabel": {
+      "message": "Allmänt"
+   },
+   "heightLabel": {
+      "message": "Höjd"
+   },
+   "ifAutoTranslateCaptionLabel": {
+      "message": "Visa översättningspanelen utan att visa knappen."
+   },
+   "ifAutoTranslateLabel": {
+      "message": "Visa översättningspanel"
+   },
+   "ifChangeSecondLangCaptionLabel": {
+      "message": "Detektera språket i inmatningstexten och om det är samma som målspråket, översätt det till andraspråket."
+   },
+   "ifChangeSecondLangLabel": {
+      "message": "Växla automatiskt till det andra språket"
+   },
+   "ifChangeSecondLangOnPageCaptionLabel": {
+      "message": "Detektera språket i den markerade texten och om det är samma som standardmålspråket, översätt det till andraspråket."
+   },
+   "ifCheckLangCaptionLabel": {
+      "message": "Detekterar språket i den markerade texten och om det är samma som målspråket visas inte knappen."
+   },
+   "ifCheckLangLabel": {
+      "message": "Visa inte knappen om översättning inte behövs"
+   },
+   "ifShowButtonCaptionLabel": {
+      "message": "Visa översättningsknappen för att öppna panelen vid klick."
+   },
+   "ifShowButtonLabel": {
+      "message": "Visa översättningsknapp"
+   },
+   "ifShowCandidateCaptionLabel": {
+      "message": "Visa flera översättningskandidater när ett enda ord översätts."
+   },
+   "ifShowCandidateLabel": {
+      "message": "Visa översättningskandidater"
+   },
+   "ifShowMenuCaptionLabel": {
+      "message": "Lägg till objekt i innehållsmenyn som visas när du högerklickar på webbsidan eller fliken."
+   },
+   "ifShowMenuLabel": {
+      "message": "Visa innehållsmenyn"
+   },
+   "includeMacModifierKeysMessage": {
+      "message": "Inkludera antingen Kommando, Ctrl eller Alt"
+   },
+   "includeModifierKeysMessage": {
+      "message": "Inkludera antingen Ctrl eller Alt"
+   },
+   "informationLabel": {
+      "message": "Information"
+   },
+   "initialTextArea": {
+      "message": "Ange text"
+   },
+   "invalidLetterMessage": {
+      "message": "Den bokstaven kan inte användas"
+   },
+   "invalidShortcutMessage": {
+      "message": "Genvägen kan inte användas"
+   },
+   "isDebugModeCaptionLabel": {
+      "message": "När felsökningsläget är aktiverat, skickas loggen till avlusaren."
+   },
+   "isDebugModeLabel": {
+      "message": "Aktivera felsökningsläge"
+   },
+   "isDisabledInTextFieldsCaptionLabel": {
+      "message": "Visa inte översättningsknapp eller -panel när du markerar text i ett textfält."
+   },
+   "isDisabledInTextFieldsLabel": {
+      "message": "Inaktivera översättningar i textfälten"
+   },
+   "isShowOptionsPageWhenUpdatedCaptionLabel": {
+      "message": "Visar alternativsidan efter att Translate Options har uppdaterats. Du kan då snabbt se vad som har uppdaterats."
+   },
+   "isShowOptionsPageWhenUpdatedLabel": {
+      "message": "Visa alternativsidan efter uppdatering"
+   },
+   "keyboardShortcutsLabel": {
+      "message": "Tangentbordsgenvägar"
+   },
+   "langList": {
+      "message": "af:Afrikaans, sq:Albanian, am:Amharic, ar:Arabic, hy:Armenian, az:Azerbaijani, eu:Basque, be:Belarusian, bn:Bengali, bs:Bosnian, bg:Bulgarian, ca:Catalan, ceb:Cebuano, ny:Chewa, zh-CN:Chinese (PRC), zh-TW:Chinese (Taiwan), co:Corsican, hr:Croatian, cs:Czech, da:Danish, nl:Dutch, en:English, eo:Esperanto, et:Estonian, fi:Finnish, fr:French, fy:Frisian, gl:Galician, ka:Georgian, de:German, el:Greek, gu:Gujarati, ht:Haitian, ha:Hausa, haw:Hawaiian, he:Hebrew, hi:Hindi, hu:Hungarian, is:Icelandic, ig:Igbo, id:Indonesian, ga:Irish, it:Italian, ja:Japanese, jv:Javanese, kn:Kannada, kk:Kazakh, km:Khmer, ky:Kirghiz, ko:Korean, ku:Kurdish, lo:Laotian, la:Latin, lv:Latvian, lt:Lithuanian, lb:Luxembourgish, mk:Macedonian, mg:Malagasy, ms:Malay, ml:Malayalam, mt:Maltese, mi:Maori, mr:Marathi, mn:Mongolian, hmn:Monk, my:Myanmar, ne:Nepali, no:Norwegian, fa:Persian, pl:Polish, pt:Portuguese, pa:Punjabi, ps:Pushto, ro:Romanian, ru:Russian, sm:Samoan, gd:Scottish Gaelic, sr:Serbian, sn:Shona, sd:Sindhi, si:Sinhala, sk:Slovak, sl:Slovenian, so:Somali, sx:Sotho, es:Spanish, su:Sundanese, sw:Swahili, sv:Swedish, tl:Tagalog, tg:Tajiki, ta:Tamil, te:Telugu, th:Thai, tr:Turkish, uk:Ukrainian, ur:Urdu, uz:Uzbek, vi:Vietnamese, cy:Welsh, xh:Xosa, yi:Yiddish, yo:Yoruba, zu:Zulu"
+   },
+   "leftLabel": {
+      "message": "Vänster"
+   },
+   "licenseLabel": {
+      "message": "Licens"
+   },
+   "listenLabel": {
+      "message": "Lyssna"
+   },
+   "menuLabel": {
+      "message": "Innehållsmeny"
+   },
+   "networkError": {
+      "message": "Fel: Kontrollera status för nätverksanslutningen."
+   },
+   "openInGoogleLabel": {
+      "message": "Öppna i Google Översätt"
+   },
+   "openPopupDescription": {
+      "message": "Öppna verktygsfältspopup"
+   },
+   "otherLabel": {
+      "message": "Annat"
+   },
+   "panelStyleCaptionLabel": {
+      "message": "Ange stilen på översättningspanelen som visas på webbsidan."
+   },
+   "panelStyleLabel": {
+      "message": "Översättningspanel"
+   },
+   "positionOffsetLabel": {
+      "message": "Visa position - Offset"
+   },
+   "referencePointLabel": {
+      "message": "Visa position - Referenspunkt"
+   },
+   "reset": {
+      "message": "Återställ"
+   },
+   "resetSettingsButtonLabel": {
+      "message": "Återställ"
+   },
+   "resetSettingsCaptionLabel": {
+      "message": "Återställa alla inställningar till standard."
+   },
+   "resetSettingsLabel": {
+      "message": "Återställ inställningarna"
+   },
+   "resultFontColorLabel": {
+      "message": "Typsnittsfärg på översättningsresultatet"
+   },
+   "rightLabel": {
+      "message": "Höger"
+   },
+   "secondTargetLangCaptionLabel": {
+      "message": "Välj andra målspråk."
+   },
+   "secondTargetLangLabel": {
+      "message": "Andraspråk"
+   },
+   "setKeyboardShortCutsMessage": {
+      "message": "Ställ in tangentbordsgenvägar."
+   },
+   "settingsLabel": {
+      "message": "Inställningar"
+   },
+   "shortcutsLabel": {
+      "message": "Genvägar"
+   },
+   "showLink": {
+      "message": "Översätt denna sida"
+   },
+   "styleLabel": {
+      "message": "Stil"
+   },
+   "targetLangCaptionLabel": {
+      "message": "Välj standardmålspråk."
+   },
+   "targetLangLabel": {
+      "message": "Målspråk"
+   },
+   "toolbarLabel": {
+      "message": "Verktygsfältspopup"
+   },
+   "topLabel": {
+      "message": "Överst"
+   },
+   "topLeftLabel": {
+      "message": "Överst till vänster"
+   },
+   "topRightLabel": {
+      "message": "Överst till höger"
+   },
+   "topSelectedTextLabel": {
+      "message": "Överst av markerad text"
+   },
+   "translateLinkMenu": {
+      "message": "Översätt markerad länk"
+   },
+   "translatePageMenu": {
+      "message": "Översätt denna sida"
+   },
+   "translateTextMenu": {
+      "message": "Översätt markerad text"
+   },
+   "typeLetterMessage": {
+      "message": "Ange en bokstav"
+   },
+   "typeShortcutMessage": {
+      "message": "Ange en genväg"
+   },
+   "unavailableError": {
+      "message": "Fel: Användningsgräns uppnådd. Vänta en stund och försök igen."
+   },
+   "unknownError": {
+      "message": "Fel: Okänt fel"
+   },
+   "waitTime2CaptionLabel": {
+      "message": "Om du översätter det många gånger på kort tid kan det bli oanvändbart för ett tag."
+   },
+   "waitTimeCaptionLabel": {
+      "message": "Ange väntetiden från inmatningen av ett tecken till början av översättningen (millisekunder)."
+   },
+   "waitTimeLabel": {
+      "message": "Väntetid på att översätta"
+   },
+   "webPageLabel": {
+      "message": "Webbsida"
+   },
+   "whenSelectTextLabel": {
+      "message": "Beteende när du markerar text"
+   },
+   "widthLabel": {
+      "message": "Bredd"
+   }
+}

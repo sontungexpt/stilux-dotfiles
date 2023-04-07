@@ -1,0 +1,6 @@
+2023/04/05-21:25:54.774 1d6ca Creating DB /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_addons.mozilla.org_0.indexeddb.leveldb since it was missing.
+2023/04/05-21:25:54.780 1d6ca Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_addons.mozilla.org_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/05-21:26:43.247 89b16 Level-0 table #5: started
+2023/04/05-21:26:43.251 89b16 Level-0 table #5: 1293 bytes OK
+2023/04/05-21:26:43.254 89b16 Delete type=0 #3
+2023/04/05-21:26:43.255 1d6cb Manual compaction at level-0 from (begin) .. (end); will stop at (end)

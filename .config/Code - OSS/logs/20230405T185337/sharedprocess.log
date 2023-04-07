@@ -1,0 +1,8 @@
+2023-04-05 18:53:38.857 [info] Starting worker process with pid 377623 (type: fileWatcher, window: 1).
+2023-04-05 18:54:11.136 [info] Getting Manifest... shan.code-settings-sync
+2023-04-05 18:54:11.417 [info] Installing extension: shan.code-settings-sync
+2023-04-05 18:54:27.568 [info] Extension signature verification is not done: shan.code-settings-sync
+2023-04-05 18:54:27.617 [info] Extracted extension to /home/stilux/.vscode-oss/extensions/.63522638-e4b2-4bbe-b0a5-419d65f3c7d4: shan.code-settings-sync
+2023-04-05 18:54:27.620 [info] Renamed to /home/stilux/.vscode-oss/extensions/shan.code-settings-sync-3.4.3-universal
+2023-04-05 18:54:27.623 [info] Extracting extension completed. shan.code-settings-sync
+2023-04-05 18:54:27.629 [info] Extension installed successfully: shan.code-settings-sync

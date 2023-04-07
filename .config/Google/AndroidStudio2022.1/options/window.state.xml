@@ -1,0 +1,23 @@
+<application>
+  <component name="DimensionService">
+    <location key="WELCOME_SCREEN.0.0.1920.1080" x="960" y="525" />
+  </component>
+  <component name="WindowStateApplicationService">
+    <state x="0" y="0" width="1920" height="1080" key="SettingsEditor" timestamp="1680714756286">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="0" y="0" width="1920" height="1080" key="SettingsEditor/0.0.1920.1080" timestamp="1680714756286" />
+    <state x="960" y="542" width="1896" height="1051" key="WELCOME_SCREEN" timestamp="1680714757515">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="960" y="542" width="1896" height="1051" key="WELCOME_SCREEN/0.0.1920.1080" timestamp="1680714757515" />
+    <state x="1284" y="17" width="935" height="1050" key="com.android.tools.idea.devicemanager.DeviceManagerWelcomeScreenFrame" timestamp="1680713457703">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1284" y="17" width="935" height="1050" key="com.android.tools.idea.devicemanager.DeviceManagerWelcomeScreenFrame/0.0.1920.1080" timestamp="1680713457703" />
+    <state x="230" y="456" width="1452" height="172" key="ide.config.custom.settings" timestamp="1680714558061">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="230" y="456" width="1452" height="172" key="ide.config.custom.settings/0.0.1920.1080" timestamp="1680714558061" />
+  </component>
+</application>

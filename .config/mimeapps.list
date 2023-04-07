@@ -1,0 +1,20 @@
+[Default Applications]
+text/html=microsoft-edge.desktop
+x-scheme-handler/http=microsoft-edge.desktop
+x-scheme-handler/https=microsoft-edge.desktop
+x-scheme-handler/about=microsoft-edge.desktop
+x-scheme-handler/unknown=microsoft-edge.desktop
+x-scheme-handler/figma=figma-linux.desktop
+x-scheme-handler/mailto=microsoft-edge.desktop
+text/x-python=userapp-kitty nvim-5KHY21.desktop
+application/x-shellscript=userapp-kitty nvim-5KHY21.desktop
+application/json=userapp-kitty nvim-5KHY21.desktop
+text/plain=userapp-kitty nvim-5KHY21.desktop
+application/x-zerosize=userapp-kitty nvim-5KHY21.desktop
+
+[Added Associations]
+text/x-python=userapp-kitty nvim-5KHY21.desktop;
+application/x-shellscript=userapp-kitty nvim-5KHY21.desktop;
+application/json=userapp-kitty nvim-5KHY21.desktop;
+text/plain=userapp-kitty nvim-5KHY21.desktop;
+application/x-zerosize=userapp-kitty nvim-5KHY21.desktop;

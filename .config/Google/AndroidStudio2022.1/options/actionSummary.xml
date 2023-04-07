@@ -1,0 +1,22 @@
+<application>
+  <component name="ActionsLocalSummary">
+    <e n="EditCustomProperties">
+      <i c="1" l="1680714548307" />
+    </e>
+    <e n="EditCustomVmOptions">
+      <i c="1" l="1680714555006" />
+    </e>
+    <e n="WelcomeScreen.RunAndroidSdkManager">
+      <i c="6" l="1680714581372" />
+    </e>
+    <e n="WelcomeScreen.RunDeviceManager">
+      <i c="6" l="1680711796393" />
+    </e>
+    <e n="com.intellij.openapi.ui.impl.DialogWrapperPeerImpl$AnCancelAction">
+      <i c="2" l="1680714756269" />
+    </e>
+    <e n="com.intellij.openapi.wm.impl.welcomeScreen.WelcomeScreenComponentFactory$3">
+      <i c="3" l="1680714574432" />
+    </e>
+  </component>
+</application>

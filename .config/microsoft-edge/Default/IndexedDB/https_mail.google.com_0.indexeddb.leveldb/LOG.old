@@ -1,0 +1,6 @@
+2023/04/06-15:20:38.164 3a15 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/06-15:20:38.164 3a15 Recovering log #12
+2023/04/06-15:20:38.168 3a15 Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/000012.log 
+2023/04/06-15:21:21.713 3a10 Level-0 table #17: started
+2023/04/06-15:21:21.725 3a10 Level-0 table #17: 2286475 bytes OK
+2023/04/06-15:21:21.731 3a10 Delete type=0 #12

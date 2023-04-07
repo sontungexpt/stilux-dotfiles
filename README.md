@@ -65,8 +65,8 @@
   - [gcc](https://archlinux.org/packages/core/x86_64/gcc/), [cmake](https://archlinux.org/packages/extra/x86_64/cmake/)
   - [nodejs](https://archlinux.org/packages/community/x86_64/nodejs/) with [npm](https://archlinux.org/packages/community/any/npm/)
 - **Brownser**:
-[brave](https://aur.archlinux.org/packages/brave-bin),
-[google-chrome](https://aur.archlinux.org/packages/google-chrome) or
+<!-- [brave](https://aur.archlinux.org/packages/brave-bin), -->
+<!-- [google-chrome](https://aur.archlinux.org/packages/google-chrome) or -->
 [microsoft-edge](https://aur.archlinux.org/packages/microsoft-edge-stable-bin)
 - **Calendar Manager**: [calcurse](https://github.com/lfos/calcurse)
 - **Dotfiles Manager**: [git bare](https://www.youtube.com/watch?v=tBoLDpTWVOM)
@@ -296,7 +296,7 @@ Add the following line: (do like above to edit vim) (press [TAB] at [TAB])
 ```
 127.0.0.1[TAB]localhost
 ::1[TAB]localhost
-127.0.1.1[TAB]stilux-pc.localdomain[TAB]dummy-pc
+127.0.1.1[TAB]stilux-pc.localdomain[TAB]stilux-pc
 ```
 (Exit and save like above)
 
@@ -327,7 +327,6 @@ EDITOR=nvim visudo
 ```
 Add: stilux ALL=(ALL) ALL
 Uncomment: %wheel ALL=(ALL) ALL
-Add Defaults timestamp_timeout=0
 ```
 (Save and exit like above)
 

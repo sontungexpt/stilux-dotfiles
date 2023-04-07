@@ -1,0 +1,21 @@
+2023/04/06-16:01:19.676 3a0f Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/06-16:01:19.676 3a0f Recovering log #16
+2023/04/06-16:01:19.678 3a0f Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/000016.log 
+2023/04/06-16:01:21.373 3a0f Compacting 1@1 + 1@2 files
+2023/04/06-16:01:21.384 3a0f Generated table #19@1: 438 keys, 1035786 bytes
+2023/04/06-16:01:21.384 3a0f Compacted 1@1 + 1@2 files => 1035786 bytes
+2023/04/06-16:01:21.388 3a0f compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/06-16:01:21.388 3a0f Delete type=2 #17
+2023/04/06-16:01:21.388 3a0f Delete type=2 #14
+2023/04/06-16:02:02.056 3a0f Level-0 table #21: started
+2023/04/06-16:02:02.066 3a0f Level-0 table #21: 1620336 bytes OK
+2023/04/06-16:02:02.069 3a0f Delete type=0 #16
+2023/04/06-16:02:02.069 3a0f Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2023/04/06-16:02:02.069 3a0f Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x01\x01\x02\x01\x1c\x00S\x00t\x00o\x00r\x00e\x00d\x00C\x00a\x00c\x00h\x00e\x00S\x00t\x00a\x00t\x00e\x00:\x00:\x00/\x00m\x00a\x00i\x00l\x00/\x00u\x00/\x000\x00/' @ 11669 : 1
+2023/04/06-16:02:02.069 3a0f Compacting 1@1 + 1@2 files
+2023/04/06-16:02:02.076 3a0f Generated table #22@1: 196 keys, 387869 bytes
+2023/04/06-16:02:02.076 3a0f Compacted 1@1 + 1@2 files => 387869 bytes
+2023/04/06-16:02:02.078 3a0f compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/06-16:02:02.078 3a0f Delete type=2 #21
+2023/04/06-16:02:02.078 3a0f Delete type=2 #19
+2023/04/06-16:02:02.079 3a0f Manual compaction at level-1 from '\x00\x01\x01\x02\x01\x1c\x00S\x00t\x00o\x00r\x00e\x00d\x00C\x00a\x00c\x00h\x00e\x00S\x00t\x00a\x00t\x00e\x00:\x00:\x00/\x00m\x00a\x00i\x00l\x00/\x00u\x00/\x000\x00/' @ 11669 : 1 .. (end); will stop at (end)
