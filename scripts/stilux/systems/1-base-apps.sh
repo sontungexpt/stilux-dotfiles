@@ -66,12 +66,13 @@ if [ -x "$(command -v betterlockscreen)" ]; then
 fi
 
 # Sound
+sudo pacman -S alsa-utils alsa-firmware alsa-ucm-conf sof-firmware
 sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-media-session pipewire-audio pavucontrol
 
 # Check if installed pipewire, enable service
 if [ -x "$(command -v pipewire)" ]; then
-	sudo systemctl enable pipewire pipewire-pulse
-	sudo systemctl start pipewire pipewire-pulse
+	systemctl --user enable pipewire pipewire-pulse
+	systemctl --user start pipewire pipewire-pulse
 fi
 
 # Bluetooth
@@ -81,11 +82,20 @@ sudo pacman -S bluez bluez-utils blueman pipewire-audio pipewire-pulse
 if [ -x "$(command -v bluez)" ]; then
 	sudo systemctl enable bluetooth.service
 	sudo systemctl start bluetooth.service
+	if [ -f "/etc/bluetooth/main.conf" ]; then
+		sudo sed -i -e "s/^#AutoEnable\s*=\s*\(.*\)/AutoEnable=true/g" "/etc/bluetooth/main.conf"
+	fi
 fi
 
 # Vietnamese input
 echo "Installing ibus, ibus-bamboo..."
 yay -S ibus ibus-bamboo
+# Add ibus to /etc/environment
+echo '''
+GTK_IM_MODULE=ibus
+QT_IM_MODULE=ibus
+XMODIFIERS=@im=ibus
+''' | sudo tee -a /etc/environment &>/dev/null
 
 # Notification
 echo "Installing dunst..."
@@ -150,7 +160,7 @@ sudo pacman -S zip unzip
 sudo pacman -S --needed tar
 # rar and unrar
 echo "Installing rar, unrar..."
-yay -S rar unrar
+yay -S rar
 
 # Office suite
 echo "Installing onlyffice..."
@@ -160,14 +170,17 @@ yay -S onlyoffice-bin
 sudo pacman -S lxappearance-gtk3
 
 # Themes
-yay -S catppuccin-gtk-theme-mocha
+# yay -S catppuccin-gtk-theme-mocha
+cd || exit
+git clone https://github.com/stronk-dev/Tokyo-Night-Linux.git
+sudo cp Tokyo-Night-Linux/usr/share/themes/TokyoNight /usr/share/themes/
 
 # Icons Themes
 mkdir -p ~/.icons
 git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git
 cd WhiteSur-icon-theme || exit
 ./install.sh
-cd ..
+cd .. || exit
 
 # Cursor Themes
 yay -S catppuccin-cursors-mocha

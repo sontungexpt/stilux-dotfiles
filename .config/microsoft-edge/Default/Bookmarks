@@ -2115,7 +2115,7 @@
                "url": "https://github.com/sbdchd/neoformat"
             }, {
                "date_added": "13321018791000000",
-               "date_last_used": "0",
+               "date_last_used": "13325313668970729",
                "guid": "a28e0c87-9dac-4782-bc92-a5e4243549ed",
                "id": "225",
                "name": "dotfiles/nvim/lua at master · SownteeNguyen/dotfiles",
@@ -2205,7 +2205,7 @@
                "url": "https://github.com/williamboman/mason-lspconfig.nvim#configuration"
             }, {
                "date_added": "13321440641000000",
-               "date_last_used": "0",
+               "date_last_used": "13325320060427518",
                "guid": "ab5f9ebb-79a9-46ba-bf94-03802b70a148",
                "id": "234",
                "name": "dot/.config/nvim/lua at main · SunoBB/dot",

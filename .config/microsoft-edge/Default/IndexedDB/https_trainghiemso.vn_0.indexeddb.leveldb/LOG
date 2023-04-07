@@ -1,0 +1,18 @@
+2023/04/07-11:52:06.187 d68 Creating DB /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_trainghiemso.vn_0.indexeddb.leveldb since it was missing.
+2023/04/07-11:52:06.193 d68 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_trainghiemso.vn_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/07-11:52:06.842 30a4c Level-0 table #5: started
+2023/04/07-11:52:06.844 30a4c Level-0 table #5: 566 bytes OK
+2023/04/07-11:52:06.847 30a4c Delete type=0 #3
+2023/04/07-11:52:06.847 d68 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/04/07-11:52:08.859 d69 Level-0 table #7: started
+2023/04/07-11:52:08.862 d69 Level-0 table #7: 237 bytes OK
+2023/04/07-11:52:08.865 d69 Delete type=0 #4
+2023/04/07-11:52:08.865 d69 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2023/04/07-11:52:08.865 d69 Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x00\x00\x002\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00' @ 21 : 0
+2023/04/07-11:52:08.865 d69 Compacting 1@1 + 1@2 files
+2023/04/07-11:52:08.868 d69 Generated table #8@1: 5 keys, 237 bytes
+2023/04/07-11:52:08.868 d69 Compacted 1@1 + 1@2 files => 237 bytes
+2023/04/07-11:52:08.871 d69 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/07-11:52:08.871 d69 Delete type=2 #7
+2023/04/07-11:52:08.871 d69 Delete type=2 #5
+2023/04/07-11:52:08.871 d69 Manual compaction at level-1 from '\x00\x00\x00\x002\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00' @ 21 : 0 .. (end); will stop at (end)

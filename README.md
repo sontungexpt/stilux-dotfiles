@@ -1,4 +1,6 @@
 <h1 align="center" style="color:#e5b0ff">-------- Stilux Arch Config --------</h1>
+<h2 align="center" style="color:#9db0ff">-------- Arch Linux Only --------</h1>
+
 
 ## 1. Information
 #### Basic applications
@@ -64,10 +66,9 @@
   - [android studio](https://developer.android.com/studio)
   - [gcc](https://archlinux.org/packages/core/x86_64/gcc/), [cmake](https://archlinux.org/packages/extra/x86_64/cmake/)
   - [nodejs](https://archlinux.org/packages/community/x86_64/nodejs/) with [npm](https://archlinux.org/packages/community/any/npm/)
-- **Brownser**:
+- **Brownser**:[microsoft-edge](https://aur.archlinux.org/packages/microsoft-edge-stable-bin)
 <!-- [brave](https://aur.archlinux.org/packages/brave-bin), -->
 <!-- [google-chrome](https://aur.archlinux.org/packages/google-chrome) or -->
-[microsoft-edge](https://aur.archlinux.org/packages/microsoft-edge-stable-bin)
 - **Calendar Manager**: [calcurse](https://github.com/lfos/calcurse)
 - **Dotfiles Manager**: [git bare](https://www.youtube.com/watch?v=tBoLDpTWVOM)
 - **Cloud Sync Tools**: [rclone](https://github.com/rclone/rclone)

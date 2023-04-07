@@ -29,8 +29,8 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	echo "Installing calcurse..."
 	sudo pacman -S calcurse
 
-	echo "Installing brave..."
-	yay -S brave-bin
+	# echo "Installing brave..."
+	# yay -S brave-bin
 
 	# Ask if you want to install edge or chorme, default is edge
 	echo "Do you want to install edge or chrome? (e/c)"
@@ -77,6 +77,7 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	# ruby
 	echo "Installing ruby, rbenv..."
 	yay -S rbenv-git
+	yay -S ruby-build
 	rbenv install "$(rbenv install -l | grep -v - | tail -1)"
 
 	# Flutter
