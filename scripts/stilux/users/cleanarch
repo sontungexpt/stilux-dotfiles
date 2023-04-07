@@ -1,0 +1,98 @@
+#!/bin/bash
+# The scripts is written by TranVoSonTung
+# This script is used to clean cache and unneeded packages
+# This script is tested on Arch Linux
+
+# Colors
+NO='\033[0m' # No Color
+BLUE='\033[0;34m'
+ON_YELLOW='\033[43m'
+
+help() {
+	echo "This scripts is written by TranVoSonTung"
+	echo "This script is used to clean cache and unneeded packages"
+	echo "This script is tested on Arch Linux"
+}
+
+note() {
+	echo -e "\n${BLUE}----------Note----------${NO}"
+	echo "If you have issue when use pacman -Syu after run this scripts please try pacman -Syyu it maybe help you fix your issue"
+	echo "If you have issue when use yay -Syu after run this scripts please try yay -Syyu it maybe help you fix your issue"
+}
+
+if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+	help
+	exit 0
+fi
+
+# Check if install pacman
+clean_pacman_cache() {
+	if [ -f /usr/bin/pacman ]; then
+		echo -e "\n${BLUE}----------Clean pacman cache----------${NO}"
+		sudo pacman -Scc
+	fi
+}
+
+clean_yay_cache() {
+	if [ -f /usr/bin/yay ]; then
+		echo -e "\n${BLUE}-----------Clean yay cache-----------${NO}"
+		yay -Scc
+	fi
+}
+
+clean_home_cache() {
+	echo -e "\n${BLUE}----------Clean home cache-----------${NO}"
+	rm -rf ~/.cache/*
+}
+
+clean_unused_packages() {
+	echo -e "\n${BLUE}-----------Clean unused packages-----------${NO}"
+	local unused_packages
+	unused_packages="$(sudo pacman -Qtdq)"
+
+	if [ -n "$unused_packages" ]; then
+		sudo pacman -Rns "$unused_packages"
+	else
+		echo -e "${BLUE}No unused packages to remove${NO}"
+	fi
+}
+
+# Ask to clean trash
+clean_trash() {
+	echo -e "\n${BLUE}----------Clean trash----------${NO}"
+	read -p "Do you want to clean trash? [y/n]: " answer
+	if [ "$answer" == "y" ]; then
+		# Check if had command trash-empty is installed
+		if [ -f /usr/bin/trash-empty ]; then
+			trash-empty
+			sudo trash-empty
+		else
+			echo -e "\n${ON_YELLOW} WARNING: ${NO} You need to install trash-cli to use this feature"
+		fi
+	else
+		echo -e "${ON_YELLOW} WARNING: ${NO} Skip clean trash"
+	fi
+}
+
+clean_journalctl() {
+	echo -e "\n${BLUE}----------Clean journalctl----------${NO}"
+	sudo journalctl --vacuum-size=50M
+}
+
+# Main code
+# Check the os is Arch Linux
+kenel_name="$(uname -r)"
+# Check if in kenel_name has arch in it
+if [[ "$kenel_name" == *"arch"* ]]; then
+	clean_pacman_cache
+	clean_yay_cache
+	clean_home_cache
+	clean_unused_packages
+	clean_journalctl
+	clean_trash
+	note
+	exit 1
+else
+	echo -e "\n${ON_YELLOW} WARNING: ${NO} This script is only tested on Arch Linux OS"
+	exit 0
+fi

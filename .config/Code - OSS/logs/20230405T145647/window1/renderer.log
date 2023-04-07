@@ -1,3 +1,0 @@
-2023-04-05 14:56:48.407 [info] Initial editor state {"filesToOpenOrCreate":[{"fileUri":{"$mid":1,"path":"/home/stilux/.config/polybar/modules/gmail.ini","scheme":"file"},"type":1,"exists":true,"options":{}}],"filesToDiff":[],"filesToMerge":[]}
-2023-04-05 14:56:48.719 [info] Started initializing default profile extensions in extensions installation folder. file:///home/stilux/.vscode-oss/extensions
-2023-04-05 14:56:48.842 [info] Completed initializing default profile extensions in extensions installation folder. file:///home/stilux/.vscode-oss/extensions

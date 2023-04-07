@@ -1,0 +1,79 @@
+#!/bin/bash
+# This scripts is written by Tran Vo Son Tung
+# Extracts most common archive formats
+
+# Colors
+NO='\033[0m' # No Color
+RED='\033[0;31m'
+ON_BLUE='\033[44m'
+ON_RED='\033[41m'
+ON_GREEN='\033[42m'
+
+un_zip() {
+	if [ ! -f "/usr/bin/unzip" ]; then
+		echo "You need to install unzip to extract file"
+		exit 0
+	fi
+
+	destination="$(echo $1 | sed -e 's/.zip//')"
+	unzip "$1" -d "$destination"
+}
+
+un_rar() {
+	if [ ! -f "/usr/bin/unrar" ]; then
+		echo -e "\n${ON_RED} ERROR: ${NO} You need to install unrar to extract file"
+		exit 0
+	fi
+
+	destination="$(echo $1 | sed -e 's/.rar//')"
+	if [ ! -d "$destination" ]; then
+		mkdir "$destination"
+	fi
+	unrar e "$1" "$destination"
+}
+
+un_7z() {
+	if [ ! -f "/usr/bin/7z" ]; then
+		echo -e "\n${ON_RED} ERROR: ${NO} You need to install 7z to extract file"
+		exit 0
+	fi
+
+	destination="$(echo $1 | sed -e 's/.7z//')"
+	if [ ! -d "$destination" ]; then
+		mkdir "$destination"
+	fi
+	7z x "$1" -o"$destination"
+}
+
+help() {
+	echo "This scripts is written by Tran Vo Son Tung"
+	echo "Extracts most common archive formats"
+	echo "Formats support: .tar.bz, .tar.bz2, .tbz, .tbz2, .tar.gz, .tgz, .tar.xz, .txz, .zip, .rar, .7z"
+	echo -e "\n${ON_BLUE} USAGE: ${NO} extract [OPTIONS] [FILE_PATH]"
+	echo -e "\n${ON_BLUE} OPTIONS: ${NO}"
+	echo -e "  -h, --help\tShow this help message and exit"
+}
+
+# Show help if no arguments
+if [[ "$#" -eq 0 ]]; then
+	help
+	exit 1
+fi
+
+if [[ "$#" -eq 1 ]]; then
+	case "$1" in
+	*.tar.bz | *.tar.bz2 | *.tbz | *.tbz2) tar xjvf "$1" ;;
+	*.tar.gz | *.tgz) tar xzvf "$1" ;;
+	*.tar.xz | *.txz) tar xJvf "$1" ;;
+	*.zip) unzip "$1" ;;
+	*.rar) un_rar "$1" ;;
+	*.7z) un_7z "$1" ;;
+	"--help" | "-h") help && exit 1 ;;
+	*) echo -e "${RED}Unsupported format${NO}" && exit 0 ;;
+	esac
+else
+	echo -e "\n${ON_RED} ERROR: ${NO} Invalid number of arguments"
+	echo -e "\n${ON_BLUE} USAGE: ${NO} extract [OPTIONS] [FILE_PATH]"
+	echo -e "\n${ON_GREEN} NOTE: ${NO} Use --help or -h to see help"
+	exit 0
+fi

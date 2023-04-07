@@ -1,3 +1,15 @@
 2023/04/07-10:03:23.535 3 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/Local Storage/leveldb/MANIFEST-000001
 2023/04/07-10:03:23.536 3 Recovering log #216
 2023/04/07-10:03:23.541 3 Reusing old log /home/stilux/.config/microsoft-edge/Default/Local Storage/leveldb/000216.log 
+2023/04/07-10:40:27.990 3 Level-0 table #220: started
+2023/04/07-10:40:28.005 3 Level-0 table #220: 19760 bytes OK
+2023/04/07-10:40:28.009 3 Delete type=0 #216
+2023/04/07-10:40:28.009 3 Compacting 4@0 + 1@1 files
+2023/04/07-10:40:28.031 3 Generated table #221@0: 2957 keys, 686102 bytes
+2023/04/07-10:40:28.031 3 Compacted 4@0 + 1@1 files => 686102 bytes
+2023/04/07-10:40:28.035 3 compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/04/07-10:40:28.036 3 Delete type=2 #211
+2023/04/07-10:40:28.036 3 Delete type=2 #215
+2023/04/07-10:40:28.036 3 Delete type=2 #213
+2023/04/07-10:40:28.036 3 Delete type=2 #220
+2023/04/07-10:40:28.036 3 Delete type=2 #217
