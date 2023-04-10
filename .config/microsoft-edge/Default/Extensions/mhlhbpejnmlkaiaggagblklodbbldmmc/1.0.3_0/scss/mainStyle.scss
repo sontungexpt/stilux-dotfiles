@@ -1,0 +1,130 @@
+// Top nav bar
+
+
+// Search Drive bar
+form.gb_Te,
+[class^="cloudsearch_suggestion"] {
+  background-color: var(--dm-dark-300) !important;
+  border-color: var(--dm-dark-600);
+  color: var(--dm-light-200) !important;
+
+  .cloudsearch_suggestion_query_section>div {
+    color: var(--dm-light-200) !important;
+  }
+
+  .cloudsearch_suggestion_query_section>div>span:first-child {
+    filter: invert(1);
+  }
+
+  .gb_uf.gb_of,
+  table {
+    background-color: var(--dm-dark-300) !important;
+    color: var(--dm-light-200) !important;
+  }
+
+  // Search dropdown icons
+  .R83xKc {
+    background-color: var(--dm-dark-100) !important;
+    border-color: var(--dm-dark-500) !important;
+  }
+
+  // Search dropdown icon labels
+  .Ke58ze {
+    color: var(--dm-light-200) !important;
+  }
+
+  ::placeholder {
+    color: var(--dm-light-300) !important;
+  }
+
+  // Background of icons when hovering
+  .vARBRb[aria-selected=true],
+  .h1Utz[aria-selected=true] {
+    background-color: var(--dm-dark-100) !important;
+    outline: var(--dm-dark-200) !important;
+  }
+
+  svg {
+    filter: var(--dm-light-icon);
+  }
+}
+
+.h-R-w-d-Pb,
+.h-v.h-v-pc {
+  background-color: var(--dm-dark-200) !important;
+}
+
+
+// popup divs
+div[role="dialog"] {
+  background-color: var(--dm-dark-300) !important;
+
+  .h-v-pc {
+    background-color: var(--dm-dark-100) !important;
+  }
+
+  svg {
+    filter: var(--dm-light-icon);
+  }
+}
+
+input {
+  color: var(--dm-light-200) !important;
+}
+
+// No computers text
+.ab-S-V,
+.ab-S-Sg {
+  color: var(--dm-light-200) !important;
+}
+
+// My drive toolbar icons
+.a-s-tb-sc-Ja-Q.a-s-tb-sc-Ja-Q-Nm.a-Ba-Ed.a-s-Ba-dj svg {
+  filter: invert(1);
+}
+
+// Menu items
+
+div[role="menu"]:not([role="presentation"]) {
+  background-color: var(--dm-dark-300) !important;
+  color: var(--dm-light-200) !important;
+  border-color: var(--dm-dark-100) !important;
+
+  // Menu items hover
+  .FwR7Pc {
+    background-color: var(--dm-dark-200) !important;
+  }
+}
+
+div[role="menu"] div {
+  background-color: transparent !important;
+  color: var(--dm-light-200) !important;
+  border-color: var(--dm-dark-100) !important;
+}
+
+// Rename dialog
+
+div[role="dialog"] div,
+div[role="dialog"] input {
+  background-color: transparent !important;
+}
+
+div {
+  color: var(--dm-light-200) !important;
+}
+
+// Activate button
+.la-Y-A.kc-A {
+  color: var(--dm-light-200) !important;
+}
+
+.a-la-Xf-d {
+  filter: invert(1);
+}
+
+// Search in drive bar
+
+.gb_Ze {
+  background: var(--dm-dark-200) !important;
+  border-color: var(--dm-dark-600) !important;
+}

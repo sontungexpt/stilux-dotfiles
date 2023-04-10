@@ -1,0 +1,11 @@
+{
+   "description": {
+      "message": "Mode sombre pour tous les sites. Modifie les couleurs sur les sites pour les rendre plus agréables à l'œil et pratiques pour travailler sur Internet."
+   },
+   "name": {
+      "message": "Mode sombre Chrome"
+   },
+   "short_name": {
+      "message": "Mode sombre"
+   }
+}

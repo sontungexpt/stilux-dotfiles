@@ -1,42 +1,39 @@
-2023/04/07-10:03:27.983 d69 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/04/07-10:03:27.984 d69 Recovering log #46
-2023/04/07-10:03:27.989 d69 Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000046.log 
-2023/04/07-10:14:00.078 d68 Level-0 table #51: started
-2023/04/07-10:14:00.088 d68 Level-0 table #51: 1238439 bytes OK
-2023/04/07-10:14:00.091 d68 Delete type=0 #46
-2023/04/07-10:17:26.020 d69 Compacting 1@1 + 1@2 files
-2023/04/07-10:17:26.034 d69 Generated table #52@1: 415 keys, 49571 bytes
-2023/04/07-10:17:26.034 d69 Compacted 1@1 + 1@2 files => 49571 bytes
-2023/04/07-10:17:26.037 d69 compacted to: files[ 0 0 1 0 0 0 0 ]
-2023/04/07-10:17:26.038 d69 Delete type=2 #51
-2023/04/07-10:17:26.038 d69 Delete type=2 #48
-2023/04/07-11:21:39.210 d69 Level-0 table #54: started
-2023/04/07-11:21:39.227 d69 Level-0 table #54: 1327775 bytes OK
-2023/04/07-11:21:39.231 d69 Delete type=0 #50
-2023/04/07-11:33:04.930 2c046 Compacting 1@1 + 1@2 files
-2023/04/07-11:33:04.935 2c046 Generated table #55@1: 437 keys, 40225 bytes
-2023/04/07-11:33:04.935 2c046 Compacted 1@1 + 1@2 files => 40225 bytes
-2023/04/07-11:33:04.938 2c046 compacted to: files[ 0 0 1 0 0 0 0 ]
-2023/04/07-11:33:04.938 2c046 Delete type=2 #54
-2023/04/07-11:33:04.938 2c046 Delete type=2 #52
-2023/04/07-11:39:25.009 d69 Level-0 table #57: started
-2023/04/07-11:39:25.016 d69 Level-0 table #57: 949835 bytes OK
-2023/04/07-11:39:25.020 d69 Delete type=0 #53
-2023/04/07-11:39:27.293 d68 Compacting 1@1 + 1@2 files
-2023/04/07-11:39:27.298 d68 Generated table #58@1: 419 keys, 71393 bytes
-2023/04/07-11:39:27.298 d68 Compacted 1@1 + 1@2 files => 71393 bytes
-2023/04/07-11:39:27.301 d68 compacted to: files[ 0 0 1 0 0 0 0 ]
-2023/04/07-11:39:27.301 d68 Delete type=2 #55
-2023/04/07-11:39:27.301 d68 Delete type=2 #57
-2023/04/07-11:50:20.063 d69 Level-0 table #60: started
-2023/04/07-11:50:20.070 d69 Level-0 table #60: 987424 bytes OK
-2023/04/07-11:50:20.073 d69 Delete type=0 #56
-2023/04/07-11:50:45.596 d69 Compacting 1@1 + 1@2 files
-2023/04/07-11:50:45.601 d69 Generated table #61@1: 432 keys, 59466 bytes
-2023/04/07-11:50:45.601 d69 Compacted 1@1 + 1@2 files => 59466 bytes
-2023/04/07-11:50:45.604 d69 compacted to: files[ 0 0 1 0 0 0 0 ]
-2023/04/07-11:50:45.604 d69 Delete type=2 #60
-2023/04/07-11:50:45.604 d69 Delete type=2 #58
-2023/04/07-12:28:46.430 d69 Level-0 table #63: started
-2023/04/07-12:28:46.439 d69 Level-0 table #63: 1429287 bytes OK
-2023/04/07-12:28:46.443 d69 Delete type=0 #59
+2023/04/10-19:36:45.375 1eeec Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/10-19:36:45.375 1eeec Recovering log #208
+2023/04/10-19:36:45.376 1eeec Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000208.log 
+2023/04/10-19:49:31.766 1eeed Level-0 table #213: started
+2023/04/10-19:49:31.782 1eeed Level-0 table #213: 1417136 bytes OK
+2023/04/10-19:49:31.786 1eeed Delete type=0 #208
+2023/04/10-19:49:47.219 1eeed Compacting 1@1 + 1@2 files
+2023/04/10-19:49:47.236 1eeed Generated table #214@1: 581 keys, 65712 bytes
+2023/04/10-19:49:47.236 1eeed Compacted 1@1 + 1@2 files => 65712 bytes
+2023/04/10-19:49:47.238 1eeed compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/10-19:49:47.239 1eeed Delete type=2 #213
+2023/04/10-19:49:47.239 1eeed Delete type=2 #210
+2023/04/10-19:55:32.756 1eeec Level-0 table #216: started
+2023/04/10-19:55:32.780 1eeec Level-0 table #216: 1066091 bytes OK
+2023/04/10-19:55:32.783 1eeec Delete type=0 #212
+2023/04/10-19:57:06.915 1eeed Compacting 1@1 + 1@2 files
+2023/04/10-19:57:06.919 1eeed Generated table #217@1: 762 keys, 69853 bytes
+2023/04/10-19:57:06.919 1eeed Compacted 1@1 + 1@2 files => 69853 bytes
+2023/04/10-19:57:06.923 1eeed compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/10-19:57:06.923 1eeed Delete type=2 #214
+2023/04/10-19:57:06.923 1eeed Delete type=2 #216
+2023/04/10-21:19:06.409 1eeed Level-0 table #219: started
+2023/04/10-21:19:06.419 1eeed Level-0 table #219: 1502446 bytes OK
+2023/04/10-21:19:06.422 1eeed Delete type=0 #215
+2023/04/10-21:21:43.490 1eeec Compacting 1@1 + 1@2 files
+2023/04/10-21:21:43.497 1eeec Generated table #220@1: 931 keys, 74971 bytes
+2023/04/10-21:21:43.497 1eeec Compacted 1@1 + 1@2 files => 74971 bytes
+2023/04/10-21:21:43.501 1eeec compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/10-21:21:43.501 1eeec Delete type=2 #217
+2023/04/10-21:21:43.501 1eeec Delete type=2 #219
+2023/04/10-21:35:15.433 1eeed Level-0 table #222: started
+2023/04/10-21:35:15.443 1eeed Level-0 table #222: 1594552 bytes OK
+2023/04/10-21:35:15.447 1eeed Delete type=0 #218
+2023/04/10-21:36:33.683 1eeed Compacting 1@1 + 1@2 files
+2023/04/10-21:36:33.688 1eeed Generated table #223@1: 595 keys, 83812 bytes
+2023/04/10-21:36:33.688 1eeed Compacted 1@1 + 1@2 files => 83812 bytes
+2023/04/10-21:36:33.691 1eeed compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/10-21:36:33.691 1eeed Delete type=2 #222
+2023/04/10-21:36:33.691 1eeed Delete type=2 #220

@@ -1,45 +1,87 @@
-2023/04/07-10:03:23.535 3 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/Local Storage/leveldb/MANIFEST-000001
-2023/04/07-10:03:23.536 3 Recovering log #216
-2023/04/07-10:03:23.541 3 Reusing old log /home/stilux/.config/microsoft-edge/Default/Local Storage/leveldb/000216.log 
-2023/04/07-10:40:27.990 3 Level-0 table #220: started
-2023/04/07-10:40:28.005 3 Level-0 table #220: 19760 bytes OK
-2023/04/07-10:40:28.009 3 Delete type=0 #216
-2023/04/07-10:40:28.009 3 Compacting 4@0 + 1@1 files
-2023/04/07-10:40:28.031 3 Generated table #221@0: 2957 keys, 686102 bytes
-2023/04/07-10:40:28.031 3 Compacted 4@0 + 1@1 files => 686102 bytes
-2023/04/07-10:40:28.035 3 compacted to: files[ 0 1 1 0 0 0 0 ]
-2023/04/07-10:40:28.036 3 Delete type=2 #211
-2023/04/07-10:40:28.036 3 Delete type=2 #215
-2023/04/07-10:40:28.036 3 Delete type=2 #213
-2023/04/07-10:40:28.036 3 Delete type=2 #220
-2023/04/07-10:40:28.036 3 Delete type=2 #217
-2023/04/07-10:50:27.989 3 Level-0 table #223: started
-2023/04/07-10:50:28.004 3 Level-0 table #223: 136380 bytes OK
-2023/04/07-10:50:28.009 3 Delete type=0 #219
-2023/04/07-11:19:39.199 37 Level-0 table #225: started
-2023/04/07-11:19:39.204 37 Level-0 table #225: 148053 bytes OK
-2023/04/07-11:19:39.207 37 Delete type=0 #222
-2023/04/07-11:20:46.901 3 Level-0 table #227: started
-2023/04/07-11:20:46.916 3 Level-0 table #227: 133932 bytes OK
-2023/04/07-11:20:46.920 3 Delete type=0 #224
-2023/04/07-11:21:36.893 37 Level-0 table #229: started
-2023/04/07-11:21:36.908 37 Level-0 table #229: 136643 bytes OK
-2023/04/07-11:21:36.911 37 Delete type=0 #226
-2023/04/07-11:21:36.912 3 Compacting 4@0 + 1@1 files
-2023/04/07-11:21:36.923 3 Generated table #230@0: 2982 keys, 679578 bytes
-2023/04/07-11:21:36.923 3 Compacted 4@0 + 1@1 files => 679578 bytes
-2023/04/07-11:21:36.926 3 compacted to: files[ 0 1 1 0 0 0 0 ]
-2023/04/07-11:21:36.926 3 Delete type=2 #223
-2023/04/07-11:21:36.926 3 Delete type=2 #221
-2023/04/07-11:21:36.926 3 Delete type=2 #227
-2023/04/07-11:21:36.926 3 Delete type=2 #229
-2023/04/07-11:21:36.926 3 Delete type=2 #225
-2023/04/07-11:56:27.990 3 Level-0 table #232: started
-2023/04/07-11:56:28.035 3 Level-0 table #232: 145983 bytes OK
-2023/04/07-11:56:28.040 3 Delete type=0 #228
-2023/04/07-12:00:10.325 3 Level-0 table #234: started
-2023/04/07-12:00:10.339 3 Level-0 table #234: 136906 bytes OK
-2023/04/07-12:00:10.342 3 Delete type=0 #231
-2023/04/07-12:06:27.989 3 Level-0 table #236: started
-2023/04/07-12:06:28.004 3 Level-0 table #236: 139809 bytes OK
-2023/04/07-12:06:28.008 3 Delete type=0 #233
+2023/04/10-19:36:40.605 3 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/Local Storage/leveldb/MANIFEST-000001
+2023/04/10-19:36:40.605 3 Recovering log #654
+2023/04/10-19:36:40.606 3 Reusing old log /home/stilux/.config/microsoft-edge/Default/Local Storage/leveldb/000654.log 
+2023/04/10-19:37:12.585 5 Level-0 table #658: started
+2023/04/10-19:37:12.615 5 Level-0 table #658: 17779 bytes OK
+2023/04/10-19:37:12.620 5 Delete type=0 #654
+2023/04/10-19:37:12.620 5 Compacting 4@0 + 1@1 files
+2023/04/10-19:37:12.640 5 Generated table #659@0: 5632 keys, 1789881 bytes
+2023/04/10-19:37:12.640 5 Compacted 4@0 + 1@1 files => 1789881 bytes
+2023/04/10-19:37:12.644 5 compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/04/10-19:37:12.644 5 Delete type=2 #647
+2023/04/10-19:37:12.644 5 Delete type=2 #655
+2023/04/10-19:37:12.644 5 Delete type=2 #653
+2023/04/10-19:37:12.644 5 Delete type=2 #650
+2023/04/10-19:37:12.644 5 Delete type=2 #658
+2023/04/10-19:51:05.889 3 Level-0 table #661: started
+2023/04/10-19:51:05.902 3 Level-0 table #661: 28050 bytes OK
+2023/04/10-19:51:05.905 3 Delete type=0 #657
+2023/04/10-19:59:47.233 3 Level-0 table #663: started
+2023/04/10-19:59:47.246 3 Level-0 table #663: 28025 bytes OK
+2023/04/10-19:59:47.250 3 Delete type=0 #660
+2023/04/10-20:13:45.353 3 Level-0 table #665: started
+2023/04/10-20:13:45.356 3 Level-0 table #665: 22421 bytes OK
+2023/04/10-20:13:45.360 3 Delete type=0 #662
+2023/04/10-20:16:45.353 3 Level-0 table #667: started
+2023/04/10-20:16:45.395 3 Level-0 table #667: 25573 bytes OK
+2023/04/10-20:16:45.399 3 Delete type=0 #664
+2023/04/10-20:16:45.399 3 Compacting 4@0 + 1@1 files
+2023/04/10-20:16:45.413 3 Generated table #668@0: 5761 keys, 1802683 bytes
+2023/04/10-20:16:45.413 3 Compacted 4@0 + 1@1 files => 1802683 bytes
+2023/04/10-20:16:45.416 3 compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/04/10-20:16:45.416 3 Delete type=2 #659
+2023/04/10-20:16:45.416 3 Delete type=2 #661
+2023/04/10-20:16:45.416 3 Delete type=2 #667
+2023/04/10-20:16:45.416 3 Delete type=2 #663
+2023/04/10-20:16:45.416 3 Delete type=2 #665
+2023/04/10-20:22:03.761 3 Level-0 table #670: started
+2023/04/10-20:22:03.774 3 Level-0 table #670: 26460 bytes OK
+2023/04/10-20:22:03.778 3 Delete type=0 #666
+2023/04/10-20:25:45.353 3 Level-0 table #672: started
+2023/04/10-20:25:45.356 3 Level-0 table #672: 9709 bytes OK
+2023/04/10-20:25:45.360 3 Delete type=0 #669
+2023/04/10-20:26:45.353 3 Level-0 table #674: started
+2023/04/10-20:26:45.366 3 Level-0 table #674: 42182 bytes OK
+2023/04/10-20:26:45.370 3 Delete type=0 #671
+2023/04/10-20:50:11.569 3 Level-0 table #676: started
+2023/04/10-20:50:11.582 3 Level-0 table #676: 23647 bytes OK
+2023/04/10-20:50:11.585 3 Delete type=0 #673
+2023/04/10-20:50:11.585 3 Compacting 4@0 + 1@1 files
+2023/04/10-20:50:11.598 3 Generated table #677@0: 5788 keys, 1807586 bytes
+2023/04/10-20:50:11.598 3 Compacted 4@0 + 1@1 files => 1807586 bytes
+2023/04/10-20:50:11.601 3 compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/04/10-20:50:11.601 3 Delete type=2 #672
+2023/04/10-20:50:11.601 3 Delete type=2 #676
+2023/04/10-20:50:11.601 3 Delete type=2 #674
+2023/04/10-20:50:11.601 3 Delete type=2 #668
+2023/04/10-20:50:11.601 3 Delete type=2 #670
+2023/04/10-20:52:20.242 3 Level-0 table #679: started
+2023/04/10-20:52:20.257 3 Level-0 table #679: 28136 bytes OK
+2023/04/10-20:52:20.261 3 Delete type=0 #675
+2023/04/10-20:56:53.274 3 Level-0 table #681: started
+2023/04/10-20:56:53.316 3 Level-0 table #681: 24685 bytes OK
+2023/04/10-20:56:53.321 3 Delete type=0 #678
+2023/04/10-21:00:52.817 34 Level-0 table #683: started
+2023/04/10-21:00:52.833 34 Level-0 table #683: 10483 bytes OK
+2023/04/10-21:00:52.836 34 Delete type=0 #680
+2023/04/10-21:02:01.929 3 Level-0 table #685: started
+2023/04/10-21:02:01.971 3 Level-0 table #685: 17760 bytes OK
+2023/04/10-21:02:01.977 3 Delete type=0 #682
+2023/04/10-21:02:01.977 3 Compacting 4@0 + 1@1 files
+2023/04/10-21:02:01.998 3 Generated table #686@0: 5798 keys, 1808430 bytes
+2023/04/10-21:02:01.998 3 Compacted 4@0 + 1@1 files => 1808430 bytes
+2023/04/10-21:02:02.002 3 compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/04/10-21:02:02.002 3 Delete type=2 #685
+2023/04/10-21:02:02.002 3 Delete type=2 #679
+2023/04/10-21:02:02.002 3 Delete type=2 #681
+2023/04/10-21:02:02.002 3 Delete type=2 #683
+2023/04/10-21:02:02.002 3 Delete type=2 #677
+2023/04/10-21:13:57.338 38 Level-0 table #688: started
+2023/04/10-21:13:57.344 38 Level-0 table #688: 20098 bytes OK
+2023/04/10-21:13:57.349 38 Delete type=0 #684
+2023/04/10-21:34:45.353 3 Level-0 table #690: started
+2023/04/10-21:34:45.395 3 Level-0 table #690: 19421 bytes OK
+2023/04/10-21:34:45.399 3 Delete type=0 #687
+2023/04/10-21:38:34.225 3 Level-0 table #692: started
+2023/04/10-21:38:34.243 3 Level-0 table #692: 334407 bytes OK
+2023/04/10-21:38:34.247 3 Delete type=0 #689

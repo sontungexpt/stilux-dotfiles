@@ -1,0 +1,6 @@
+2023/04/08-13:28:10.349 1ae6 Creating DB /home/stilux/.config/microsoft-edge/Default/IndexedDB/devtools_devtools_0.indexeddb.leveldb since it was missing.
+2023/04/08-13:28:10.355 1ae6 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/devtools_devtools_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/08-13:28:20.710 1ae7 Level-0 table #5: started
+2023/04/08-13:28:20.712 1ae7 Level-0 table #5: 1025 bytes OK
+2023/04/08-13:28:20.715 1ae7 Delete type=0 #3
+2023/04/08-13:28:20.715 1ae7 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

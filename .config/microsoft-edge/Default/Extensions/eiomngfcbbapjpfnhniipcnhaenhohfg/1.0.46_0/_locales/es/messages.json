@@ -1,0 +1,11 @@
+{
+   "description": {
+      "message": "Modo oscuro para todos los sitios. Cambia los colores en los sitios para que sean más agradables a la vista y convenientes para trabajar en Internet."
+   },
+   "name": {
+      "message": "Modo oscuro Chrome"
+   },
+   "short_name": {
+      "message": "Modo oscuro"
+   }
+}

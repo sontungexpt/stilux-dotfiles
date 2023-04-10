@@ -97,7 +97,7 @@ entry {
   enabled:               true;
   expand:                false;
   width:                 400px;
-  padding:               8px 16px;
+  padding:               12px 18px;
   border-radius:         50%;
   background-color:      @background-alt;
   text-color:            inherit;

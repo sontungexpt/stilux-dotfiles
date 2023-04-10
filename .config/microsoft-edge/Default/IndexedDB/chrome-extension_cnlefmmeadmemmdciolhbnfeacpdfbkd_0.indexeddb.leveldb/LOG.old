@@ -1,3 +1,22 @@
-2023/04/07-11:56:10.068 d68 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/chrome-extension_cnlefmmeadmemmdciolhbnfeacpdfbkd_0.indexeddb.leveldb/MANIFEST-000001
-2023/04/07-11:56:10.069 d68 Recovering log #4
-2023/04/07-11:56:10.072 d68 Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/chrome-extension_cnlefmmeadmemmdciolhbnfeacpdfbkd_0.indexeddb.leveldb/000004.log 
+2023/04/10-19:36:41.024 1eeec Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/chrome-extension_cnlefmmeadmemmdciolhbnfeacpdfbkd_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/10-19:36:41.024 1eeec Recovering log #15
+2023/04/10-19:36:41.025 1eeec Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/chrome-extension_cnlefmmeadmemmdciolhbnfeacpdfbkd_0.indexeddb.leveldb/000015.log 
+2023/04/10-20:06:13.039 1eeed Level-0 table #19: started
+2023/04/10-20:06:13.042 1eeed Level-0 table #19: 43904 bytes OK
+2023/04/10-20:06:13.046 1eeed Delete type=0 #15
+2023/04/10-20:06:13.046 1eeed Manual compaction at level-0 from (begin) .. (end); will stop at '\x00\x01\x01\x02\x01\x10\x00l\x00a\x00s\x00t\x00C\x00o\x00n\x00f\x00i\x00g\x00U\x00p\x00d\x00a\x00t\x00e' @ 7909 : 1
+2023/04/10-20:06:13.046 1eeed Compacting 1@0 + 1@1 files
+2023/04/10-20:06:13.053 1eeed Generated table #20@0: 139 keys, 8651 bytes
+2023/04/10-20:06:13.053 1eeed Compacted 1@0 + 1@1 files => 8651 bytes
+2023/04/10-20:06:13.056 1eeed compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/04/10-20:06:13.056 1eeed Delete type=2 #19
+2023/04/10-20:06:13.056 1eeed Delete type=2 #16
+2023/04/10-20:06:13.057 1eeed Manual compaction at level-0 from '\x00\x01\x01\x02\x01\x10\x00l\x00a\x00s\x00t\x00C\x00o\x00n\x00f\x00i\x00g\x00U\x00p\x00d\x00a\x00t\x00e' @ 7909 : 1 .. (end); will stop at (end)
+2023/04/10-20:06:13.057 1eeed Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x01\x01\x02\x01\x10\x00l\x00a\x00s\x00t\x00C\x00o\x00n\x00f\x00i\x00g\x00U\x00p\x00d\x00a\x00t\x00e' @ 7993 : 1
+2023/04/10-20:06:13.057 1eeed Compacting 1@1 + 1@2 files
+2023/04/10-20:06:13.059 1eeed Generated table #21@1: 32 keys, 7901 bytes
+2023/04/10-20:06:13.059 1eeed Compacted 1@1 + 1@2 files => 7901 bytes
+2023/04/10-20:06:13.062 1eeed compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/10-20:06:13.062 1eeed Delete type=2 #20
+2023/04/10-20:06:13.062 1eeed Delete type=2 #13
+2023/04/10-20:06:13.063 1eeed Manual compaction at level-1 from '\x00\x01\x01\x02\x01\x10\x00l\x00a\x00s\x00t\x00C\x00o\x00n\x00f\x00i\x00g\x00U\x00p\x00d\x00a\x00t\x00e' @ 7993 : 1 .. (end); will stop at (end)

@@ -1,0 +1,20 @@
+2023/04/10-12:51:45.003 823 Creating DB /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.wps.com_0.indexeddb.leveldb since it was missing.
+2023/04/10-12:51:45.008 823 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.wps.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/10-12:51:45.017 832 Level-0 table #5: started
+2023/04/10-12:51:45.021 832 Level-0 table #5: 606 bytes OK
+2023/04/10-12:51:45.026 832 Delete type=0 #3
+2023/04/10-12:51:45.026 825 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/04/10-13:12:32.229 823 Level-0 table #7: started
+2023/04/10-13:12:32.231 823 Level-0 table #7: 2148 bytes OK
+2023/04/10-13:12:32.236 823 Delete type=0 #4
+2023/04/10-13:12:32.236 823 Manual compaction at level-0 from '\x00\x03\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x04\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/04/10-13:19:25.566 38e5 Level-0 table #9: started
+2023/04/10-13:19:25.568 38e5 Level-0 table #9: 1730 bytes OK
+2023/04/10-13:19:25.573 38e5 Delete type=0 #6
+2023/04/10-13:19:25.573 38e5 Manual compaction at level-0 from '\x00\x04\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x05\x00\x00\x00' @ 0 : 0; will stop at '\x00\x04\x00\x00\x05' @ 133 : 1
+2023/04/10-13:19:25.573 38e5 Compacting 1@0 + 1@1 files
+2023/04/10-13:19:25.576 38e5 Generated table #10@0: 56 keys, 1755 bytes
+2023/04/10-13:19:25.576 38e5 Compacted 1@0 + 1@1 files => 1755 bytes
+2023/04/10-13:19:25.580 38e5 compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/04/10-13:19:25.580 38e5 Delete type=2 #9
+2023/04/10-13:19:25.580 824 Manual compaction at level-0 from '\x00\x04\x00\x00\x05' @ 133 : 1 .. '\x00\x05\x00\x00\x00' @ 0 : 0; will stop at (end)

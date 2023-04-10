@@ -1,2 +1,5 @@
-2023/04/05-12:22:46.525 3 Creating DB /home/stilux/.config/microsoft-edge/Default/EntityExtractionAssetStore.db since it was missing.
-2023/04/05-12:22:46.534 3 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/EntityExtractionAssetStore.db/MANIFEST-000001
+2023/04/09-14:03:38.214 3 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/EntityExtractionAssetStore.db/MANIFEST-000001
+2023/04/09-14:03:38.214 3 Recovering log #3
+2023/04/09-14:03:38.216 3 Level-0 table #3: started
+2023/04/09-14:03:38.221 3 Level-0 table #3: 267332 bytes OK
+2023/04/09-14:03:38.225 3 Delete type=0 #3

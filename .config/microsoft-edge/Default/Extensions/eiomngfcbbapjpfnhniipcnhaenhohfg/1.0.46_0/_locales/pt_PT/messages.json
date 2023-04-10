@@ -1,0 +1,11 @@
+{
+   "description": {
+      "message": "Tema escuro para todos os sites. Altera as cores dos sites para agradáveis aos olhos e conveniente para trabalhar na Internet."
+   },
+   "name": {
+      "message": "Modo escuro Chrome"
+   },
+   "short_name": {
+      "message": "tema escuro"
+   }
+}

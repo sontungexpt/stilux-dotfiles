@@ -11,4 +11,5 @@
   <property name="last-details-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_38_PERCENT"/>
   <property name="last-details-view-visible-columns" type="string" value="THUNAR_COLUMN_DATE_MODIFIED,THUNAR_COLUMN_NAME,THUNAR_COLUMN_SIZE,THUNAR_COLUMN_TYPE"/>
   <property name="last-details-view-column-widths" type="string" value="50,50,150,50,50,104,50,50,1203,50,50,89,50,177"/>
+  <property name="last-image-preview-visible" type="bool" value="true"/>
 </channel>

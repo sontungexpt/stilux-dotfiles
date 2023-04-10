@@ -1,0 +1,6 @@
+2023/04/08-21:50:28.279 99b Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.office.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/08-21:50:28.279 99b Recovering log #4
+2023/04/08-21:50:28.279 99b Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.office.com_0.indexeddb.leveldb/000004.log 
+2023/04/08-21:50:44.451 99c Level-0 table #8: started
+2023/04/08-21:50:44.462 99c Level-0 table #8: 2220543 bytes OK
+2023/04/08-21:50:44.469 99c Delete type=0 #4

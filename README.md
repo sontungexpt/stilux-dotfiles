@@ -15,6 +15,7 @@
 - **Bluetooth Manager**: [blueman](https://github.com/blueman-project/blueman)
 - **Wifi Hotspot**: [linux-wifi-hotspot](https://github.com/lakinduakash/linux-wifi-hotspot)
 - **Screenshot**: [flameshot](https://github.com/flameshot-org/flameshot), [scrot](https://github.com/dreamer/scrot)
+- **Desktop Record**: [recordmydesktop](https://wiki.archlinux.org/title/RecordMyDesktop)
 - **Disk Manager**: [gparted](https://github.com/mgehre/gparted)
 - **Grub Manager**: [grub-customizer](https://github.com/mdeguzis/grub-customizer/tree/master)
 - **Theme Manager**: [lxappearance-gtk3](https://security.archlinux.org/package/lxappearance-gtk3)
@@ -66,7 +67,7 @@
   - [android studio](https://developer.android.com/studio)
   - [gcc](https://archlinux.org/packages/core/x86_64/gcc/), [cmake](https://archlinux.org/packages/extra/x86_64/cmake/)
   - [nodejs](https://archlinux.org/packages/community/x86_64/nodejs/) with [npm](https://archlinux.org/packages/community/any/npm/)
-- **Brownser**:[microsoft-edge](https://aur.archlinux.org/packages/microsoft-edge-stable-bin)
+- **Brownser**: [microsoft-edge](https://aur.archlinux.org/packages/microsoft-edge-stable-bin)
 <!-- [brave](https://aur.archlinux.org/packages/brave-bin), -->
 <!-- [google-chrome](https://aur.archlinux.org/packages/google-chrome) or -->
 - **Calendar Manager**: [calcurse](https://github.com/lfos/calcurse)

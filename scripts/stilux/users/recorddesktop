@@ -1,0 +1,54 @@
+#!/bin/bash
+# The scripts is written by Tran Vo Son Tung
+# This script is used to record desktop screen
+# Dependencies: recordmydesktop
+
+help() {
+	echo " This script is written by Tran Vo Son Tung"
+	echo " Dependencies: recordmydesktop"
+	echo -e "\nUSAGE: screenshot [OPTIONS] [FUNCTION]\n"
+	echo -e "\nOPTIONS:\n"
+	echo "  -h, --help           show help"
+	echo -e "\nFUNCTION:\n"
+	echo "  select-save          select an area and save it to the directory"
+	echo "  select-clipboard     select an area and copy it to the select-clipboard"
+	echo "  window               capture the focused window and save it to the directory"
+	echo "  NOTE: The default function of scrot can use to capture the screen"
+}
+
+# Show help if no arguments
+if [ "$#" -eq 0 ]; then
+	help
+	exit 1
+fi
+
+# Check if install scrot, xclip, dunstify
+if [ ! -x "$(command -v scrot)" ]; then
+	echo "Please install scrot to use this scripts"
+	exit 0
+fi
+
+if [ ! -x "$(command -v xclip)" ]; then
+	echo "please install xclip to use this scripts"
+	exit 0
+fi
+
+if [ ! -x "$(command -v dunstify)" ]; then
+	echo "please install dunst to use this scripts"
+	exit 0
+fi
+
+# Main screenshot script
+# Make sure the directory exists
+mkdir -p ~/Pictures/Screenshots
+
+output="/tmp/%F_%T_$wx$h.png"
+outputDir="$HOME/Pictures/Screenshots/%Y_%m_%d-%T-screentshot.png"
+
+case "$1" in
+"select-save") scrot "$outputDir" --select --line mode=edge -e 'xclip -selection clipboard -target image/png -i $f && dunstify "Save $f" -i $f -a "scrot"' || exit ;;
+"select-clipboard") scrot "$output" --select --line mode=edge -e 'xclip -selection clipboard -target image/png -i $f && dunstify "Copy to clipboard" -i $f -a "scrot" && rm $f' || exit ;;
+"window") scrot "$outputDir" --focused --border -e 'xclip -selection clipboard -target image/png -i $f && dunstify "Save $f" -i $f -a "scrot"' || exit ;;
+"--help" | "-h") help ;;
+*) scrot "$outputDir" -e 'xclip -selection clipboard -target image/png -i $f && dunstify "Save $f" -i $f -a "scrot"' || exit ;;
+esac

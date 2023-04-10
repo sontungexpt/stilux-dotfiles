@@ -1,12 +1,75 @@
-2023/04/07-00:27:49.906 3a0f Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/04/07-00:27:49.906 3a0f Recovering log #42
-2023/04/07-00:27:49.908 3a0f Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000042.log 
-2023/04/07-01:04:03.077 3a10 Level-0 table #47: started
-2023/04/07-01:04:03.098 3a10 Level-0 table #47: 1521836 bytes OK
-2023/04/07-01:04:03.104 3a10 Delete type=0 #42
-2023/04/07-01:04:44.451 3a0f Compacting 1@1 + 1@2 files
-2023/04/07-01:04:44.457 3a0f Generated table #48@1: 410 keys, 60462 bytes
-2023/04/07-01:04:44.457 3a0f Compacted 1@1 + 1@2 files => 60462 bytes
-2023/04/07-01:04:44.460 3a0f compacted to: files[ 0 0 1 0 0 0 0 ]
-2023/04/07-01:04:44.460 3a0f Delete type=2 #44
-2023/04/07-01:04:44.460 3a0f Delete type=2 #47
+2023/04/10-18:01:41.331 ef5 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/10-18:01:41.332 ef5 Recovering log #183
+2023/04/10-18:01:41.336 ef5 Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000183.log 
+2023/04/10-18:48:12.939 ef6 Level-0 table #188: started
+2023/04/10-18:48:12.948 ef6 Level-0 table #188: 1564444 bytes OK
+2023/04/10-18:48:12.952 ef6 Delete type=0 #183
+2023/04/10-19:01:37.732 aca0 Compacting 1@1 + 1@2 files
+2023/04/10-19:01:37.747 aca0 Generated table #189@1: 483 keys, 76763 bytes
+2023/04/10-19:01:37.747 aca0 Compacted 1@1 + 1@2 files => 76763 bytes
+2023/04/10-19:01:37.750 aca0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/10-19:01:37.750 aca0 Delete type=2 #188
+2023/04/10-19:01:37.750 aca0 Delete type=2 #185
+2023/04/10-19:05:08.163 ef6 Level-0 table #191: started
+2023/04/10-19:05:08.174 ef6 Level-0 table #191: 1229134 bytes OK
+2023/04/10-19:05:08.178 ef6 Delete type=0 #187
+2023/04/10-19:05:10.310 ef6 Compacting 1@1 + 1@2 files
+2023/04/10-19:05:10.315 ef6 Generated table #192@1: 576 keys, 47729 bytes
+2023/04/10-19:05:10.315 ef6 Compacted 1@1 + 1@2 files => 47729 bytes
+2023/04/10-19:05:10.318 ef6 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/10-19:08:31.740 ef6 Level-0 table #194: started
+2023/04/10-19:08:31.754 ef6 Level-0 table #194: 1022355 bytes OK
+2023/04/10-19:08:31.758 ef6 Delete type=0 #190
+2023/04/10-19:08:31.758 ef6 Delete type=2 #191
+2023/04/10-19:08:31.758 ef6 Delete type=2 #189
+2023/04/10-19:08:34.953 aca0 Compacting 1@1 + 1@2 files
+2023/04/10-19:08:34.958 aca0 Generated table #195@1: 538 keys, 56659 bytes
+2023/04/10-19:08:34.958 aca0 Compacted 1@1 + 1@2 files => 56659 bytes
+2023/04/10-19:08:34.963 aca0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/10-19:08:34.963 aca0 Delete type=2 #194
+2023/04/10-19:08:34.963 aca0 Delete type=2 #192
+2023/04/10-19:13:23.608 ef6 Level-0 table #197: started
+2023/04/10-19:13:23.616 ef6 Level-0 table #197: 1003912 bytes OK
+2023/04/10-19:13:23.619 ef6 Delete type=0 #193
+2023/04/10-19:13:42.609 ef6 Compacting 1@1 + 1@2 files
+2023/04/10-19:13:42.614 ef6 Generated table #198@1: 498 keys, 55933 bytes
+2023/04/10-19:13:42.614 ef6 Compacted 1@1 + 1@2 files => 55933 bytes
+2023/04/10-19:13:42.617 ef6 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/10-19:13:42.617 ef6 Delete type=2 #197
+2023/04/10-19:13:42.617 ef6 Delete type=2 #195
+2023/04/10-19:22:14.956 ef6 Level-0 table #200: started
+2023/04/10-19:22:14.965 ef6 Level-0 table #200: 1168577 bytes OK
+2023/04/10-19:22:14.969 ef6 Delete type=0 #196
+2023/04/10-19:22:35.216 aca0 Compacting 1@1 + 1@2 files
+2023/04/10-19:22:35.221 aca0 Generated table #201@1: 540 keys, 56590 bytes
+2023/04/10-19:22:35.221 aca0 Compacted 1@1 + 1@2 files => 56590 bytes
+2023/04/10-19:22:35.224 aca0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/10-19:22:35.225 aca0 Delete type=2 #198
+2023/04/10-19:22:35.225 aca0 Delete type=2 #200
+2023/04/10-19:24:12.200 ef6 Level-0 table #203: started
+2023/04/10-19:24:12.209 ef6 Level-0 table #203: 909373 bytes OK
+2023/04/10-19:24:12.212 ef6 Delete type=0 #199
+2023/04/10-19:24:14.216 aca0 Compacting 1@1 + 1@2 files
+2023/04/10-19:24:14.222 aca0 Generated table #204@1: 600 keys, 57405 bytes
+2023/04/10-19:24:14.222 aca0 Compacted 1@1 + 1@2 files => 57405 bytes
+2023/04/10-19:24:14.225 aca0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/10-19:24:14.225 aca0 Delete type=2 #203
+2023/04/10-19:24:14.225 aca0 Delete type=2 #201
+2023/04/10-19:27:01.945 ef6 Level-0 table #206: started
+2023/04/10-19:27:01.953 ef6 Level-0 table #206: 970263 bytes OK
+2023/04/10-19:27:01.956 ef6 Delete type=0 #202
+2023/04/10-19:27:25.074 ef6 Compacting 1@1 + 1@2 files
+2023/04/10-19:27:25.088 ef6 Generated table #207@1: 512 keys, 54869 bytes
+2023/04/10-19:27:25.088 ef6 Compacted 1@1 + 1@2 files => 54869 bytes
+2023/04/10-19:27:25.091 ef6 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/10-19:27:25.092 ef6 Delete type=2 #206
+2023/04/10-19:27:25.092 ef6 Delete type=2 #204
+2023/04/10-19:34:50.125 ef5 Level-0 table #209: started
+2023/04/10-19:34:50.133 ef5 Level-0 table #209: 1094115 bytes OK
+2023/04/10-19:34:50.137 ef5 Delete type=0 #205
+2023/04/10-19:35:55.517 aca0 Compacting 1@1 + 1@2 files
+2023/04/10-19:35:55.523 aca0 Generated table #210@1: 553 keys, 55523 bytes
+2023/04/10-19:35:55.523 aca0 Compacted 1@1 + 1@2 files => 55523 bytes
+2023/04/10-19:35:55.526 aca0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/10-19:35:55.526 aca0 Delete type=2 #209
+2023/04/10-19:35:55.526 aca0 Delete type=2 #207

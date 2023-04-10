@@ -2,7 +2,7 @@
 # The scripts is wtitten by Tran Vo Son Tung
 # Screenshot scripts
 # Dependencies: scrot, xclip, dunstify
-# Usage: scrot [select-save|select-clipboard|window]
+# Usage: screenshot [select-save|select-clipboard|window]
 # select-save: select an area and save it to the directory
 # select-clipboard: select an area and copy it to the select-clipboard
 # window: capture the focused window and save it to the directory

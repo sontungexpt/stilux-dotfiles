@@ -1,0 +1,43 @@
+:root {
+  --dm-dark-700: #121212;
+  --dm-dark-600: #191919;
+  --dm-dark-500: #202020;
+  --dm-dark-400: #2e2e2e;
+  --dm-dark-300: #3c3c3c;
+  --dm-dark-200: #4a4a4a;
+  --dm-dark-100: #585858;
+
+  --dm-error-400: #b50a0a;
+
+
+  --dm-light-700: #cccccc;
+  --dm-light-600: #e6e6e6;
+  --dm-light-500: #f3f3f3;
+  --dm-light-400: #f9f9f9;
+  --dm-light-300: #fcfcfc;
+  --dm-light-200: #fefefe;
+  --dm-light-100: #ffffff;
+
+  --dm-light-icon: grayscale(1) brightness(1000%);
+
+}
+
+*[class*='KkxPLb'] {
+  --dt-primary-container: var(--dm-dark-400) !important;
+  --dt-background: var(--dm-dark-300) !important;
+  --dt-surface1: var(--dm-dark-500) !important;
+  --dt-inverse-on-surface: var(--dm-dark-200) !important;
+  --dt-surface: var(--dm-dark-400) !important;
+  --dt-surface2: var(--dm-dark-400) !important;
+  --dt-surface3: var(--dm-dark-400) !important;
+  --dt-surface4: var(--dm-dark-400) !important;
+  --dt-surface5: var(--dm-dark-400) !important;
+  --dt-on-surface: var(--dm-light-300) !important;
+  --dt-on-surface-variant: var(--dm-light-200) !important;
+  --dt-on-background: var(--dm-dark-300) !important;
+  --dt-surface-variant: var(--dm-dark-100) !important;
+  --dt-on-secondary-container: var(--dm-light-200) !important;
+  --dt-on-primary-container: var(--dm-light-200) !important;
+  --dt-error-container: var(--dm-error-400) !important;
+  --dt-secondary-container: var(--dm-dark-100) !important;
+}
