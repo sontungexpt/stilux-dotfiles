@@ -1,3 +1,15 @@
-2023/04/10-19:36:42.260 1eeec Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_accounts.fullstack.edu.vn_0.indexeddb.leveldb/MANIFEST-000001
-2023/04/10-19:36:42.261 1eeec Recovering log #7
-2023/04/10-19:36:42.261 1eeec Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_accounts.fullstack.edu.vn_0.indexeddb.leveldb/000007.log 
+2023/04/12-09:06:12.475 85a Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_accounts.fullstack.edu.vn_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/12-09:06:12.475 85a Recovering log #7
+2023/04/12-09:06:12.475 85a Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_accounts.fullstack.edu.vn_0.indexeddb.leveldb/000007.log 
+2023/04/12-09:06:22.370 85b Level-0 table #12: started
+2023/04/12-09:06:22.372 85b Level-0 table #12: 1515 bytes OK
+2023/04/12-09:06:22.375 85b Delete type=0 #7
+2023/04/12-09:06:22.375 85b Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2023/04/12-09:06:22.375 85b Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x01\x01\x02\x01\x05\x00_\x00_\x00s\x00a\x00k' @ 136 : 1
+2023/04/12-09:06:22.375 85b Compacting 1@1 + 1@2 files
+2023/04/12-09:06:22.377 85b Generated table #13@1: 19 keys, 587 bytes
+2023/04/12-09:06:22.377 85b Compacted 1@1 + 1@2 files => 587 bytes
+2023/04/12-09:06:22.380 85b compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/12-09:06:22.380 85b Delete type=2 #9
+2023/04/12-09:06:22.380 85b Delete type=2 #12
+2023/04/12-09:06:22.381 85b Manual compaction at level-1 from '\x00\x01\x01\x02\x01\x05\x00_\x00_\x00s\x00a\x00k' @ 136 : 1 .. (end); will stop at (end)

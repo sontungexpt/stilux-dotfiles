@@ -116,4 +116,15 @@
 	<patterns>*</patterns>
 	<image-files/>
 </action>
+<action>
+	<icon>redeyes</icon>
+	<name>Preview Archive File</name>
+	<submenu></submenu>
+	<unique-id>1681296253730676-1</unique-id>
+	<command>kitty extract --preview %f</command>
+	<description>Preview the archive file without extract theme</description>
+	<range>*</range>
+	<patterns>*.zip;*.rar;*.tar.bz;*.tar.bz2;*.tbz;*.tbz2;*.tar.gz;*.tgz;*.tar.xz;*.txz</patterns>
+	<other-files/>
+</action>
 </actions>

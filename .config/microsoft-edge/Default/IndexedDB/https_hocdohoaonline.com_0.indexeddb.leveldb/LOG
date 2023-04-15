@@ -1,0 +1,6 @@
+2023/04/13-12:03:21.136 51b Creating DB /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_hocdohoaonline.com_0.indexeddb.leveldb since it was missing.
+2023/04/13-12:03:21.142 51b Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_hocdohoaonline.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/13-12:03:51.063 51d Level-0 table #5: started
+2023/04/13-12:03:51.065 51d Level-0 table #5: 569 bytes OK
+2023/04/13-12:03:51.068 51d Delete type=0 #3
+2023/04/13-12:03:51.068 51b Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)

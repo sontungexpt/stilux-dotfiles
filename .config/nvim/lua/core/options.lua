@@ -1,10 +1,9 @@
 local options = vim.opt
-local autocmd = vim.api.nvim_create_autocmd
 local cmd = vim.cmd
-
+local g = vim.g
 
 --leader key
---let mapleader = "\<Space>"
+-- vim.g.mapleader = " "
 
 cmd("filetype plugin on")
 cmd("filetype plugin indent on")
@@ -12,6 +11,11 @@ cmd("filetype plugin indent on")
 --Syntax
 cmd("syntax enable")
 cmd("syntax on")
+
+
+-- disable netrw for nvimtree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- Ruler
 options.ruler = true
@@ -110,30 +114,15 @@ cmd([[
   augroup END
 ]])
 
---Remove whitespace on save
-autocmd('BufWritePre', {
-  pattern = '',
-  command = ":%s/\\s\\+$//e"
-})
 
---Check if change to visual mode then set relativenumber else set norelativenumber
-cmd([[ autocmd ModeChanged * if mode() == 'v' | set relativenumber | else | set norelativenumber | endif ]])
-
--- cd to the directory after open file exclude copilot
--- cmd([[
---   augroup autochangedirectory
---     autocmd!
---     autocmd bufreadpost *.* cd %:p:h|pwd
---   augroup end
--- ]])
-
-
--- Set norelative number on insert mode else set relative number
--- cmd([[
---   augroup setrelative
---     autocmd!
---     autocmd VimEnter * set relativenumber
---     autocmd InsertLeave * set relativenumber
---     autocmd InsertEnter * set norelativenumber
---   augroup end
--- ]])
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics,
+  {
+    underline = true,
+    virtual_text = {
+      spacing = 5,
+      severity_limit = 'Warning',
+    },
+    update_in_insert = true,
+  }
+)

@@ -4,8 +4,7 @@ local config = require("core.utils").load_config()
 
 -------------------------------------- globals -----------------------------------------
 g.nvchad_theme = config.ui.theme
-g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
-g.toggle_theme_icon = "   "
+-- g.toggle_theme_icon = "   "
 g.transparency = config.ui.transparency
 
 -------------------------------------- options ------------------------------------------
@@ -78,7 +77,6 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     vim.fn.glob(vim.fn.stdpath "config" .. "/lua/custom/**/*.lua", true, true, true)
   ),
   group = vim.api.nvim_create_augroup("ReloadNvChad", {}),
-
   callback = function(opts)
     local fp = vim.fn.fnamemodify(vim.fs.normalize(vim.api.nvim_buf_get_name(opts.buf)), ":r") --[[@as string]]
     local app_name = vim.env.NVIM_APPNAME and vim.env.NVIM_APPNAME or "nvim"
@@ -104,7 +102,3 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 
 -------------------------------------- commands ------------------------------------------
 local new_cmd = vim.api.nvim_create_user_command
-
-new_cmd("NvChadUpdate", function()
-  require "nvchad.update"()
-end, {})

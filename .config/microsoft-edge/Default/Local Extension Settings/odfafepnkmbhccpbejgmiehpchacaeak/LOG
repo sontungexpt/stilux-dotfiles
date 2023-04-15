@@ -1,3 +1,6 @@
-2023/04/10-19:36:40.960 1eeec Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/Local Extension Settings/odfafepnkmbhccpbejgmiehpchacaeak/MANIFEST-000001
-2023/04/10-19:36:40.960 1eeec Recovering log #49
-2023/04/10-19:36:40.966 1eeec Reusing old log /home/stilux/.config/microsoft-edge/Default/Local Extension Settings/odfafepnkmbhccpbejgmiehpchacaeak/000049.log 
+2023/04/15-12:10:09.528 60f Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/Local Extension Settings/odfafepnkmbhccpbejgmiehpchacaeak/MANIFEST-000001
+2023/04/15-12:10:09.528 60f Recovering log #78
+2023/04/15-12:10:09.530 60f Reusing old log /home/stilux/.config/microsoft-edge/Default/Local Extension Settings/odfafepnkmbhccpbejgmiehpchacaeak/000078.log 
+2023/04/15-12:15:57.499 60f Level-0 table #82: started
+2023/04/15-12:15:57.531 60f Level-0 table #82: 2843661 bytes OK
+2023/04/15-12:15:57.535 60f Delete type=0 #78

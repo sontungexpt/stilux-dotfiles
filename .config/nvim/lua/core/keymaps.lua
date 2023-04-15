@@ -22,7 +22,7 @@ local opts = { noremap = true, silent = true }
 local opts_without_noremap = { noremap = false, silent = true }
 local opts_without_silent = { noremap = true, silent = false }
 local opts_expr = { expr = true, replace_keycodes = true, noremap = true, silent = true }
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 
 --Back to normal mode
 map("i", "jj", "<esc>", opts_without_noremap)

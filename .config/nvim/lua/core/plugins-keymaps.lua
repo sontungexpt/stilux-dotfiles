@@ -22,21 +22,14 @@ local opts = { noremap = true, silent = true }
 -- local opts_without_noremap = { noremap = false, silent = true }
 -- local opts_without_silent = { noremap = true, silent = false }
 -- local opts_expr = { expr = true, replace_keycodes = true, noremap = true, silent = true }
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
+
 
 --NvimTree
 map("n", "<C-b>", ":NvimTreeToggle<cr>", opts)
 map("i", "<C-b>", "<esc>:NvimTreeToggle<cr>", opts)
 map("v", "<C-b>", "<esc>:NvimTreeToggle<cr>", opts)
 map("c", "<C-b>", "<esc>:NvimTreeToggle<cr>", opts)
-
---Floaterm
--- vim.g.floaterm_keymap_toggle = "<C-t>"
--- vim.g.floaterm_keymap_new = "<C-n><C-t>"
-
--- map("t", "<C-n>", "<C-\\><C-n>:FloatermNext<cr>", opts)
--- map("t", "<C-b>", "<C-\\><C-n>:FloatermPrev<cr>", opts)
--- map("t", "<C-k>", "<C-\\><C-n>:FloatermKill<cr>:FloatermToggle<cr>", opts)
 
 -- Toggle Term
 map("n", "<C-t>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", opts)
@@ -74,23 +67,6 @@ end, { desc = "Next error/warning todo comment" })
 map("n", "<A-c>", ":CccPick<cr>", opts)
 map("i", "<A-c>", "<esc>:CccPick<cr>", opts)
 map("v", "<A-c>", "<esc>:CccPick<cr>", opts)
-
---Debugging
--- map("n", "<Leader>do", ":lua require('dapui').open()<cr>", opts)
--- map("n", "<Leader>dc", ":lua require('dapui').close()<cr>", opts)
--- map("n", "<Leader>db", ":lua require('dapui').toggle()<cr>", opts)
--- map("n", "<Leader>b", ":lua require'dap'.toggle_breakpoint()<cr>", opts)
--- map("n", "<F5>", ":lua require'dap'.continue()<cr>", opts)
--- map("n", "<F10>", ":lua require'dap'.step_over()<cr>", opts)
--- map("n", "<F11>", ":lua require'dap'.step_into()<cr>", opts)
-
-map("n", "<Leader>db", "<CMD>lua require('dap').toggle_breakpoint()<CR>", opts)
-map("n", "<F5>", "<CMD>lua require('dap').continue()<CR>", opts)
-map("n", "<Leader>dh", "<CMD>lua require('dapui').eval()<CR>", opts)
-map("n", "<F11>", "<CMD>lua require('dap').step_into()<CR>", opts)
-map("n", "<Leader>do", "<CMD>lua require('dap').step_out()<CR>", opts)
-map("n", "<F10>", "<CMD>lua require('dap').step_over()<CR>", opts)
-map("n", "<Leader>dt", "<CMD>lua require('dap').terminate()<CR>", opts)
 
 -- Bufferline
 map("n", "<Leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>", opts)

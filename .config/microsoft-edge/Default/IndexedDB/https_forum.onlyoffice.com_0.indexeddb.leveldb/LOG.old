@@ -1,0 +1,6 @@
+2023/04/10-22:41:19.465 1eeec Creating DB /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_forum.onlyoffice.com_0.indexeddb.leveldb since it was missing.
+2023/04/10-22:41:19.483 1eeec Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_forum.onlyoffice.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/10-22:41:53.888 1eeec Level-0 table #5: started
+2023/04/10-22:41:53.891 1eeec Level-0 table #5: 2544 bytes OK
+2023/04/10-22:41:53.894 1eeec Delete type=0 #3
+2023/04/10-22:41:53.894 1eeec Manual compaction at level-0 from (begin) .. (end); will stop at (end)

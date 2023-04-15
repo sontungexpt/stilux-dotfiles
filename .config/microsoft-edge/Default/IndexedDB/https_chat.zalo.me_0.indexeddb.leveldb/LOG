@@ -1,3 +1,15 @@
-2023/04/10-20:40:03.036 1eeec Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_chat.zalo.me_0.indexeddb.leveldb/MANIFEST-000001
-2023/04/10-20:40:03.036 1eeec Recovering log #28
-2023/04/10-20:40:03.055 1eeec Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_chat.zalo.me_0.indexeddb.leveldb/000028.log 
+2023/04/15-12:10:17.988 60e Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_chat.zalo.me_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/15-12:10:17.988 60e Recovering log #48
+2023/04/15-12:10:18.004 60e Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_chat.zalo.me_0.indexeddb.leveldb/000048.log 
+2023/04/15-12:56:33.279 60f Level-0 table #53: started
+2023/04/15-12:56:33.299 60f Level-0 table #53: 694210 bytes OK
+2023/04/15-12:56:33.304 60f Delete type=0 #48
+2023/04/15-12:56:33.304 60f Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2023/04/15-12:56:33.304 60f Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x08\x04\x1f\x01\x06\x00w\x00i\x00n\x00d\x00o\x00w\x00\x03\x00\x00\x00\x00\x00t\x90@' @ 526317 : 1
+2023/04/15-12:56:33.304 60f Compacting 1@1 + 1@2 files
+2023/04/15-12:56:33.335 60f Generated table #54@1: 36649 keys, 1868806 bytes
+2023/04/15-12:56:33.335 60f Compacted 1@1 + 1@2 files => 1868806 bytes
+2023/04/15-12:56:33.339 60f compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/15-12:56:33.339 60f Delete type=2 #50
+2023/04/15-12:56:33.339 60f Delete type=2 #53
+2023/04/15-12:56:33.339 60f Manual compaction at level-1 from '\x00\x08\x04\x1f\x01\x06\x00w\x00i\x00n\x00d\x00o\x00w\x00\x03\x00\x00\x00\x00\x00t\x90@' @ 526317 : 1 .. (end); will stop at (end)

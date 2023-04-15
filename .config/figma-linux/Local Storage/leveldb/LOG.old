@@ -1,0 +1,4 @@
+2023/04/12-11:38:29.639 11b8f Creating DB /home/stilux/.config/figma-linux/Local Storage/leveldb since it was missing.
+2023/04/12-11:38:29.645 11b8f Reusing MANIFEST /home/stilux/.config/figma-linux/Local Storage/leveldb/MANIFEST-000001
+2023/04/12-11:39:19.916 11b47 Level-0 table #5: started
+2023/04/12-11:39:19.919 11b47 Level-0 table #5: 12931 bytes OK

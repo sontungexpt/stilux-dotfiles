@@ -330,6 +330,7 @@ for_window [title="Android Emulator - Pixel_4_API_33:5554"] border pixel 0
 
 # Picture-in-picture
 for_window [title="Picture-in-picture"] floating enable
+for_window [title="Picture-in-picture"] border pixel 0
 
 # Mpv
 for_window [class="mpv"] floating enable
@@ -376,5 +377,6 @@ for_window [class="Virt-manager"] floating enable
 for_window [class="Virt-manager"] resize set 600 600
 for_window [class="Virt-manager"] move to position center
 for_window [class="Virt-manager" title="win10 on QEMU/KVM"] floating disable
+for_window [class="Virt-manager" title="RDPWindows on QEMU/KVM"] floating disable
 
 

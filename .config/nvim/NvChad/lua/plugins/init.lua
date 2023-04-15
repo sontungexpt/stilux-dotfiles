@@ -1,5 +1,3 @@
--- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
--- List of all default plugins & their definitions
 local default_plugins = {
 
   "nvim-lua/plenary.nvim",
@@ -190,7 +188,6 @@ local default_plugins = {
         "hrsh7th/cmp-path",
       },
     },
-
     opts = function()
       return require "plugins.configs.cmp"
     end,
@@ -233,11 +230,9 @@ local default_plugins = {
     init = function()
       require("core.utils").load_mappings "telescope"
     end,
-
     opts = function()
       return require "plugins.configs.telescope"
     end,
-
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "telescope")
       local telescope = require "telescope"

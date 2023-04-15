@@ -1,3 +1,5 @@
-2023/04/10-19:39:40.664 3 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/Asset Store/assets.db/MANIFEST-000001
-2023/04/10-19:39:40.664 3 Recovering log #7
-2023/04/10-19:39:40.664 3 Reusing old log /home/stilux/.config/microsoft-edge/Default/Asset Store/assets.db/000007.log 
+2023/04/15-12:13:09.210 3 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/Asset Store/assets.db/MANIFEST-000001
+2023/04/15-12:13:09.210 3 Recovering log #13
+2023/04/15-12:13:09.212 3 Level-0 table #16: started
+2023/04/15-12:13:09.229 3 Level-0 table #16: 394860 bytes OK
+2023/04/15-12:13:09.234 3 Delete type=0 #13

@@ -1,0 +1,7 @@
+2023/04/14-16:10:11.654 55a Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_developer.mozilla.org_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/14-16:10:11.654 55a Recovering log #3
+2023/04/14-16:10:11.664 55a Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_developer.mozilla.org_0.indexeddb.leveldb/000003.log 
+2023/04/14-17:51:01.325 52316 Level-0 table #5: started
+2023/04/14-17:51:01.327 52316 Level-0 table #5: 46183 bytes OK
+2023/04/14-17:51:01.331 52316 Delete type=0 #3
+2023/04/14-17:51:01.331 52316 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

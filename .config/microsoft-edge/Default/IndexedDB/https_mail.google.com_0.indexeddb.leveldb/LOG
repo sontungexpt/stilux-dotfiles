@@ -1,21 +1,6 @@
-2023/04/10-21:18:24.074 1eeec Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/04/10-21:18:24.074 1eeec Recovering log #28
-2023/04/10-21:18:24.075 1eeec Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/000028.log 
-2023/04/10-21:18:29.212 1eeed Compacting 1@1 + 1@2 files
-2023/04/10-21:18:29.227 1eeed Generated table #31@1: 231 keys, 456448 bytes
-2023/04/10-21:18:29.227 1eeed Compacted 1@1 + 1@2 files => 456448 bytes
-2023/04/10-21:18:29.230 1eeed compacted to: files[ 0 0 1 0 0 0 0 ]
-2023/04/10-21:18:29.230 1eeed Delete type=2 #29
-2023/04/10-21:18:29.230 1eeed Delete type=2 #27
-2023/04/10-21:19:12.241 1eeed Level-0 table #33: started
-2023/04/10-21:19:12.248 1eeed Level-0 table #33: 1026879 bytes OK
-2023/04/10-21:19:12.251 1eeed Delete type=0 #28
-2023/04/10-21:19:12.252 1eeed Manual compaction at level-0 from (begin) .. (end); will stop at (end)
-2023/04/10-21:19:12.252 1eeed Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x01\x01\x02\x01\x1c\x00S\x00t\x00o\x00r\x00e\x00d\x00C\x00a\x00c\x00h\x00e\x00S\x00t\x00a\x00t\x00e\x00:\x00:\x00/\x00m\x00a\x00i\x00l\x00/\x00u\x00/\x001\x00/' @ 17319 : 1
-2023/04/10-21:19:12.252 1eeed Compacting 1@1 + 1@2 files
-2023/04/10-21:19:12.257 1eeed Generated table #34@1: 206 keys, 429505 bytes
-2023/04/10-21:19:12.257 1eeed Compacted 1@1 + 1@2 files => 429505 bytes
-2023/04/10-21:19:12.261 1eeed compacted to: files[ 0 0 1 0 0 0 0 ]
-2023/04/10-21:19:12.261 1eeed Delete type=2 #33
-2023/04/10-21:19:12.261 1eeed Delete type=2 #31
-2023/04/10-21:19:12.261 1eeed Manual compaction at level-1 from '\x00\x01\x01\x02\x01\x1c\x00S\x00t\x00o\x00r\x00e\x00d\x00C\x00a\x00c\x00h\x00e\x00S\x00t\x00a\x00t\x00e\x00:\x00:\x00/\x00m\x00a\x00i\x00l\x00/\x00u\x00/\x001\x00/' @ 17319 : 1 .. (end); will stop at (end)
+2023/04/12-13:28:00.019 812 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/12-13:28:00.019 812 Recovering log #32
+2023/04/12-13:28:00.029 812 Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/000032.log 
+2023/04/12-13:28:03.811 810 Level-0 table #37: started
+2023/04/12-13:28:03.826 810 Level-0 table #37: 2293194 bytes OK
+2023/04/12-13:28:03.830 810 Delete type=0 #32

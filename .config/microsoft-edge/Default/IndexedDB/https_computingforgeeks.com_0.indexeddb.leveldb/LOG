@@ -1,6 +1,15 @@
-2023/04/09-17:37:24.080 4fa Creating DB /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_computingforgeeks.com_0.indexeddb.leveldb since it was missing.
-2023/04/09-17:37:24.088 4fa Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_computingforgeeks.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/04/09-17:40:25.492 4fb Level-0 table #5: started
-2023/04/09-17:40:25.494 4fb Level-0 table #5: 807 bytes OK
-2023/04/09-17:40:25.497 4fb Delete type=0 #3
-2023/04/09-17:40:25.497 4fb Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2023/04/12-11:30:58.612 7f2 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_computingforgeeks.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/12-11:30:58.612 7f2 Recovering log #4
+2023/04/12-11:30:58.612 7f2 Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_computingforgeeks.com_0.indexeddb.leveldb/000004.log 
+2023/04/12-11:41:28.564 7f3 Level-0 table #8: started
+2023/04/12-11:41:28.566 7f3 Level-0 table #8: 209 bytes OK
+2023/04/12-11:41:28.569 7f3 Delete type=0 #4
+2023/04/12-11:41:28.569 7f3 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2023/04/12-11:41:28.569 7f3 Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x00\x00\x00\x06' @ 46 : 1
+2023/04/12-11:41:28.569 7f3 Compacting 1@1 + 1@2 files
+2023/04/12-11:41:28.572 7f3 Generated table #9@1: 19 keys, 502 bytes
+2023/04/12-11:41:28.572 7f3 Compacted 1@1 + 1@2 files => 502 bytes
+2023/04/12-11:41:28.575 7f3 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/12-11:41:28.575 7f3 Delete type=2 #5
+2023/04/12-11:41:28.575 7f3 Delete type=2 #8
+2023/04/12-11:41:28.575 7f3 Manual compaction at level-1 from '\x00\x00\x00\x00\x06' @ 46 : 1 .. (end); will stop at (end)

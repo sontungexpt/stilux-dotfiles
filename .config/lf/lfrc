@@ -155,7 +155,7 @@ cmd open ${{
 }}
 
 # Set Background Command
-cmd setwallpaper %cp "$f" ~/.config/background/wallpaper.jpg && i3 restart
+cmd setwallpaper %cp "$f" ~/.config/wallpaper/wallpaper.jpg && i3 restart
 
 
 # Change The Avatar Command
