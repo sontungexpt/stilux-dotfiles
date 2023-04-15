@@ -1,6 +1,0 @@
-2023/04/07-20:33:37.730 9f4 Creating DB /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.figma.com_0.indexeddb.leveldb since it was missing.
-2023/04/07-20:33:37.738 9f4 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.figma.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/04/08-00:56:15.609 823f6 Level-0 table #5: started
-2023/04/08-00:56:15.611 823f6 Level-0 table #5: 2131 bytes OK
-2023/04/08-00:56:15.615 823f6 Delete type=0 #3
-2023/04/08-00:56:15.615 9f5 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

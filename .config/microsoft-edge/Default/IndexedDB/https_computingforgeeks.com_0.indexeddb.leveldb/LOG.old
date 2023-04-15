@@ -1,6 +1,0 @@
-2023/04/09-17:37:24.080 4fa Creating DB /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_computingforgeeks.com_0.indexeddb.leveldb since it was missing.
-2023/04/09-17:37:24.088 4fa Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_computingforgeeks.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/04/09-17:40:25.492 4fb Level-0 table #5: started
-2023/04/09-17:40:25.494 4fb Level-0 table #5: 807 bytes OK
-2023/04/09-17:40:25.497 4fb Delete type=0 #3
-2023/04/09-17:40:25.497 4fb Manual compaction at level-0 from (begin) .. (end); will stop at (end)

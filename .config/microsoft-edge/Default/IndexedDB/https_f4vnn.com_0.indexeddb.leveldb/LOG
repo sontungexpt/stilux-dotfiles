@@ -1,6 +1,0 @@
-2023/04/07-13:29:34.917 b99 Creating DB /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_f4vnn.com_0.indexeddb.leveldb since it was missing.
-2023/04/07-13:29:34.923 b99 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_f4vnn.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/04/07-13:29:35.497 2f7d Level-0 table #5: started
-2023/04/07-13:29:35.500 2f7d Level-0 table #5: 554 bytes OK
-2023/04/07-13:29:35.503 2f7d Delete type=0 #3
-2023/04/07-13:29:35.503 b99 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)

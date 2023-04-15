@@ -1,7 +1,0 @@
-2023/04/13-15:36:28.468 4ec Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.tiktok.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/04/13-15:36:28.468 4ec Recovering log #3
-2023/04/13-15:36:28.468 4ec Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.tiktok.com_0.indexeddb.leveldb/000003.log 
-2023/04/13-15:37:44.229 4ed Level-0 table #5: started
-2023/04/13-15:37:44.231 4ed Level-0 table #5: 9564 bytes OK
-2023/04/13-15:37:44.234 4ed Delete type=0 #3
-2023/04/13-15:37:44.234 4ed Manual compaction at level-0 from (begin) .. (end); will stop at (end)

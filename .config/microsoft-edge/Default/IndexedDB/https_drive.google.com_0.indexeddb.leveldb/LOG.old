@@ -1,9 +1,0 @@
-2023/04/12-12:57:13.153 7f2 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_drive.google.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/04/12-12:57:13.153 7f2 Recovering log #10
-2023/04/12-12:57:13.157 7f2 Reusing old log /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_drive.google.com_0.indexeddb.leveldb/000010.log 
-2023/04/12-12:57:25.480 1773e Compacting 1@1 + 1@2 files
-2023/04/12-12:57:25.484 1773e Generated table #13@1: 154 keys, 293377 bytes
-2023/04/12-12:57:25.484 1773e Compacted 1@1 + 1@2 files => 293377 bytes
-2023/04/12-12:57:25.487 1773e compacted to: files[ 0 0 1 0 0 0 0 ]
-2023/04/12-12:57:25.487 1773e Delete type=2 #8
-2023/04/12-12:57:25.487 1773e Delete type=2 #11

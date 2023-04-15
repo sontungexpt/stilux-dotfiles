@@ -1,6 +1,0 @@
-2023/04/08-11:56:11.489 1ae6 Creating DB /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.youtube-nocookie.com_0.indexeddb.leveldb since it was missing.
-2023/04/08-11:56:11.496 1ae6 Reusing MANIFEST /home/stilux/.config/microsoft-edge/Default/IndexedDB/https_www.youtube-nocookie.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/04/08-11:59:03.255 1ae7 Level-0 table #5: started
-2023/04/08-11:59:03.257 1ae7 Level-0 table #5: 1196 bytes OK
-2023/04/08-11:59:03.260 1ae7 Delete type=0 #3
-2023/04/08-11:59:03.261 1ae7 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
