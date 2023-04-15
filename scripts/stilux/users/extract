@@ -1,6 +1,7 @@
 #!/bin/bash
 # This scripts is written by Tran Vo Son Tung
-# Extracts most common archive formats
+# Extracts and preview file
+# Support most common archive formats
 
 # Colors
 NO='\033[0m' # No Color
@@ -8,6 +9,20 @@ RED='\033[0;31m'
 ON_BLUE='\033[44m'
 ON_RED='\033[41m'
 ON_GREEN='\033[42m'
+
+help() {
+	echo "This scripts is written by Tran Vo Son Tung"
+	echo "Extracts most common archive formats"
+	echo "Formats support: .tar.bz, .tar.bz2, .tbz, .tbz2, .tar.gz, .tgz, .tar.xz, .txz, .zip, .rar, .7z"
+	echo -e "\n${ON_BLUE} USAGE: ${NO} extract [OPTIONS] [FILE_PATH]"
+	echo -e "\n${ON_BLUE} OPTIONS: ${NO}"
+	echo -e "  -h, --help\tShow this help message and exit"
+	echo -e "  -p, --preview\tPreview the archive file without extracting them."
+	echo -e "\n${ON_BLUE} EXAMPLE: ${NO}"
+	echo "  1. extract -h"
+	echo "  2. extract file.zip"
+	echo "  3. extract -p file.zip"
+}
 
 un_zip() {
 	if [ ! -f "/usr/bin/unzip" ]; then
@@ -45,22 +60,8 @@ un_7z() {
 	7z x "$1" -o"$destination"
 }
 
-help() {
-	echo "This scripts is written by Tran Vo Son Tung"
-	echo "Extracts most common archive formats"
-	echo "Formats support: .tar.bz, .tar.bz2, .tbz, .tbz2, .tar.gz, .tgz, .tar.xz, .txz, .zip, .rar, .7z"
-	echo -e "\n${ON_BLUE} USAGE: ${NO} extract [OPTIONS] [FILE_PATH]"
-	echo -e "\n${ON_BLUE} OPTIONS: ${NO}"
-	echo -e "  -h, --help\tShow this help message and exit"
-}
-
-# Show help if no arguments
-if [[ "$#" -eq 0 ]]; then
-	help
-	exit 1
-fi
-
-if [[ "$#" -eq 1 ]]; then
+unarchive() {
+	# $1 is file path
 	case "$1" in
 	*.tar.bz | *.tar.bz2 | *.tbz | *.tbz2) tar xjvf "$1" ;;
 	*.tar.gz | *.tgz) tar xzvf "$1" ;;
@@ -68,12 +69,72 @@ if [[ "$#" -eq 1 ]]; then
 	*.zip) unzip "$1" ;;
 	*.rar) un_rar "$1" ;;
 	*.7z) un_7z "$1" ;;
-	"--help" | "-h") help && exit 1 ;;
 	*) echo -e "${RED}Unsupported format${NO}" && exit 0 ;;
 	esac
-else
-	echo -e "\n${ON_RED} ERROR: ${NO} Invalid number of arguments"
-	echo -e "\n${ON_BLUE} USAGE: ${NO} extract [OPTIONS] [FILE_PATH]"
-	echo -e "\n${ON_GREEN} NOTE: ${NO} Use --help or -h to see help"
-	exit 0
+}
+
+preview_zip() {
+	if [ ! -f "/usr/bin/unzip" ]; then
+		echo "You need to install unzip to preview file"
+		exit 0
+	fi
+	unzip -l "$1"
+}
+
+preview_rar() {
+	if [ ! -f "/usr/bin/unrar" ]; then
+		echo -e "\n${ON_RED} ERROR: ${NO} You need to install unrar to preview file"
+		exit 0
+	fi
+
+	unrar l "$1"
+}
+
+preview_7z() {
+	if [ ! -f "/usr/bin/7z" ]; then
+		echo -e "\n${ON_RED} ERROR: ${NO} You need to install 7z to preview file"
+		exit 0
+	fi
+
+	7z -l "$1"
+}
+
+preview() {
+	# $1 is file path
+	if [[ -f "$1" ]]; then
+		case "$1" in
+		*.tar.bz | *.tar.bz2 | *.tbz | *.tbz2) tar -tf "$1" ;;
+		*.tar.gz | *.tgz) tar -tf "$1" ;;
+		*.tar.xz | *.txz) tar -tf "$1" ;;
+		*.zip) preview_zip "$1" ;;
+		*.rar) preview_rar "$1" ;;
+		*.7z) preview_7z "$1" ;;
+		*) echo -e "${RED}Unsupported format${NO}" && exit 0 ;;
+		esac
+	else
+		echo -e "\n${ON_RED} ERROR: ${NO} $1 is not existed"
+	fi
+}
+
+if [[ "$#" -lt 3 ]]; then
+	# Show help if no arguments
+	if [[ "$#" -eq 0 ]]; then
+		help
+		exit 1
+	elif [[ "$#" -eq 1 ]]; then
+		case "$1" in
+		"--help" | "-h") help && exit 1 ;;
+		*) unarchive "$1" && exit 1 ;;
+		esac
+	elif [[ "$#" -eq 2 ]]; then
+		case "$1" in
+		"--preview" | "-p") preview "$2" && exit 1 ;;
+		"--help" | "-h") help && exit 1 ;;
+		esac
+	else
+		echo -e "\n${ON_RED} ERROR: ${NO} Invalid number of arguments"
+		echo -e "\n${ON_BLUE} USAGE: ${NO} extract [OPTIONS] [FILE_PATH]"
+		echo -e "\n${ON_GREEN} NOTE: ${NO} Use --help or -h to see help"
+		exit 0
+	fi
 fi

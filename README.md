@@ -28,7 +28,7 @@
 [wget](https://github.com/jay/wget)
 - **Terminal**: [kitty](https://github.com/kovidgoyal/kitty)
 - **Icons Theme**: [WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme)
-- **Main Theme**: [catppuccin-gtk-theme-mocha](https://github.com/catppuccin/gtk)
+- **Main Theme**: [tokyo-night](https://github.com/stronk-dev/Tokyo-Night-Linux)
 - **Cursor Theme**: [catpuchin-cursor](https://github.com/catppuccin/cursors)
 - **Login Manager**:
   - [lightdm](https://github.com/canonical/lightdm)
@@ -37,7 +37,7 @@
 - **Lockscreen**: [betterlockscreen](https://github.com/betterlockscreen/betterlockscreen)
 - **Compositor**: [picom](https://github.com/yshui/picom)
 - **Vietnamese Input**: [ibus-bamboo](https://github.com/BambooEngine/ibus-bamboo)
-- **System Monitor**: [btop](https://github.com/aristocratos/btop)
+- **System Monitor**: [gotop](https://github.com/cjbassi/gotop)
 - **Volume Control**: [pavucontrol](https://github.com/pulseaudio/pavucontrol)
 - **Achrive Manager**
   - [rar](https://aur.archlinux.org/packages/rar), [unrar](https://archlinux.org/packages/extra/x86_64/unrar/)
@@ -283,7 +283,7 @@ locale-gen
 echo LANG=en_US.UTF-8 > /etc/locale.conf
 ```
 
-NOTE: From the following step replace stilux-pc with your pc name (note names should be short and not contain special characters use - for spaces eg: dummy-pc)
+NOTE: From the following step replace stilux-pc with your pc name (note names should be short and not contain special characters use - for spaces eg: stilux-pc)
 
 ```
 echo stilux-pc > /etc/hostname

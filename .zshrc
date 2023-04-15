@@ -76,6 +76,11 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # Google-chrome
 #export CHROME_EXECUTABLE="/usr/bin/google-chrome-stable"
 
+# Libuguestfs
+# export LIBGUESTFS_BACKEND=direct
+# export LIBGUESTFS_BACKEND=libvirt
+# export LIBGUESTFS_DEBUG=1
+# export LIBGUESTFS_TRACE=1
 
 # Aliases
 # lf-filemanager
