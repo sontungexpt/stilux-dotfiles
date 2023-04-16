@@ -198,7 +198,7 @@ lualine.setup({
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     -- disabled_filetypes = { "alpha", 'packer', 'NvimTree', 'toggleterm' },
-    disabled_filetypes = { "floaterm", "NvimTree", "packer", "mason", "toggleterm" },
+    disabled_filetypes = { "lazy", "floaterm", "NvimTree", "packer", "mason", "toggleterm" },
     always_divide_middle = true,
   },
   sections = {

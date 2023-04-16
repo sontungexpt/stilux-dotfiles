@@ -37,7 +37,7 @@ bufferline.setup({
     truncate_names = true, -- whether or not tab names should be truncated
     max_name_length = 30,
     max_prefix_length = 13,
-    tab_size = 25,
+    tab_size = 23,
     diagnostics = "nvim_lsp",
     diagnostics_update_in_insert = true,
     -- The diagnostics indicator can be set to nil to keep the buffer name highlight but delete the highlighting

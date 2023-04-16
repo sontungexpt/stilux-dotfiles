@@ -3,7 +3,7 @@ local cmd = vim.cmd
 local g = vim.g
 
 --leader key
--- vim.g.mapleader = " "
+-- .mapleader = " "
 
 cmd("filetype plugin on")
 cmd("filetype plugin indent on")
@@ -14,8 +14,8 @@ cmd("syntax on")
 
 
 -- disable netrw for nvimtree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
 
 -- Ruler
 options.ruler = true
@@ -86,12 +86,6 @@ cmd [[set go+=a]]
 options.splitbelow = true
 options.splitright = true
 
---Collapse block of code
-options.foldenable = true
-options.foldmethod = "indent"
-options.foldlevel = 99
-options.foldlevelstart = 10
-options.foldcolumn = "0"
 
 options.wildignore:append {
   "*.pyc",
@@ -113,16 +107,3 @@ cmd([[
     autocmd BufRead,BufNewFile *.json set filetype=jsonc
   augroup END
 ]])
-
-
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics,
-  {
-    underline = true,
-    virtual_text = {
-      spacing = 5,
-      severity_limit = 'Warning',
-    },
-    update_in_insert = true,
-  }
-)

@@ -33,12 +33,12 @@ local options = {
       "#169ed8",
       "#2f73e2",
       "#1c73e9",
-      "#01519A",
-      "#2d3ae6",
+      "#1d3ae6",
+      "#013795",
       "#c678dd",
       "#b438f3",
-      "#d906f0",
-      "#f404b4",
+      "#d906f2",
+      "#f404b5",
       "#f00483"
     }, -- table of hex strings
     -- termcolors = {} -- table of colour name strings

@@ -9,7 +9,7 @@ local default_plugins = {
       'nvim-tree/nvim-web-devicons',
     },
     version = 'nightly', -- optional, updated every week. (see issue #1193)
-    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+    cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeOpen" },
     opts = function()
       return require("plugins.configs.nvim-tree")
     end,
@@ -357,13 +357,13 @@ local default_plugins = {
     init = function()
       -- load git-conflict only when a git file is opened
       vim.api.nvim_create_autocmd({ "BufRead" }, {
-        group = vim.api.nvim_create_augroup("GitSignsLazyLoad", { clear = true }),
+        group = vim.api.nvim_create_augroup("GitConflictLazyLoad", { clear = true }),
         callback = function()
           vim.fn.system("git -C " .. '"' .. vim.fn.expand "%:p:h" .. '"' .. " rev-parse")
           if vim.v.shell_error == 0 then
-            vim.api.nvim_del_augroup_by_name "GitSignsLazyLoad"
+            vim.api.nvim_del_augroup_by_name "GitConflictLazyLoad"
             vim.schedule(function()
-              require("lazy").load { plugins = { "gitsigns.nvim" } }
+              require("lazy").load { plugins = { "git-conflict.nvim" } }
             end)
           end
         end,
@@ -378,12 +378,6 @@ local default_plugins = {
         return
       end
       conflict.setup(opts)
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "GitConflictDetected",
-        callback = function()
-          vim.notify("Conflict detected in " .. vim.fn.expand("<afile>"))
-        end,
-      })
     end
   },
 
@@ -436,6 +430,22 @@ local default_plugins = {
     end,
     config = function()
       require "plugins.configs.nvim-lspconfig"
+    end,
+  },
+
+  {
+    "glepnir/lspsaga.nvim",
+    event = "LspAttach",
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons" },
+      --Please make sure you install markdown and markdown_inline parser
+      { "nvim-treesitter/nvim-treesitter" }
+    },
+    opts = function()
+      return require("plugins.configs.lspsaga")
+    end,
+    config = function(_, opts)
+      require("lspsaga").setup(opts)
     end,
   },
 
@@ -502,8 +512,18 @@ local default_plugins = {
   },
 
   {
+    "iamcco/markdown-preview.nvim",
+    ft = "markdown",
+    -- cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+    config = function()
+      require("plugins.configs.markdown-preview")
+    end,
+  },
+
+  {
     "folke/which-key.nvim",
-    keys = { "<leader>", '"', "'", "`" },
+    keys = { "<leader>", "g", "[", "]", '"', "'", "`" },
     opts = function()
       return require "plugins.configs.whichkey"
     end,
@@ -511,6 +531,18 @@ local default_plugins = {
       require("which-key").setup(opts)
     end,
   },
+
+  {
+    'kevinhwang91/nvim-ufo',
+    dependencies = 'kevinhwang91/promise-async',
+    init = function()
+      require("core.utils").lazy_load "nvim-ufo"
+    end,
+    config = function()
+      require('plugins.configs.nvim-ufo')
+    end
+  },
+
 }
 
 local config = require("core.utils").load_config()
@@ -519,4 +551,5 @@ if #config.plugins > 0 then
   table.insert(default_plugins, { import = config.plugins })
 end
 
+require("plugins.autocmds")
 require("lazy").setup(default_plugins, config.lazy_nvim)

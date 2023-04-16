@@ -1,6 +1,6 @@
 local options = {
   extensions_list = {
-    -- "media",
+    "media",
     "media_files",
     "zoxide",
     "project",

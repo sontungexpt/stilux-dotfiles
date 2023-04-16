@@ -3,6 +3,7 @@ local options = {
     -- lua
     "lua-language-server",
     "stylua",
+
     -- bash
     "bash-language-server",
     "shfmt",

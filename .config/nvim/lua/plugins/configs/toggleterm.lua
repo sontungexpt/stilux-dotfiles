@@ -54,11 +54,11 @@ toggleterm.setup {
   -- default: 1 for dark backgrounds, 3 for light
   shading_factor = 1,
   start_in_insert = true,
-  insert_mappings = true, -- whether or not the open mapping applies in insert mode
+  insert_mappings = true,   -- whether or not the open mapping applies in insert mode
   persist_size = true,
-  direction = 'float',    -- | 'horizontal' | 'window' | 'float',
-  close_on_exit = true,   -- close the terminal window when the process exits
-  shell = vim.o.shell,    -- change the default shell
+  direction = 'horizontal', -- | 'horizontal' | 'window' | 'float',
+  close_on_exit = true,     -- close the terminal window when the process exits
+  shell = vim.o.shell,      -- change the default shell
   -- This field is only relevant if direction is set to 'float'
   float_opts = {
     border = 'single', -- single/double/shadow/curved

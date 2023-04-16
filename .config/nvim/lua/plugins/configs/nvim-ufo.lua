@@ -2,7 +2,10 @@ local status_ok, ufo = pcall(require, 'ufo')
 if not status_ok then
   return
 end
-
+vim.o.foldcolumn = '0' -- '0' is not bad
+vim.o.foldlevel = 999
+vim.o.foldlevelstart = 999
+vim.o.foldenable = true
 
 local handler = function(virtText, lnum, endLnum, width, truncate)
   local newVirtText = {}
@@ -32,17 +35,6 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
   return newVirtText
 end
 
--- global handler
--- `handler` is the 2nd parameter of `setFoldVirtTextHandler`,
--- check out `./lua/ufo.lua` and search `setFoldVirtTextHandler` for detail.
-require('ufo').setup({
-  fold_virt_text_handler = handler
-})
-
--- buffer scope handler
--- will override global handler if it is existed
--- local bufnr = vim.api.nvim_get_current_buf()
--- require('ufo').setFoldVirtTextHandler(bufnr, handler)
 local ftMap = {
   vim = 'indent',
   python = { 'indent' },
@@ -50,12 +42,12 @@ local ftMap = {
 }
 
 require('ufo').setup({
-  open_fold_hl_timeout = 1,
+  open_fold_hl_timeout = 100,
   close_fold_kinds = { 'imports', 'comment' },
   preview = {
     win_config = {
-      border = { '', '', '', '', '', '', '', '' },
-      winhighlight = '',
+      border = { '', '─', '', '', '', '─', '', '' },
+      winhighlight = 'Normal:Folded',
       winblend = 0
     },
     mappings = {
@@ -72,6 +64,7 @@ require('ufo').setup({
   end,
   fold_virt_text_handler = handler
 })
+
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)

@@ -5,7 +5,9 @@
 **/node_modules/
 **bundle/
 
-yay/
+**/nvim/.git/
+**/.config/micorsoft-edge/
+
 bspwm/
 teams/
 Code/
@@ -63,5 +65,5 @@ yay/
 .xsession-errors.old
 .zcompdump-stilux-pc-5.9
 .zcompdump-stilux-pc-5.9.zwc
-polybar/gmail/authenticates/
+**/polybar/gmail/authenticates/
 .ssh/

@@ -20,18 +20,7 @@ autocmd("FileType", {
 --   ),
 --   group = vim.api.nvim_create_augroup("ReloadConfig", {}),
 --   callback = function(opts)
---     local fp = vim.fn.fnamemodify(vim.fs.normalize(vim.api.nvim_buf_get_name(opts.buf)), ":r") --[[@as string]]
---     local app_name = vim.env.NVIM_APPNAME and vim.env.NVIM_APPNAME or "nvim"
---     local module = string.gsub(fp, "^.*/" .. app_name .. "/lua/", ""):gsub("/", ".")
-
---     config = require("core.utils").load_config()
-
---     g.transparency = config.ui.transparency
-
---     -- statusline
---     -- vim.opt.statusline = "%!v:lua.require('lualine." .. config.ui.statusline.theme .. "').run()"
-
---     -- vim.cmd("redraw!")
+--     require("core.utils").source_config_file(vim.fn.stdpath "config" .. "/lua/")
 --   end,
 -- })
 
@@ -43,21 +32,3 @@ autocmd('BufWritePre', {
 
 -- Move to relative line number when in visual mode
 cmd([[ autocmd ModeChanged * if mode() == 'v' | set relativenumber | else | set norelativenumber | endif ]])
-
--------------------------------------- PLugins autocmd -----------------------------------------
---cmd([[
---  augroup HightlightColors
---  autocmd!
---  autocmd  VimEnter, BufEnter, BufLeave *.* HightligtColorsOn
---  augroup END
---]])
-
-
-autocmd({ 'BufEnter', 'BufAdd', 'BufNew', 'BufNewFile', 'BufWinEnter' }, {
-  group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),
-  callback = function()
-    vim.opt.foldmethod = 'expr'
-    vim.opt.foldexpr   = 'nvim_treesitter#foldexpr()'
-  end
-})
-

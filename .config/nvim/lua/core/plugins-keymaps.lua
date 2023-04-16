@@ -1,81 +1,168 @@
-----------Example mapping----------
-
--- Map to a Lua function:
---vim.keymap.set('n', 'lhs', function() print("real lua function") end)
-
--- Map to multiple modes:
---vim.keymap.set({'n', 'v'}, '<leader>lr', vim.lsp.buf.references, { buffer=true })
-
--- Buffer-local mapping:
---vim.keymap.set('n', '<leader>w', "<cmd>w<cr>", { silent = true, buffer = 5 })
-
--- Expr mapping:
---vim.keymap.set('i', '<Tab>', function()
---return vim.fn.pumvisible() == 1 and "<C-n>" or "<Tab>"
---end, { expr = true })
-
--- <Plug> mapping:
---vim.keymap.set('n', '[%', '<Plug>(MatchitNormalMultiBackward)')
-
 -----------Mappings----------
-local opts = { noremap = true, silent = true }
--- local opts_without_noremap = { noremap = false, silent = true }
--- local opts_without_silent = { noremap = true, silent = false }
--- local opts_expr = { expr = true, replace_keycodes = true, noremap = true, silent = true }
-local map = vim.keymap.set
+-- default opts = 1
+-- opts = 1 for noremap and silent
+-- opts = 2 for not noremap and silent
+-- opts = 3 for noremap and not silent
+-- opts = 4 for not noremap and not silent
+-- opts = 5 for expr and noremap and silent
+local autocmd = vim.api.nvim_create_autocmd
+local map = function(mode, key, map_to, opts)
+  local keymap = vim.keymap.set
+  local opts1 = { noremap = true, silent = true }
+  opts = opts or 1
+  if type(opts) == "table" then
+    opts = vim.tbl_deep_extend("force", opts1, opts)
+    keymap(mode, key, map_to, opts)
+    return
+  end
 
+  if opts == 1 then
+    opts = opts1
+  elseif opts == 2 then
+    opts = { noremap = false, silent = true }
+  elseif opts == 3 then
+    opts = { noremap = true, silent = false }
+  elseif opts == 4 then
+    opts = { noremap = false, silent = false }
+  elseif opts == 5 then
+    opts = { expr = true, replace_keycodes = true, noremap = true, silent = true }
+  else
+    opts = opts1
+  end
+  keymap(mode, key, map_to, opts)
+end
 
 --NvimTree
-map("n", "<C-b>", ":NvimTreeToggle<cr>", opts)
-map("i", "<C-b>", "<esc>:NvimTreeToggle<cr>", opts)
-map("v", "<C-b>", "<esc>:NvimTreeToggle<cr>", opts)
-map("c", "<C-b>", "<esc>:NvimTreeToggle<cr>", opts)
+map("n", "<C-b>", ":NvimTreeToggle<cr>")
+map("i", "<C-b>", "<esc>:NvimTreeToggle<cr>")
+map("v", "<C-b>", "<esc>:NvimTreeToggle<cr>")
+map("c", "<C-b>", "<esc>:NvimTreeToggle<cr>")
 
 -- Toggle Term
-map("n", "<C-t>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", opts)
-map("n", "<C-t>", "<ESC><Cmd>exe v:count1 . 'ToggleTerm'<CR>", opts)
-map("v", "<C-t>", "<ESC><Cmd>exe v:count1 . 'ToggleTerm'<CR>", opts)
-map("t", "<C-q>", "<C-\\><C-n>:q!<cr>", opts)
+map("n", "<C-t>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>")
+map("n", "<C-t>", "<ESC><Cmd>exe v:count1 . 'ToggleTerm'<CR>")
+map("v", "<C-t>", "<ESC><Cmd>exe v:count1 . 'ToggleTerm'<CR>")
+map("t", "<C-q>", "<C-\\><C-n>:q!<cr>")
 
 --Telescope
-map("n", "<C-p>", ":Telescope find_files<cr>", opts)
-map("i", "<C-p>", "<esc>:Telescope find_files<cr>", opts)
-map("v", "<C-p>", "<esc>:Telescope find_files<cr>", opts)
-map("n", "<leader>fm", "<esc>:Telescope media_files<cr>", opts)
-map("n", "<leader>fg", "<esc>:Telescope live_grep<cr>", opts)
-map("n", "<leader>fb", "<esc>:Telescope buffers<cr>", opts)
-map("n", "<leader>fh", "<esc>:Telescope help_tags<cr>", opts)
-map("n", "<leader>fp", "<esc>:Telescope project<cr>", opts)
-map("n", "<leader>fc", "<esc>:Telescope neoclip<cr>", opts)
+map("n", "<C-p>", ":Telescope find_files<cr>")
+map("i", "<C-p>", "<esc>:Telescope find_files<cr>")
+map("v", "<C-p>", "<esc>:Telescope find_files<cr>")
+map("n", "<leader>fm", "<esc>:Telescope media_files<cr>")
+map("n", "<leader>fg", "<esc>:Telescope live_grep<cr>")
+map("n", "<leader>fb", "<esc>:Telescope buffers<cr>")
+map("n", "<leader>fh", "<esc>:Telescope help_tags<cr>")
+map("n", "<leader>fp", "<esc>:Telescope project<cr>")
+map("n", "<leader>fc", "<esc>:Telescope neoclip<cr>")
 
 -- Todo-comments
-map("n", "<Leader>ft", ":TodoTelescope<cr>", opts)
-map("n", "]t", ":lua require('todo-comments').jump_next()<cr>", opts)
-map("n", "[t", ":lua require('todo-comments').jump_prev()<cr>", opts)
+map("n", "<Leader>ft", ":TodoTelescope<cr>")
+map("n", "]t", ":lua require('todo-comments').jump_next()<cr>")
+map("n", "[t", ":lua require('todo-comments').jump_prev()<cr>")
 
-vim.keymap.set("n", "[t", function()
-  require("todo-comments").jump_prev()
+map("n", "[t", function()
+  local status_ok, todo_comments = pcall(require, "todo-comments")
+  if status_ok then
+    todo_comments.jump_prev()
+  end
 end, { desc = "Previous todo comment" })
 
--- You can also specify a list of valid jump keywords
-
-vim.keymap.set("n", "]t", function()
-  require("todo-comments").jump_next({ keywords = { "ERROR", "WARNING" } })
+map("n", "]t", function()
+  local status_ok, todo_comments = pcall(require, "todo-comments")
+  if status_ok then
+    todo_comments.jump_next({ keywords = { "ERROR", "WARNING" } })
+  end
 end, { desc = "Next error/warning todo comment" })
 
 --ccc (Color-picker)
-map("n", "<A-c>", ":CccPick<cr>", opts)
-map("i", "<A-c>", "<esc>:CccPick<cr>", opts)
-map("v", "<A-c>", "<esc>:CccPick<cr>", opts)
+map("n", "<A-c>", ":CccPick<cr>")
+map("i", "<A-c>", "<esc>:CccPick<cr>")
+map("v", "<A-c>", "<esc>:CccPick<cr>")
 
 -- Bufferline
-map("n", "<Leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>", opts)
-map("n", "<Leader>2", "<Cmd>BufferLineGoToBuffer 2<CR>", opts)
-map("n", "<Leader>3", "<Cmd>BufferLineGoToBuffer 3<CR>", opts)
-map("n", "<Leader>4", "<Cmd>BufferLineGoToBuffer 4<CR>", opts)
-map("n", "<Leader>5", "<Cmd>BufferLineGoToBuffer 5<CR>", opts)
-map("n", "<Leader>6", "<Cmd>BufferLineGoToBuffer 6<CR>", opts)
-map("n", "<Leader>7", "<Cmd>BufferLineGoToBuffer 7<CR>", opts)
-map("n", "<Leader>8", "<Cmd>BufferLineGoToBuffer 8<CR>", opts)
-map("n", "<Leader>9", "<Cmd>BufferLineGoToBuffer 9<CR>", opts)
-map("n", "<Leader>$", "<Cmd>BufferLineGoToBuffer -1<CR>", opts)
+map("n", "<Leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>")
+map("n", "<Leader>2", "<Cmd>BufferLineGoToBuffer 2<CR>")
+map("n", "<Leader>3", "<Cmd>BufferLineGoToBuffer 3<CR>")
+map("n", "<Leader>4", "<Cmd>BufferLineGoToBuffer 4<CR>")
+map("n", "<Leader>5", "<Cmd>BufferLineGoToBuffer 5<CR>")
+map("n", "<Leader>6", "<Cmd>BufferLineGoToBuffer 6<CR>")
+map("n", "<Leader>7", "<Cmd>BufferLineGoToBuffer 7<CR>")
+map("n", "<Leader>8", "<Cmd>BufferLineGoToBuffer 8<CR>")
+map("n", "<Leader>9", "<Cmd>BufferLineGoToBuffer 9<CR>")
+map("n", "<Leader>$", "<Cmd>BufferLineGoToBuffer -1<CR>")
+
+-- Markdown
+map("n", "<Leader-p>", "<Cmd>MarkdownPreviewToggle<CR>")
+
+-- LSP-saga
+-- Only create keymap for lsp-saga if lsp is attached
+autocmd('LspAttach', {
+  desc = 'Lspsaga actions',
+  callback = function()
+    -- Floating terminal
+    -- keymap({ "n", "t" }, "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
+
+    -- LSP finder
+    map("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
+
+    -- Code action
+    map({ "n", "v" }, "<leader>sa", "<cmd>Lspsaga code_action<CR>")
+
+    -- Rename all occurrences of the hovered word for the entire file
+    map("n", "gr", "<cmd>Lspsaga rename<CR>")
+    -- Rename all occurrences of the hovered word for the selected files
+    -- keymap("n", "gr", "<cmd>Lspsaga rename ++project<CR>")
+
+    -- Peek definition
+    map("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
+
+    -- Go to definition
+    map("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
+
+    -- Peek type definition
+    map("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>")
+
+    -- Go to type definition
+    -- keymap("n", "gt", "<cmd>Lspsaga goto_type_definition<CR>")
+    -- To disable it just use ":Lspsaga hover_doc ++quiet"
+    map("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+    -- If you want to keep the hover window in the top right hand corner,
+    -- you can pass the ++keep argument
+    -- Note that if you use hover with ++keep, pressing this key again will
+    -- keymap("n", "K", "<cmd>Lspsaga hover_doc ++keep<CR>")
+
+    -- Show line diagnostics
+    map("n", "gl", "<cmd>Lspsaga show_line_diagnostics ++unfocus<CR>")
+    -- focus to the floating window after showing the diagnostics
+    -- map("n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>")
+
+    -- Show buffer diagnostics
+    map("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>")
+
+    -- Show workspace diagnostics
+    map("n", "<leader>sw", "<cmd>Lspsaga show_workspace_diagnostics<CR>")
+
+    -- Show cursor diagnostics
+    map("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+
+    -- Diagnostic jump
+    -- You can use <C-o> to jump back to your previous location
+    map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+    map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+
+    -- Diagnostic jump with filters such as only jumping to an error
+    map("n", "[e", function()
+      require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    end)
+    map("n", "]e", function()
+      require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+    end)
+
+    ---- Toggle outline
+    map("n", "<leader>so", "<cmd>Lspsaga outline<CR>")
+
+    -- -- Call hierarchy
+    -- map("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
+    -- map("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
+  end
+})

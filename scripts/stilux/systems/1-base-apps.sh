@@ -135,7 +135,7 @@ sudo pacman -S grub-customizer
 
 # File manager
 echo "Installing lf, thunar..."
-sudo pacman -S lf thunar imagemagick ffmpegthumbnailer poppler ueberzug
+sudo pacman -S lf thunar imagemagick ffmpegthumbnailer poppler ueberzug chafa
 yay -S epub-thumbnailer-git wkhtmltopdf-static
 
 # Text editor

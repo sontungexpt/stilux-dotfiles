@@ -5,6 +5,10 @@ g.loaded_perl_provider = 0
 g.python3_host_prog = '/usr/bin/python3'
 
 -- disable some default providers
-for _, provider in ipairs { "perl" } do
+local disable = {
+  "perl",
+}
+
+for _, provider in ipairs(disable) do
   g["loaded_" .. provider .. "_provider"] = 0
 end

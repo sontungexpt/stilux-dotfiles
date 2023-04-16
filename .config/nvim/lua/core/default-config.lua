@@ -1,6 +1,8 @@
 local M = {}
 
-M.options = {}
+M.options = {
+
+}
 
 M.ui = {
   dashboard = {
@@ -27,8 +29,7 @@ M.ui = {
   },
 }
 
--- path i.e "custom.plugins" -> custom/plugins.lua only and not custom/plugins/init.lua!!!!
-M.plugins = ""
+M.plugins = {}
 
 -- config for lazy.nvim startup options
 M.lazy_nvim = require "plugins.configs.lazy_nvim"

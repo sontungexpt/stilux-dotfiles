@@ -1,16 +1,25 @@
-local autocmd = vim.api.nvim_create_autocmd
-local cmd = vim.cmd
-local g = vim.g
-
 -- Mason
-autocmd({ 'VimEnter' }, {
-  group = vim.api.nvim_create_augroup('MasonCmds', {}),
-  callback = function()
-    local mason_installed_packages = require('plugins.autocmds.mason').get_installed_packages()
-    local ensure_packages = require('plugins.configs.mason').ensure_installed
-    if #mason_installed_packages ~= #ensure_packages then
-      vim.cmd("MasonSyncEnsurePackages")
-      vim.cmd("MasonEnsurePackages")
-    end
-  end
-})
+local mason_status_ok, mason = pcall(require, 'plugins.autocmds.mason')
+if mason_status_ok then
+  mason.create_autocmds()
+end
+
+-- highlight colors
+-- autocmd({ 'BufWritePost' }, {
+--   group = vim.api.nvim_create_augroup('HightlightColors', {}),
+--   callback = function()
+--     cmd("HightligtColorsOn")
+--   end
+-- })
+
+-- treesitter
+local treesitter_status_ok, treesitter = pcall(require, 'plugins.autocmds.treesitter')
+if treesitter_status_ok then
+  treesitter.create_autocmds()
+end
+
+-- git conflict
+local git_conflict_status_ok, git_conflict = pcall(require, 'plugins.autocmds.git-conflict')
+if git_conflict_status_ok then
+  git_conflict.create_autocmds()
+end
