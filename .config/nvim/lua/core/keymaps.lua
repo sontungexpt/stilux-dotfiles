@@ -6,7 +6,7 @@
 -- opts = 4 for not noremap and not silent
 -- opts = 5 for expr and noremap and silent
 
-local autocmd = vim.api.nvim_create_autocmd
+-- local autocmd = vim.api.nvim_create_autocmd
 local map = require("core.utils").map
 
 --Back to normal mode
@@ -17,9 +17,6 @@ map("v", "i", "<esc>i", 2)
 
 --Save file as the traditional way
 map({ "n", "i", "v", "c" }, "<C-s>", "<esc>:w<cr>", 2)
-
---ctrl z to undo and move to normal mode
--- map({ "n", "i", "v" }, "<C-z>", "<esc>u")
 
 --ctrl a to selected all text in file
 map({ "n", "i", "v" }, "<C-a>", "<esc>ggVG", 1)

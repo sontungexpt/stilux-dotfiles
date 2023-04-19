@@ -1,8 +1,5 @@
-local config = require("core.utils").load_config()
 local autocmd = vim.api.nvim_create_autocmd
 local cmd = vim.cmd
-local g = vim.g
-
 
 -- Don't list quickfix buffers
 autocmd("FileType", {
@@ -24,18 +21,6 @@ autocmd("VimEnter", {
     end
   end,
 })
-
--- Reload config on-save
--- autocmd("BufWritePost", {
---   pattern = vim.tbl_map(
---     vim.fs.normalize,
---     vim.fn.glob(vim.fn.stdpath "config" .. "/lua/**/*.lua", true, true, true)
---   ),
---   group = vim.api.nvim_create_augroup("ReloadConfig", {}),
---   callback = function(opts)
---     require("core.utils").source_config_file(vim.fn.stdpath "config" .. "/lua/")
---   end,
--- })
 
 --Remove whitespace on save
 autocmd('BufWritePre', {

@@ -20,10 +20,8 @@ if [ ! -x "$(command -v dunstify)" ]; then
 fi
 
 NO='\033[0m' # No Color
-RED='\033[0;31m'
 ON_BLUE='\033[44m'
 ON_RED='\033[41m'
-ON_GREEN='\033[42m'
 
 STORAGE_DIR="$HOME/Videos/DesktopRecord"
 mkdir -p "$STORAGE_DIR"
