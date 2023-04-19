@@ -1,16 +1,8 @@
-local status_ok, bufferline = pcall(require, "bufferline")
-if not status_ok then
-  return
-end
+local M = {}
 
-local colors = {
-  yellow = "#ECBE7B",
-  cyan = "#008080",
-  blue = "#51afef",
-  red = "#ec5f67",
-}
+M.colors = require("core.default-config").ui.colors
 
-bufferline.setup({
+M.opts = {
   options = {
     -- set to "tabs" to only show tabpages instead
     mode = "buffers",
@@ -111,14 +103,10 @@ bufferline.setup({
     },
     tab_close = {
       fg = { attribute = 'fg', highlight = 'LspDiagnosticsDefaultError' },
-      -- fg = { attribute = "fg", highlight = "TabLine" },
       bg = { attribute = "bg", highlight = "Normal" },
-      -- bg = { attribute = "bg", highlight = "Tabline" },
     },
     tab_selected = {
-      -- fg = { attribute = "fg", highlight = "TabLine" },
       fg = { attribute = "fg", highlight = "Normal" },
-      -- bg = { attribute = "bg", highlight = "TabLine" },
       bg = { attribute = "bg", highlight = "Normal" },
     },
     duplicate_selected = {
@@ -159,9 +147,7 @@ bufferline.setup({
     },
     separator_selected = {
       fg = { attribute = "fg", highlight = "TabLine" },
-      -- fg = { attribute = "fg", highlight = "Normal" },
       bg = { attribute = "bg", highlight = "TabLine" },
-      -- bg = { attribute = "bg", highlight = "Normal" },
     },
     separator_visible = {
       fg = { attribute = "fg", highlight = "TabLine" },
@@ -169,7 +155,6 @@ bufferline.setup({
     },
     indicator_selected = {
       fg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
-      -- bg = { attribute = "bg", highlight = "TabLine" },
       bg = { attribute = "bg", highlight = "Normal" },
     },
     numbers = {
@@ -209,21 +194,21 @@ bufferline.setup({
       bg = { attribute = "bg", highlight = "TabLine" },
     },
     hint_selected = {
-      fg = colors.cyan,
+      fg = M.colors.cyan,
       bg = { attribute = "bg", highlight = "Normal" },
       bold = true,
       italic = true,
     },
     hint_diagnostic = {
-      fg = colors.cyan,
+      fg = M.colors.cyan,
       bg = { attribute = "bg", highlight = "TabLine" },
     },
     hint_diagnostic_visible = {
-      fg = colors.cyan,
+      fg = M.colors.cyan,
       bg = { attribute = "bg", highlight = "TabLine" },
     },
     hint_diagnostic_selected = {
-      fg = colors.cyan,
+      fg = M.colors.cyan,
       bg = { attribute = "bg", highlight = "Normal" },
       bold = true,
       italic = true,
@@ -237,21 +222,21 @@ bufferline.setup({
       bg = { attribute = "bg", highlight = "TabLine" },
     },
     info_selected = {
-      fg = colors.blue,
+      fg = M.colors.blue,
       bg = { attribute = "bg", highlight = "Normal" },
       bold = true,
       italic = true,
     },
     info_diagnostic = {
-      fg = colors.blue,
+      fg = M.colors.blue,
       bg = { attribute = "bg", highlight = "TabLine" },
     },
     info_diagnostic_visible = {
-      fg = colors.blue,
+      fg = M.colors.blue,
       bg = { attribute = "bg", highlight = "TabLine" },
     },
     info_diagnostic_selected = {
-      fg = colors.blue,
+      fg = M.colors.blue,
       bg = { attribute = "bg", highlight = "Normal" },
       bold = true,
       italic = true,
@@ -265,21 +250,21 @@ bufferline.setup({
       bg = { attribute = "bg", highlight = "TabLine" },
     },
     warning_selected = {
-      fg = colors.yellow,
+      fg = M.colors.yellow,
       bg = { attribute = "bg", highlight = "Normal" },
       bold = true,
       italic = true,
     },
     warning_diagnostic = {
-      fg = colors.yellow,
+      fg = M.colors.yellow,
       bg = { attribute = "bg", highlight = "TabLine" },
     },
     warning_diagnostic_visible = {
-      fg = colors.yellow,
+      fg = M.colors.yellow,
       bg = { attribute = "bg", highlight = "TabLine" },
     },
     warning_diagnostic_selected = {
-      fg = colors.yellow,
+      fg = M.colors.yellow,
       bg = { attribute = "bg", highlight = "Normal" },
       bold = true,
       italic = true,
@@ -293,21 +278,18 @@ bufferline.setup({
       bg = { attribute = "bg", highlight = "TabLine" },
     },
     error_selected = {
-      fg = colors.red,
+      fg = M.colors.red,
       bg = { attribute = "bg", highlight = "Normal" },
       bold = true,
       italic = true,
     },
-    error_diagnostic = {
-      fg = colors.red,
-      bg = { attribute = "bg", highlight = "TabLine" },
-    },
+    error_diagnostic = { fg = M.colors.red, bg = { attribute = "bg", highlight = "TabLine" }, },
     error_diagnostic_visible = {
-      fg = colors.red,
+      fg = M.colors.red,
       bg = { attribute = "bg", highlight = "TabLine" },
     },
     error_diagnostic_selected = {
-      fg = colors.red,
+      fg = M.colors.red,
       bg = { attribute = "bg", highlight = "Normal" },
       bold = true,
       italic = true,
@@ -331,4 +313,5 @@ bufferline.setup({
       italic = true,
     },
   },
-})
+}
+return M

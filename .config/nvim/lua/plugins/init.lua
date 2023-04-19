@@ -11,15 +11,13 @@ local default_plugins = {
     version = 'nightly', -- optional, updated every week. (see issue #1193)
     cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeOpen" },
     opts = function()
-      return require("plugins.configs.nvim-tree")
+      return require("plugins.configs.nvim-tree").options
     end,
     config = function(_, opts)
       local status_ok, nvim_tree = pcall(require, "nvim-tree")
-
       if not status_ok then
         return
       end
-
       nvim_tree.setup(opts)
     end,
   },
@@ -33,11 +31,9 @@ local default_plugins = {
     end,
     config = function(_, opts)
       local status_ok, copilot = pcall(require, "copilot")
-
       if not status_ok then
         return
       end
-
       copilot.setup(opts)
     end,
   },
@@ -244,9 +240,6 @@ local default_plugins = {
 
   {
     'yamatsum/nvim-cursorline',
-    -- init = function()
-    --   require("core.utils").lazy_load "nvim-cursorline"
-    -- end,
     lazy = false,
     opts = function()
       return require("plugins.configs.nvim-cursorline")
@@ -295,8 +288,15 @@ local default_plugins = {
       'nvim-tree/nvim-web-devicons',
     },
     lazy = false,
-    config = function()
-      require("plugins.configs.bufferline")
+    opts = function()
+      return require("plugins.configs.bufferline").opts
+    end,
+    config = function(_, opts)
+      local status_ok, bufferline = pcall(require, "bufferline")
+      if not status_ok then
+        return
+      end
+      bufferline.setup(opts)
     end,
   },
 
@@ -322,12 +322,9 @@ local default_plugins = {
     end,
     config = function()
       local status_ok, nvim_surround = pcall(require, "nvim-surround")
-
-
       if not status_ok then
         return
       end
-
       nvim_surround.setup {}
     end
   },
@@ -390,7 +387,6 @@ local default_plugins = {
   {
     "williamboman/mason.nvim",
     dependencies = {
-      "mason-org/mason-registry",
       -- {
       --   "williamboman/mason-lspconfig.nvim",
       --   init = function()
@@ -409,9 +405,17 @@ local default_plugins = {
       -- },
     },
     build = ":MasonUpdate",
-    cmd = { "Mason", "MasonEnsurePackages", "MasonSyncEnsurePackages", "MasonInstall", "MasonInstallAll",
+    cmd = {
+      "Mason",
+      "MasonSyncPackages",
+      "MasonShowInstalledPackages",
+      "MasonShowEnsuredPackages",
+      "MasonInstall",
+      "MasonInstallAll",
       "MasonUninstall",
-      "MasonUninstallAll", "MasonLog" },
+      "MasonUninstallAll",
+      "MasonLog",
+    },
     opts = function()
       return require "plugins.configs.mason"
     end,
@@ -450,7 +454,12 @@ local default_plugins = {
       return require("plugins.configs.lspsaga")
     end,
     config = function(_, opts)
-      require("lspsaga").setup(opts)
+      local status_ok, lspsaga = pcall(require, "lspsaga")
+      if not status_ok then
+        return
+      end
+
+      lspsaga.setup(opts)
     end,
   },
 
@@ -519,7 +528,6 @@ local default_plugins = {
   {
     "iamcco/markdown-preview.nvim",
     ft = "markdown",
-    -- cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     build = function() vim.fn["mkdp#util#install"]() end,
     config = function()
       require("plugins.configs.markdown-preview")
@@ -528,7 +536,15 @@ local default_plugins = {
 
   {
     "folke/which-key.nvim",
-    keys = { "<leader>", "g", "[", "]", '"', "'", "`" },
+    keys = {
+      "<leader>",
+      "g",
+      "[",
+      "]",
+      '"',
+      "'",
+      "`",
+    },
     opts = function()
       return require "plugins.configs.whichkey"
     end,
@@ -548,13 +564,34 @@ local default_plugins = {
     end
   },
 
+  -- {
+  --   "mfussenegger/nvim-dap",
+  --   -- event = "DebugAttach",
+  --   dependencies = {
+  --     {
+  --       "rcarriga/nvim-dap-ui",
+  --       -- keys = {
+  --       --   { "<leader>du", function() require("dapui").toggle({}) end, desc = "Dap UI" }
+  --       -- },
+  --       config = function()
+  --         require("plugins.configs.dap.nvim-dap-ui")
+  --       end,
+  --     },
+  --     {
+  --       "theHamsta/nvim-dap-virtual-text",
+  --       config = function()
+  --         require("plugins.configs.dap.nvim-dap-virtual-text")
+  --       end,
+  --     },
+  --   },
+  --   config = function()
+  --     require("plugins.configs.dap.nvim-dap")
+  --   end,
+  -- }
+
 }
 
 local config = require("core.utils").load_config()
-
-if #config.plugins > 0 then
-  table.insert(default_plugins, { import = config.plugins })
-end
 
 require("plugins.autocmds")
 require("lazy").setup(default_plugins, config.lazy_nvim)
