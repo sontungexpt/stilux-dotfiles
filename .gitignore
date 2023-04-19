@@ -6,7 +6,8 @@
 **bundle/
 
 **/nvim/.git/
-**/.config/micorsoft-edge/
+
+**/.config/microsoft-edge/
 
 bspwm/
 teams/
