@@ -1,8 +1,0 @@
-2023/04/13-00:57:24.379 852ce Reusing MANIFEST /home/stilux/.config/figma-linux/Local Storage/leveldb/MANIFEST-000001
-2023/04/13-00:57:24.379 852ce Recovering log #3
-2023/04/13-00:57:24.380 852ce Level-0 table #3: started
-2023/04/13-00:57:24.386 852ce Level-0 table #3: 12931 bytes OK
-2023/04/13-00:57:24.386 852ce Recovering log #4
-2023/04/13-00:57:24.386 852ce Reusing old log /home/stilux/.config/figma-linux/Local Storage/leveldb/000004.log 
-2023/04/13-00:57:24.389 852ce Delete type=2 #5
-2023/04/13-00:57:24.389 852ce Delete type=0 #3

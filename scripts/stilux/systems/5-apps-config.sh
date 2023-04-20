@@ -18,22 +18,15 @@ if [ ! -f ~/.xinitrc ]; then
 	echo "xinitrc is not exist"
 else
 	# I3
-	if cat "$HOME/.xinitrc" | tr "," "\n" | grep -xqF "exec i3"; then
+	if cat <"$HOME/.xinitrc" | tr "," "\n" | grep -xqF "exec i3"; then
 		echo -e "\nExec I3 is already exist in .xinitrc"
 	else
 		echo -e "\n# I3" >>"$HOME/.xinitrc"
 		echo "exec i3" >>"$HOME/.xinitrc"
 	fi
 
-	# Ibus
-	echo -e "\n# Ibus" >>"$HOME/.xinitrc"
-	echo "export GTK_IM_MODULE=ibus" >>"$HOME/.xinitrc"
-	echo "export XMODIFIERS=@im=ibus" >>"$HOME/.xinitrc"
-	echo "export QT_IM_MODULE=ibus" >>"$HOME/.xinitrc"
-	echo "ibus-daemon -drx" >>"$HOME/.xinitrc"
-
 	# betterlockscreen
-	echo -e "\n# Betterlockscreen" >>"$HOME/.xinitrc"
+	echo -e "\n# Betterlockscreen" >"$HOME/.xinitrc"
 	echo "betterlockscreen -w dim" >>"$HOME/.xinitrc"
 	echo "source ~/.fehbg" >>"$HOME/.xinitrc"
 
