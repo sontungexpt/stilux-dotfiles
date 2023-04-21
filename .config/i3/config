@@ -219,9 +219,6 @@ exec_always setxkbmap us
 # Display Resolution
 exec_always xrandr --output eDP1 --mode 1920x1080
 
-# Virtual network
-exec_always virtualnetwork
-
 # Display Wallpaper
 set $wallpaper ~/.config/wallpaper/wallpaper.jpg
 exec_always feh --bg-fill $wallpaper
