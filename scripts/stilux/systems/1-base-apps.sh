@@ -170,7 +170,7 @@ yay -S onlyoffice-bin
 sudo pacman -S lxappearance-gtk3
 
 # Themes
-# yay -S catppuccin-gtk-theme-mocha
+# tokonight themes
 cd || exit
 git clone https://github.com/stronk-dev/Tokyo-Night-Linux.git
 sudo cp Tokyo-Night-Linux/usr/share/themes/TokyoNight /usr/share/themes/

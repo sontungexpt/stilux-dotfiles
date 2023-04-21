@@ -36,46 +36,49 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	echo "Do you want to install edge or chrome? (e/c)"
 	read -r answer
 	if [ "$answer" != "${answer#[Ee]}" ]; then
-		echo "Installing microsoft edge..."
+		echo ">>> Installing microsoft edge..."
 		yay -S microsoft-edge-stable-bin
 	else
-		echo "Installing google chrome..."
+		echo ">>> Installing google chrome..."
 		yay -S google-chrome
 	fi
 
 	# Install desired apps
-	echo "Installing desired apps..."
+	echo ">>> Installing desired apps..."
 	sudo pacman -S gimp inkscape kdenlive xcolor
 	yay -S arc-kde-git figma-linux-bin
 
 	# Install social apps
-	echo "Installing social apps..."
-	echo "Installing discord, teams..."
+	echo ">>> Installing social apps..."
+	echo ">>> Installing discord, teams..."
 	sudo pacman -S discord teams
 
 	# Cloud sync tools
-	echo "Installing cloud sync tools..."
+	echo ">>> Installing cloud sync tools..."
 	sudo pacman -S rclone
 
 	# Install development apps
-	echo "Installing development apps..."
-	sudo pacman -S --needed code neovim
+	echo ">>> Installing development apps..."
+	sudo pacman -S --needed neovim
+	yay -S --needed visual-studio-code-bin
 
 	# Install dev environment
-	echo "Installing dev environment..."
+	echo ">>> Installing dev environment..."
 
 	# Python
-	echo "Installing python, pip..."
+	echo ">>> Installing python, pip..."
 	sudo pacman -S python python-pip
 	pip install pynvim
 
 	# Nodejs
-	ehco "Installing nodejs, npm..."
-	sudo pacman -S nodejs npm
+	ehco ">>> Installing nvm, nodejs, npm..."
+	# sudo pacman -S nodejs npm
+	yay -S nvm
+	nvm install node
 	npm install -g neovim
 
 	# ruby
-	echo "Installing ruby, rbenv..."
+	echo ">>> Installing ruby, rbenv..."
 	yay -S rbenv-git
 	yay -S ruby-build
 	rbenv install "$(rbenv install -l | grep -v - | tail -1)"
@@ -90,26 +93,26 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	flutter doctor --android-licenses
 
 	# Kvm
-	echo "Installing winapps through kvm..."
-	sudo pacman -S qemu virt-manager virt-viewer freerdp dnsmasq vde2 bridge-utils openbsd-netcat libguestfs ebtables iptables
-	echo '''
-unix_sock_rw_perms = "0770"
-unix_sock_group = "libvirt"
-''' | sudo tee -a /etc/libvirt/libvirtd.conf &>/dev/null
+	# 	echo "Installing winapps through kvm..."
+	# 	sudo pacman -S qemu virt-manager virt-viewer freerdp dnsmasq vde2 bridge-utils openbsd-netcat libguestfs ebtables iptables
+	# 	echo '''
+	# unix_sock_rw_perms = "0770"
+	# unix_sock_group = "libvirt"
+	# ''' | sudo tee -a /etc/libvirt/libvirtd.conf &>/dev/null
 
-	mkdir -p ~/.config/libvirt/
-	echo 'uri_default = "qemu:///system"' >>~/.config/libvirt/libvirt.conf
+	# mkdir -p ~/.config/libvirt/
+	# echo 'uri_default = "qemu:///system"' >>~/.config/libvirt/libvirt.conf
 
-	newgrp libvirt
-	sudo usermod -aG libvirt "$(whoami)"
+	# newgrp libvirt
+	# sudo usermod -aG libvirt "$(whoami)"
 
 	# Install android studio
-	echo "Installing android studio, jdk11..."
+	echo ">>> Installing android studio, jdk11..."
 	sudo pacman -S openjdk11-src
 	yay -S android-studio
 
 	# Setup polybar-calendar
-	echo "Setup polybar-calendar..."
+	echo ">>> Setup polybar-calendar..."
 	sudo pacman -S --needed python-wheel
 	sudo pacman -S --needed base-devel openssl zlib git gobject-introspection
 	sudo pacman -S --needed python-gobject gtk4
