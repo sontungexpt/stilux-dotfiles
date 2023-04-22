@@ -14,8 +14,9 @@ fi
 
 # Install fonts
 yay -S ttf-meslo-nerd-font-powerlevel10k
+yay -S ttf-jetbrains-mono-nerd
 yay -S ttf-jetbrains-mono
-yay -S ttf-ms-win11
+yay -S ttf-ms-win11-auto
 yay -S ttf-adobe-source-code-pro-fonts
 yay -S ttf-fira-code
 yay -S ttf-hack-nerd
