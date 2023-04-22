@@ -137,3 +137,7 @@ if [ ! -f /usr/bin/thunar ]; then
 else
 	rm -rf ~/.config/Thunar/ && cp -r "$configs_dir/Thunar/" ~/.config/
 fi
+
+# permission for other disk
+sudo chown -R sitlux:stilux ~/Data
+sudo chmod 755 ~/Data

@@ -23,7 +23,6 @@ discord/
 Downloads/
 Music/
 Pictures/
-Videos/
 Templates/
 Documents/
 Data/
@@ -46,9 +45,6 @@ yay/
 .viminfo
 .pki/
 .rest-client/
-.bash_history
-.bash_logout
-.bash_profile
 .python_history
 .zsh_history
 .quokka/
@@ -58,7 +54,6 @@ yay/
 .wallaby/
 .dmrc
 .face
-.gtkrc-2.0
 .shell.pre-oh-my-zsh
 .trash
 .wget-hsts
