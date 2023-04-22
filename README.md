@@ -237,7 +237,7 @@ mount /dev/sda4 /mnt/home
 
 - **Step 9: Install base packages**
 ```
-pacstrap /mnt base base-devel linux linux-firmware linux-headers intel-ucode sudo git neofetch networkmanager network-manager-applet dhcpcd neovim
+pacstrap -i /mnt base base-devel linux linux-firmware linux-headers intel-ucode sudo git neofetch networkmanager network-manager-applet dhcpcd neovim
 ```
 
 - **Step 10: Basic setup**
