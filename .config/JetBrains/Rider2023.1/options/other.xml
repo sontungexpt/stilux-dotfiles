@@ -1,0 +1,46 @@
+<application>
+  <component name="NotRoamableUiSettings">
+    <option name="presentationModeIdeScale" value="1.75" />
+  </component>
+  <component name="PropertyService"><![CDATA[{
+  "keyToString": {
+    "CWM_LOGGING_VERSION": "1",
+    "Debug.Allow.Typing": "true",
+    "NonModalCommitCustomization.IsApplied": "true",
+    "RD.Init.Cfg.2": "true",
+    "RD.Init.DialogShown.Ide": "true",
+    "Rider.Last.Started.IDE.Build": "RD-231.8109.212",
+    "Tutorials.In.Recent.Projects.Disabled": "true",
+    "ask.about.ctrl.y.shortcut.v2": "true",
+    "bundled.plugins.list.saved.version": "RD-231.8109.212",
+    "evlsprt3.231": "26",
+    "experimentalFeature.editor.reader.mode": "false",
+    "fileTypeChangedCounter": "2",
+    "fontSizeToResetConsole": "13.0",
+    "fontSizeToResetEditor": "13.0",
+    "ide.widget.toolbar.first.inclusion": "2",
+    "ignoreUltimateEdition": "true",
+    "input.method.disabler.muted": "true",
+    "migrated.non.roamable.values.from.general.settings": "true",
+    "previousColorScheme": "_@user_Rider Dark",
+    "rider.whats.new.should.shown": "1",
+    "tasks.pass.word.conversion.enforced": "true",
+    "toolwindow.stripes.buttons.info.shown": "true"
+  },
+  "keyToStringList": {
+    "fileTypeDetectors": [
+      "com.intellij.ide.scratch.ScratchFileServiceImpl$Detector",
+      "com.jetbrains.rider.cpp.fileType.CppHeaderFileTypeDetector",
+      "com.intellij.javascript.debugger.sourcemap.SourceMapFileType$MyFileTypeDetector",
+      "com.intellij.database.vfs.DbStorageFileType$Detector",
+      "com.intellij.docker.dockerFile.DockerFileTypeDetector",
+      "com.jetbrains.nodejs.util.NodeFileTypeDetector$JavaScriptFileTypeDetector",
+      "com.jetbrains.nodejs.util.NodeFileTypeDetector$TypeScriptFileTypeDetector",
+      "org.jetbrains.plugins.textmate.TextMateFileType$TextMateFileDetector"
+    ]
+  }
+}]]></component>
+  <component name="ToolbarSettingsService">
+    <option name="SHOW_NEW_MAIN_TOOLBAR" value="true" />
+  </component>
+</application>

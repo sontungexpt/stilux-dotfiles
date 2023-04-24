@@ -1,0 +1,117 @@
+#!/bin/bash
+# The scripts is written by TranVoSonTung
+# The scripts is used to set up the font for the system
+# This scripts is tested on Arch Linux
+# Support font format: .ttf, .otf
+
+NOPASS_FLAG="--nopass"
+PASS=""
+
+# Use eval "$SUDO_COMMAND <Your command>" to exec the command with no password
+SUDO_COMMAND=""
+SUDO_WITH_NOPASS_COMMAND="echo \"$PASS\" | sudo -S -k"
+SUDO_WITH_PASS_COMMAND="sudo"
+
+# COLOR
+NO='\033[0m' # No Color
+ON_BLUE='\033[44m'
+
+help() {
+	echo " The scripts is written by TranVoSonTung"
+	echo " The scripts help you manually install the font for the arch-linux system"
+	echo " Support font format: .ttf, .otf"
+	echo " "
+	echo -e "${ON_BLUE} USAGE: ${NO} installfont [OPTION] [FONT1 PATH] [FONT2 PATH]"
+	echo " "
+	echo -e "${ON_BLUE} OPTIONS: ${NO}"
+	echo "  -h, --help		Display this help and exit"
+	echo "  --nopass		Exec the command with no password"
+	echo "  --system		Install the font for the system (all users can use the font)"
+	echo "  --user		Install the font for the user (only you can use the font)"
+	echo " "
+	echo -e "${ON_BLUE} EXAMPLES: ${NO}"
+	echo "  1.	installfont --help"
+	echo "  2.	installfont --nopass font.ttf"
+	echo "  3.	installfont --system font.ttf"
+	echo "  4.	installfont --user font.ttf"
+	echo "  5.	installfont --user --nopass font.ttf"
+	echo "  6.	installfont --system --nopass font.ttf"
+	echo "  7.	installfont font1.ttf font2.ttf font3.ttf"
+}
+
+# Show help if no arguments
+if [ "$#" -eq 0 ]; then
+	help
+	exit 0
+fi
+
+# Show help if use flag "--help" or "-h"
+if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+	help
+	exit 0
+fi
+
+# Main code
+# Get the array of the arguments [flag(optional), font1, font2, font3, ...]
+FONT_PACKAGE_PATHS=("$@")
+SYSTEM_STORAGE_PATH="/usr/share/fonts"
+LOCAL_STORAGE_PATH="$HOME/.local/share/fonts/"
+STORAGE_PATH=""
+
+# Check the flag
+# If have flag "--system", set the storage path to the system storage path
+# If have flag "--user", set the storage path to the local storage path
+# If no flag "--system" and "--user", ask the user that they want to install for the system or for the user
+if [ "$1" = "--system" ]; then
+	STORAGE_PATH="$SYSTEM_STORAGE_PATH"
+
+	# The current array format: [--system, font1, font2, font3, ...]
+	# Remove the flag from the array
+	FONT_PACKAGE_PATHS=("${FONT_PACKAGE_PATHS[@]:1}")
+	# The new array format: [font1, font2, font3, ...]
+
+elif [ "$1" = "--user" ]; then
+	STORAGE_PATH="$LOCAL_STORAGE_PATH"
+	# Make sure the local storage path is exist
+	mkdir -p "$STORAGE_PATH"
+
+	# The current array format: [--user, font1, font2, font3, ...]
+	# Remove the flag from the array
+	FONT_PACKAGE_PATHS=("${FONT_PACKAGE_PATHS[@]:1}")
+fi
+
+if [ "$STORAGE_PATH" = "" ]; then
+	# The scripts when not use flag "--system" and "--user"
+	# Ask the user that they want to install for the system or for the user
+	echo "Do you want to install the font for the system or for the user?"
+	echo "1. For the system (all users can use the font)"
+	echo "2. For the user (only you can use the font)"
+	read -p "Your choice: " CHOICE
+
+	# Check the choice
+	# If the choice is not 1 or 2, exit the scripts
+	# If the choice is 1, set the storage path to the system storage path
+	# If the choice is 2, set the storage path to the local storage path
+	if [ "$CHOICE" -eq 1 ]; then
+		STORAGE_PATH="$SYSTEM_STORAGE_PATH"
+	elif [ "$CHOICE" -eq 2 ]; then
+		STORAGE_PATH="$LOCAL_STORAGE_PATH"
+		# Make sure the local storage path is exist
+		mkdir -p "$STORAGE_PATH"
+	else
+		echo "Your choice is not valid!"
+		exit 1
+	fi
+fi
+
+if [ "$1" = "$NOPASS_FLAG" ] && [ "$PASS" != "" ]; then
+	# The current array format: [--nopass, font1, font2, font3, ...]
+
+	SUDO_COMMAND="$SUDO_WITH_NOPASS_COMMAND"
+	# Remove the flag from the array
+	FONT_PACKAGE_PATHS=("${FONT_PACKAGE_PATHS[@]:1}")
+else
+	# The scripts when not use flag "--nopass"
+	SUDO_COMMAND="$SUDO_WITH_PASS_COMMAND"
+
+fi

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1672910977453083-1</unique-id>
+	<command>kitty %f</command>
+	<description>Example for a custom action</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+	<text-files/>
+</action>
+<action>
+	<icon>user-trash</icon>
+	<name>Move to Trash</name>
+	<submenu></submenu>
+	<unique-id>1675070198456187-1</unique-id>
+	<command>trash-put %F</command>
+	<description>Move to trash</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>application-x-bzip</icon>
+	<name>Zip Folder</name>
+	<submenu></submenu>
+	<unique-id>1675086537727413-1</unique-id>
+	<command>zip -r %f %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>application-x-bzip</icon>
+	<name>Extract File</name>
+	<submenu></submenu>
+	<unique-id>1675087108117452-2</unique-id>
+	<command>extract %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*.zip;*.rar;*.tar.bz;*.tar.bz2;*.tbz;*.tbz2;*.tar.gz;*.tgz;*.tar.xz;*.txz</patterns>
+	<other-files/>
+</action>
+<action>
+	<icon>preferences-desktop-wallpaper</icon>
+	<name>Set background</name>
+	<submenu></submenu>
+	<unique-id>1676138041631139-1</unique-id>
+	<command>setwallpaper %f</command>
+	<description>Change the wallpaper of i3 window manager</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>edit-copy-path</icon>
+	<name>Copy Current Path</name>
+	<submenu></submenu>
+	<unique-id>1676215990229711-1</unique-id>
+	<command>echo -n %f | xclip -selection &quot;clipboard&quot;</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>filename-title-amarok</icon>
+	<name>Copy name</name>
+	<submenu></submenu>
+	<unique-id>1676722155790669-1</unique-id>
+	<command>echo -n %n | xclip -selection &quot;clipboard&quot;</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>avatar-default</icon>
+	<name>Change Avatar</name>
+	<submenu></submenu>
+	<unique-id>1678792596514365-1</unique-id>
+	<command>setavatar --nopass %f</command>
+	<description>Change the lightdm avatar</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>draw-trace-background</icon>
+	<name>Add LightDM Background</name>
+	<submenu></submenu>
+	<unique-id>1678793094957291-2</unique-id>
+	<command>add-lightdm-background --nopass %f</command>
+	<description>Add the picture to the lightdm background folder</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>redeyes</icon>
+	<name>Preview Archive File</name>
+	<submenu></submenu>
+	<unique-id>1681296253730676-1</unique-id>
+	<command>kitty extract --preview %f</command>
+	<description>Preview the archive file without extract theme</description>
+	<range>*</range>
+	<patterns>*.zip;*.rar;*.tar.bz;*.tar.bz2;*.tbz;*.tbz2;*.tar.gz;*.tgz;*.tar.xz;*.txz</patterns>
+	<other-files/>
+</action>
+</actions>

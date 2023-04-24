@@ -1,0 +1,63 @@
+#!/bin/bash
+# The scripts is written by Tran Vo Son Tung
+# This script is used to record desktop screen
+# Dependencies: recordmydesktop
+
+# Check if install scrot, xclip, dunstify
+if [ ! -x "$(command -v recordmydesktop)" ]; then
+	echo "Please install recordmydesktop to use this scripts"
+	exit 0
+fi
+
+if [ ! -x "$(command -v xclip)" ]; then
+	echo "please install xclip to use this scripts"
+	exit 0
+fi
+
+if [ ! -x "$(command -v dunstify)" ]; then
+	echo "please install dunst to use this scripts"
+	exit 0
+fi
+
+NO='\033[0m' # No Color
+ON_BLUE='\033[44m'
+ON_RED='\033[41m'
+
+STORAGE_DIR="$HOME/Videos/DesktopRecord"
+mkdir -p "$STORAGE_DIR"
+
+DEFAULT_OUTPUT_FILE="$STORAGE_DIR/%Y-%m-%d_%T-recording.ogv"
+
+help() {
+	echo "This script is written by Tran Vo Son Tung"
+	echo "Dependencies: recordmydesktop, dunst, xclip"
+	echo "Default storage: $STORAGE_DIR"
+	echo -e "\n${ON_BLUE} USAGE: ${NO} recorddesktop [OPTIONS] [FUNCTION]\n"
+	echo -e "\n${ON_BLUE} OPTIONS: ${NO}"
+	echo "  -h, --help           show help"
+	echo -e "\n${ON_BLUE}FUNCTION: ${NO}"
+	echo "  autosave             record the screen and save it to the default storage"
+	echo "  newname              record the screen and save it to the default storage with new name"
+	echo "  NOTE: The default function of recordmydesktop can use to record the screen"
+}
+
+if [ "$#" -eq 0 ]; then
+	recordmydesktop -o "$DEFAULT_OUTPUT_FILE"
+	exit 1
+fi
+
+record_with_new_name() {
+	read -r -p "Enter the name of the file: " FILE_NAME
+	if [ -z "$FILE_NAME" ]; then
+		echo -e "${ON_RED} ERROR: ${NO} The file name is empty"
+		exit 0
+	fi
+	recordmydesktop -o "$STORAGE_DIR/$FILE_NAME.ogv"
+}
+
+case "$1" in
+"--help" | "-h") help ;;
+"autosave") recordmydesktop -o "$DEFAULT_OUTPUT_FILE" ;;
+"newname") record_with_new_name ;;
+*) recordmydesktop "$@" ;;
+esac

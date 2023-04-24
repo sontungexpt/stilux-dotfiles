@@ -1,0 +1,39 @@
+#!/bin/bash
+# The scripts is written by TranVoSonTung
+# The script is used to create dotfiles repository
+
+NO='\033[0m' # No Color
+ON_RED='\033[41m'
+
+# check if git is installed
+if ! [ -x "$(command -v git)" ]; then
+	echo -e "${ON_RED} Error: ${NO} git is not installed."
+	exit 0
+fi
+
+if [ -d "$HOME/dotfiles" ]; then
+	echo -e "${ON_RED} Error: ${NO} dotfiles repository already exists."
+	echo ":: Please remove it before running this script."
+else
+	git init --bare "$HOME/dotfiles"
+fi
+
+if [ "$SHELL" == "usr/bin/zsh" ]; then
+	zsh
+	source "$HOME/.zshrc"
+	if ! grep -q "alias config" "$HOME/.bashrc"; then
+		echo "alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'" >>"$HOME/.bashrc"
+	fi
+elif [ "$SHELL" == "usr/bin/bash" ]; then
+	bash
+	source "$HOME/.bashrc"
+	if ! grep -q "alias config" "$HOME/.bashrc"; then
+		echo "alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'" >>"$HOME/.bashrc"
+	fi
+else
+	echo -e "${ON_RED} Error: ${NO} Your shell is not supported."
+	echo ":: Please use bash or zsh."
+	exit 0
+fi
+
+config config --local status.showUntrackedFiles no
