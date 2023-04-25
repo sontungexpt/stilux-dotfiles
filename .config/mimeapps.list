@@ -1,6 +1,8 @@
 [Default Applications]
 application/x-shellscript=userapp-kitty nvim-6JLO31.desktop
 x-scheme-handler/figma=figma-linux.desktop
+text/plain=userapp-kitty nvim-6JLO31.desktop
 
 [Added Associations]
 application/x-shellscript=userapp-kitty nvim-6JLO31.desktop;
+text/plain=userapp-kitty nvim-6JLO31.desktop;

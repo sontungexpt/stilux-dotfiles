@@ -380,4 +380,8 @@ for_window [class="Virt-manager"] move to position center
 for_window [class="Virt-manager" title="win10 on QEMU/KVM"] floating disable
 for_window [class="Virt-manager" title="RDPWindows on QEMU/KVM"] floating disable
 
+# xcolor
+bindsym --release $mod+s exec xcolor -s
+
+
 
