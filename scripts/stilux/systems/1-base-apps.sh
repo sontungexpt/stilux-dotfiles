@@ -3,7 +3,7 @@
 
 # Check if installed yay, if not install it
 if ! [ -x "$(command -v yay)" ]; then
-	echo "Installing yay..."
+	echo ">>> Installing yay..."
 	sudo pacman -S --needed git base-devel
 	git clone https://aur.archlinux.org/yay.git
 	cd yay || exit
@@ -14,19 +14,19 @@ fi
 
 # Check if install git, if not install it
 if ! [ -x "$(command -v git)" ]; then
-	echo "Installing git..."
+	echo ">>> Installing git..."
 	sudo pacman -S git
 fi
 
 # Check if install curl, if not install it
 if ! [ -x "$(command -v curl)" ]; then
-	echo "Installing curl..."
+	echo ">>> Installing curl..."
 	sudo pacman -S curl
 fi
 
 # Check if install wget, if not install it
 if ! [ -x "$(command -v wget)" ]; then
-	echo "Installing wget..."
+	echo ">>> Installing wget..."
 	sudo pacman -S wget
 fi
 
@@ -52,7 +52,7 @@ xdg-user-dirs-update
 sudo pacman -S --needed trash-cli
 
 # Login manager
-echo "Installing lightdm, lightdm-webkit2-greeter..."
+echo ">>> Installing lightdm, lightdm-webkit2-greeter..."
 sudo pacman -S lightdm lightdm-webkit2-greeter
 
 # Check if installed lightdm, enable service
@@ -60,7 +60,7 @@ if [ -x "$(command -v lightdm)" ]; then
 	sudo systemctl enable lightdm.service
 fi
 
-echo "Installing lightdm-webkit2-theme-glorious..."
+echo ">>> Installing lightdm-webkit2-theme-glorious..."
 yay -S lightdm-webkit2-theme-glorious
 
 # Set default lightdm greeter to lightdm-webkit2-greeter
@@ -68,9 +68,8 @@ sudo sed -i -e "s/^#greeter-session\s*=\s*\(.*\)/greeter-session=lightdm-webkit2
 # Set default lightdm-webkit2-greeter theme to Glorious
 sudo sed -i -e "s/^webkit_theme\s*=\s*\(.*\)/webkit_theme = glorious/g" "/etc/lightdm/lightdm-webkit2-greeter.conf"
 sudo sed -i -e "s/^debug_mode\s*=\s*\(.*\)/debug_mode = true/g" "/etc/lightdm/lightdm-webkit2-greeter.conf"
-
 # Ask to reboot
-echo "You should reboot your system to apply changes."
+echo ":: WARNING: You should reboot your system to apply changes."
 
 # Lock screen
 yay -S betterlockscreen-git
@@ -102,7 +101,7 @@ if [ -x "$(command -v bluez)" ]; then
 fi
 
 # Vietnamese input
-echo "Installing ibus, ibus-bamboo..."
+echo ">>> Installing ibus, ibus-bamboo..."
 yay -S ibus ibus-bamboo
 # Add ibus to /etc/environment
 echo '''
@@ -110,45 +109,46 @@ GTK_IM_MODULE=ibus
 QT_IM_MODULE=ibus
 XMODIFIERS=@im=ibus
 ''' | sudo tee -a /etc/environment &>/dev/null
+echo ":: WARNING: To auto start ibus when login, you should add ibus-daemon -drx to the start point of your desktop environment."
 
 # Notification
-echo "Installing dunst..."
+echo ">>> Installing dunst..."
 sudo pacman -S dunst
 
 # System monitor
-echo "Installing gotop..."
+echo ">>> Installing gotop..."
 yay -S gotop
 
 # Clipboard manager
-echo "Installing xclip..."
+echo ">>> Installing xclip..."
 sudo pacman -S xclip
 
 # Screenshot tools
-echo "Installing scrot, flameshot..."
+echo ">>> Installing scrot, flameshot..."
 sudo pacman -S scrot flameshot
 
 # Picture viewer
-echo "Installing feh..."
+echo ">>> Installing feh..."
 sudo pacman -S feh
 
 # Video player
-echo "Installing mpv..."
+echo ">>> Installing mpv..."
 sudo pacman -S mpv
 
 # Disk manager
-echo "Installing gparted..."
+echo ">>> Installing gparted..."
 sudo pacman -S gparted
 
 # NTFS support
-echo "Installing ntfs-3g..."
+echo ">>> Installing ntfs-3g..."
 sudo pacman -S ntfs-3g
 
 # Grub manager
-echo "Installing grub-customizer..."
+echo ">>> Installing grub-customizer..."
 sudo pacman -S grub-customizer
 
 # File manager
-echo "Installing lf, thunar..."
+echo ">>> Installing lf, thunar..."
 sudo pacman -S lf thunar imagemagick ffmpegthumbnailer poppler ueberzug chafa
 yay -S epub-thumbnailer-git wkhtmltopdf-static
 git clone https://github.com/thimc/lfimg.git
@@ -156,11 +156,12 @@ sudo cp ./lfimg/lfrun /usr/bin/
 rm -rf lfimg
 
 # Text editor
-echo "Installing neovim..."
+echo ">>> Installing neovim..."
 sudo pacman -S --needed neovim
+sudo pacman -S --needed fd ripgrep
 
 # Wifi hotspot
-echo "Installing linux-wifi-hotspot..."
+echo ">>> Installing linux-wifi-hotspot..."
 yay -S linux-wifi-hotspot
 
 # Terminal
@@ -171,26 +172,27 @@ sudo pacman -S --needed firefox
 
 # Achrive tools
 # zip and unzip
-echo "Installing zip, unzip..."
+echo ">>> Installing zip, unzip..."
 sudo pacman -S zip unzip
 # tar
 sudo pacman -S --needed tar
 # rar and unrar
-echo "Installing rar, unrar..."
+echo ">>> Installing rar..."
 yay -S rar
 
 # Office suite
-echo "Installing onlyffice..."
+echo ">>> Installing onlyffice..."
 yay -S onlyoffice-bin
 
 # Themes manager
-sudo pacman -S lxappearance-gtk3
+sudo pacman -S --needed lxappearance-gtk3
 
 # Themes
 # tokonight themes
 cd || exit
 git clone https://github.com/stronk-dev/Tokyo-Night-Linux.git
-sudo cp Tokyo-Night-Linux/usr/share/themes/TokyoNight /usr/share/themes/
+sudo cp ./Tokyo-Night-Linux/usr/share/themes/TokyoNight /usr/share/themes/
+rm -rf Tokyo-Night-Linux
 
 # Icons Themes
 mkdir -p ~/.icons

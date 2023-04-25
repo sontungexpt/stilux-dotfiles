@@ -64,6 +64,7 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 
 	# Install dev environment
 	echo ">>> Installing dev environment..."
+	sudo pacman -S --needed clang cmake ninja pkgconf gtk3 xz
 
 	# Python
 	echo ">>> Installing python, pip..."
@@ -82,16 +83,17 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	yay -S rbenv-git
 	yay -S ruby-build
 	rbenv install "$(rbenv install -l | grep -v - | tail -1)"
+	rbenv global "$(rbenv install -l | grep -v - | tail -1)"
 	gem install neovim
 
 	# Flutter
-	echo "Installing flutter..."
-	mkdir -p "$HOME/.developments"
-	cd "$HOME/.developments" || exit
-	git clone https://github.com/flutter/flutter.git
-	cd "$HOME" || exit
-	sudo pacman -S clang cmake ninja pkgconf gtk3 xz
-	flutter doctor --android-licenses
+	# echo ">>>Installing flutter..."
+	# mkdir -p "$HOME/.developments"
+	# cd "$HOME/.developments" || exit
+	# git clone https://github.com/flutter/flutter.git
+	# cd "$HOME" || exit
+	# sudo pacman -S clang cmake ninja pkgconf gtk3 xz
+	# flutter doctor --android-licenses
 
 	# Kvm
 	# 	echo "Installing winapps through kvm..."
@@ -113,46 +115,46 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	yay -S android-studio watchman
 
 	# Setup polybar-calendar
-	echo ">>> Setup polybar-calendar..."
-	sudo pacman -S --needed python-wheel
-	sudo pacman -S --needed base-devel openssl zlib git gobject-introspection
-	sudo pacman -S --needed python-gobject gtk4
-	sudo pacman -S --needed python cairo pkgconf gobject-introspection gtk4
-	if ! [ -x "$(command -v pip3)" ]; then
-		sudo pacman -S python-pip
-	fi
-	if [ -x "$(command -v pip3)" ]; then
-		pip3 install pycairo
-		pip3 install PyGObject
-	fi
-	if [ -f "$HOME/.config/polybar/scripts/polybar-calendar/calendar.sh" ]; then
-		chmod +x "$HOME/.config/polybar/scripts/polybar-calendar/calendar.sh"
-	else
-		echo "ERROR: File $HOME/.config/polybar/scripts/polybar-calendar/calendar.sh not found"
-	fi
+	# echo ">>> Setup polybar-calendar..."
+	# sudo pacman -S --needed python-wheel
+	# sudo pacman -S --needed base-devel openssl zlib git gobject-introspection
+	# sudo pacman -S --needed python-gobject gtk4
+	# sudo pacman -S --needed python cairo pkgconf gobject-introspection gtk4
+	# if ! [ -x "$(command -v pip3)" ]; then
+	# 	sudo pacman -S python-pip
+	# fi
+	# if [ -x "$(command -v pip3)" ]; then
+	# 	pip3 install pycairo
+	# 	pip3 install PyGObject
+	# fi
+	# if [ -f "$HOME/.config/polybar/scripts/polybar-calendar/calendar.sh" ]; then
+	# 	chmod +x "$HOME/.config/polybar/scripts/polybar-calendar/calendar.sh"
+	# else
+	# 	echo "ERROR: File $HOME/.config/polybar/scripts/polybar-calendar/calendar.sh not found"
+	# fi
 
-	# Install dependencies for polybar gmail
-	echo "Installing dependencies for polybar gmail..."
-	if ! [ -x "$(command -v pip)" ]; then
-		pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
-		if [ -f "$HOME/.config/polybar/gmail/auth.py" ]; then
-			chmod +x "$HOME/.config/polybar/gmail/auth.py"
-		else
-			echo "ERROR: File $HOME/.config/polybar/gmail/auth.py not found"
-		fi
-		if [ -f "$HOME/.config/polybar/gmail/launch.py" ]; then
-			chmod +x "$HOME/.config/polybar/gmail/launch.py"
-		else
-			echo "ERROR: File $HOME/.config/polybar/gmail/launch.py not found"
-		fi
-		if [ -f "$HOME/.config/polybar/gmail/list_labels.py" ]; then
-			chmod +x "$HOME/.config/polybar/gmail/list_labels.py"
-		else
-			echo "ERROR: File $HOME/.config/polybar/gmail/list_labels.py not found"
-		fi
-	else
-		echo "ERROR while installing dependencies for polybar gmail"
-	fi
+	# # Install dependencies for polybar gmail
+	# echo "Installing dependencies for polybar gmail..."
+	# if ! [ -x "$(command -v pip)" ]; then
+	# 	pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+	# 	if [ -f "$HOME/.config/polybar/gmail/auth.py" ]; then
+	# 		chmod +x "$HOME/.config/polybar/gmail/auth.py"
+	# 	else
+	# 		echo "ERROR: File $HOME/.config/polybar/gmail/auth.py not found"
+	# 	fi
+	# 	if [ -f "$HOME/.config/polybar/gmail/launch.py" ]; then
+	# 		chmod +x "$HOME/.config/polybar/gmail/launch.py"
+	# 	else
+	# 		echo "ERROR: File $HOME/.config/polybar/gmail/launch.py not found"
+	# 	fi
+	# 	if [ -f "$HOME/.config/polybar/gmail/list_labels.py" ]; then
+	# 		chmod +x "$HOME/.config/polybar/gmail/list_labels.py"
+	# 	else
+	# 		echo "ERROR: File $HOME/.config/polybar/gmail/list_labels.py not found"
+	# 	fi
+	# else
+	# 	echo "ERROR while installing dependencies for polybar gmail"
+	# fi
 
 else
 	echo "Skip installing stilux apps"
