@@ -16,11 +16,11 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -79,12 +79,6 @@ source /usr/share/nvm/init-nvm.sh
 
 # Google-chrome
 #export CHROME_EXECUTABLE="/usr/bin/google-chrome-stable"
-
-# Libuguestfs
-# export LIBGUESTFS_BACKEND=direct
-# export LIBGUESTFS_BACKEND=libvirt
-# export LIBGUESTFS_DEBUG=1
-# export LIBGUESTFS_TRACE=1
 
 # Aliases
 # lf-filemanager

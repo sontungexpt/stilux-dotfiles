@@ -89,8 +89,8 @@
 
 ## 2. Preview
 
-<image src="./scripts/images/overview-desktop.png" width="100%"/>
-<image src="./scripts/images/preview-0.png" width="100%"/>
+<image src="./scripts/stilux/assets/images/overview-desktop.png" width="100%"/>
+<image src="./scripts/stilux/assets/images/preview-0.png" width="100%"/>
 
 ## 3. Install arch linux and i3 wm
 

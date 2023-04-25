@@ -34,19 +34,19 @@ fi
 
 rm -rf ~/.config/background/ && cp -r "$configs_dir/background/" ~/.config/
 
-# Check iff install betterlockscreen
+# Check if install betterlockscreen
 if [ ! -f /usr/bin/betterlockscreen ]; then
 	echo "betterlockscreen is not installed"
 else
 	rm -rf ~/.config/betterlockscreen/ && cp -r "$configs_dir/betterlockscreen/" ~/.config/
 fi
 
-# Check if install btop
-if [ ! -f /usr/bin/btop ]; then
-	echo "btop is not installed"
-else
-	rm -rf ~/.config/btop/ && cp -r "$configs_dir/btop/" ~/.config/
-fi
+# # Check if install btop
+# if [ ! -f /usr/bin/btop ]; then
+# 	echo "btop is not installed"
+# else
+# 	rm -rf ~/.config/btop/ && cp -r "$configs_dir/btop/" ~/.config/
+# fi
 
 # Check if install calcurse
 if [ ! -f /usr/bin/calcurse ]; then
@@ -139,5 +139,5 @@ else
 fi
 
 # permission for other disk
-sudo chown -R sitlux:stilux ~/Data
-sudo chmod 755 ~/Data
+# sudo chown -R sitlux:stilux ~/Data
+# sudo chmod 755 ~/Data

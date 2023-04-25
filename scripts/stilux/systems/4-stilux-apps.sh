@@ -80,8 +80,21 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 
 	# ruby
 	echo ">>> Installing ruby, rbenv..."
+	sed -i 's/eval "$(rbenv init -)"/# eval "$(rbenv init -)"/g' "$HOME/.zshrc"
+	sed -i 's|export PATH="$HOME/.rbenv/bin:$PATH"|# export PATH="$HOME/.rbenv/bin:$PATH"|g' "$HOME/.zshrc"
 	yay -S rbenv-git
 	yay -S ruby-build
+	sed -i 's/# eval "$(rbenv init -)"\s*=\s*\(.*\)/eval "$(rbenv init -)"/g' "$HOME/.zshrc"
+	sed -i 's|# export PATH="$HOME/.rbenv/bin:$PATH"|export PATH="$HOME/.rbenv/bin:$PATH"|g' "$HOME/.zshrc"
+	# find in .zshrc if not have eval "$(rbenv init -)" and export PATH="$HOME/.rbenv/bin:$PATH" then add it
+	if ! grep -q 'export PATH="$HOME/.rbenv/bin:$PATH"' "$HOME/.zshrc"; then
+		echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >>"$HOME/.zshrc"
+	fi
+	if ! grep -q "eval \"$(rbenv init -)\"" "$HOME/.zshrc"; then
+		echo 'eval "$(rbenv init -)"' >>"$HOME/.zshrc"
+	fi
+	source "$HOME/.zshrc"
+	zsh
 	rbenv install "$(rbenv install -l | grep -v - | tail -1)"
 	rbenv global "$(rbenv install -l | grep -v - | tail -1)"
 	gem install neovim
