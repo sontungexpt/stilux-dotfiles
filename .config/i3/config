@@ -147,7 +147,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Ctrl+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -310,8 +310,6 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="Blueman-manager"] resize set 1000 800
 for_window [class="Blueman-manager"] move to position center
 
-# Open vs-code
-# bindsym --release $mod+shift+c exec code
 
 # Open github website
 bindsym --release $mod+g exec xdg-open https://github.com
@@ -321,10 +319,6 @@ bindsym --release $mod+u exec xdg-open https://courses.uit.edu.vn/
 bindsym --release $mod+shift+u exec xdg-open https://daa.uit.edu.vn/
 
 # Emulator
-# for_window [title="Android Emulator - Pixel_4_API_30:5554"] resize set 547
-# for_window [title="Android Emulator - Pixel_4_API_30:5554"] border pixel 0
-# for_window [title="Android Emulator - Pixel_4_API_33:5554"] resize set 547
-# for_window [title="Android Emulator - Pixel_4_API_33:5554"] border pixel 0
 for_window [title="Android Emulator -*"] resize set 547
 for_window [title="Android Emulator -*"] border pixel 0
 
@@ -381,7 +375,7 @@ for_window [class="Virt-manager" title="win10 on QEMU/KVM"] floating disable
 for_window [class="Virt-manager" title="RDPWindows on QEMU/KVM"] floating disable
 
 # xcolor
-bindsym --release $mod+s exec xcolor -s
+bindsym --release $mod+Shift+c exec xcolor -s
 
 
 

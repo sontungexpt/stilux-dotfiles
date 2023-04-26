@@ -157,8 +157,7 @@ rm -rf lfimg
 
 # Text editor
 echo ">>> Installing neovim..."
-sudo pacman -S --needed neovim
-sudo pacman -S --needed fd ripgrep
+sudo pacman -S --needed neovim fd ripgrep
 
 # Wifi hotspot
 echo ">>> Installing linux-wifi-hotspot..."

@@ -1,8 +1,0 @@
-#!/bin/bash
-# The scripts is written by TranVoSonTung
-
-PASS="STTX300191"
-
-SUDO_WITH_NOPASS_COMMAND="echo \"$PASS\" | sudo -S -k"
-
-eval "$SUDO_WITH_NOPASS_COMMAND virsh net-start default"
