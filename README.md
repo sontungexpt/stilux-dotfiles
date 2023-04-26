@@ -440,20 +440,23 @@ Enter root password (admin)
 
 Reconnect to Wi-Fi
 
-```
-nmtui
-```
+````
+nmtui ```
 
 Restart System
 
-```
+````
+
 reboot
+
 ```
 
 Turn off the system
 
 ```
+
 poweroff
+
 ```
 
 </blockquote></details>
@@ -463,19 +466,27 @@ poweroff
 <details><summary>Install i3</summary><blockquote>
 
 ```
+
 sudo pacman -S xorg xorg-xinit i3-wm dmenu kitty
+
 ```
 
 ```
+
 sudo cp /etc/X11/xinit/xinitrc ~/.xinitrc
+
 ```
 
 ```
+
 echo -e "\n# I3 window manager" >>"$HOME/.xinitrc"
+
 ```
 
 ```
+
 echo "exec i3" >>"$HOME/.xinitrc"
+
 ```
 
 </blockquote></details>
@@ -486,7 +497,9 @@ echo "exec i3" >>"$HOME/.xinitrc"
 - Open terminal and copy this command
 
 ```
+
 git clone https://github.com/sontungexpt/stilux-dotfiles.git && cd stilux-dotfiles && chmod +x setup && ./setup && cd .. && rm -rf stilux-dotfiles
+
 ```
 
 - Follow the instructions in the terminal when the scripts is running

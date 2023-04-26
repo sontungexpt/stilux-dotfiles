@@ -28,38 +28,38 @@ fi
 # Check if install pacman
 clean_pacman_cache() {
 	if [ -f /usr/bin/pacman ]; then
-		echo -e "\n${BLUE}----------Clean pacman cache----------${NO}"
+		echo -e "\n${BLUE}>>> Clean pacman cache...${NO}"
 		sudo pacman -Scc
 	fi
 }
 
 clean_yay_cache() {
 	if [ -f /usr/bin/yay ]; then
-		echo -e "\n${BLUE}-----------Clean yay cache-----------${NO}"
+		echo -e "\n${BLUE}>>> Clean yay cache...${NO}"
 		yay -Scc
 	fi
 }
 
 clean_home_cache() {
-	echo -e "\n${BLUE}----------Clean home cache-----------${NO}"
+	echo -e "\n${BLUE}>>> Clean home cache...${NO}"
 	rm -rf ~/.cache/*
 }
 
 clean_unused_packages() {
-	echo -e "\n${BLUE}-----------Clean unused packages-----------${NO}"
+	echo -e "\n${BLUE}>>> Clean unused packages...${NO}"
 	local unused_packages
 	unused_packages="$(sudo pacman -Qtdq)"
 
 	if [ -n "$unused_packages" ]; then
 		sudo pacman -Rns "$unused_packages"
 	else
-		echo -e "${BLUE}No unused packages to remove${NO}"
+		echo -e "${ON_YELLOW} WARNING: ${NO} No unused packages to remove"
 	fi
 }
 
 # Ask to clean trash
 clean_trash() {
-	echo -e "\n${BLUE}----------Clean trash----------${NO}"
+	echo -e "\n${BLUE}>>> Clean trash...${NO}"
 	read -p "Do you want to clean trash? [y/n]: " answer
 	if [ "$answer" == "y" ]; then
 		# Check if had command trash-empty is installed
@@ -75,7 +75,7 @@ clean_trash() {
 }
 
 clean_journalctl() {
-	echo -e "\n${BLUE}----------Clean journalctl----------${NO}"
+	echo -e "\n${BLUE}>>> Clean journalctl${NO}"
 	sudo journalctl --vacuum-size=50M
 }
 
