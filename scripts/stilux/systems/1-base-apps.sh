@@ -31,7 +31,7 @@ if ! [ -x "$(command -v wget)" ]; then
 fi
 
 # UI
-sudo pacman -S polybar picom rofi xorg-xrandr
+sudo pacman -S polybar picom rofi xorg-xrandr xcolor
 
 sudo pacman -S gnome-keyring
 

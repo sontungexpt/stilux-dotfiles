@@ -3,7 +3,7 @@
 
 # Check if installed yay, if not install it
 if ! [ -x "$(command -v yay)" ]; then
-	echo "Installing yay..."
+	echo ">>> Installing yay..."
 	sudo pacman -S --needed git base-devel
 	git clone https://aur.archlinux.org/yay.git
 	cd yay || exit

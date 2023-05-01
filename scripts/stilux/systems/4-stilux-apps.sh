@@ -1,23 +1,24 @@
 #!/bin/bash
 # The scripts is written by TranVoSonTung
-
-# Check if installed yay, if not install it
-if ! [ -x "$(command -v yay)" ]; then
-	sudo pacman -S --needed git base-devel
-	echo "Installing yay..."
-	git clone https://aur.archlinux.org/yay.git
-	cd yay || exit
-	makepkg -si
-	cd ..
-	rm -rf yay
-fi
+# The scripts is used to install stilux used apps in arch linux
 
 # Ask if you want to install stilux apps
 echo "Do you want to install stilux apps? (y/n)"
 read -r answer
 if [ "$answer" != "${answer#[Yy]}" ]; then
 
-	echo "Installing stilux apps..."
+	# Check if installed yay, if not install it
+	if ! [ -x "$(command -v yay)" ]; then
+		sudo pacman -S --needed git base-devel
+		echo "Installing yay..."
+		git clone https://aur.archlinux.org/yay.git
+		cd yay || exit
+		makepkg -si
+		cd ..
+		rm -rf yay
+	fi
+
+	echo ">>> Installing stilux apps..."
 
 	# Create dotfiles folder
 	git init --bare "$HOME/dotfiles"
@@ -26,7 +27,7 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	config config --local status.showUntrackedFiles no
 
 	# Calendar apps
-	echo "Installing calcurse..."
+	echo ">>> Installing calcurse..."
 	sudo pacman -S calcurse
 
 	# echo "Installing brave..."
@@ -45,13 +46,25 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 
 	# Install desired apps
 	echo ">>> Installing desired apps..."
-	sudo pacman -S gimp inkscape kdenlive xcolor
-	yay -S arc-kde-git figma-linux-bin
+	# ask if you want to install it now
+	echo "Do you want to install desired apps now? (y/n)"
+	read -r answer
+	if [ "$answer" != "${answer#[Yy]}" ]; then
+		echo ">>> Installing desired apps..."
+		sudo pacman -S gimp inkscape kdenlive
+		# check if has kdenlive app
+		if [ -x "$(command -v kdenlive)" ]; then
+			echo ">>> Installing kdenlive dark-theme..."
+			yay -S arc-kde-git
+		fi
+		yay -S figma-linux-bin
+	else
+		echo ":: Skip installing desired apps"
+	fi
 
 	# Install social apps
-	echo ">>> Installing social apps..."
-	echo ">>> Installing discord, teams..."
-	sudo pacman -S discord teams
+	echo ">>> Installing discord..."
+	sudo pacman -S discord
 
 	# Cloud sync tools
 	echo ">>> Installing cloud sync tools..."
@@ -68,7 +81,7 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 
 	# Python
 	echo ">>> Installing python, pip..."
-	sudo pacman -S python python-pip
+	sudo pacman -S --needed python python-pip
 	pip install pynvim
 
 	# Nodejs
@@ -86,13 +99,14 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	yay -S ruby-build
 	sed -i 's/# eval "$(rbenv init -)"\s*=\s*\(.*\)/eval "$(rbenv init -)"/g' "$HOME/.zshrc"
 	sed -i 's|# export PATH="$HOME/.rbenv/bin:$PATH"|export PATH="$HOME/.rbenv/bin:$PATH"|g' "$HOME/.zshrc"
-	# find in .zshrc if not have eval "$(rbenv init -)" and export PATH="$HOME/.rbenv/bin:$PATH" then add it
+
 	if ! grep -q 'export PATH="$HOME/.rbenv/bin:$PATH"' "$HOME/.zshrc"; then
 		echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >>"$HOME/.zshrc"
 	fi
 	if ! grep -q "eval \"$(rbenv init -)\"" "$HOME/.zshrc"; then
 		echo 'eval "$(rbenv init -)"' >>"$HOME/.zshrc"
 	fi
+
 	source "$HOME/.zshrc"
 	zsh
 	rbenv install "$(rbenv install -l | grep -v - | tail -1)"

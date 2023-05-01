@@ -1,11 +1,11 @@
 #!/bin/bash
 # The scripts is written by TranVoSonTung
 
-systems_dir="$(pwd)"                     # get the path of systems folder
-stilux_dir="$(dirname "$systems_dir")"   # get the path of stilux folder
-scripts_dir="$(dirname "$stilux_dir")"   # get the path of stilux folder
-dotfiles_dir="$(dirname "$scripts_dir")" # get the path of dotfiles folder
-configs_dir="$dotfiles_dir/.config"      # get the path of .config folder")
+systems_dir="$(pwd)"
+stilux_dir="$(dirname "$systems_dir")"
+scripts_dir="$(dirname "$stilux_dir")"
+dotfiles_dir="$(dirname "$scripts_dir")"
+configs_dir="$dotfiles_dir/.config"
 
 # Make sure that the .config folder is exist
 mkdir -p ~/.config/
@@ -13,7 +13,6 @@ mkdir -p ~/.config/
 # Copy the .bashrc file
 rm -rf ~/.bashrc && cp "$dotfiles_dir/.bashrc" ~/
 
-# Check if have .xinitrc file
 if [ ! -f ~/.xinitrc ]; then
 	echo "xinitrc is not exist"
 else
@@ -40,13 +39,6 @@ if [ ! -f /usr/bin/betterlockscreen ]; then
 else
 	rm -rf ~/.config/betterlockscreen/ && cp -r "$configs_dir/betterlockscreen/" ~/.config/
 fi
-
-# # Check if install btop
-# if [ ! -f /usr/bin/btop ]; then
-# 	echo "btop is not installed"
-# else
-# 	rm -rf ~/.config/btop/ && cp -r "$configs_dir/btop/" ~/.config/
-# fi
 
 # Check if install calcurse
 if [ ! -f /usr/bin/calcurse ]; then
