@@ -2,11 +2,11 @@
 application/x-shellscript=userapp-kitty nvim-6JLO31.desktop
 x-scheme-handler/figma=figma-linux.desktop
 text/plain=userapp-kitty nvim-6JLO31.desktop
-text/html=microsoft-edge.desktop
-x-scheme-handler/http=microsoft-edge.desktop
-x-scheme-handler/https=microsoft-edge.desktop
-x-scheme-handler/about=microsoft-edge.desktop
-x-scheme-handler/unknown=microsoft-edge.desktop
+text/html=google-chrome.desktop
+x-scheme-handler/http=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/unknown=google-chrome.desktop
 application/json=userapp-kitty nvim-6JLO31.desktop
 
 [Added Associations]

@@ -1,0 +1,17 @@
+{
+   "app": {
+      "launch": {
+         "web_url": "https://script.google.com/macros/s/AKfycbxbGNGajrxv-HbX2sVY2OTu7yj9VvxlOMOeQblZFuq7rYm7uyo/exec"
+      },
+      "urls": [ "https://script.google.com/macros/s/AKfycbxbGNGajrxv-HbX2sVY2OTu7yj9VvxlOMOeQblZFuq7rYm7uyo/exec" ]
+   },
+   "description": "Copy a Google Drive Folder, including all sub-folders and contents",
+   "icons": {
+      "128": "script-icon_128.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkz3UwhupDzRN6h/Xvm+auN4j3owByOd2fQowcugSqBAAVQ0X57KfsGddt2V8GgSLh1Z9gx32nmL6iRxLyCF03/WV5tklWR84Hjpb9S4xWz/NqElE0i7a3MuQHSbjDrs3jR+vUGCKO4cqKHXZYOVQ6t1vdNd+B/R54OuE/JQkb8GQy7XJiq4kdtty5C0RvZ5eWmM3gEoaeWbj9gqOfb9vdWsMpTsB9hMuFGxMkyDUxLDaDcs4Iar0o1tYr+PNy5CmskOjeUKdTRZP/JRX7bT1lOyLD+uV9b0ct1iRaOvmLMTobc6YeVLxKZn34pM4nCe634nD4frKpsOktxk1JmBqrQIDAQAB",
+   "manifest_version": 2,
+   "name": "Copy Folder",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "63"
+}

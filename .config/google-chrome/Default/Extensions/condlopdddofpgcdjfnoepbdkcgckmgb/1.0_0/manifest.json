@@ -1,0 +1,26 @@
+{
+   "background": {
+      "persistent": false,
+      "scripts": [ "js/common.js", "js/background.js" ]
+   },
+   "browser_action": {
+      "default_popup": "popup.html"
+   },
+   "description": "Right Click to translate selected text using Google Translate",
+   "icons": {
+      "128": "images/icon128.png",
+      "16": "images/icon16.png",
+      "48": "images/icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgAVRSwk2zVv3NbBUioAPOQhUox5psolostxj4v5ufWrPKue9AUeClrSGVIXH25s1L00bT8ruHX7adwQF9U+qdnXpzwsRCf9lgv0J4b7m0aIEqrPe71KfOdpzKhY2hPYKJe0g6Q+6UCEuApwway+wDpEaohINWJ0aNuXYuiNTkwPXaYhbIt9pLVD0qyUY81bxE+gVyZqKpfjyanxguf81/0i1720fjYN/1SUpWCp3rM0lt72ea0HxQYJCHsIZ3XoESXrE4irs7SIArZqKfxL/kfdTshaABHLxffmIIWn+oRjwa8cj36O80+fhSf9sGgyr+11dcK9DbcxqoAorrk1YBQIDAQAB",
+   "manifest_version": 2,
+   "name": "Translator",
+   "options_ui": {
+      "chrome_style": true,
+      "open_in_tab": false,
+      "page": "options.html"
+   },
+   "permissions": [ "tabs", "activeTab", "contextMenus", "storage" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0"
+}
