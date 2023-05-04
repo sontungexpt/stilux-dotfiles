@@ -275,8 +275,7 @@ bindsym $mod+x exec betterlockscreen -l dim
 
 # Open edge browser
 # bindsym $mod+b exec microsoft-edge-stable
-bindsym $mod+b exec xdg-open https://www.google.com
-
+bindsym $mod+b exec firefox
 # Keybinding for light screen
 # Increase screen brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 1
@@ -312,11 +311,11 @@ for_window [class="Blueman-manager"] move to position center
 
 
 # Open github website
-bindsym --release $mod+g exec xdg-open https://github.com
+bindsym --release $mod+g exec firefox https://github.com
 
 # Open UIT website
-bindsym --release $mod+u exec xdg-open https://courses.uit.edu.vn/
-bindsym --release $mod+shift+u exec xdg-open https://daa.uit.edu.vn/
+bindsym --release $mod+u exec firefox https://courses.uit.edu.vn/
+bindsym --release $mod+shift+u exec firefox https://daa.uit.edu.vn/
 
 # Emulator
 for_window [title="Android Emulator -*"] resize set 547
@@ -365,7 +364,7 @@ for_window [class="Lxappearance"] move to position center
 for_window [class="Pycalendar.py"] floating enable move to position 1399px 38px
 
 # Chat Gpt
-bindsym --release $mod+c exec xdg-open https://voicegpt.us/chatgpt
+bindsym --release $mod+c exec firefox https://voicegpt.us/chatgpt
 
 # Virtual Manager
 for_window [class="Virt-manager"] floating enable
@@ -375,7 +374,7 @@ for_window [class="Virt-manager" title="win10 on QEMU/KVM"] floating disable
 for_window [class="Virt-manager" title="RDPWindows on QEMU/KVM"] floating disable
 
 # xcolor
-bindsym --release $mod+Shift+c exec xcolor -s
+bindsym --release $mod+Shift+c exec xcolor | xclip -selection clipboard
 
 
 
