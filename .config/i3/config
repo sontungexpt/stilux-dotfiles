@@ -279,7 +279,7 @@ bindsym $mod+x exec betterlockscreen -l dim
 
 # Open edge browser
 # bindsym $mod+b exec microsoft-edge-stable
-bindsym $mod+b exec xdg-open https://mail.google.com/
+bindsym $mod+b exec xdg-open https://mail.google.com/mail/u/1/#inbox
 
 # Keybinding for light screen
 # Increase screen brightness
@@ -369,7 +369,8 @@ for_window [class="Lxappearance"] move to position center
 for_window [class="Pycalendar.py"] floating enable move to position 1399px 38px
 
 # Chat Gpt
-bindsym --release $mod+c exec xdg-open https://voicegpt.us/chatgpt
+bindsym --release $mod+o exec xdg-open https://voicegpt.us/chatgpt
+bindsym --release $mod+c exec xdg-open https://poe.com/ChatGPT
 
 # Virtual Manager
 for_window [class="Virt-manager"] floating enable
