@@ -11,24 +11,29 @@ NO='\033[0m' # No Color
 BLUE='\033[1;34m'
 RED='\033[1;31m'
 GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
 
 display_help() {
 	echo -e "${BLUE}INFORMATION:${NO}"
 	echo "  This scripts is written by Tran Vo Son Tung"
 	echo "  This script is use to change the date of git commit to the date of the file"
 	echo "  Dependencies: git"
+	echo "  Version: $VERSION"
 
 	echo -e "\n${BLUE}USAGE:${NO}"
+	echo "  gitdate [COMMAND] [OPTIONS]"
+
 	echo -e "\n${GREEN}init:${NO} Init a git repository. This command is the same as git init."
 	echo "  gitdate init"
 	echo -e "\n${GREEN}add:${NO} Add a file to git repository. This command is the same as git add"
 	echo "  gitdate add [files]"
 	echo "  gitdate add ."
 
-	echo -e "\n${GREEN}commit:${NO}  Commit a file to git repository with the date"
+	echo -e "\n${GREEN}commit:${NO}  Commit a file to git repository with the specific date"
 	echo "  gitdate commit [date] [message]"
 
 	echo -e "\n  ${BLUE}[NOTE]${NO}: You can use flag -m or -d to specify the date or message"
+	echo "  gitdate commit -m [message] 			# Commit with current date"
 	echo "  gitdate commit -m [message] [date]"
 	echo "  gitdate commit [date] -m [message]"
 	echo "  gitdate commit -d [date] [message]"
@@ -40,10 +45,22 @@ display_help() {
 	echo "  gitdate push [branch]"
 	echo "  gitdate push [remote] [branch]"
 
+	echo -e "\n${GREEN}status:${NO} Show the status of git repository. This command is the same as git status"
+	echo "  gitdate status"
+
+	echo -e "\n${GREEN}checkout:${NO} Checkout a branch of git repository. This command is the same as git checkout"
+	echo "  gitdate checkout [branch]"
+
+	echo -e "\n${GREEN}branch:${NO} Show the branch of git repository. This command is the same as git branch"
+	echo "  gitdate branch"
+
+	#many more commands same as git
+	echo -e "\n${GREEN}There are also many other commands like Git that you can use.${NO}"
+	echo "  gitdate [command]"
+
 	echo -e "\n${BLUE}OPTIONS: ${NO}"
 	echo "  -h, --help		Display this help and exit"
 	echo "  -v, --version		Display version information and exit"
-	echo " "
 
 	echo -e "\n${BLUE}EXAMPLES: ${NO}"
 	echo "  gitdate init"
@@ -61,10 +78,8 @@ display_version() {
 }
 
 is_inside_git() {
-	local git_dir
-	git_dir=$(git rev-parse --show-toplevel)
-	if [[ "$PWD" == "$git_dir"* ]]; then
-		echo -e "${BLUE}Git is already initialized in this directory${NO}"
+	if ! git rev-parse --show-toplevel >/dev/null 2>&1; then
+		echo -e "${RED}[ERROR]:${NO} Not inside a git repository\n"
 		return 1
 	else
 		return 0
@@ -72,12 +87,14 @@ is_inside_git() {
 }
 
 init() {
-	if is_inside_git; then
+	if is_inside_git >/dev/null 2>&1; then
+		echo -e "${YELLOW}[WARNING]:${NO} Already inside a git repository\n"
 		exit 1
+	else
+		git init
+		echo -e "${GREEN}Initialized git repository${NO}"
+		exit 0
 	fi
-	git init
-	echo -e "${GREEN}Initialized git repository${NO}"
-	exit 0
 }
 
 add() {
@@ -101,7 +118,7 @@ commit_with_date_message() {
 }
 
 print_commit_error() {
-	echo "${RED}[ERROR]: $1${NO}"
+	echo -e "${RED}[ERROR]: $1${NO}"
 	echo "Use gitdate -h or --help to see help"
 	exit 1
 }
@@ -117,6 +134,10 @@ commit() {
 	case "$#" in
 	2)
 		# gitdate commit [date] [message]
+		if [ "$1" == "-m" ]; then
+			git commit -m "$1"
+			exit 0
+		fi
 		date=$1
 		message=$2
 		;;
