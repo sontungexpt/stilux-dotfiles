@@ -6,6 +6,7 @@ stilux_dir="$(dirname "$systems_dir")"
 users_dir="$stilux_dir/users"
 
 file_paths=$(find "$users_dir" -type f)
+
 for path in $file_paths; do
 	filename=$(basename "$path")
 	extension="${filename##*.}"

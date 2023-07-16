@@ -1,0 +1,221 @@
+#!/bin/bash
+# The scripts is written by Tran Vo Son Tung
+# The scripts is use to change the date of git commit to the date of the file
+# Dependencies: git
+# Version: 1.0.0
+
+VERSION="1.0.0"
+
+# GLOBAL COLOR
+NO='\033[0m' # No Color
+BLUE='\033[1;34m'
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+
+display_help() {
+	echo -e "${BLUE}INFORMATION:${NO}"
+	echo "  This scripts is written by Tran Vo Son Tung"
+	echo "  This script is use to change the date of git commit to the date of the file"
+	echo "  Dependencies: git"
+
+	echo -e "\n${BLUE}USAGE:${NO}"
+	echo -e "\n${GREEN}init:${NO} Init a git repository. This command is the same as git init."
+	echo "  gitdate init"
+	echo -e "\n${GREEN}add:${NO} Add a file to git repository. This command is the same as git add"
+	echo "  gitdate add [files]"
+	echo "  gitdate add ."
+
+	echo -e "\n${GREEN}commit:${NO}  Commit a file to git repository with the date"
+	echo "  gitdate commit [date] [message]"
+
+	echo -e "\n  ${BLUE}[NOTE]${NO}: You can use flag -m or -d to specify the date or message"
+	echo "  gitdate commit -m [message] [date]"
+	echo "  gitdate commit [date] -m [message]"
+	echo "  gitdate commit -d [date] [message]"
+	echo "  gitdate commit [message] -d [date]"
+	echo "  gitdate commit -m [message] -d [date]"
+	echo "  gitdate commit -d [date] -m [message]"
+
+	echo -e "\n${GREEN}push:${NO} Push a file to git repository"
+	echo "  gitdate push [branch]"
+	echo "  gitdate push [remote] [branch]"
+
+	echo -e "\n${BLUE}OPTIONS: ${NO}"
+	echo "  -h, --help		Display this help and exit"
+	echo "  -v, --version		Display version information and exit"
+	echo " "
+
+	echo -e "\n${BLUE}EXAMPLES: ${NO}"
+	echo "  gitdate init"
+	echo "  gitdate add ."
+	echo "  gitdate commit \"2020-01-01 12:00:00\" \"Add README.md\""
+	echo "  gitdate push main"
+	echo "  gitdate push origin main"
+	echo "  gitdate push -u origin main"
+	exit 0
+}
+
+display_version() {
+	echo -e "gitdate version ${GREEN}$VERSION${NO}"
+	exit 0
+}
+
+is_inside_git() {
+	local git_dir
+	git_dir=$(git rev-parse --show-toplevel)
+	if [[ "$PWD" == "$git_dir"* ]]; then
+		echo -e "${BLUE}Git is already initialized in this directory${NO}"
+		return 1
+	else
+		return 0
+	fi
+}
+
+init() {
+	if is_inside_git; then
+		exit 1
+	fi
+	git init
+	echo -e "${GREEN}Initialized git repository${NO}"
+	exit 0
+}
+
+add() {
+	if ! is_inside_git; then
+		exit 1
+	fi
+
+	if [ $# -eq 0 ]; then
+		echo -e "${RED}Error:${NO} No files provided\n"
+		exit 1
+	fi
+
+	git add "$@"
+	exit 0
+}
+
+commit_with_date_message() {
+	git commit --date="$1" -m "$2"
+	git filter-branch --env-filter 'export GIT_COMMITTER_DATE="$GIT_AUTHOR_DATE"' -f
+	exit 0
+}
+
+print_commit_error() {
+	echo "${RED}[ERROR]: $1${NO}"
+	echo "Use gitdate -h or --help to see help"
+	exit 1
+}
+
+commit() {
+	if ! is_inside_git; then
+		exit 1
+	fi
+
+	local date
+	local message
+
+	case "$#" in
+	2)
+		# gitdate commit [date] [message]
+		date=$1
+		message=$2
+		;;
+	3)
+		if [ "$1" == "-m" ] && [ "$2" != '-d' ]; then
+			# gitdate commit -m [message] [date]
+			date=$3
+			message=$2
+		elif [ "$1" == "-d" ] && [ "$2" != "-m" ]; then
+			# gitdate commit -d [date] [message]
+			date=$2
+			message=$3
+		elif [ "$2" == "-m" ]; then
+			# gitdate commit [date] -m [message]
+			date=$1
+			message=$3
+		elif [ "$2" == "-d" ]; then
+			# gitdate commit [message] -d [date]
+			date=$3
+			message=$1
+		else
+			print_commit_error "Invalid argruments."
+		fi
+		;;
+	4)
+		# gitdate commit -d [date] -m [message]
+		# or gitdate commit -m [message] -d [date]
+		if [ "$1" == "-m" ] && [ "$3" == "-d" ]; then
+			message=$2
+			date=$4
+		elif [ "$1" == "-d" ] && [ "$3" == "-m" ]; then
+			date=$2
+			message=$4
+		else
+			print_commit_error "Invalid argruments."
+		fi
+		;;
+	*)
+		print_commit_error "Invalid argruments."
+		;;
+	esac
+
+	commit_with_date_message "$date" "$message"
+}
+
+push() {
+	if ! is_inside_git; then
+		exit 1
+	fi
+
+	if [ "$#" -eq 1 ]; then
+		# gitdate push [branch]
+		remote=$(git remote -v | awk '$1=="origin" && /fetch/ {print $2}')
+		git push -u "$remote" "$1"
+	elif [ "$#" -eq 2 ]; then
+		# gitdate push [remote] [branch]
+		git push -u "$1" "$2"
+	else
+		git push "$@"
+	fi
+	exit 0
+}
+
+# main
+# check dependencies
+if [ ! -x "$(command -v git)" ]; then
+	echo "git is not installed"
+	echo "Use gitdate -h or --help to see help"
+	exit 1
+fi
+
+if [ "$#" -eq 0 ]; then
+	display_help
+fi
+
+# main
+case $1 in
+-h | --help)
+	display_help
+	;;
+-v | --version)
+	display_version
+	;;
+init)
+	init
+	;;
+add)
+	shift
+	add "$@"
+	;;
+commit)
+	shift
+	commit "$@"
+	;;
+push)
+	shift
+	push "$@"
+	;;
+*)
+	git "$@"
+	;;
+esac

@@ -37,7 +37,7 @@ if [ -x "$(command -v lightdm)" ]; then
 		else
 			sudo mkdir "$STOREDDIR"
 		fi
-		echo "Create $STOREDDIR"
+		echo "Created $STOREDDIR"
 	fi
 
 	# Change avatar

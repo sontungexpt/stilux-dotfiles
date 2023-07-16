@@ -10,7 +10,7 @@ ON_YELLOW='\033[43m'
 
 help() {
 	echo "This scripts is written by TranVoSonTung"
-	echo "This script is used to clean cache and unneeded packages"
+	echo "This script is used to clean cache and unnecessary packages"
 	echo "This script is tested on Arch Linux"
 }
 
@@ -47,20 +47,13 @@ clean_home_cache() {
 
 clean_unused_packages() {
 	echo -e "\n${BLUE}>>> Clean unused packages...${NO}"
-	local unused_packages
-	unused_packages="$(sudo pacman -Qtdq)"
-
-	if [ -n "$unused_packages" ]; then
-		sudo pacman -Rns "$unused_packages"
-	else
-		echo -e "${ON_YELLOW} WARNING: ${NO} No unused packages to remove"
-	fi
+	pacman -Qtdq | sudo pacman -Rns -
 }
 
 # Ask to clean trash
 clean_trash() {
 	echo -e "\n${BLUE}>>> Clean trash...${NO}"
-	read -p "Do you want to clean trash? [y/n]: " answer
+	read -p -r "Do you want to clean trash? [y/n]: " answer
 	if [ "$answer" == "y" ]; then
 		# Check if had command trash-empty is installed
 		if [ -f /usr/bin/trash-empty ]; then
@@ -91,8 +84,8 @@ if [[ "$kenel_name" == *"arch"* ]]; then
 	clean_journalctl
 	clean_trash
 	note
-	exit 1
+	exit 0
 else
 	echo -e "\n${ON_YELLOW} WARNING: ${NO} This script is only tested on Arch Linux OS"
-	exit 0
+	exit 1
 fi

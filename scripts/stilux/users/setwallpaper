@@ -27,7 +27,7 @@ if [ ! -x "$(command -v feh)" ]; then
 	echo -e "${ON_RED} ERROR: ${NO}"
 	echo "  Feh is not installed"
 	echo "  Please install feh to use this scripts"
-	exit 0
+	exit 1
 fi
 
 # Check if install i3wm
@@ -36,7 +36,7 @@ if [ ! -x "$(command -v i3)" ]; then
 	echo "  i3wm is not installed"
 	echo "  Please install i3wm to use this scripts"
 	echo "  You can customize this scripts to use with your window manager"
-	exit 0
+	exit 1
 fi
 
 # Main code
@@ -62,7 +62,7 @@ if [[ "$#" -eq 1 ]]; then
 		# Check if the path is correct
 		if [[ ! -f "$1" ]]; then
 			echo -e "${ON_RED} ERROR: ${NO} Invalid path"
-			exit 0
+			exit 1
 		fi
 		cp "$1" "$WALLPAPER_STORAGE_DIR/wallpaper.jpg" && i3 restart
 	else
@@ -72,11 +72,12 @@ if [[ "$#" -eq 1 ]]; then
 		echo "set \$wallpaper ~/.config/wallpaper/wallpaper.jpg"
 		echo "exec_always feh --bg-fill \$wallpaper"
 		echo "Remove your other lines that you use to set wallpaper in your i3 config file to use this scripts"
-		exit 1
+		exit 0
 	fi
 else
 	echo -e "${ON_RED} ERROR: ${NO} Invalid number of arguments"
 	echo -e "${ON_BLUE} USAGE: ${NO} setwallpaper [OPTIONS] [IMAGE_PATH]"
 	echo -e "${ON_BLUE} EXAMPLES: ${NO} setwallpaper ~/Pictures/wallpaper.jpg"
 	echo "Use -h or --help for help"
+	exit 1
 fi
