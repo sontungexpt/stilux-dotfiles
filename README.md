@@ -67,7 +67,7 @@
 | **showwifipass**           | To show logged in wifi password                             |
 | **setwallpaper**           | To set wallpaper of i3 wm                                   |
 | **add-lightdm-background** | To auto add background to the storage background of lightdm |
-| **cleanarch**              | the scripts to clean your arch linux                        |
+| **cleanarch**              | To clean your arch linux                                    |
 
 ## 2. Preview
 
