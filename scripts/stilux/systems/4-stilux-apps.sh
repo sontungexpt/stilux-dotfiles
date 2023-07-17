@@ -106,7 +106,6 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	if ! grep -q "eval \"$(rbenv init -)\"" "$HOME/.zshrc"; then
 		echo 'eval "$(rbenv init -)"' >>"$HOME/.zshrc"
 	fi
-
 	source "$HOME/.zshrc"
 	zsh
 	rbenv install "$(rbenv install -l | grep -v - | tail -1)"
@@ -126,6 +125,11 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	echo ">>> Installing android studio, jdk11..."
 	sudo pacman -S openjdk11-src
 	yay -S android-studio watchman
+
+	echo ">>> Installing mongodb..."
+	yay -S mongosh-bin mongodb-compass mongodb-tools
+	sudo systemctl enable mongodb.service
+	sudo systemctl start mongodb.service
 
 else
 	echo "Skip installing stilux apps"

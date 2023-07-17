@@ -9,18 +9,28 @@ PASS="STTX300191"
 # Use eval "$SUDO_COMMAND <Your command>" to exec the command with no password
 SUDO_COMMAND="echo \"$PASS\" | sudo -S -k"
 
+NO='\033[0m' # No Color
+BLUE='\033[1;34m'
+RED='\033[1;31m'
+
 help() {
-	echo "This scripts is written by TranVoSonTung"
-	echo "Dependencies: lightdm, lightdm-webkit2-greeter, lightdm-webkit2-theme-glorious"
-	echo "The background will be added to /usr/share/backgrounds/"
-	echo "Usage: add-lightdm-background [OPTION] [FILE]"
-	echo "Add more background to lightdm with the theme \"lightdm-webkit2-greeter\""
-	echo "Options:"
+	echo -e "${BLUE}INFORMATION:${NO}"
+	echo "  This scripts is written by TranVoSonTung"
+	echo "  Dependencies: lightdm, lightdm-webkit2-greeter, lightdm-webkit2-theme-glorious"
+	echo "  The background will be added to /usr/share/backgrounds/"
+	echo "  Add more background to lightdm with the theme \"lightdm-webkit2-greeter\""
+	echo -e "\n${BLUE}USAGE:${NO}"
+	echo "  add-lightdm-background [OPTION] [FILE]"
+	echo -e "\n${BLUE}OPTIONS:${NO}"
 	echo "  --nopass     Do not ask for password"
 	echo "  -h or --help   Show this help"
-	echo "Example:"
+	echo -e "\n${BLUE}EXAMPLES:${NO}"
 	echo "  add-lightdm-background --nopass backgrounds/1.jpg"
 	echo "  add-lightdm-background backgrounds/1.jpg"
+}
+
+print_error() {
+	echo -e "${RED}[ERROR]: $1${NO}"
 }
 
 # Main code
@@ -30,12 +40,13 @@ CURRENT_DATE=$(date +"%d-%m-%Y_%H-%M-%S")
 BACKGROUND_NAME="$STOREDDIR/background_$CURRENT_DATE.png"
 
 if [ ! -x "$(command -v lightdm)" ]; then
-	echo "lightdm is not installed"
+	print_error "lightdm is not installed"
 	echo "Use add-lightdm-background -h or --help to see help"
 	exit 1
 fi
 if [[ "$#" -eq 0 ]]; then
 	help
+	exit 0
 elif [[ "$#" -eq 1 ]]; then
 	if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
 		help
@@ -49,7 +60,7 @@ elif [[ "$#" -eq 1 ]]; then
 			sudo cp -i "$PICTURE_ADDING" "$BACKGROUND_NAME"
 			echo "Add $PICTURE_ADDING to LightDM"
 		else
-			echo "The picture is not exist"
+			print_error "The picture is not exist"
 			echo "Use add-lightdm-background -h or --help to see more information"
 		fi
 	fi
@@ -64,7 +75,7 @@ elif [[ "$#" -eq 2 ]]; then
 			eval "$SUDO_COMMAND cp -i $PICTURE_ADDING $BACKGROUND_NAME"
 			echo "Add $PICTURE_ADDING to LightDM"
 		else
-			echo "The picture is not exist"
+			print_error "The picture is not exist"
 			echo "Use add-lightdm-background -h or --help to see more information"
 		fi
 	else
@@ -72,7 +83,7 @@ elif [[ "$#" -eq 2 ]]; then
 		echo "Use add-lightdm-background -h or --help to see more information"
 	fi
 else
-	echo "Invalid arguments"
+	print_error "Invalid arguments"
 	echo "Usage: add-lightdm-background [OPTION] [FILE]"
 	echo "Use add-lightdm-background -h or --help to see more information"
 fi
