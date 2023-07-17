@@ -5,87 +5,69 @@
 
 #### Basic applications
 
-- **Window Manager**: [i3](https://github.com/i3/i3)
-- **Status Line**: [polybar](https://github.com/polybar/polybar)
-- **Applications Launcher**: [rofi](https://github.com/davatorium/rofi)
-- **Code Editor**: [neovim](https://github.com/neovim/neovim), [visual studio code](https://github.com/microsoft/vscode)
-- **Browser**: [firefox](https://archlinux.org/packages/?name=firefox)
-- **File Manager**: [lf](https://github.com/gokcehan/lf), [thunar](https://github.com/xfce-mirror/thunar)
-- **Notification Manager**: [dunst](https://github.com/dunst-project/dunst)
-- **Shell**: [zsh](https://archlinux.org/packages/?name=zsh) with [oh-my-zsh theme](https://github.com/ohmyzsh/ohmyzsh)
-- **Bluetooth Manager**: [blueman](https://github.com/blueman-project/blueman)
-- **Wifi Hotspot**: [linux-wifi-hotspot](https://github.com/lakinduakash/linux-wifi-hotspot)
-- **Screenshot**: [flameshot](https://github.com/flameshot-org/flameshot), [scrot](https://github.com/dreamer/scrot)
-- **Desktop Record**: [recordmydesktop](https://wiki.archlinux.org/title/RecordMyDesktop)
-- **Disk Manager**: [gparted](https://github.com/mgehre/gparted)
-- **Grub Manager**: [grub-customizer](https://github.com/mdeguzis/grub-customizer/tree/master)
-- **Theme Manager**: [lxappearance-gtk3](https://security.archlinux.org/package/lxappearance-gtk3)
-- **Image Viewer**: [feh](https://github.com/derf/feh)
-- **Video Player**: [mpv](https://github.com/mpv-player/mpv)
-- **Aur, Download Helper**:
-  [yay](https://github.com/Jguer/yay),
-  [git](https://git-scm.com/),
-  [curl](https://github.com/curl/curl),
-  [wget](https://github.com/jay/wget)
-- **Terminal**: [kitty](https://github.com/kovidgoyal/kitty)
-- **Icons Theme**: [WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme)
-- **Main Theme**: [tokyo-night](https://github.com/stronk-dev/Tokyo-Night-Linux)
-- **Cursor Theme**: [catpuchin-cursor](https://github.com/catppuccin/cursors)
-- **Login Manager**:
-  - [lightdm](https://github.com/canonical/lightdm)
-  - [lightdm-webkit2-greeter](https://github.com/antergos/web-greeter)
-  - [lightdm-webkit2-theme-glorious](https://github.com/manilarome/lightdm-webkit2-theme-glorious)
-- **Lockscreen**: [betterlockscreen](https://github.com/betterlockscreen/betterlockscreen)
-- **Compositor**: [picom](https://github.com/yshui/picom)
-- **Vietnamese Input**: [ibus-bamboo](https://github.com/BambooEngine/ibus-bamboo)
-- **System Monitor**: [gotop](https://github.com/cjbassi/gotop)
-- **Volume Control**: [pavucontrol](https://github.com/pulseaudio/pavucontrol)
-- **Achrive Manager**
-  - [rar](https://aur.archlinux.org/packages/rar), [unrar](https://archlinux.org/packages/extra/x86_64/unrar/)
-  - [zip](https://archlinux.org/packages/?name=zip), [unzip](https://archlinux.org/packages/?name=unzip)
-  - [tar](https://archlinux.org/packages/?name=tar)
-- **Trash Manager**: [trash-cli](https://github.com/andreafrancia/trash-cli)
-- **Clipboard Manager**: [xclip](https://github.com/astrand/xclip)
-- **Ntfs Support**: [ntfs-3g](https://github.com/tuxera/ntfs-3g)
-- **System Information Tool**: [neofetch](https://github.com/dylanaraps/neofetch)
-- **Multi Monitors Tool**: [arandr](https://archlinux.org/packages/?name=arandr)
+| **Features**                | **Applications**                                                                                                                                                                                                                                                  |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Window Manager**          | [i3](https://github.com/i3/i3)                                                                                                                                                                                                                                    |
+| **Status Line**             | [polybar](https://github.com/polybar/polybar)                                                                                                                                                                                                                     |
+| **Applications Launcher**   | [rofi](https://github.com/davatorium/rofi)                                                                                                                                                                                                                        |
+| **Code Editor**             | [neovim](https://github.com/neovim/neovim), [visual studio code](https://github.com/microsoft/vscode)                                                                                                                                                             |
+| **Browser**                 | [firefox](https://archlinux.org/packages/?name=firefox)                                                                                                                                                                                                           |
+| **File Manager**            | [lf](https://github.com/gokcehan/lf), [thunar](https://github.com/xfce-mirror/thunar)                                                                                                                                                                             |
+| **Notification Manager**    | [dunst](https://github.com/dunst-project/dunst)                                                                                                                                                                                                                   |
+| **Shell**                   | [zsh](https://archlinux.org/packages/?name=zsh) with [oh-my-zsh theme](https://github.com/ohmyzsh/ohmyzsh)                                                                                                                                                        |
+| **Bluetooth Manager**       | [blueman](https://github.com/blueman-project/blueman)                                                                                                                                                                                                             |
+| **Wifi Hotspot**            | [linux-wifi-hotspot](https://github.com/lakinduakash/linux-wifi-hotspot)                                                                                                                                                                                          |
+| **Screenshot**              | [flameshot](https://github.com/flameshot-org/flameshot), [scrot](https://github.com/dreamer/scrot)                                                                                                                                                                |
+| **Desktop Record**          | [recordmydesktop](https://wiki.archlinux.org/title/RecordMyDesktop)                                                                                                                                                                                               |
+| **Disk Manager**            | [gparted](https://github.com/mgehre/gparted)                                                                                                                                                                                                                      |
+| **Grub Manager**            | [grub-customizer](https://github.com/mdeguzis/grub-customizer/tree/master)                                                                                                                                                                                        |
+| **Theme Manager**           | [lxappearance-gtk3](https://security.archlinux.org/package/lxappearance-gtk3)                                                                                                                                                                                     |
+| **Image Viewer**            | [feh](https://github.com/derf/feh)                                                                                                                                                                                                                                |
+| **Video Player**            | [mpv](https://github.com/mpv-player/mpv)                                                                                                                                                                                                                          |
+| **Aur, Download Helper**    | [yay](https://github.com/Jguer/yay), [git](https://git-scm.com/), [curl](https://github.com/curl/curl), [wget](https://github.com/jay/wget)                                                                                                                       |
+| **Terminal**                | [kitty](https://github.com/kovidgoyal/kitty)                                                                                                                                                                                                                      |
+| **Icons Theme**             | [WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme)                                                                                                                                                                                         |
+| **Main Theme**              | [tokyo-night](https://github.com/stronk-dev/Tokyo-Night-Linux)                                                                                                                                                                                                    |
+| **Cursor Theme**            | [catpuchin-cursor](https://github.com/catppuccin/cursors)                                                                                                                                                                                                         |
+| **Login Manager**           | [lightdm](https://github.com/canonical/lightdm), [lightdm-webkit2-greeter](https://github.com/antergos/web-greeter), [lightdm-webkit2-theme-glorious](https://github.com/manilarome/lightdm-webkit2-theme-glorious)                                               |
+| **Lockscreen**              | [betterlockscreen](https://github.com/betterlockscreen/betterlockscreen)                                                                                                                                                                                          |
+| **Compositor**              | [picom](https://github.com/yshui/picom)                                                                                                                                                                                                                           |
+| **Vietnamese Input**        | [ibus-bamboo](https://github.com/BambooEngine/ibus-bamboo)                                                                                                                                                                                                        |
+| **System Monitor**          | [gotop](https://github.com/cjbassi/gotop)                                                                                                                                                                                                                         |
+| **Volume Control**          | [pavucontrol](https://github.com/pulseaudio/pavucontrol)                                                                                                                                                                                                          |
+| **Achrive Manager**         | [rar](https://aur.archlinux.org/packages/rar), [unrar](https://archlinux.org/packages/extra/x86_64/unrar/), [zip](https://archlinux.org/packages/?name=zip), [unzip](https://archlinux.org/packages/?name=unzip), [tar](https://archlinux.org/packages/?name=tar) |
+| **Trash Manager**           | [trash-cli](https://github.com/andreafrancia/trash-cli)                                                                                                                                                                                                           |
+| **Clipboard Manager**       | [xclip](https://github.com/astrand/xclip)                                                                                                                                                                                                                         |
+| **Ntfs Support**            | [ntfs-3g](https://github.com/tuxera/ntfs-3g)                                                                                                                                                                                                                      |
+| **System Information Tool** | [neofetch](https://github.com/dylanaraps/neofetch)                                                                                                                                                                                                                |
+| **Multi Monitors Tool**     | [arandr](https://archlinux.org/packages/?name=arandr)                                                                                                                                                                                                             |
 
 #### Sitlux applications
 
-- **Desired Apps**:
-  [figma](https://github.com/Figma-Linux/figma-linux),
-  [gimp](https://gitlab.gnome.org/GNOME/gimp),
-  [kdenlive](https://github.com/KDE/kdenlive),
-  [inkscape](https://gitlab.com/inkscape/inkscape)
-- **Color Pitcher**: [xcolor](https://github.com/Soft/xcolor)
-- **Social Apps**:
-  [discord](https://archlinux.org/packages/community/x86_64/discord/),
-  [microsoft teams](https://aur.archlinux.org/packages/teams), zalo-web-app
-- **Office Suite**: [only-office](https://github.com/ONLYOFFICE/DesktopEditors)
-- **Dev Environment**:
-  - [python](https://archlinux.org/packages/?name=python) with [pip](https://archlinux.org/packages/extra/any/python-pip/)
-  - [ruby](https://archlinux.org/packages/community/x86_64/ruby/) with [rbenv](https://aur.archlinux.org/packages/rbenv)
-  - [flutter](https://docs.flutter.dev/get-started/install/linux)
-  - [android studio](https://developer.android.com/studio)
-  - [gcc](https://archlinux.org/packages/core/x86_64/gcc/), [cmake](https://archlinux.org/packages/extra/x86_64/cmake/)
-  - [nodejs](https://archlinux.org/packages/community/x86_64/nodejs/) with [npm](https://archlinux.org/packages/community/any/npm/)
-- **Brownser**: [microsoft-edge](https://aur.archlinux.org/packages/microsoft-edge-stable-bin)
-  <!-- [brave](https://aur.archlinux.org/packages/brave-bin), -->
-  <!-- [google-chrome](https://aur.archlinux.org/packages/google-chrome) or -->
-- **Calendar Manager**: [calcurse](https://github.com/lfos/calcurse)
-- **Dotfiles Manager**: [git bare](https://www.youtube.com/watch?v=tBoLDpTWVOM)
-- **Cloud Sync Tools**: [rclone](https://github.com/rclone/rclone)
+| **Features**         | **Applications**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Desired Apps**     | [figma](https://github.com/Figma-Linux/figma-linux), [gimp](https://gitlab.gnome.org/GNOME/gimp), [kdenlive](https://github.com/KDE/kdenlive), [inkscape](https://gitlab.com/inkscape/inkscape)                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| **Color Pitcher**    | [xcolor](https://github.com/Soft/xcolor)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| **Social Apps**      | [discord](https://archlinux.org/packages/community/x86_64/discord/), [microsoft teams](https://aur.archlinux.org/packages/teams), zalo-web-app                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Office Suite**     | [only-office](https://github.com/ONLYOFFICE/DesktopEditors)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **Dev Environment**  | [python](https://archlinux.org/packages/?name=python) with [pip](https://archlinux.org/packages/extra/any/python-pip/), [ruby](https://archlinux.org/packages/community/x86_64/ruby/) with [rbenv](https://aur.archlinux.org/packages/rbenv), [flutter](https://docs.flutter.dev/get-started/install/linux), [android studio](https://developer.android.com/studio), [gcc](https://archlinux.org/packages/core/x86_64/gcc/), [cmake](https://archlinux.org/packages/extra/x86_64/cmake/), [nodejs](https://archlinux.org/packages/community/x86_64/nodejs/) with [npm](https://archlinux.org/packages/community/any/npm/) |
+| **Brownser**         | [microsoft-edge](https://aur.archlinux.org/packages/microsoft-edge-stable-bin)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Calendar Manager** | [calcurse](https://github.com/lfos/calcurse)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| **Dotfiles Manager** | [git bare](https://www.youtube.com/watch?v=tBoLDpTWVOM)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| **Cloud Sync Tools** | [rclone](https://github.com/rclone/rclone)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
 #### Scripts
 
-- **screenshot**: the scripts to screenshot and copy the picture to clipboard
-- **setavatar**: the scripts to change avatar lightdm
-- **extract**: the scripts to unachrive file
-- **zsh-history-fix**: the scripts to solve zsh history error
-- **showwifipass**: the scripts to show the pass of logged in wifi
-- **setwallpaper**: the scripts to set wallpaper of i3 wm
-- **add-lightdm-background**: the scripts to auto add background to the storage background of lightdm
-- **cleanarch**: the scripts to clean your arch linux
+| **Name**                   | **Features**                                                |
+| -------------------------- | ----------------------------------------------------------- |
+| **screenshot**             | To screenshot and copy the picture to clipboard             |
+| **setavatar**              | To change avatar lightdm                                    |
+| **extract**                | To unachrive file regarless of zip or rar                   |
+| **zsh-history-fix**        | To solve zsh history error                                  |
+| **showwifipass**           | To show logged in wifi password                             |
+| **setwallpaper**           | To set wallpaper of i3 wm                                   |
+| **add-lightdm-background** | To auto add background to the storage background of lightdm |
+| **cleanarch**              | the scripts to clean your arch linux                        |
 
 ## 2. Preview
 

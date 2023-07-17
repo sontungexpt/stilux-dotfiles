@@ -42,6 +42,7 @@ display_help() {
 	echo "  gitdate commit -d [date] -m [message]"
 
 	echo -e "\n${GREEN}push:${NO} Push a file to git repository"
+	echo "  gitdate push			# Push current branch to current remote"
 	echo "  gitdate push [branch]"
 	echo "  gitdate push [remote] [branch]"
 
@@ -112,8 +113,7 @@ add() {
 }
 
 commit_with_date_message() {
-	git commit --date="$1" -m "$2"
-	git filter-branch --env-filter 'export GIT_COMMITTER_DATE="$GIT_AUTHOR_DATE"' -f
+	git commit --date="$1" -m "$2" && git filter-branch --env-filter 'export GIT_COMMITTER_DATE="$GIT_AUTHOR_DATE"' -f
 	exit 0
 }
 
@@ -188,23 +188,42 @@ push() {
 		exit 1
 	fi
 
-	if [ "$#" -eq 1 ]; then
+	case "$#" in
+	0)
+		# gitdate push
+		curr_branch=$(git rev-parse --abbrev-ref HEAD)
+		curr_remote=$(git remote -v | awk '$1=="origin" && /fetch/ {print $2}')
+		git push -u "$curr_remote" "$curr_branch"
+		;;
+	1)
+		if [[ "$1" == "-?"* ]]; then
+			# gitdate push -f
+			git push "$@"
+			exit 0
+		fi
+
 		# gitdate push [branch]
-		remote=$(git remote -v | awk '$1=="origin" && /fetch/ {print $2}')
-		git push -u "$remote" "$1"
-	elif [ "$#" -eq 2 ]; then
+		curr_remote=$(git remote -v | awk '$1=="origin" && /fetch/ {print $2}')
+		git push -u "$curr_remote" "$1"
+		;;
+
+	2)
 		# gitdate push [remote] [branch]
 		git push -u "$1" "$2"
-	else
+		;;
+
+	*)
 		git push "$@"
-	fi
+		;;
+
+	esac
 	exit 0
 }
 
 # main
 # check dependencies
 if [ ! -x "$(command -v git)" ]; then
-	echo "git is not installed"
+	echo -e "${RED}[ERROR]: git is not installed, please install git to use this script${NO}"
 	echo "Use gitdate -h or --help to see help"
 	exit 1
 fi
