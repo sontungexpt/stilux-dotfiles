@@ -27,10 +27,14 @@ help() {
 	echo -e "\n${BLUE}EXAMPLES:${NO}"
 	echo "  add-lightdm-background --nopass backgrounds/1.jpg"
 	echo "  add-lightdm-background backgrounds/1.jpg"
+	exit 0
 }
 
 print_error() {
 	echo -e "${RED}[ERROR]: $1${NO}"
+	echo "Usage: add-lightdm-background [OPTION] [FILE]"
+	echo "Use add-lightdm-background -h or --help to see more information"
+	exit 1
 }
 
 # Main code
@@ -41,16 +45,12 @@ BACKGROUND_NAME="$STOREDDIR/background_$CURRENT_DATE.png"
 
 if [ ! -x "$(command -v lightdm)" ]; then
 	print_error "lightdm is not installed"
-	echo "Use add-lightdm-background -h or --help to see help"
-	exit 1
 fi
 if [[ "$#" -eq 0 ]]; then
 	help
-	exit 0
 elif [[ "$#" -eq 1 ]]; then
 	if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
 		help
-		exit 0
 	else
 		# no flag
 		PICTURE_ADDING=$(readlink -e "$1")
@@ -61,7 +61,6 @@ elif [[ "$#" -eq 1 ]]; then
 			echo "Add $PICTURE_ADDING to LightDM"
 		else
 			print_error "The picture is not exist"
-			echo "Use add-lightdm-background -h or --help to see more information"
 		fi
 	fi
 
@@ -76,14 +75,10 @@ elif [[ "$#" -eq 2 ]]; then
 			echo "Add $PICTURE_ADDING to LightDM"
 		else
 			print_error "The picture is not exist"
-			echo "Use add-lightdm-background -h or --help to see more information"
 		fi
 	else
-		echo "Usage: add-lightdm-background [OPTION] [FILE]"
-		echo "Use add-lightdm-background -h or --help to see more information"
+		print_error "Invalid arguments"
 	fi
 else
 	print_error "Invalid arguments"
-	echo "Usage: add-lightdm-background [OPTION] [FILE]"
-	echo "Use add-lightdm-background -h or --help to see more information"
 fi

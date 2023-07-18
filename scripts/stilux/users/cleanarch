@@ -1,25 +1,26 @@
 #!/bin/bash
-# The scripts is written by TranVoSonTung
+# The scripts is written by Tran Vo Son Tung
 # This script is used to clean cache and unneeded packages
 # This script is tested on Arch Linux
 
 # Colors
 NO='\033[0m' # No Color
-ON_YELLOW='\033[43m'
 
 BLUE='\033[1;34m'
 YELLOW='\033[1;33m'
+GREEN='\033[1;32m'
 
 help() {
-	echo "This scripts is written by TranVoSonTung"
+	echo "This script is written by Tran Vo Son Tung"
 	echo "This script is used to clean cache and unnecessary packages"
 	echo "This script is tested on Arch Linux"
 }
 
 note() {
-	echo -e "\n${BLUE}----------Note----------${NO}"
-	echo "If you have issue when use pacman -Syu after run this scripts please try pacman -Syyu it maybe help you fix your issue"
-	echo "If you have issue when use yay -Syu after run this scripts please try yay -Syyu it maybe help you fix your issue"
+	echo -e "\n${BLUE}[NOTE]:${NO} If you encounter issues with command ${GREEN}pacman -Syu${NO} after running this script"
+	echo -e "        Please try command ${GREEN}pacman -Syyu${NO}. It may help resolve the problem."
+	echo -e "\n${BLUE}[NOTE]:${NO} If you encounter issues with command ${GREEN}yay -Syu${NO} after running this script"
+	echo -e "        Please try command ${GREEN}yay -Syyu${NO}. It may help resolve the problem."
 }
 
 if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
@@ -63,7 +64,7 @@ clean_unused_packages() {
 # Ask to clean trash
 clean_trash() {
 	echo -e "\n${BLUE}>>> Clean trash...${NO}"
-	read -p "Do you want to clean trash? [y/n]: " answer
+	read -r -p "Do you want to clean trash? [y/n]: " answer
 	if [ "$answer" == "y" ]; then
 		# Check if had command trash-empty is installed
 		if [ -f /usr/bin/trash-empty ]; then
