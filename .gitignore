@@ -5,7 +5,7 @@
 **bundle/
 
 **/.config/nvim/.git/
-**/scripts/stilux/users/binaries/.git/
+**/scripts/stilux/users/binaries
 
 **/.config/microsoft-edge/
 **/.config/google-chrome/

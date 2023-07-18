@@ -42,9 +42,9 @@ display_help() {
 	echo "  gitdate commit -d [date] -m [message]"
 
 	echo -e "\n${GREEN}push:${NO} Push a file to git repository"
-	echo "  gitdate push			# Push current branch to current remote"
-	echo "  gitdate push [branch]"
-	echo "  gitdate push [remote] [branch]"
+	echo -e "  gitdate push                     # Push current branch to current remote"
+	echo -e "  gitdate push [branch]            # Push current branch to current remote with specific branch name"
+	echo -e "  gitdate push [remote] [branch]   # Push current branch to specific remote with specific branch name"
 
 	echo -e "\n${GREEN}status:${NO} Show the status of git repository. This command is the same as git status"
 	echo "  gitdate status"
@@ -54,6 +54,10 @@ display_help() {
 
 	echo -e "\n${GREEN}branch:${NO} Show the branch of git repository. This command is the same as git branch"
 	echo "  gitdate branch"
+
+	echo -e "\n${GREEN}conf:${NO} Config global name and email"
+	echo "  gitdate conf                        # Config name and email for all repository"
+	echo "  gitdate conf [name] [email]         # Config name and email for current repository"
 
 	#many more commands same as git
 	echo -e "\n${GREEN}There are also many other commands like Git that you can use.${NO}"
@@ -70,6 +74,13 @@ display_help() {
 	echo "  gitdate push main"
 	echo "  gitdate push origin main"
 	echo "  gitdate push -u origin main"
+	echo "  gitdate status"
+	echo "  gitdate checkout main"
+	echo "  gitdate branch"
+	echo "  gitdate conf \"Tran Vo Son Tung\" \"tungtran@gmail.com\""
+	echo "  gitdate conf"
+	echo "  gitdate -h"
+	echo "  gitdate -v"
 	exit 0
 }
 
@@ -117,7 +128,7 @@ commit_with_date_message() {
 	exit 0
 }
 
-print_commit_error() {
+print_error() {
 	echo -e "${RED}[ERROR]: $1${NO}"
 	echo "Use gitdate -h or --help to see help"
 	exit 1
@@ -159,7 +170,7 @@ commit() {
 			date=$3
 			message=$1
 		else
-			print_commit_error "Invalid argruments."
+			print_error "Invalid argruments."
 		fi
 		;;
 	4)
@@ -172,11 +183,11 @@ commit() {
 			date=$2
 			message=$4
 		else
-			print_commit_error "Invalid argruments."
+			print_error "Invalid argruments."
 		fi
 		;;
 	*)
-		print_commit_error "Invalid argruments."
+		print_error "Invalid argruments."
 		;;
 	esac
 
@@ -220,6 +231,30 @@ push() {
 	exit 0
 }
 
+conf() {
+	case "$#" in
+	0)
+		read -r -p "Enter your name: " name
+		git config --global user.name "$name"
+		read -r -p "Enter your email: " email
+		git config --global user.email "$email"
+		exit 0
+		;;
+	2)
+		#git conf [name] [email]
+		if ! is_inside_git; then
+			exit 1
+		fi
+		git config user.name "$1"
+		git config user.email "$2"
+		exit 0
+		;;
+	*)
+		print_error "Invalid argruments."
+		;;
+	esac
+}
+
 # main
 # check dependencies
 if [ ! -x "$(command -v git)" ]; then
@@ -254,6 +289,10 @@ commit)
 push)
 	shift
 	push "$@"
+	;;
+conf)
+	shift
+	conf "$@"
 	;;
 *)
 	git "$@"
