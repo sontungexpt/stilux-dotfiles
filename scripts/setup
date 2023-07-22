@@ -1,5 +1,5 @@
 #!/bin/bash
-# The scripts is written by TranVoSonTung
+# The scripts is written by Tran Vo Son Tung
 
 STORAGE=$(readlink -e "scripts/stilux")
 SYSTEMS_STORAGE="$STORAGE/systems"

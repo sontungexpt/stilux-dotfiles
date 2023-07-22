@@ -13,4 +13,5 @@
   <property name="last-details-view-column-widths" type="string" value="50,50,124,50,50,731,50,50,454,50,50,79,50,437"/>
   <property name="misc-confirm-close-multiple-tabs" type="bool" value="false"/>
   <property name="misc-single-click" type="bool" value="false"/>
+  <property name="last-side-pane" type="string" value="ThunarShortcutsPane"/>
 </channel>

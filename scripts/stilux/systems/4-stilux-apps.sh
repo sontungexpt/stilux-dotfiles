@@ -131,6 +131,10 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	sudo systemctl enable mongodb.service
 	sudo systemctl start mongodb.service
 
+	echo ">>> Installing rust..."
+	sudo pacman -S rustup
+	rustup default stable
+
 else
 	echo "Skip installing stilux apps"
 fi
