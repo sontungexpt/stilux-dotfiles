@@ -137,7 +137,7 @@ cmd thunar %{{
 # Sudo Open Command
 cmd sudoopen ${{
   case $(file --mime-type "$f" -bL) in
-    text/*|application/json) sudo $EDITOR "$f";;
+    text/*|application/json|application/txt) sudo $EDITOR "$f";;
     image/*) feh --auto-zoom --scale-down "$f";;
     *) xdg-open "$f" ;;
   esac
@@ -146,8 +146,7 @@ cmd sudoopen ${{
 # Open Command
 cmd open ${{
   case $(file --mime-type "$f" -bL) in
-    text/*|application/json) nvim "$f";;
-    text/*|application/txt) nvim "$f";;
+    text/*|application/json|application/txt) nvim "$f";;
     image/*) feh --auto-zoom --scale-down "$f";;
     *) xdg-open "$f" ;;
   esac

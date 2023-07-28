@@ -60,6 +60,8 @@ export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
+
+export PATH="$HOME/.cargo/bin/:$PATH"
 # # Ibus
 # export GTK_IM_MODULE=ibus
 # export XMODIFIERS=@im=ibus
@@ -92,3 +94,4 @@ alias sontungpull='rclone sync sontungexpt-drive:SonTung/ ~/Data/SonTung/'
 # Neovim config
 alias nvimconfig='nvim ~/.config/nvim/init.lua'
 alias gmailpolybar='unzip $HOME/.config/polybar/gmail/authenticates-pwd.zip -d $HOME/.config/polybar/gmail/authenticates/'
+alias ldoc='ldoc-custom default'

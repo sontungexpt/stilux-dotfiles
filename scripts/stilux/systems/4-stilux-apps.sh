@@ -135,6 +135,11 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	sudo pacman -S rustup
 	rustup default stable
 
+	echo ">>> Installing ldoc..."
+	sudo pacman -S luarocks
+	luarocks install ldoc
+	luarocks install penlight
+
 else
 	echo "Skip installing stilux apps"
 fi
