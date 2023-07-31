@@ -196,9 +196,9 @@ rm -rf Tokyo-Night-Linux
 # Icons Themes
 mkdir -p ~/.icons
 git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git
-cd WhiteSur-icon-theme || exit
+cd WhiteSur-icon-theme || exit 1
 ./install.sh
-cd .. || exit
+cd .. || exit 1
 rm -rf WhiteSur-icon-theme
 
 # Cursor Themes

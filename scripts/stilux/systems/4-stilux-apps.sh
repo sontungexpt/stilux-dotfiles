@@ -134,6 +134,7 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	echo ">>> Installing rust..."
 	sudo pacman -S rustup
 	rustup default stable
+	rustup component add rust-analyzer
 
 	echo ">>> Installing ldoc..."
 	sudo pacman -S luarocks

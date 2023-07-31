@@ -1,16 +1,47 @@
 #!/bin/bash
 # The scripts is written by Tran Vo Son Tung
 
+ACCOUNT=$(whoami)
 STORAGE=$(readlink -e "scripts/stilux")
 SYSTEMS_STORAGE="$STORAGE/systems"
 USERS_STORAGE="$STORAGE/users"
-SYSTEMS_STORAGE_FILENAMES="$(ls $SYSTEMS_STORAGE | sort -V)"
+SYSTEMS_STORAGE_FILENAMES=$(ls "$SYSTEMS_STORAGE" | sort -V)
+
+# COLORS
+NO='\033[0m' # No Color
+BLUE='\033[1;34m'
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+
+function display_help {
+	echo -e "${BLUE}INFORMATION:${NO}"
+	echo "This script is written by TranVoSonTung"
+	echo "This script is used to install config for arch linux"
+	exit 0
+}
+
+function display_more_info {
+	echo -e "${GREEN}[NOTE]:${NO} Use setup -h or setup --help to display more information"
+}
+
+function display_warning {
+	echo -e "${YELLOW}[WARNING]:${NO} $1"
+	display_more_info
+}
+
+function display_error {
+	echo -e "${RED}[ERROR]:${NO} $1"
+	display_more_info
+	exit 1
+}
 
 # The function that allow all scripts file can execute
 function permit {
 	file_paths=$(find "$1" -type f)
 	for path in $file_paths; do
 		chmod +x "$path"
+		echo -e "${GREEN}Permit $path${NO}"
 	done
 }
 
@@ -21,18 +52,19 @@ function check_password {
 	local retval=$? #The status of the command if 0 success
 	if [ $retval -eq 0 ]; then
 		#Success
-		echo "true" && return #return value if good input
-	else
-		echo "false" && return
+		return 0
 	fi
+	return 1
 }
 
 function read_password {
 	while :; do # infinite loop
-		read -r -s -p "Enter your password: " pass
-		local status_password
-		status_password=$(check_password "$pass")
-		[[ "$status_password" = "true" ]] && echo "$pass" && return
+		read -r -s -p "password for $ACCOUNT" pass
+		# status_password=$(check_password "$pass")
+		if check_password "$pass" >/dev/null 2>&1; then
+			echo "$pass"
+			return
+		fi
 	done
 }
 
@@ -44,29 +76,19 @@ function setup_flag_nopass {
 	pass="$(read_password)"
 	clear
 	for path in $file_paths; do
-		local word_to_replace="# PASS=\"\""
-		local word_to_replace1="#PASS=\"\""
-		local word_to_replace2="PASS=\"\""
+		local word_to_replace="\s*#?PASS\s*=\s*(\"?[^\"\n]+\"?)?"
 		local word_to_insert="PASS=\"$pass\""
 
 		if [[ $pass != "" ]]; then
 			sed -i -e "s/$word_to_replace/$word_to_insert/g" "$path"
-			sudo sed -i -e "s/^$word_to_replace\s*=\s*\(.*\)/$word_to_insert/g" "$path"
-			sudo sed -i -e "s/^$word_to_replace1\s*=\s*\(.*\)/$word_to_insert/g" "$path"
-			sudo sed -i -e "s/^$word_to_replace2\s*=\s*\(.*\)/$word_to_insert/g" "$path"
+			sudo sed -i -e "$word_to_replace/$word_to_insert/g" "$path"
+			echo -e "${GREEN}Add flag nopass to $path:${NO} $path"
 		fi
 	done
-	echo "Add flag -nopass to all scripts"
-}
-
-function help {
-	echo "This script is written by TranVoSonTung"
-	echo "This script is used to install all apps that stilux use"
 }
 
 if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
-	help
-	exit 0
+	display_help
 fi
 
 # main code
@@ -83,5 +105,5 @@ if [ -d "$STORAGE" ]; then
 	done
 
 else
-	echo "The stilux folder is lost"
+	display_error "The script folder is not exist"
 fi
