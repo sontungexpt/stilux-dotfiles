@@ -3,5 +3,5 @@
 # ibus session bus with the below address.
 # If the IBUS_ADDRESS environment variable is set, it will
 # be used rather than this file.
-IBUS_ADDRESS=unix:path=/home/stilux/.cache/ibus/dbus-ACpdg2N9,guid=28ca6d330e432cb46a5fcb4864c31462
-IBUS_DAEMON_PID=93205
+IBUS_ADDRESS=unix:path=/home/stilux/.cache/ibus/dbus-FYE28ik1,guid=b9e1b256d2319422d3cd01a564c768ce
+IBUS_DAEMON_PID=782851
