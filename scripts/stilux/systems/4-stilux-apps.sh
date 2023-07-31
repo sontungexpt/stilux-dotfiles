@@ -12,7 +12,7 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 		sudo pacman -S --needed git base-devel
 		echo "Installing yay..."
 		git clone https://aur.archlinux.org/yay.git
-		cd yay || exit
+		cd yay || exit 1
 		makepkg -si
 		cd ..
 		rm -rf yay
