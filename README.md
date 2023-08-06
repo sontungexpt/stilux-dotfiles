@@ -439,7 +439,6 @@ Turn off the system
 
 poweroff
 
-```
 
 </blockquote></details>
 
@@ -447,28 +446,21 @@ poweroff
 
 <details><summary>Install i3</summary><blockquote>
 
-```
 
+```
 sudo pacman -S xorg xorg-xinit i3-wm dmenu kitty
-
 ```
 
 ```
-
 sudo cp /etc/X11/xinit/xinitrc ~/.xinitrc
-
 ```
 
 ```
-
 echo -e "\n# I3 window manager" >>"$HOME/.xinitrc"
-
 ```
 
 ```
-
 echo "exec i3" >>"$HOME/.xinitrc"
-
 ```
 
 </blockquote></details>
@@ -543,4 +535,4 @@ git clone https://github.com/sontungexpt/stilux-dotfiles.git && cd stilux-dotfil
 - [The full instructions to setup calendar for polybar](https://github.com/nevarman/polybar-calendar)
 
 </blockquote></details>
-```
+
