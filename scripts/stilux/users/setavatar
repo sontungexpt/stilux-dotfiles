@@ -1,0 +1,110 @@
+#!/bin/bash
+# This scripts is written by TranVoSonTung
+# The scripts will change the avatar of the lightdm with the theme "lightdm-webkit2-greeter"
+# Dependencies: lightdm, lightdm-webkit2-greeter, lightdm-webkit2-theme-glorious
+
+FLAG="--nopass"
+PASS="STTX300191"
+
+# Use eval "$SUDO_COMMAND <Your command>" to exec the command with no password
+SUDO_COMMAND="echo \"$PASS\" | sudo -S -k"
+
+USERNAME=$(whoami)
+AVATARSTOREDPATH="/var/lib/AccountsService/icons/$USERNAME"
+STOREDDIR=/var/lib/AccountsService/icons
+AVATAR=""
+
+help() {
+	echo "This scripts is written by Tran Vo Son Tung"
+	echo "The scripts will change the avatar of the lightdm with the theme 'lightdm-webkit2-greeter'"
+	echo "Dependencies: lightdm, lightdm-webkit2-greeter, lightdm-webkit2-theme-glorious"
+	echo "Usage: setavatar [OPTION] [FILE]"
+	echo "Options:"
+	echo "-h, --help: Show this help"
+	echo "--nopass: Use this flag to exec the command with no password"
+	echo "Example: setavatar ~/Pictures/avatar.png"
+	echo "Example: setavatar --nopass ~/Pictures/avatar.png"
+}
+
+# main code
+# If installed lightdm
+if [ -x "$(command -v lightdm)" ]; then
+
+	# Check if the icons directory is exist, if not create it
+	if [[ ! -d "$STOREDDIR" ]]; then
+		if [ "$FLAG" = "$1" ] && [ "$PASS" != "" ]; then
+			eval "$SUDO_COMMAND mkdir $STOREDDIR"
+		else
+			sudo mkdir "$STOREDDIR"
+		fi
+		echo "Created $STOREDDIR"
+	fi
+
+	# Change avatar
+	if [[ "$#" -eq 0 ]]; then
+		help
+		exit 1
+	elif [[ "$#" -eq 1 ]]; then
+		if [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]; then
+			help
+			exit 1
+		else
+			AVATAR=$(readlink -e "$1")
+			if [[ -f "$AVATAR" ]]; then
+				sudo sed -i -e "s|^Icon\s*=\s*\(.*\)|Icon=/var/lib/AccountsService/icons/stilux|g" "/var/lib/AccountsService/users/$USERNAME"
+				sudo cp "$AVATAR" "$AVATARSTOREDPATH"
+				echo -e "\n"
+				echo "Changed the avatar to $AVATAR"
+			else
+				echo "The picture path is not exist"
+			fi
+		fi
+	elif [[ "$#" -eq 2 ]]; then
+		# Have the flag
+		# The flag must be the first parameter
+		if [[ "$1" == "$FLAG" ]]; then
+			AVATAR=$(readlink -e "$2")
+			if [[ -f "$AVATAR" ]]; then
+				eval "$SUDO_COMMAND sed -i -e 's|^Icon\s*=\s*\(.*\)|Icon=$AVATARSTOREDPATH|g' '/var/lib/AccountsService/users/$USERNAME'"
+				eval "$SUDO_COMMAND cp $AVATAR $AVATARSTOREDPATH"
+				echo -e "\n"
+				echo "Change the avatar to $AVATAR"
+			else
+				echo "The picture path is not exist"
+			fi
+		else
+			echo "Syntax error"
+			echo "Usage: setavatar [OPTION] [FILE]"
+			echo "Use setavatar -h or setavatar --help to see the help"
+		fi
+	else
+		echo "Invalid number of parameters"
+		echo "Usage: setavatar [OPTION] [FILE]"
+		echo "Use setavatar -h or setavatar --help to see the help"
+	fi
+
+# If not installed lightdm
+else
+	echo "You need to installed lightdm"
+	# Ask to install lightdm
+	echo "Do you want to install lightdm? (y/n)"
+	read -r answer
+	if [[ "$answer" == "y" ]]; then
+		echo "Installing lightdm, lightdm-webkit2-greeter..."
+		sudo pacman -S lightdm lightdm-webkit2-greeter
+
+		# Check if installed lightdm, enable service
+		if [ -x "$(command -v lightdm)" ]; then
+			sudo systemctl enable lightdm.service
+		fi
+
+		echo "Installing lightdm-webkit2-theme-glorious..."
+		yay -S lightdm-webkit2-theme-glorious
+
+		# Set default lightdm greeter to lightdm-webkit2-greeter
+		sudo sed -i -e "s/^#greeter-session\s*=\s*\(.*\)/greeter-session=lightdm-webkit2-greeter/g" "/etc/lightdm/lightdm.conf"
+		# Set default lightdm-webkit2-greeter theme to Glorious
+		sudo sed -i -e "s/^webkit_theme\s*=\s*\(.*\)/webkit_theme = glorious/g" "/etc/lightdm/lightdm-webkit2-greeter.conf"
+		sudo sed -i -e "s/^debug_mode\s*=\s*\(.*\)/debug_mode = true/g" "/etc/lightdm/lightdm-webkit2-greeter.conf"
+	fi
+fi

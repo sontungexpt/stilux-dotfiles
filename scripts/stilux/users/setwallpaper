@@ -1,0 +1,83 @@
+#!/bin/bash
+# This scripts is wtitten by Tran Vo Son Tung
+# This script is used to change the wallpaper of i3wm
+# Dependencies: feh, i3wm
+# Usage: setwallpaper <path_to_image>
+
+# Colors
+NO='\033[0m' # No Color
+ON_BLUE='\033[44m'
+ON_RED='\033[41m'
+ON_GREEN='\033[42m'
+
+help() {
+	echo "This scripts is wtitten by Tran Vo Son Tung"
+	echo "This script is used to change the wallpaper of i3wm"
+	echo "Dependencies: feh, i3wm"
+	echo -e "\n${ON_BLUE} USAGE: ${NO} setwallpaper [OPTIONS] [IMAGE_PATH]"
+	echo -e "\n${ON_BLUE} OPTIONS: ${NO}"
+	echo -e "  -h, --help\tShow this help message and exit"
+	echo -e "\n${ON_BLUE} EXAMPLES: ${NO}"
+	echo -e "  1.\tsetwallpaper --help"
+	echo -e "  2.\tsetwallpaper ~/Pictures/wallpaper.jpg"
+}
+
+# Check if install feh
+if [ ! -x "$(command -v feh)" ]; then
+	echo -e "${ON_RED} ERROR: ${NO}"
+	echo "  Feh is not installed"
+	echo "  Please install feh to use this scripts"
+	exit 1
+fi
+
+# Check if install i3wm
+if [ ! -x "$(command -v i3)" ]; then
+	echo -e "${ON_RED} ERROR: ${NO}"
+	echo "  i3wm is not installed"
+	echo "  Please install i3wm to use this scripts"
+	echo "  You can customize this scripts to use with your window manager"
+	exit 1
+fi
+
+# Main code
+# Make sure the wallpaper directory exists
+WALLPAPER_STORAGE_DIR="$HOME/.config/wallpaper"
+
+mkdir -p "$WALLPAPER_STORAGE_DIR"
+
+# Show help if no arguments
+if [[ "$#" -eq 0 ]]; then
+	help
+	exit 0
+fi
+
+# Show help if -h or --help is passed
+if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+	help
+	exit 0
+fi
+
+if [[ "$#" -eq 1 ]]; then
+	if cat "$HOME/.config/i3/config" | tr "," "\n" | grep -xqF "set \$wallpaper ~/.config/wallpaper/wallpaper.jpg"; then
+		# Check if the path is correct
+		if [[ ! -f "$1" ]]; then
+			echo -e "${ON_RED} ERROR: ${NO} Invalid path"
+			exit 1
+		fi
+		cp "$1" "$WALLPAPER_STORAGE_DIR/wallpaper.jpg" && i3 restart
+	else
+		echo -e "${ON_RED} ERROR: ${NO} Wallpaper is not set in i3 config"
+		echo -e "${ON_GREEN} SOME HINTS: ${NO}"
+		echo "Please add two following lines to your i3 config file"
+		echo "set \$wallpaper ~/.config/wallpaper/wallpaper.jpg"
+		echo "exec_always feh --bg-fill \$wallpaper"
+		echo "Remove your other lines that you use to set wallpaper in your i3 config file to use this scripts"
+		exit 0
+	fi
+else
+	echo -e "${ON_RED} ERROR: ${NO} Invalid number of arguments"
+	echo -e "${ON_BLUE} USAGE: ${NO} setwallpaper [OPTIONS] [IMAGE_PATH]"
+	echo -e "${ON_BLUE} EXAMPLES: ${NO} setwallpaper ~/Pictures/wallpaper.jpg"
+	echo "Use -h or --help for help"
+	exit 1
+fi

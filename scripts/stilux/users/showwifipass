@@ -1,0 +1,3 @@
+#!/bin/bash
+
+grep -r '^psk=' /etc/NetworkManager/system-connections/
