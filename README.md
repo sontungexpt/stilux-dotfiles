@@ -71,8 +71,8 @@
 
 ## 2. Preview
 
-<image src="./scripts/stilux/assets/images/overview-desktop.png" width="100%"/>
-<image src="./scripts/stilux/assets/images/preview-0.png" width="100%"/>
+![overview](./scripts/stilux/assets/docs/overview.png)
+![preview1](./scripts/stilux/assets/docs/preview1.png)
 
 ## 3. Install arch linux and i3 wm
 
@@ -439,13 +439,11 @@ Turn off the system
 
 poweroff
 
-
 </blockquote></details>
 
 #### Install i3 window manager ( you can follow the instruction below or this [video](https://www.youtube.com/watch?v=sE3LHJ8lEss) to install i3 )
 
 <details><summary>Install i3</summary><blockquote>
-
 
 ```
 sudo pacman -S xorg xorg-xinit i3-wm dmenu kitty
@@ -535,4 +533,3 @@ git clone https://github.com/sontungexpt/stilux-dotfiles.git && cd stilux-dotfil
 - [The full instructions to setup calendar for polybar](https://github.com/nevarman/polybar-calendar)
 
 </blockquote></details>
-
