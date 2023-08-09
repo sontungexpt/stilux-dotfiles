@@ -82,32 +82,32 @@
 
 - **Step 1: Setup Time**
 
-```
+```bash
 timedatectl set-ntp true
 ```
 
 - **Step 2: Check UEFI**
 
-```
+```bash
 ls /sys/firmware/efi
 ```
 
 - **Step 3: Check internet connection**
 
-```
+```bash
 ping google.com
 ```
 
 - **Step 3.5: Connect to Wi-Fi (Skip if you already success in step 3)**
 
-```
+```bash
 iwctl
 device list
 ```
 
 Choose one device from the list example: wlan0
 
-```
+```bash
 station wlan0 get-networks
 station wlan0 connect "Wi-fi Name"
 exit
@@ -115,17 +115,17 @@ exit
 
 - **Step 4: Sort Package Download Server**
 
-```
+```bash
 pacman -Sy reflector
 ```
 
-```
+```bash
 reflector -c [Region] -c [Region-Close] -c [Region-Close] -c [Region-Close] -a 12 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 If you are Vietnamese use this
 
-```
+```bash
 reflector -c Vietnam -c Singapore -c Japan -c India -a 12 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
@@ -133,19 +133,19 @@ NOTE: There are usually error on this step, but you can totally ignore it and be
 
 Check mirror list that reflector generate
 
-```
+```bash
 cat /etc/pacman.d/mirrorlist
 ```
 
 - **Step 5: Disk Checking**
 
-```
+```bash
 lsblk
 ```
 
 - **Step 6: Disk Partition (Read it all before do)**
 
-```
+```bash
 cfdisk /dev/sda
 ```
 
@@ -182,7 +182,7 @@ Swap Rule:
 
 1. **New arch linux only do this**
 
-```
+```bash
 mkfs.fat -F32 /dev/sda1
 
 mkswap /dev/sda2
@@ -197,20 +197,20 @@ mkfs.ext4 /dev/sda4
 
 For swap partition do this
 
-```
+```bash
 mkswap /dev/sda2
 swapon /dev/sda2
 ```
 
 For root partition do this (it will format partition)
 
-```
+```bash
 mkfs.ext4 /dev/sda3
 ```
 
 For home partition do this (it will format partition)
 
-```
+```bash
 mkfs.ext4 /dev/sda4
 ```
 
@@ -222,7 +222,7 @@ NOTE: Replace with nvme if you have nvme instead of sda as the above
 
 1. **New arch linux only do this**
 
-```
+```bash
 mount /dev/sda3 /mnt
 
 mkdir /mnt/boot
@@ -234,7 +234,7 @@ mount /dev/sda4 /mnt/home
 
 2. **If you dual boot with Window do this**
 
-```
+```bash
 mount /dev/sda3 /mnt
 
 
@@ -244,37 +244,37 @@ mount /dev/sda4 /mnt/home
 
 - **Step 9: Install base packages**
 
-```
+```bash
 pacstrap -i /mnt base base-devel linux linux-firmware linux-headers intel-ucode sudo git neofetch networkmanager network-manager-applet dhcpcd neovim
 ```
 
 - **Step 10: Basic setup**
 
-```
+```bash
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-```
+```bash
 arch-chroot /mnt
 ```
 
 NOTE: For this step replace [timezone] with region example Australia/Sydney
 
-```
+```bash
 ln -sf /usr/share/zoneinfo/[timezone]/[timezone] /etc/localtime
 ```
 
 If you are Vietnamese do this
 
-```
+```bash
 ln -sf /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
 ```
 
-```
+```bash
 hwclock --systohc
 ```
 
-```
+```bash
 nvim /etc/locale.gen
 
 After that uncomment: en_US.UTF-8 UTF-8
@@ -286,27 +286,27 @@ For those who don't know how to use neovim:
 2. At line # en_US.UTF-8 UTF-8 remove # and the additional spaces then press [ESC]
 3. Enter the following keys [:] [w] [q] then [ENTER]
 
-```
+```bash
 locale-gen
 ```
 
-```
+```bash
 echo LANG=en_US.UTF-8 > /etc/locale.conf
 ```
 
 NOTE: From the following step replace stilux-pc with your pc name (note names should be short and not contain special characters use - for spaces eg: stilux-pc)
 
-```
+```bash
 echo stilux-pc > /etc/hostname
 ```
 
-```
+```bash
 nvim /etc/hosts
 ```
 
 Add the following line: (do like above to edit vim) (press [TAB] at [TAB])
 
-```
+```bash
 127.0.0.1[TAB]localhost
 ::1[TAB]localhost
 127.0.1.1[TAB]stilux-pc.localdomain[TAB]stilux-pc
@@ -316,7 +316,7 @@ Add the following line: (do like above to edit vim) (press [TAB] at [TAB])
 
 Create password for root (Admin)
 
-```
+```bash
 passwd
 ```
 
@@ -325,24 +325,24 @@ Enter the password blindly, they will not show up
 - **Step 11: Add User**
   Replace stilux with your preferred username
 
-```
+```bash
 useradd -m stilux
 passwd stilux
 ```
 
 Enter the password blindly, like above
 
-```
+```bash
 usermod -aG wheel,audio,video,optical,storage,power stilux
 ```
 
-```
+```bash
 EDITOR=nvim visudo
 ```
 
 (use neovim like above)
 
-```
+```bash
 Add: stilux ALL=(ALL) ALL
 Uncomment: %wheel ALL=(ALL) ALL
 ```
@@ -353,53 +353,53 @@ Uncomment: %wheel ALL=(ALL) ALL
 
 Note: If you dual boot with windows then do mount the EFI partition first:
 
-```
+```bash
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
 ```
 
 Check if sda1 is mount if not mount again
 
-```
+```bash
 lsblk
 ```
 
 Install ntfs-3g if you dual boot with windows
 
-```
+```bash
 pacman -S ntfs-3g os-prober
 ```
 
-```
+```bash
 pacman -S grub efibootmgr dosfstools mtools
 ```
 
-```
+```bash
 nvim /etc/default/grub
+
+After that uncomment: GRUB_DISABLE_OS_PROBER=false
 ```
 
-Uncomment GRUB_DISABLE_OS_PROBER=false
 Save and exit like above
 
-```
+```bash
 systemctl enable dhcpcd.service
 systemctl enable NetworkManager.service
-
 ```
 
 Note: /boot is the EFI partition that you mount in step 10
 
-```
+```bash
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --recheck
 ```
 
-```
+```bash
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 - **Step 13: Exit, Reboot, Update**
 
-```
+```bash
 exit
 umount -lR /mnt
 reboot
@@ -412,7 +412,7 @@ How to login:
 
 Update the system:
 
-```
+```bash
 sudo pacman -Syu
 ```
 
@@ -422,22 +422,21 @@ Enter root password (admin)
 
 Reconnect to Wi-Fi
 
-````
-nmtui ```
+```bash
+nmtui
+```
 
 Restart System
 
-````
-
+```bash
 reboot
-
 ```
 
 Turn off the system
 
-```
-
+```bash
 poweroff
+```
 
 </blockquote></details>
 
@@ -445,20 +444,15 @@ poweroff
 
 <details><summary>Install i3</summary><blockquote>
 
-```
+```bash
 sudo pacman -S xorg xorg-xinit i3-wm dmenu kitty
-```
 
-```
 sudo cp /etc/X11/xinit/xinitrc ~/.xinitrc
-```
 
-```
 echo -e "\n# I3 window manager" >>"$HOME/.xinitrc"
-```
 
-```
 echo "exec i3" >>"$HOME/.xinitrc"
+
 ```
 
 </blockquote></details>
@@ -468,23 +462,11 @@ echo "exec i3" >>"$HOME/.xinitrc"
 - You need to install **arch linux** and **i3 window manager** before setup this config
 - Open terminal and copy this command
 
-```
-
+```bash
 git clone https://github.com/sontungexpt/stilux-dotfiles.git && cd stilux-dotfiles && chmod +x setup && ./setup && cd .. && rm -rf stilux-dotfiles
-
 ```
 
 - Follow the instructions in the terminal when the scripts is running
-
-<!-- ## 5. Neovim Features -->
-<!-- <details><blockquote> -->
-
-<!-- - **Theme**: tokyostorm -->
-<!-- - **Git**: no configured yet -->
-<!-- - **Debugger**: no conifgured yet -->
-<!-- - **Ai**: Github copilot -->
-
-<!-- </blockquote></details> -->
 
 ## 5. Usage
 
@@ -492,38 +474,30 @@ git clone https://github.com/sontungexpt/stilux-dotfiles.git && cd stilux-dotfil
 
 <details><blockquote>
 
-- h, j, k, l for right, down, up, left
-- mod + shift + s to print a select area and copy it to clipboard, no save the picture
-- printscr to print the full-screen desktop
-- shift + printscr to print a select area and save it to Pictures/Screenshots
-- crtl + printscr to capture the focused window and save it to the directory
-- mod + shift + f to open flameshot gui
-- mod + t to open thunar file manager
-- mod + g to open github
-- mod + m to open bluetooth manager
-- mod + n to open wifi-hotspot
-- mod + d to open rofi
-- mod + b to open brave
-- mod + u to open UIT school web (remove it if you not a student of University of Information Of Technology)
-- mod + shift + u to open UIT course (remove it if you not a student of University of Information Of Technology)
-- mod +x to lock screen
+| **Key Binding**      | **Description**                                               |
+| -------------------- | ------------------------------------------------------------- |
+| **Mod + Enter**      | Open terminal (kitty default)                                 |
+| **h, j, k, l**       | Move focus left, down, up, right                              |
+| **Mod + d**          | Open rofi                                                     |
+| **Mod + g**          | Open github                                                   |
+| **Mod + m**          | Open bluetooth manager                                        |
+| **Mod + n**          | Open wifi-hotspot                                             |
+| **Mod + b**          | Open mail                                                     |
+| **Mod + u**          | Open UIT school web                                           |
+| **Mod + shift + u**  | Open UIT course                                               |
+| **Mod + x**          | Lock screen                                                   |
+| **Mod + shift + s**  | Print a select area and copy it to clipboard(no save picture) |
+| **printscr**         | Print the full-screen desktop                                 |
+| **shift + printscr** | Print a select area and save it to Pictures/Screenshots       |
+| **crtl + printscr**  | Capture the focused window and save it to the directory       |
+| **Mod + shift + f**  | Open flameshot gui                                            |
+| **Mod + t**          | Open thunar file manager                                      |
 
 </blockquote></details>
 
 #### Neovim
 
-<details><blockquote>
-
-- Support copilot
-- Highlighting with tree-sitter
-- File Explorer: nvim-tree
-- Support autocomplete
-- Support telescope
-- Theme: Tokyostorm
-- Status line: lualine
-- Tab line: bufferline
-
-</blockquote></details>
+[My neovim config](https://github.com/sontungexpt/neovim-config)
 
 #### Polybar
 
