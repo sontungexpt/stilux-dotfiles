@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/stilux/.config/wallpaper/wallpaper.jpg' 

@@ -1,0 +1,265 @@
+# make sure trash folder exists
+# %mkdir -p ~/.trash
+
+set ratios 1:2:3
+set cleaner ~/.config/lf/cleaner
+set previewer ~/.config/lf/preview
+set shell sh
+set icons true
+set preview true
+set hidden true
+set drawbox true
+set ignorecase true
+# set '-eu' options for shell commands
+# These options are used to have safer shell commands. Option '-e' is used to
+# exit on error and option '-u' is used to give error for unset variables.
+# Option '-f' disables pathname expansion which can be useful when $f, $fs, and
+# $fx variables contain names with '*' or '?' characters. However, this option
+# is used selectively within individual commands as it can be limiting at
+# times.
+set shellopts '-eu'
+# set internal field separator (IFS) to "\n" for shell commands
+# This is useful to automatically split file names in $fs and $fx properly
+# since default file separator used in these variables (i.e. 'filesep' option)
+# is newline. You need to consider the values of these options and create your commands accordingly.
+set ifs "\n"
+# leave some space at the top and the bottom of the screen
+set scrolloff 10
+
+# Remove some defaults mappings
+map m
+map o
+map "'"
+map '"'
+map d
+map c
+map e
+map f
+map w
+map y
+
+# Keybindings
+map dd trash
+map DD delete
+map <delete> trash
+map p paste
+map x cut
+map yy copy
+map yp copypath
+map mf mkfile
+map mr sudomkfile
+map ms create_script_form
+map md mkdir
+map ch chmod
+map bg setwallpaper
+map sa setavatar
+map r rename
+map gg top
+map G bottom
+map R reload
+map C clear
+map so sudoopen
+map o open
+map <enter> shell
+map O nvim
+map T thunar
+
+# Select a file
+map <space> :toggle; down
+map U unselect
+map u unselect
+
+# Movement Keybindings
+map gc cd ~/.config
+map gd cd ~/Data
+map gld cd ~/Documents
+map gw cd ~/Data/My-WorkSpace
+map gp cd ~/Pictures
+map gD cd ~/Downloads
+map gb cd /usr/bin
+map gv cd ~/.config/nvim
+map gs cd ~/scripts
+
+# Archive Keybindings
+map z zip
+map t tar
+map A achirve
+map e extract
+
+cmd create_script_form %{{
+  create_form(){
+    path="$HOME/scripts/stilux/users/$1"
+
+    # check if the file exists
+    if [ -f "$path" ]; then
+      printf "Script file already exists."
+    else
+      touch $path
+      chmod +x $path
+      echo "#!/bin/bash" >> $path
+	    echo "# The scripts is written by TranVoSonTung" >> $path
+	    echo "FLAG=\"--nopass\"" >> $path
+	    echo "PASS=\"\"" >> $path
+	    echo -e "\n# Use eval \"\$SUDO_COMMAND <Your command>\" to exec the command with no password" >> $path
+	    echo "SUDO_COMMAND=\"echo \\\"\$PASS\\\" | sudo -S -k\"" >> $path
+	    echo -e "\nif [ \"\$FLAG\" = \"\$1\" ] && [ \"\$PASS\" != \"\" ]; then" >> $path
+	    echo "	# The scripts when  use flag \"--nopass\"" >> $path
+	    echo "	echo \"\$2\"" >> $path
+	    echo "else" >> $path
+	    echo "	# The scripts when not use flag \"--nopass\"" >> $path
+	    echo "	echo \"\$2\"" >> $path
+	    echo "fi" >> $path
+
+      kitty "$EDITOR" "$path"
+    fi
+  }
+  printf "File Name: "
+  read -r filename
+  lf -remote 'send reload'
+  create_form "$filename"
+}}
+
+# Open file with neovim
+cmd nvim ${{
+  nvim "$f"
+}}
+
+# Custom Functions
+# Copy Path Command
+cmd copypath ${{
+  echo -n "$f" | xclip -selection "clipboard"
+}}
+
+# Open the path in thunar
+cmd thunar %{{
+  thunar "$f"
+}}
+
+# Sudo Open Command
+cmd sudoopen ${{
+  case $(file --mime-type "$f" -bL) in
+    text/*|application/json) sudo $EDITOR "$f";;
+    image/*) feh --auto-zoom --scale-down "$f";;
+    *) xdg-open "$f" ;;
+  esac
+}}
+
+# Open Command
+cmd open ${{
+  case $(file --mime-type "$f" -bL) in
+    text/*|application/json) nvim "$f";;
+    image/*) feh --auto-zoom --scale-down "$f";;
+    *) xdg-open "$f" ;;
+  esac
+}}
+
+# Set Background Command
+cmd setwallpaper %cp "$f" ~/.config/wallpaper/wallpaper.jpg && i3 restart
+
+
+# Change The Avatar Command
+cmd setavatar ${{
+  setavatar "$f"
+}}
+
+# Chmod Command
+cmd chmod %{{
+  printf "Mode Bits: "
+  read ans
+
+  for file in "$fx"
+  do
+    chmod $ans $file
+  done
+
+  lf -remote 'send reload'
+}}
+
+# Make File Command
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+
+# Make Directory Command
+cmd mkdir %{{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+  reload
+}}
+
+# Make File With Sudo Command
+cmd sudomkfile ${{
+  printf "File Name: "
+  read ans
+  sudo $EDITOR $ans
+}}
+
+# Delete Command
+cmd delete ${{
+  set -f
+  printf "$fx\n"
+  printf "delete?[y/n]"
+  read ans
+  [ "$ans" = "y" ] && rm -rf $fx
+}}
+
+# Trash-cli Command
+cmd trash ${{
+  files=$(printf "$fx" | tr '\n' ';')
+  while [ "$files" ]; do
+    file=${files%%;*}
+    trash-put "$(basename "$file")"
+    if [ "$files" = "$file" ]; then
+      files=''
+    else
+    files="${files#*;}"
+    fi
+  done
+}}
+
+# Extract Command
+cmd extract ${{
+  un_rar() {
+	  destination="$(echo $1 | sed -e 's/.rar//')"
+	  if [ ! -d "$destination" ]; then
+		  mkdir "$destination"
+	  fi
+	  unrar e "$1" "$destination"
+  }
+
+  case "$f" in
+    *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf "$f";;
+    *.tar.gz|*.tgz) tar xzvf "$f";;
+    *.tar.xz|*.txz) tar xJvf "$f";;
+    *.zip) unzip "$f";;
+    *.rar) un_rar "$f";;
+    *.7z) echo "You need to download 7z to extract file";;
+    *.jar) echo "You need to download jar to extract file";;
+    *) echo "Unsupported format" ;;
+  esac
+}}
+
+# Zip Command
+cmd zip %zip -r "$f" "$f"
+
+# Tar Command
+cmd tar %tar cvf "$f.tar" "$f"
+
+# Archive Command
+cmd achirve %{{
+  printf "File Name: "
+  read -r newname
+  printf "Type? [1:zip | 2:rar | 3:tar]: "
+  read -r type
+  case "$type" in
+    "1") zip "$newname" -r "$f" "$f";;
+    "2") rar a -r -rr10p "$newname" "$f";;
+    "3") tar cvf "$newname.tar" "$f";;
+    "*") printf "Wrong choice";;
+  esac
+}}
+
+
