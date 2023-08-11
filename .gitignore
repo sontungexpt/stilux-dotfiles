@@ -8,8 +8,7 @@
 **/scripts/stilux/users/binaries
 
 **/.config/microsoft-edge/
-**/.config/google-chrome/
-**/.config/figma-linux/
+**/.config/google-chrome/ **/.config/figma-linux/
 MongoDB Compass/
 Postman/
 
@@ -64,5 +63,6 @@ yay/
 .xsession-errors.old
 .zcompdump-stilux-pc-5.9
 .zcompdump-stilux-pc-5.9.zwc
+.Xauthority
 **/polybar/gmail/authenticates/
 .ssh/

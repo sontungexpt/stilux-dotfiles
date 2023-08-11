@@ -8,9 +8,10 @@ x-scheme-handler/https=microsoft-edge.desktop
 x-scheme-handler/about=microsoft-edge.desktop
 x-scheme-handler/unknown=microsoft-edge.desktop
 application/x-zerosize=userapp-kitty nvim-8N7V91.desktop
+application/x-shellscript=userapp-kitty nvim-8N7V91.desktop
 
 [Added Associations]
-application/x-shellscript=kitty-open.desktop;code.desktop;
+application/x-shellscript=kitty-open.desktop;code.desktop;userapp-kitty nvim-8N7V91.desktop;
 text/plain=kitty-open.desktop;
 text/x-scheme=userapp-kitty nvim-8N7V91.desktop;
 application/xml=userapp-kitty nvim-8N7V91.desktop;
