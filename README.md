@@ -251,6 +251,13 @@ pacstrap -i /mnt base base-devel linux linux-firmware linux-headers intel-ucode 
 - **Step 10: Basic setup**
 
 ```bash
+Note: If you dual boot with windows then do mount the EFI partition first:
+
+mkdir /mnt/boot
+mount /dev/sda1 /mnt/boot
+```
+
+```bash
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
@@ -350,13 +357,6 @@ Uncomment: %wheel ALL=(ALL) ALL
 (Save and exit like above)
 
 - **Step 12: Create Grub Boot**
-
-Note: If you dual boot with windows then do mount the EFI partition first:
-
-```bash
-mkdir /mnt/boot
-mount /dev/sda1 /mnt/boot
-```
 
 Check if sda1 is mount if not mount again
 
