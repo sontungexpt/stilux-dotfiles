@@ -1,10 +1,14 @@
 #!/bin/bash
 # The scripts is written by TranVoSonTung
 
+YAY="yay -S --answerclean All --noconfirm --needed"
+PACMAN="sudo pacman -S --noconfirm --needed"
+
+
 # Check if installed yay, if not install it
 if ! [ -x "$(command -v yay)" ]; then
 	echo ">>> Installing yay..."
-	sudo pacman -S --needed git base-devel
+	eval "$PACMAN --needed git base-devel"
 	git clone https://aur.archlinux.org/yay.git
 	cd yay || exit 1
 	makepkg -si
@@ -15,48 +19,48 @@ fi
 # Check if install git, if not install it
 if ! [ -x "$(command -v git)" ]; then
 	echo ">>> Installing git..."
-	sudo pacman -S git
+	eval "$PACMAN git"
 fi
 
 # Check if install curl, if not install it
 if ! [ -x "$(command -v curl)" ]; then
 	echo ">>> Installing curl..."
-	sudo pacman -S curl
+	eval "$PACMAN curl"
 fi
 
 # Check if install wget, if not install it
 if ! [ -x "$(command -v wget)" ]; then
 	echo ">>> Installing wget..."
-	sudo pacman -S wget
+	eval "$PACMAN wget"
 fi
 
 # backlight
-sudo pacman -S light
+eval "$PACMAN light"
 
 # UI
-sudo pacman -S polybar picom rofi xorg-xrandr xcolor
+eval "$PACMAN polybar picom rofi xorg-xrandr xcolor"
 
-sudo pacman -S gnome-keyring
+eval "$PACMAN gnome-keyring"
 
 # Manage multiple monitors
-sudo pacman -S arandr
+eval "$PACMAN arandr"
 
 # System info
-sudo pacman -S --needed neofetch
+eval "$PACMAN --needed neofetch"
 
 # g++ compiler
-sudo pacman -S --needed gcc
+eval "$PACMAN --needed gcc"
 
 # User directories folder
-sudo pacman -S xdg-user-dirs
+eval "$PACMAN xdg-user-dirs"
 xdg-user-dirs-update
 
 # Trash manager
-sudo pacman -S --needed trash-cli
+eval "$PACMAN --needed trash-cli"
 
 # Login manager
 echo ">>> Installing lightdm, lightdm-webkit2-greeter..."
-sudo pacman -S lightdm lightdm-webkit2-greeter
+eval "$PACMAN lightdm lightdm-webkit2-greeter"
 
 # Check if installed lightdm, enable service
 if [ -x "$(command -v lightdm)" ]; then
@@ -64,7 +68,7 @@ if [ -x "$(command -v lightdm)" ]; then
 fi
 
 echo ">>> Installing lightdm-webkit2-theme-glorious..."
-yay -S lightdm-webkit2-theme-glorious
+eval "$YAY lightdm-webkit2-theme-glorious"
 
 # Set default lightdm greeter to lightdm-webkit2-greeter
 sudo sed -i -e "s/^#greeter-session\s*=\s*\(.*\)/greeter-session=lightdm-webkit2-greeter/g" "/etc/lightdm/lightdm.conf"
@@ -75,15 +79,15 @@ sudo sed -i -e "s/^debug_mode\s*=\s*\(.*\)/debug_mode = true/g" "/etc/lightdm/li
 echo ":: WARNING: You should reboot your system to apply changes."
 
 # Lock screen
-yay -S betterlockscreen-git
+eval "$YAY betterlockscreen-git"
 # Check if installed betterlockscreen, enable service
 if [ -x "$(command -v betterlockscreen)" ]; then
 	sudo systemctl enable "betterlockscreen@$USER"
 fi
 
 # Sound
-sudo pacman -S alsa-utils alsa-firmware alsa-ucm-conf sof-firmware
-sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-media-session pipewire-audio pavucontrol
+eval "$PACMAN alsa-utils alsa-firmware alsa-ucm-conf sof-firmware"
+eval "$PACMAN pipewire pipewire-pulse pipewire-alsa pipewire-media-session pipewire-audio pavucontrol"
 
 # Check if installed pipewire, enable service
 if [ -x "$(command -v pipewire)" ]; then
@@ -92,7 +96,7 @@ if [ -x "$(command -v pipewire)" ]; then
 fi
 
 # Bluetooth
-sudo pacman -S bluez bluez-utils blueman pipewire-audio pipewire-pulse
+eval "$PACMAN bluez bluez-utils blueman pipewire-audio pipewire-pulse"
 
 # Check if installed bluez, enable service
 if [ -x "$(command -v bluez)" ]; then
@@ -105,7 +109,7 @@ fi
 
 # Vietnamese input
 echo ">>> Installing ibus, ibus-bamboo..."
-yay -S ibus ibus-bamboo
+eval "$YAY ibus ibus-bamboo"
 # Add ibus to /etc/environment
 echo '''
 GTK_IM_MODULE=ibus
@@ -116,78 +120,78 @@ echo ":: WARNING: To auto start ibus when login, you should add ibus-daemon -drx
 
 # Notification
 echo ">>> Installing dunst..."
-sudo pacman -S dunst
+eval "$PACMAN dunst"
 
 # System monitor
 echo ">>> Installing gotop..."
-yay -S gotop
+eval "$YAY gotop"
 
 # Clipboard manager
 echo ">>> Installing xclip..."
-sudo pacman -S xclip
+eval "$PACMAN xclip"
 
 # Screenshot tools
 echo ">>> Installing scrot, flameshot..."
-sudo pacman -S scrot flameshot
+eval "$PACMAN scrot flameshot"
 
 # Picture viewer
 echo ">>> Installing feh..."
-sudo pacman -S feh
+eval "$PACMAN feh"
 
 # Video player
 echo ">>> Installing mpv..."
-sudo pacman -S mpv
+eval "$PACMAN mpv"
 
 # Disk manager
 echo ">>> Installing gparted..."
-sudo pacman -S gparted
+eval "$PACMAN gparted"
 
 # NTFS support
 echo ">>> Installing ntfs-3g..."
-sudo pacman -S ntfs-3g
+eval "$PACMAN ntfs-3g"
 
 # Grub manager
 echo ">>> Installing grub-customizer..."
-sudo pacman -S grub-customizer
+eval "$PACMAN grub-customizer"
 
 # File manager
 echo ">>> Installing lf, thunar..."
-sudo pacman -S lf thunar imagemagick ffmpegthumbnailer poppler ueberzug chafa
-yay -S epub-thumbnailer-git wkhtmltopdf-static
+eval "$PACMAN lf thunar imagemagick ffmpegthumbnailer poppler ueberzug chafa"
+eval "$YAY epub-thumbnailer-git wkhtmltopdf-static"
 git clone https://github.com/thimc/lfimg.git
 sudo cp ./lfimg/lfrun /usr/bin/
 rm -rf lfimg
 
 # Text editor
 echo ">>> Installing neovim..."
-sudo pacman -S --needed neovim fd ripgrep
+eval "$PACMAN --needed neovim fd ripgrep"
 
 # Wifi hotspot
 echo ">>> Installing linux-wifi-hotspot..."
-yay -S linux-wifi-hotspot
+eval "$YAY linux-wifi-hotspot"
 
 # Terminal
-sudo pacman -S --needed kitty
+eval "$PACMAN --needed kitty"
 
 # Browser
-sudo pacman -S --needed firefox
+eval "$PACMAN --needed firefox"
 
 # Achrive tools
 # zip and unzip
 echo ">>> Installing zip, unzip..."
-sudo pacman -S zip unzip
+eval "$PACMAN zip unzip"
 # tar
-sudo pacman -S --needed tar
+eval "$PACMAN --needed tar"
 # rar and unrar
 echo ">>> Installing rar..."
-yay -S rar
+eval "$YAY rar"
 
 # Office suite
 echo ">>> Installing onlyffice..."
-yay -S onlyoffice-bin
+eval "$YAY onlyoffice-bin"
 
 # Themes manager
-sudo pacman -S --needed lxappearance-gtk3
+eval "$PACMAN --needed lxappearance-gtk3"
 
 # Themes
 # tokonight themes
@@ -205,4 +209,4 @@ cd .. || exit 1
 rm -rf WhiteSur-icon-theme
 
 # Cursor Themes
-yay -S catppuccin-cursors-mocha
+eval "$YAY catppuccin-cursors-mocha"

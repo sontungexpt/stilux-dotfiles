@@ -3,7 +3,7 @@
 
 ACCOUNT=$(whoami)
 STORAGE=$(readlink -e "scripts/stilux")
-SYSTEMS_STORAGE="$STORAGE/systems"
+SYSTEMS_STORAGE="$STORAGE/systems-build"
 USERS_STORAGE="$STORAGE/users"
 SYSTEMS_STORAGE_FILENAMES=$(ls "$SYSTEMS_STORAGE" | sort -V)
 
