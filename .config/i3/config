@@ -202,7 +202,7 @@ client.urgent           $ubg_color    $ubg_color         $text_color         $ub
 # i3-gaps config
 gaps inner 10
 gaps outer 2
-#smart_gaps on
+# smart_gaps on
 
 ############################################################
 # User config

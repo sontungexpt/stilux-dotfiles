@@ -214,7 +214,8 @@ min_icon_size = 32
 max_icon_size = 128
 
 # Paths to default icons (only necessary when not using recursive icon lookup)
-icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+icon_path = /home/stilux/.local/share/icons/WhiteSur-dark/:/usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+
 
 ### History ###
 
