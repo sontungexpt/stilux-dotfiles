@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "$(light | cut -d. -f1)"
+light | cut -d. -f1
