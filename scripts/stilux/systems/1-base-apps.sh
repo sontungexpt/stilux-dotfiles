@@ -191,7 +191,7 @@ sudo pacman -S --needed lxappearance-gtk3
 
 # Themes
 # tokonight themes
-cd || exit
+cd || exit 1
 git clone https://github.com/stronk-dev/Tokyo-Night-Linux.git
 sudo cp -r ./Tokyo-Night-Linux/usr/share/themes/TokyoNight /usr/share/themes/
 rm -rf Tokyo-Night-Linux
@@ -199,8 +199,7 @@ rm -rf Tokyo-Night-Linux
 # Icons Themes
 mkdir -p ~/.icons
 git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git
-cd WhiteSur-icon-theme || exit 1
-./install.sh
+cd WhiteSur-icon-theme && ./install.sh
 cd .. || exit 1
 rm -rf WhiteSur-icon-theme
 

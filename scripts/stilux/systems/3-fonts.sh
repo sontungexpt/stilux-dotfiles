@@ -6,7 +6,7 @@ if ! [ -x "$(command -v yay)" ]; then
 	echo ">>> Installing yay..."
 	sudo pacman -S --needed git base-devel
 	git clone https://aur.archlinux.org/yay.git
-	cd yay || exit
+	cd yay || exit 1
 	makepkg -si
 	cd ..
 	rm -rf yay

@@ -10,10 +10,9 @@ PACMAN="sudo pacman -S --noconfirm --needed"
 echo "Do you want to install stilux apps? (y/n)"
 read -r answer
 if [ "$answer" != "${answer#[Yy]}" ]; then
-
 	# Check if installed yay, if not install it
 	if ! [ -x "$(command -v yay)" ]; then
-		eval "$PACMAN --needed git base-devel"
+		eval "$PACMAN git base-devel"
 		echo "Installing yay..."
 		git clone https://aur.archlinux.org/yay.git
 		cd yay || exit 1
@@ -76,16 +75,16 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 
 	# Install development apps
 	echo ">>> Installing development apps..."
-	eval "$PACMAN --needed neovim"
-	eval "$YAY --needed visual-studio-code-bin"
+	eval "$PACMAN neovim"
+	eval "$YAY visual-studio-code-bin"
 
 	# Install dev environment
 	echo ">>> Installing dev environment..."
-	eval "$PACMAN --needed clang cmake ninja pkgconf gtk3 xz"
+	eval "$PACMAN clang cmake ninja pkgconf gtk3 xz"
 
 	# Python
 	echo ">>> Installing python, pip..."
-	eval "$PACMAN --needed python python-pip"
+	eval "$PACMAN python python-pip"
 	python3 -m venv .venv
 	source .venv/bin/activate
 	pip install --upgrade pip

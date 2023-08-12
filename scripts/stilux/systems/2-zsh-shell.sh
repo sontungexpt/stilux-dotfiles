@@ -22,6 +22,7 @@ fi
 if ! [ -x "$(command -v git)" ]; then
 	sudo pacman -S git
 fi
+
 zsh
 
 # Install oh-my-zsh
@@ -46,16 +47,11 @@ git clone https://github.com/zsh-users/zsh-completions "${ZSH_CUSTOM:-~/.oh-my-z
 if [ ! -f /usr/bin/zsh ]; then
 	echo "zsh is not installed"
 else
-	rm -rf ~/.zshrc && cp "$dotfiles_dir/.zshrc" ~/
-fi
+	cp "$dotfiles_dir/.zshrc" "$HOME"
 
-# Check if install zsh and p10k shell
-if [ ! -f /usr/bin/zsh ]; then
-	echo "zsh is not installed"
-else
 	if [ ! -f /usr/bin/p10k ]; then
 		echo "p10k is not installed"
 	else
-		rm -rf ~/.p10k.zsh && cp "$dotfiles_dir/.p10k.zsh" ~/
+		cp "$dotfiles_dir/.p10k.zsh" "$HOME"
 	fi
 fi

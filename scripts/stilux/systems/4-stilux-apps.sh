@@ -6,7 +6,6 @@
 echo "Do you want to install stilux apps? (y/n)"
 read -r answer
 if [ "$answer" != "${answer#[Yy]}" ]; then
-
 	# Check if installed yay, if not install it
 	if ! [ -x "$(command -v yay)" ]; then
 		sudo pacman -S --needed git base-devel

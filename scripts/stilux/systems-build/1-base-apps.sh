@@ -8,7 +8,7 @@ PACMAN="sudo pacman -S --noconfirm --needed"
 # Check if installed yay, if not install it
 if ! [ -x "$(command -v yay)" ]; then
 	echo ">>> Installing yay..."
-	eval "$PACMAN --needed git base-devel"
+	eval "$PACMAN git base-devel"
 	git clone https://aur.archlinux.org/yay.git
 	cd yay || exit 1
 	makepkg -si
@@ -46,17 +46,17 @@ eval "$PACMAN gnome-keyring"
 eval "$PACMAN arandr"
 
 # System info
-eval "$PACMAN --needed neofetch"
+eval "$PACMAN neofetch"
 
 # g++ compiler
-eval "$PACMAN --needed gcc"
+eval "$PACMAN gcc"
 
 # User directories folder
 eval "$PACMAN xdg-user-dirs"
 xdg-user-dirs-update
 
 # Trash manager
-eval "$PACMAN --needed trash-cli"
+eval "$PACMAN trash-cli"
 
 # Login manager
 echo ">>> Installing lightdm, lightdm-webkit2-greeter..."
@@ -164,24 +164,24 @@ rm -rf lfimg
 
 # Text editor
 echo ">>> Installing neovim..."
-eval "$PACMAN --needed neovim fd ripgrep"
+eval "$PACMAN neovim fd ripgrep"
 
 # Wifi hotspot
 echo ">>> Installing linux-wifi-hotspot..."
 eval "$YAY linux-wifi-hotspot"
 
 # Terminal
-eval "$PACMAN --needed kitty"
+eval "$PACMAN kitty"
 
 # Browser
-eval "$PACMAN --needed firefox"
+eval "$PACMAN firefox"
 
 # Achrive tools
 # zip and unzip
 echo ">>> Installing zip, unzip..."
 eval "$PACMAN zip unzip"
 # tar
-eval "$PACMAN --needed tar"
+eval "$PACMAN tar"
 # rar and unrar
 echo ">>> Installing rar..."
 eval "$YAY rar"
@@ -191,11 +191,11 @@ echo ">>> Installing onlyffice..."
 eval "$YAY onlyoffice-bin"
 
 # Themes manager
-eval "$PACMAN --needed lxappearance-gtk3"
+eval "$PACMAN lxappearance-gtk3"
 
 # Themes
 # tokonight themes
-cd || exit
+cd || exit 1
 git clone https://github.com/stronk-dev/Tokyo-Night-Linux.git
 sudo cp -r ./Tokyo-Night-Linux/usr/share/themes/TokyoNight /usr/share/themes/
 rm -rf Tokyo-Night-Linux
@@ -203,8 +203,7 @@ rm -rf Tokyo-Night-Linux
 # Icons Themes
 mkdir -p ~/.icons
 git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git
-cd WhiteSur-icon-theme || exit 1
-./install.sh
+cd WhiteSur-icon-theme && ./install.sh
 cd .. || exit 1
 rm -rf WhiteSur-icon-theme
 
