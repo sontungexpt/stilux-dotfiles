@@ -1,4 +1,9 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
+# Mod1 (usually aka "Alt" or "Meta")
+# Mod2 ("NumLock")
+# Mod3 (unused on default QWERTY layout)
+# Mod4 (aka "Super" or "Windows-Key")
+# Mod5 (e.g. "Alt_Gr" on german QWERTZ layout)
 
 set $mod Mod4
 
@@ -382,5 +387,5 @@ for_window [class="Virt-manager" title="RDPWindows on QEMU/KVM"] floating disabl
 # xcolor
 bindsym --release $mod+Shift+c exec xcolor | xclip -selection clipboard
 
-
-
+# live-server vscode
+bindsym --release $mod+Mod1+l exec xdg-open http://localhost:5500
