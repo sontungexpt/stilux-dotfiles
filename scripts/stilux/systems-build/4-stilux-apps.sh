@@ -30,8 +30,8 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	config config --local status.showUntrackedFiles no
 
 	# Calendar apps
-	echo ">>> Installing calcurse..."
-	eval "$PACMAN calcurse"
+	# echo ">>> Installing calcurse..."
+	# eval "$PACMAN calcurse"
 
 	# echo "Installing brave..."
 	# eval "$YAY brave-bin"
@@ -70,8 +70,8 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	eval "$PACMAN discord"
 
 	# Cloud sync tools
-	echo ">>> Installing cloud sync tools..."
-	eval "$PACMAN rclone"
+	# echo ">>> Installing cloud sync tools..."
+	# eval "$PACMAN rclone"
 
 	# Install development apps
 	echo ">>> Installing development apps..."

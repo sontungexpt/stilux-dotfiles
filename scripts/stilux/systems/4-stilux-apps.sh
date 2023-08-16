@@ -26,8 +26,8 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	config config --local status.showUntrackedFiles no
 
 	# Calendar apps
-	echo ">>> Installing calcurse..."
-	sudo pacman -S calcurse
+	# echo ">>> Installing calcurse..."
+	# sudo pacman -S calcurse
 
 	# echo "Installing brave..."
 	# yay -S brave-bin
@@ -66,8 +66,8 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	sudo pacman -S discord
 
 	# Cloud sync tools
-	echo ">>> Installing cloud sync tools..."
-	sudo pacman -S rclone
+	# echo ">>> Installing cloud sync tools..."
+	# sudo pacman -S rclone
 
 	# Install development apps
 	echo ">>> Installing development apps..."
