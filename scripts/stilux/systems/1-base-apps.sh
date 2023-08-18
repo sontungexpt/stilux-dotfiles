@@ -30,6 +30,9 @@ if ! [ -x "$(command -v wget)" ]; then
 	sudo pacman -S wget
 fi
 
+# add color to pacman
+sudo sed -i -e "s/^#Color/Color/g" "/etc/pacman.conf"
+
 # backlight
 sudo pacman -S light
 
@@ -75,7 +78,7 @@ sudo sed -i -e "s/^debug_mode\s*=\s*\(.*\)/debug_mode = true/g" "/etc/lightdm/li
 echo ":: WARNING: You should reboot your system to apply changes."
 
 # Lock screen
-yay -S betterlockscreen-git
+yay -S betterlockscreen
 # Check if installed betterlockscreen, enable service
 if [ -x "$(command -v betterlockscreen)" ]; then
 	sudo systemctl enable "betterlockscreen@$USER"
