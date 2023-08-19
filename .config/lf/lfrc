@@ -39,17 +39,24 @@ map w
 map y
 
 # Keybindings
+# Delete and Trash
 map dd trash
 map DD delete
 map <delete> trash
+
+# Copy and Paste
 map p paste
 map x cut
 map yy copy
 map yp copypath
+map yn copyfilename
+
+# Create file and directory
 map mf mkfile
 map mr sudomkfile
 map ms create_script_form
 map md mkdir
+
 map ch chmod
 map bg setwallpaper
 map sa setavatar
@@ -130,6 +137,11 @@ cmd copypath ${{
   echo -n "$f" | xclip -selection "clipboard"
 }}
 
+# Copy File Name Command
+cmd copyfilename ${{
+  echo -n $(basename "$f") | xclip -selection "clipboard"
+}}
+
 # Open the path in thunar
 cmd thunar %{{
   thunar "$f"
@@ -138,7 +150,7 @@ cmd thunar %{{
 # Sudo Open Command
 cmd sudoopen ${{
   case $(file --mime-type "$f" -bL) in
-    text/*|application/json) sudo $EDITOR "$f";;
+    text/*|application/json|application/javascript) sudo $EDITOR "$f";;
     image/*) feh --auto-zoom --scale-down "$f";;
     *) xdg-open "$f" ;;
   esac
@@ -147,7 +159,7 @@ cmd sudoopen ${{
 # Open Command
 cmd open ${{
   case $(file --mime-type "$f" -bL) in
-    text/*|application/json) nvim "$f";;
+    text/*|application/json|application/javascript) nvim "$f";;
     image/*) feh --auto-zoom --scale-down "$f";;
     *) xdg-open "$f" ;;
   esac
