@@ -6,7 +6,8 @@ ETHERNET_CONNECTED_ICON=" "
 
 ID="$(ip link | awk '/state UP/ {print $2}')"
 
-if (ping -c 1 archlinux.org || ping -c 1 google.com) &>/dev/null; then
+# vnpt || viettel || fpt ||google || archlinux
+if (ping -c 1 -W 1 203.162.4.191 || ping -c 1 -W 1 203.113.131.1 || ping -c 1 -W 1 210.245.0.10 || ping -c 1 -W 2 google.com || ping -c 1 -W 2 archlinux.org) &>/dev/null; then
 	if [[ $ID == e* ]]; then
 		echo "$ETHERNET_CONNECTED_ICON Ethernet"
 		exit 0
