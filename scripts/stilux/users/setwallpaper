@@ -6,68 +6,79 @@
 
 # Colors
 NO='\033[0m' # No Color
-ON_BLUE='\033[44m'
-ON_RED='\033[41m'
-ON_GREEN='\033[42m'
+BLUE='\033[1;34m'
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
 
-help() {
-	echo "This scripts is wtitten by Tran Vo Son Tung"
-	echo "This script is used to change the wallpaper of i3wm"
-	echo "Dependencies: feh, i3wm"
-	echo -e "\n${ON_BLUE} USAGE: ${NO} setwallpaper [OPTIONS] [IMAGE_PATH]"
-	echo -e "\n${ON_BLUE} OPTIONS: ${NO}"
-	echo -e "  -h, --help\tShow this help message and exit"
-	echo -e "\n${ON_BLUE} EXAMPLES: ${NO}"
-	echo -e "  1.\tsetwallpaper --help"
-	echo -e "  2.\tsetwallpaper ~/Pictures/wallpaper.jpg"
+display_help() {
+	echo -e "${BLUE}INFORMATION:${NO}"
+	echo -e "  This script is written by Tran Vo Son Tung"
+	echo -e "  This script is used to change the wallpaper of i3wm"
+	echo -e "  Dependencies: feh, i3wm"
+
+	echo -e "\n${BLUE}USAGE:${NO} setwallpaper [OPTIONS] [IMAGE_PATH]"
+
+	echo -e "\n${BLUE}OPTIONS:${NO}"
+	echo -e "  -h, --help         show help"
+
+	echo -e "\n${BLUE}EXAMPLES:${NO}"
+	echo -e "  setwallpaper --help"
+	echo -e "  setwallpaper ~/Pictures/wallpaper.jpg"
+}
+
+display_warning() {
+	echo -e "${YELLOW}WARNING:${NO} $1"
+	introduce_help
+}
+
+introduce_help() {
+	echo -e "${BLUE}MORE:${NO}Use ldoc-custom --help or ldoc-custom -h to get more information"
+}
+
+display_error() {
+	echo -e "${RED}ERROR:${NO} $1"
+	introduce_help
+	exit 1
 }
 
 # Check if install feh
 if [ ! -x "$(command -v feh)" ]; then
-	echo -e "${ON_RED} ERROR: ${NO}"
-	echo "  Feh is not installed"
-	echo "  Please install feh to use this scripts"
-	exit 1
+	display_error "feh is not installed, please install feh to use this scripts"
 fi
 
 # Check if install i3wm
 if [ ! -x "$(command -v i3)" ]; then
-	echo -e "${ON_RED} ERROR: ${NO}"
-	echo "  i3wm is not installed"
-	echo "  Please install i3wm to use this scripts"
-	echo "  You can customize this scripts to use with your window manager"
-	exit 1
+	display_error "i3wm is not installed, please install i3wm to use this scripts"
 fi
 
 # Main code
-# Make sure the wallpaper directory exists
-WALLPAPER_STORAGE_DIR="$HOME/.config/wallpaper"
-
-mkdir -p "$WALLPAPER_STORAGE_DIR"
-
 # Show help if no arguments
 if [[ "$#" -eq 0 ]]; then
-	help
+	display_help
 	exit 0
 fi
 
 # Show help if -h or --help is passed
 if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
-	help
+	display_help
 	exit 0
 fi
+
+WALLPAPER_STORAGE_DIR="$HOME/.config/wallpaper"
 
 if [[ "$#" -eq 1 ]]; then
 	if cat "$HOME/.config/i3/config" | tr "," "\n" | grep -xqF "set \$wallpaper ~/.config/wallpaper/wallpaper.jpg"; then
 		# Check if the path is correct
 		if [[ ! -f "$1" ]]; then
-			echo -e "${ON_RED} ERROR: ${NO} Invalid path"
-			exit 1
+			display_error "Invalid path"
 		fi
-		cp "$1" "$WALLPAPER_STORAGE_DIR/wallpaper.jpg" && i3 restart
+		# Make sure the wallpaper directory exists
+		mkdir -p "$WALLPAPER_STORAGE_DIR"
+		cp "$1" "$WALLPAPER_STORAGE_DIR/wallpaper.jpg" && i3 restart && [ -x "$(command -v dunstify)" ] && dunstify "Wallpaper changed" -i "$1" -a "setwallpaper-script"
 	else
-		echo -e "${ON_RED} ERROR: ${NO} Wallpaper is not set in i3 config"
-		echo -e "${ON_GREEN} SOME HINTS: ${NO}"
+		echo -e "${RED} ERROR: ${NO} Wallpaper is not set in i3 config"
+		echo -e "${GREEN} SOME HINTS: ${NO}"
 		echo "Please add two following lines to your i3 config file"
 		echo "set \$wallpaper ~/.config/wallpaper/wallpaper.jpg"
 		echo "exec_always feh --bg-fill \$wallpaper"
@@ -75,9 +86,5 @@ if [[ "$#" -eq 1 ]]; then
 		exit 0
 	fi
 else
-	echo -e "${ON_RED} ERROR: ${NO} Invalid number of arguments"
-	echo -e "${ON_BLUE} USAGE: ${NO} setwallpaper [OPTIONS] [IMAGE_PATH]"
-	echo -e "${ON_BLUE} EXAMPLES: ${NO} setwallpaper ~/Pictures/wallpaper.jpg"
-	echo "Use -h or --help for help"
-	exit 1
+	display_error "Invalid number of arguments"
 fi

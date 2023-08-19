@@ -134,12 +134,12 @@ cmd nvim ${{
 # Custom Functions
 # Copy Path Command
 cmd copypath ${{
-  echo -n "$f" | xclip -selection "clipboard"
+  echo -n "$f" | xclip -selection "clipboard" && [ -x "$(command -v dunstify)" ] && dunstify "Copied file path: $f"
 }}
 
 # Copy File Name Command
 cmd copyfilename ${{
-  echo -n $(basename "$f") | xclip -selection "clipboard"
+  echo -n $(basename "$f") | xclip -selection "clipboard" && [ -x "$(command -v dunstify)" ] && dunstify "Copied file name: $(basename "$f")"
 }}
 
 # Open the path in thunar
