@@ -17,7 +17,8 @@ display_help() {
 	echo -e "  This script is used to change the wallpaper of i3wm"
 	echo -e "  Dependencies: feh, i3wm"
 
-	echo -e "\n${BLUE}USAGE:${NO} setwallpaper [OPTIONS] [IMAGE_PATH]"
+	echo -e "\n${BLUE}USAGE:${NO}"
+	echo -e "  setwallpaper <path_to_image>"
 
 	echo -e "\n${BLUE}OPTIONS:${NO}"
 	echo -e "  -h, --help         show help"
@@ -33,7 +34,7 @@ display_warning() {
 }
 
 introduce_help() {
-	echo -e "${BLUE}MORE:${NO}Use ldoc-custom --help or ldoc-custom -h to get more information"
+	echo -e "${BLUE}MORE:${NO}Use setwallpaper --help or setwallpaper -h to get more information"
 }
 
 display_error() {
@@ -78,7 +79,7 @@ if [[ "$#" -eq 1 ]]; then
 		cp "$1" "$WALLPAPER_STORAGE_DIR/wallpaper.jpg" && i3 restart && [ -x "$(command -v dunstify)" ] && dunstify "Wallpaper changed" -i "$1" -a "setwallpaper-script"
 	else
 		echo -e "${RED} ERROR: ${NO} Wallpaper is not set in i3 config"
-		echo -e "${GREEN} SOME HINTS: ${NO}"
+		echo -e "${GREEN} HINTS: ${NO}"
 		echo "Please add two following lines to your i3 config file"
 		echo "set \$wallpaper ~/.config/wallpaper/wallpaper.jpg"
 		echo "exec_always feh --bg-fill \$wallpaper"
