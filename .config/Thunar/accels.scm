@@ -3,11 +3,11 @@
 ;
 ; (gtk_accel_path "<Actions>/ThunarStandardView/sort-by-type" "")
 ; (gtk_accel_path "<Actions>/ThunarStatusBar/toggle-last-modified" "")
+; (gtk_accel_path "<Actions>/ThunarBookmarks/faea15186a46e6a8ac9a79bd7e627485" "")
 ; (gtk_accel_path "<Actions>/ThunarActionManager/cut" "<Primary>x")
 ; (gtk_accel_path "<Actions>/ThunarBookmarks/c982e186b43ffb8ea09f7378f1861f92" "")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/sort-by-size" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/file-menu" "")
-; (gtk_accel_path "<Actions>/ThunarBookmarks/e09edb97cd473c8ac33531b924042059" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/close-tab" "<Primary>w")
 ; (gtk_accel_path "<Actions>/ThunarBookmarks/be04856753b4ec98d5a4f7347cf3378e" "")
 ; (gtk_accel_path "<Actions>/ThunarStatusBar/toggle-size" "")
