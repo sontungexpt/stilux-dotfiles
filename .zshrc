@@ -91,7 +91,12 @@ alias uitpush='rclone sync ~/Data/UIT/ uit-drive:UIT/'
 alias uitpull='rclone sync uit-drive:UIT/ ~/Data/UIT/'
 alias sontungpush='rclone sync ~/Data/SonTung/ sontungexpt-drive:SonTung/'
 alias sontungpull='rclone sync sontungexpt-drive:SonTung/ ~/Data/SonTung/'
-# Neovim config
-alias nvimconfig='nvim ~/.config/nvim/init.lua'
+
 alias gmailpolybar='unzip $HOME/.config/polybar/gmail/authenticates-pwd.zip -d $HOME/.config/polybar/gmail/authenticates/'
 alias ldoc='ldoc-custom default'
+
+# Config alias
+alias nvimconfig='nvim ~/.config/nvim/init.lua'
+alias i3config='nvim ~/.config/i3/config'
+alias lfconfig='nvim ~/.config/lf/lfrc'
+alias zshconfig='nvim ~/.zshrc'

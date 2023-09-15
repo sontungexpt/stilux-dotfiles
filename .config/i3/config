@@ -1,7 +1,5 @@
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
-# Mod1 (usually aka "Alt" or "Meta")
-# Mod2 ("NumLock")
-# Mod3 (unused on default QWERTY layout)
+# Please see https://i3wm.org/docs/userguide.html for a complete reference! Mod1 (usually aka "Alt" or "Meta")
+# Mod2 ("NumLock") Mod3 (unused on default QWERTY layout)
 # Mod4 (aka "Super" or "Windows-Key")
 # Mod5 (e.g. "Alt_Gr" on german QWERTZ layout)
 
@@ -296,18 +294,6 @@ for_window [class="Wihotspot-gui"] move to position center
 
 # Thunar
 bindsym --release $mod+t exec thunar
-# for_window [class="Thunar"] floating enable
-# for_window [class="Thunar"] resize set 1600 950
-# for_window [class="Thunar"] move to position center
-# for_window [class="Thunar" title="Custom Actions"] floating enable
-# for_window [class="Thunar" title="Custom Actions"] resize set 700 600
-# for_window [class="Thunar" title="Custom Actions"] move to position center
-# for_window [class="Thunar" title="Create Action"] floating enable
-# for_window [class="Thunar" title="Create Action"] resize set 700 600
-# for_window [class="Thunar" title="Create Action"] move to position center
-# for_window [class="Thunar" title="Rename *"] floating enable
-# for_window [class="Thunar" title="Rename *"] resize set 500 200
-# for_window [class="Thunar" title="Rename *"] move to position center
 
 # Blueman
 bindsym --release $mod+m exec blueman-manager
@@ -315,13 +301,13 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="Blueman-manager"] resize set 1000 800
 for_window [class="Blueman-manager"] move to position center
 
-
 # Open github website
 bindsym --release $mod+g exec xdg-open https://github.com
 
-# Open UIT website
+# Open UIT website and schedule
 bindsym --release $mod+u exec xdg-open https://courses.uit.edu.vn/
 bindsym --release $mod+shift+u exec xdg-open https://daa.uit.edu.vn/
+bindsym --release $mod+s exec feh --auto-zoom --scale-down ~/Data/SonTung/uit-schedule.png
 
 # Emulator
 for_window [title="Android Emulator -*"] resize set 547
@@ -367,7 +353,8 @@ for_window [class="Lxappearance"] resize set 1400 800
 for_window [class="Lxappearance"] move to position center
 
 # Pycalendar
-for_window [class="Pycalendar.py"] floating enable move to position 1399px 38px
+for_window [class="Pycalendar.py"] floating enable
+for_window [class="Pycalendar.py"] move to position 1399px 38px
 
 # Chat Gpt
 bindsym --release $mod+o exec xdg-open https://voicegpt.us/chatgpt
@@ -385,3 +372,4 @@ bindsym --release $mod+Shift+c exec xcolor | xclip -selection clipboard && dunst
 
 # live-server vscode
 bindsym --release $mod+Mod1+l exec xdg-open http://localhost:5500
+
