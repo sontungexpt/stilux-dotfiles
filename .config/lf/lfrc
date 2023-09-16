@@ -85,6 +85,7 @@ map gp cd ~/Pictures
 map gD cd ~/Downloads
 map gb cd /usr/bin
 map gv cd ~/.config/nvim
+map gV cd ~/Videos
 map gs cd ~/scripts
 
 # Archive Keybindings
