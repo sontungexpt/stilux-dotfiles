@@ -10,7 +10,7 @@ if (ping -c 1 -q -w 1 203.162.4.191 >/dev/null ||
 	ping -c 1 -q -w 1 210.245.0.10 >/dev/null ||
 	ping -c 1 -q -w 2 google.com >/dev/null ||
 	ping -c 1 -q -w 2 archlinux.org >/dev/null); then
-	if (ip route get 8.8.8.8 | grep -Po 'dev \K\w+' | grep -qFf - /proc/net/wireless); then
+	if (ip route get 8.8.8.8 | grep -Po 'dev \K\w+' | grep -qFf - /proc/net/wireless >/dev/null); then
 		WIFI_NAME=$(nmcli -t -f active,ssid dev wifi | awk -F ':' '$1=="yes" {print $2}')
 		echo "$WIRELESS_CONNECTED_ICON $WIFI_NAME"
 		exit 0
