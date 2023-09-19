@@ -152,6 +152,7 @@ cmd thunar %{{
 cmd sudoopen ${{
   case $(file --mime-type "$f" -bL) in
     text/*|application/json|application/javascript|inode/x-empty) sudo $EDITOR "$f";;
+    application/pdf) microsoft-edge-stable "$f" || xdg-open "$f";;
     image/*) feh --auto-zoom --scale-down "$f";;
     *) xdg-open "$f" ;;
   esac
@@ -161,6 +162,7 @@ cmd sudoopen ${{
 cmd open ${{
   case $(file --mime-type "$f" -bL) in
     text/*|application/json|application/javascript|inode/x-empty) nvim "$f";;
+    application/pdf) microsoft-edge-stable "$f" || xdg-open "$f";;
     image/*) feh --auto-zoom --scale-down "$f";;
     *) xdg-open "$f" ;;
   esac
