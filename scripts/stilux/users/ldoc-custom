@@ -23,6 +23,11 @@ SCRIPT='\
     let name = link.getAttribute("name");\
     if (parent) parent.setAttribute("id", name);\
   });\
+  // remove nowrap attribute from td tag \
+  let tds = document.querySelectorAll("td");\
+  tds.forEach(function(td) {\
+    td.removeAttribute("nowrap");\
+  });\
 </script>'
 
 CONFIG_LD='''
@@ -166,7 +171,7 @@ br {
 
 #main {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   min-height: 100vh;
 
   border: 1px solid var(--separator-color);
@@ -306,6 +311,7 @@ br {
 #content table td.name {
   color: var(--white-gray-color);
   font-weight: 600;
+  max-width: 500px;
 }
 
 #content dl {
