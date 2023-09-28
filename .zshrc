@@ -20,7 +20,7 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-zstyle ':omz:update' frequency 13
+zstyle ':omz:update' frequency 7
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -83,9 +83,13 @@ source /usr/share/nvm/init-nvm.sh
 # lf-filemanager
 alias lf="lfrun"
 
+# ldoc
+alias ldoc='ldoc-custom default'
+
 # Git Bare
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias config-add-setup='cp $HOME/scripts/setup $HOME/setup && config add setup && config commit -m "chore: update setup file scripts" && config push && rm ~/setup'
+
 # Rclone
 alias uitpush='rclone sync ~/Data/UIT/ uit-drive:UIT/'
 alias uitpull='rclone sync uit-drive:UIT/ ~/Data/UIT/'
@@ -93,7 +97,6 @@ alias sontungpush='rclone sync ~/Data/SonTung/ sontungexpt-drive:SonTung/'
 alias sontungpull='rclone sync sontungexpt-drive:SonTung/ ~/Data/SonTung/'
 
 alias gmailpolybar='unzip $HOME/.config/polybar/gmail/authenticates-pwd.zip -d $HOME/.config/polybar/gmail/authenticates/'
-alias ldoc='ldoc-custom default'
 
 # Config alias
 alias nvimconfig='nvim ~/.config/nvim/init.lua'
@@ -102,3 +105,6 @@ alias lfconfig='nvim ~/.config/lf/lfrc'
 alias zshconfig='nvim ~/.zshrc'
 alias polybarconfig='nvim ~/.config/polybar/config.ini'
 alias roficongfig='nvim ~/.config/rofi/config.rasi'
+alias picomconfig='nvim ~/.config/picom/picom.conf'
+alias kittyconfig='nvim ~/.config/kitty/kitty.conf'
+alias alacrittyconfig='nvim ~/.config/alacritty/alacritty.yml'

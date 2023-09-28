@@ -1,0 +1,73 @@
+{
+  "clientId": "1342fd15-a4f9-474d-9165-f4fc45c9d4aa",
+  "userId": "1090550801847749349",
+  "authedUserIDs": [
+    "1090550801847749349"
+  ],
+  "app": {
+    "logLevel": 1,
+    "enableColorSpaceSrgb": false,
+    "visibleNewProjectBtn": true,
+    "useZenity": false,
+    "disableThemes": false,
+    "panelHeight": 40,
+    "saveLastOpenedTabs": true,
+    "exportDir": "/home/stilux/Pictures/Figma",
+    "fontDirs": [
+      "/usr/share/fonts",
+      "/usr/local/share/fonts",
+      "/run/host/fonts",
+      "/run/host/user-fonts",
+      "/home/stilux/.local/share/fonts"
+    ],
+    "lastOpenedTabs": [
+      {
+        "title": "Food Delivery App UI Kit (Community)",
+        "url": "https://www.figma.com/file/l652aUv3jDWdcHX1OXNvGG/Food-Delivery-App-UI-Kit-(Community)?type=design&mode=design"
+      }
+    ],
+    "featureFlags": {
+      "comments_on_the_canvas": true,
+      "voice_captions_enabled": true,
+      "desktop_disable_cs_prompt": true,
+      "desktop_menu_unification_rollout": true,
+      "paste_to_replace": true,
+      "vector_menu_after_arrange": true,
+      "figjam_miro_import": true,
+      "use_freetype": true,
+      "desktop_always_preload": true,
+      "desktop_disable_accelerators": true,
+      "desktop_new_tab_v2_dev": false,
+      "desktop_new_tab_v2_rollout": true,
+      "desktop_bell_feed_dev": false,
+      "desktop_bell_feed_rollout": true,
+      "desktop_allow_icon_disable": false,
+      "desktop_file_browser_autorefresh": true,
+      "community_nav_glowup": true,
+      "desktop_tab_hover_preview": false,
+      "desktop_tab_preview_rollout": true,
+      "desktop_community_tab_dev": false,
+      "desktop_community_tab_rollout": false,
+      "desktop_community_tab_rollout_v2": true,
+      "desktop_arm_translation_dialog": true,
+      "desktop_tab_discarding": true,
+      "desktop_tab_discarding_beta": true,
+      "desktop_tab_discarding_rollout": true,
+      "desktop_color_management_remove": true,
+      "desktop_push_notifs_mac": true,
+      "desktop_push_notifs_win": true,
+      "desktop_haptics": true,
+      "desktop_light_tabs": true,
+      "fbg_facelift_beta": true,
+      "fbg_facelift_beta_m2": true
+    },
+    "savedExtensions": []
+  },
+  "theme": {
+    "currentTheme": "0"
+  },
+  "ui": {
+    "scalePanel": 1,
+    "scaleFigmaUI": 1
+  }
+}
