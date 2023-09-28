@@ -27,17 +27,20 @@ help() {
 un_zip() {
 	if [ ! -f "/usr/bin/unzip" ]; then
 		echo "You need to install unzip to extract file"
-		exit 0
+		exit 1
 	fi
 
 	destination="$(echo $1 | sed -e 's/.zip//')"
+	if [ ! -d "$destination" ]; then
+		mkdir "$destination"
+	fi
 	unzip "$1" -d "$destination"
 }
 
 un_rar() {
 	if [ ! -f "/usr/bin/unrar" ]; then
 		echo -e "\n${ON_RED} ERROR: ${NO} You need to install unrar to extract file"
-		exit 0
+		exit 1
 	fi
 
 	destination="$(echo $1 | sed -e 's/.rar//')"
@@ -50,7 +53,7 @@ un_rar() {
 un_7z() {
 	if [ ! -f "/usr/bin/7z" ]; then
 		echo -e "\n${ON_RED} ERROR: ${NO} You need to install 7z to extract file"
-		exit 0
+		exit 1
 	fi
 
 	destination="$(echo $1 | sed -e 's/.7z//')"
@@ -69,7 +72,7 @@ unarchive() {
 	*.zip) unzip "$1" ;;
 	*.rar) un_rar "$1" ;;
 	*.7z) un_7z "$1" ;;
-	*) echo -e "${RED}Unsupported format${NO}" && exit 0 ;;
+	*) echo -e "${RED}Unsupported format${NO}" && exit 1 ;;
 	esac
 }
 
@@ -109,7 +112,7 @@ preview() {
 		*.zip) preview_zip "$1" ;;
 		*.rar) preview_rar "$1" ;;
 		*.7z) preview_7z "$1" ;;
-		*) echo -e "${RED}Unsupported format${NO}" && exit 0 ;;
+		*) echo -e "${RED}Unsupported format${NO}" && exit 1 ;;
 		esac
 	else
 		echo -e "\n${ON_RED} ERROR: ${NO} $1 is not existed"
@@ -120,21 +123,21 @@ if [[ "$#" -lt 3 ]]; then
 	# Show help if no arguments
 	if [[ "$#" -eq 0 ]]; then
 		help
-		exit 1
+		exit 0
 	elif [[ "$#" -eq 1 ]]; then
 		case "$1" in
-		"--help" | "-h") help && exit 1 ;;
-		*) unarchive "$1" && exit 1 ;;
+		"--help" | "-h") help && exit 0 ;;
+		*) unarchive "$1" && exit 0 ;;
 		esac
 	elif [[ "$#" -eq 2 ]]; then
 		case "$1" in
-		"--preview" | "-p") preview "$2" && exit 1 ;;
-		"--help" | "-h") help && exit 1 ;;
+		"--preview" | "-p") preview "$2" && exit 0 ;;
+		"--help" | "-h") help && exit 0 ;;
 		esac
 	else
 		echo -e "\n${ON_RED} ERROR: ${NO} Invalid number of arguments"
 		echo -e "\n${ON_BLUE} USAGE: ${NO} extract [OPTIONS] [FILE_PATH]"
 		echo -e "\n${ON_GREEN} NOTE: ${NO} Use --help or -h to see help"
-		exit 0
+		exit 1
 	fi
 fi
