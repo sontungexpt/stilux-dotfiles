@@ -150,21 +150,35 @@ cmd thunar %{{
 
 # Sudo Open Command
 cmd sudoopen ${{
+  open_pdf() {
+    if [ ! -f "/usr/bin/microsoft-edge-stable" ]; then
+      xdg-open "$1" & disown
+    fi
+    microsoft-edge-stable "$1" & disown
+  }
+
   case $(file --mime-type "$f" -bL) in
-    text/*|application/json|application/javascript|inode/x-empty) sudo $EDITOR "$f";;
-    application/pdf) microsoft-edge-stable "$f" || xdg-open "$f";;
-    image/*) feh --auto-zoom --scale-down "$f";;
-    *) xdg-open "$f" ;;
+    text/*|application/json|application/javascript|inode/x-empty|application/octet-stream) sudo $EDITOR "$f";;
+    application/pdf) open_pdf "$f";;
+    image/*) feh --auto-zoom --scale-down "$f" & disown;;
+    *) xdg-open "$f" & disown;;
   esac
 }}
 
 # Open Command
 cmd open ${{
+  open_pdf() {
+    if [ ! -f "/usr/bin/microsoft-edge-stable" ]; then
+      xdg-open "$1" & disown
+    fi
+    microsoft-edge-stable "$1" & disown
+  }
+
   case $(file --mime-type "$f" -bL) in
-    text/*|application/json|application/javascript|inode/x-empty) nvim "$f";;
-    application/pdf) microsoft-edge-stable "$f" || xdg-open "$f";;
-    image/*) feh --auto-zoom --scale-down "$f";;
-    *) xdg-open "$f" ;;
+    text/*|application/json|application/javascript|inode/x-empty|application/octet-stream) nvim "$f";;
+    application/pdf) open_pdf "$f";;
+    image/*) feh --auto-zoom --scale-down "$f" & disown;;
+    *) xdg-open "$f" & disown;;
   esac
 }}
 
@@ -238,6 +252,10 @@ cmd trash ${{
 # Extract Command
 cmd extract ${{
   un_rar() {
+    if [ ! -f "/usr/bin/unrar" ]; then
+      echo "ERROR: You need to install unrar to extract file"
+      exit 1
+    fi
 	  destination="$(echo $1 | sed -e 's/.rar//')"
 	  if [ ! -d "$destination" ]; then
 		  mkdir "$destination"
@@ -245,15 +263,41 @@ cmd extract ${{
 	  unrar e "$1" "$destination"
   }
 
+  un_zip() {
+    if [ ! -f "/usr/bin/unzip" ]; then
+      echo "You need to install unzip to extract file"
+      exit 1
+    fi
+
+    destination="$(echo $1 | sed -e 's/.zip//')"
+    if [ ! -d "$destination" ]; then
+      mkdir "$destination"
+    fi
+    unzip "$1" -d "$destination"
+  }
+
+
+  un_7z() {
+    if [ ! -f "/usr/bin/7z" ]; then
+      echo "ERROR: You need to install 7z to extract file"
+      exit 1
+    fi
+
+    destination="$(echo $1 | sed -e 's/.7z//')"
+    if [ ! -d "$destination" ]; then
+      mkdir "$destination"
+    fi
+    7z x "$1" -o"$destination"
+  }
+
   case "$f" in
     *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf "$f";;
     *.tar.gz|*.tgz) tar xzvf "$f";;
     *.tar.xz|*.txz) tar xJvf "$f";;
-    *.zip) unzip "$f";;
-    *.rar) un_rar "$f";;
-    *.7z) echo "You need to download 7z to extract file";;
-    *.jar) echo "You need to download jar to extract file";;
-    *) echo "Unsupported format" ;;
+    *.zip) un_zip "$f" ;;
+    *.rar) un_rar "$f" ;;
+    *.7z) un_7z "$f" ;;
+	  *) echo -e "Unsupported format" && exit 1 ;;
   esac
 }}
 

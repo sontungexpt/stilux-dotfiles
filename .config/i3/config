@@ -307,7 +307,7 @@ bindsym --release $mod+g exec xdg-open https://github.com
 # Open UIT website and schedule
 bindsym --release $mod+u exec xdg-open https://courses.uit.edu.vn/
 bindsym --release $mod+shift+u exec xdg-open https://daa.uit.edu.vn/
-bindsym --release $mod+s exec feh --auto-zoom --scale-down ~/Data/SonTung/uit-schedule.png
+bindsym --release $mod+shift+t exec feh --auto-zoom --scale-down ~/Data/SonTung/uit-schedule.png
 
 # Emulator
 for_window [title="Android Emulator -*"] resize set 547
@@ -368,7 +368,7 @@ for_window [class="Virt-manager" title="win10 on QEMU/KVM"] floating disable
 for_window [class="Virt-manager" title="RDPWindows on QEMU/KVM"] floating disable
 
 # xcolor
-bindsym --release $mod+Shift+c exec xcolor | xclip -selection clipboard && dunstify "Copied color to clipboard $(xclip -selection clipboard -o)" -a "xcolor"
+bindsym --release $mod+Shift+c exec xcolor | tr -d '\n' | xclip -selection clipboard && dunstify "Copied color to clipboard $(xclip -selection clipboard -o)" -a "xcolor"
 
 # live-server vscode
 bindsym --release $mod+Mod1+l exec xdg-open http://localhost:5500

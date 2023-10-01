@@ -1,18 +1,22 @@
 font:
   normal:
     family: Hack Nerd Font
-    style: Medium
+    style: Regular
 
   bold:
     family: Hack Nerd Font
-    style: Bold
+    # style: Bold
+    style: Medium
 
   italic:
     family: Hack Nerd Font
-    style: Italic
+    # style: Italic
+    style: "Light Italic"
 
   bold_italic:
     family: Hack Nerd Font
     style: Bold Italic
+
+  custom_cursor_colors: true
 
   size: 10.5

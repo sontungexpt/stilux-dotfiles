@@ -1,12 +1,12 @@
 import:
   - ~/.config/alacritty/colors.yaml
   - ~/.config/alacritty/fonts.yml
-  - ~/.config/alacritty/maps.yml
+  - ~/.config/alacritty/keymaps.yml
 
 window:
   padding:
     x: 0
-    y: 0
+    y: 4
 
   decorations: full
 
@@ -20,11 +20,11 @@ selection:
   save_to_clipboard: false
 
 cursor:
+  # ▇ Block
+  # _ Underline
+  # | Beam
   style:
-    shape: Beam
-    blinking: On
-  vi_mode_style:
-    shape: Beam
+    shape: Block
     blinking: On
 
   unfocused_hollow: false

@@ -27,8 +27,8 @@ colors:
     white: "#ffffff"
 
   cursor:
-    text: "#f8fcff"
     cursor: "#a7ccff"
+    text: "#24253b"
 
   selection:
     text: "#1b1e1c"
