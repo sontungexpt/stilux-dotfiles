@@ -155,8 +155,8 @@ sudo pacman -S grub-customizer
 
 # File manager
 echo ">>> Installing lf, thunar..."
-sudo pacman -S lf thunar imagemagick ffmpegthumbnailer poppler ueberzug chafa
-yay -S epub-thumbnailer-git wkhtmltopdf-static
+sudo pacman -S lf thunar imagemagick ffmpegthumbnailer poppler chafa
+yay -S epub-thumbnailer-git wkhtmltopdf-static ueberzugpp
 git clone https://github.com/thimc/lfimg.git
 sudo cp ./lfimg/lfrun /usr/bin/
 rm -rf lfimg

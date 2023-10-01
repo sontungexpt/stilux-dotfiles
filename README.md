@@ -1,7 +1,4 @@
-<h1 align="center" style="color:#e5b0ff">-------- Stilux Arch Config --------</h1>
-<h2 align="center" style="color:#9db0ff">-------- Arch Linux Only --------</h1>
-
-## 1. Information
+## Informations
 
 #### Basic applications
 
@@ -67,12 +64,12 @@
 | **add-lightdm-background** | To auto add background to the storage background of lightdm |
 | **cleanarch**              | To clean your arch linux                                    |
 
-## 2. Preview
+## Preview
 
 ![overview](./scripts/stilux/assets/docs/overview.png)
 ![preview1](./scripts/stilux/assets/docs/preview1.png)
 
-## 3. Install arch linux and i3 wm
+## Install arch linux and i3 wm
 
 #### Install arch ( you can follow the instruction below or this [video](https://www.youtube.com/watch?v=JRdYSGh-g3s) to dual boot with window)
 
@@ -464,7 +461,7 @@ exec i3
 
 </blockquote></details>
 
-## 4. Setup stilux-dotfiles
+## Setup stilux-dotfiles
 
 - You need to install **arch linux** and **i3 window manager** before setup this config
 - Open terminal and copy this command

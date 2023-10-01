@@ -4,7 +4,6 @@
 YAY="yay -S --answerclean All --noconfirm --needed"
 PACMAN="sudo pacman -S --noconfirm --needed"
 
-
 systems_dir="$(pwd)"
 stilux_dir="$(dirname "$systems_dir")"
 scripts_dir="$(dirname "$stilux_dir")"

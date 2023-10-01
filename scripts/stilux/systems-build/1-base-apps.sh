@@ -159,8 +159,8 @@ eval "$PACMAN grub-customizer"
 
 # File manager
 echo ">>> Installing lf, thunar..."
-eval "$PACMAN lf thunar imagemagick ffmpegthumbnailer poppler ueberzug chafa"
-eval "$YAY epub-thumbnailer-git wkhtmltopdf-static"
+eval "$PACMAN lf thunar imagemagick ffmpegthumbnailer poppler chafa"
+eval "$YAY epub-thumbnailer-git wkhtmltopdf-static ueberzugpp"
 git clone https://github.com/thimc/lfimg.git
 sudo cp ./lfimg/lfrun /usr/bin/
 rm -rf lfimg
