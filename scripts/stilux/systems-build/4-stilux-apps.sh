@@ -129,8 +129,8 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	# flutter doctor --android-licenses
 
 	# Install android studio
-	echo ">>> Installing android studio, jdk11..."
-	eval "$PACMAN openjdk11-src"
+	echo ">>> Installing android studio, jdk11, jdk17..."
+	eval "$PACMAN openjdk11-src openjdk17-src"
 	eval "$YAY android-studio watchman"
 
 	echo ">>> Installing mongodb..."

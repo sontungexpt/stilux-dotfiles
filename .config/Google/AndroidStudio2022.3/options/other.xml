@@ -1,18 +1,23 @@
 <application>
+  <component name="NotRoamableUiSettings">
+    <option name="fontScale" value="1.0" />
+    <option name="fontSize" value="18.0" />
+  </component>
   <component name="PropertyService"><![CDATA[{
   "keyToString": {
     "Darcula.SavedEditorTheme": "_@user_Darcula",
     "Default.SavedEditorTheme": "_@user_Default",
+    "MarketplacePluginsSearchHistory": "icons\nvim\ntokyo\ntok",
     "NonModalCommitCustomization.IsApplied": "true",
     "android.sdk.path": "/home/stilux/Android/Sdk",
     "ask.about.ctrl.y.shortcut.v2": "true",
-    "bundled.plugins.list.saved.version": "AI-223.8836.35.2231.10406996",
+    "bundled.plugins.list.saved.version": "AI-223.8836.35.2231.10811636",
     "fileTypeChangedCounter": "1",
     "fontSizeToResetConsole": "13.0",
     "fontSizeToResetEditor": "13.0",
     "input.method.disabler.muted": "true",
     "newly.installed.api.level": "33",
-    "previousColorScheme": "_@user_Darcula",
+    "previousColorScheme": "_@user_TokyoNightDark",
     "tasks.pass.word.conversion.enforced": "true",
     "updater.configure.platform.details.checkbox.selected": "true",
     "updater.configure.tools.details.checkbox.selected": "true"
