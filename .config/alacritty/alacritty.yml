@@ -1,0 +1,33 @@
+import:
+  - ~/.config/alacritty/colors.yaml
+  - ~/.config/alacritty/fonts.yml
+  - ~/.config/alacritty/keymaps.yml
+
+window:
+  padding:
+    x: 0
+    y: 4
+
+  decorations: full
+
+  opacity: 1
+  dynamic_title: true
+
+  history: 10000
+  multiplier: 3
+
+selection:
+  save_to_clipboard: false
+
+cursor:
+  # ▇ Block
+  # _ Underline
+  # | Beam
+  style:
+    shape: Block
+    blinking: On
+
+  unfocused_hollow: false
+  blink_interval: 500
+
+live_config_reload: true
