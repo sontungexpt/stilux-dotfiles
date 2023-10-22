@@ -4,12 +4,9 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 export ZSH="$HOME/.local/share/oh-my-zsh"
-export ZPLUGDIR="$ZSH/plugins"
-export ZTHEMEDIR="$ZSH/themes"
+export ZPLUGDIR="$ZSH/custom/plugins/"
+export ZTHEMEDIR="$ZSH/custom/themes"
 export HISTFILE="$HOME/.config/zsh/.zhistory" # History filepath
-
-bindkey -v
-export KEYTIMEOUT=1
 
 export HISTSIZE=1000 # Maximum events for internal history
 export SAVEHIST=1000 # Maximum events in history file
