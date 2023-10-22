@@ -12,8 +12,6 @@ theme "romkatv/powerlevel10k"
 plug "zdharma-continuum/fast-syntax-highlighting"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-completions"
-# plug "lukechilds/zsh-nvm"
-# plug "zsh-users/zsh-syntax-highlighting"
 # plug "mroth/evalcache"
 
 source "$ZDOTDIR"/oh-my-zsh.zsh
