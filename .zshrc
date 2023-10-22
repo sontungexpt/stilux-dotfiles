@@ -4,13 +4,16 @@ source $ZDOTDIR/options.zsh
 source $ZDOTDIR/exports.zsh
 
 source $ZDOTDIR/installer.zsh
-ohmyzsh # install oh-my-zsh
-theme "romkatv/powerlevel10k" # install powerlevel10k theme
+# install oh-my-zsh
+ohmyzsh
+ # install theme
+theme "romkatv/powerlevel10k"
 # install plugins
-plug "zsh-users/zsh-syntax-highlighting"
+plug "zdharma-continuum/fast-syntax-highlighting"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-completions"
 plug "lukechilds/zsh-nvm"
+# plug "zsh-users/zsh-syntax-highlighting"
 # plug "mroth/evalcache"
 
 source "$ZDOTDIR"/oh-my-zsh.zsh
