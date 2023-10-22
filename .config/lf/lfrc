@@ -80,7 +80,8 @@ map u unselect
 map gc cd ~/.config
 map gd cd ~/Data
 map gld cd ~/Documents
-map gw cd ~/Data/My-WorkSpace
+map gw cd ~/Data/Workspace
+map gu cd ~/Data/UIT
 map gp cd ~/Pictures
 map gD cd ~/Downloads
 map gb cd /usr/bin
@@ -102,21 +103,21 @@ cmd create_script_form %{{
     if [ -f "$path" ]; then
       printf "Script file already exists."
     else
-      touch $path
-      chmod +x $path
-      echo "#!/bin/bash" >> $path
-	    echo "# The scripts is written by TranVoSonTung" >> $path
-	    echo "FLAG=\"--nopass\"" >> $path
-	    echo "PASS=\"\"" >> $path
-	    echo -e "\n# Use eval \"\$SUDO_COMMAND <Your command>\" to exec the command with no password" >> $path
-	    echo "SUDO_COMMAND=\"echo \\\"\$PASS\\\" | sudo -S -k\"" >> $path
-	    echo -e "\nif [ \"\$FLAG\" = \"\$1\" ] && [ \"\$PASS\" != \"\" ]; then" >> $path
-	    echo "	# The scripts when  use flag \"--nopass\"" >> $path
-	    echo "	echo \"\$2\"" >> $path
-	    echo "else" >> $path
-	    echo "	# The scripts when not use flag \"--nopass\"" >> $path
-	    echo "	echo \"\$2\"" >> $path
-	    echo "fi" >> $path
+      touch "$path"
+      chmod +x "$path"
+      echo "#!/bin/bash" >> "$path"
+	    echo "# The scripts is written by TranVoSonTung" >> "$path"
+	    echo "FLAG=\"--nopass\"" >> "$path"
+	    echo "PASS=\"\"" >> "$path"
+	    echo -e "\n# Use eval \"\$SUDO_COMMAND <Your command>\" to exec the command with no password" >> "$path"
+	    echo "SUDO_COMMAND=\"echo \\\"\$PASS\\\" | sudo -S -k\"" >> "$path"
+	    echo -e "\nif [ \"\$FLAG\" = \"\$1\" ] && [ \"\$PASS\" != \"\" ]; then" >> "$path"
+	    echo "	# The scripts when  use flag \"--nopass\"" >> "$path"
+	    echo "	echo \"\$2\"" >> "$path"
+	    echo "else" >> "$path"
+	    echo "	# The scripts when not use flag \"--nopass\"" >> "$path"
+	    echo "	echo \"\$2\"" >> "$path"
+	    echo "fi" >> "$path"
 
       kitty "$EDITOR" "$path"
     fi
@@ -152,16 +153,27 @@ cmd thunar %{{
 cmd sudoopen ${{
   open_pdf() {
     if [ ! -f "/usr/bin/microsoft-edge-stable" ]; then
-      xdg-open "$1" & disown
+      sudo xdg-open "$1" >> /dev/null 2>&1 & disown
+    else
+      sudo microsoft-edge-stable "$1" >> /dev/null 2>&1 & disown
     fi
-    microsoft-edge-stable "$1" & disown
+  }
+
+  open_with_nvim() {
+    if [ ! -f "usr/bin/nvim" ]; then
+      sudo $EDITOR "$1"
+    else
+      sudo nvim "$1"
+    fi
+
+
   }
 
   case $(file --mime-type "$f" -bL) in
-    text/*|application/json|application/javascript|inode/x-empty|application/octet-stream) sudo $EDITOR "$f";;
+    text/*|application/json|application/javascript|inode/x-empty|application/octet-stream) open_with_nvim "$f";;
     application/pdf) open_pdf "$f";;
-    image/*) feh --auto-zoom --scale-down "$f" & disown;;
-    *) xdg-open "$f" & disown;;
+    image/*)sudo feh --auto-zoom --scale-down "$f" >> /dev/null 2>&1 & disown;;
+    *)sudo xdg-open "$f" >> /dev/null 2>&1  & disown;;
   esac
 }}
 
@@ -169,16 +181,26 @@ cmd sudoopen ${{
 cmd open ${{
   open_pdf() {
     if [ ! -f "/usr/bin/microsoft-edge-stable" ]; then
-      xdg-open "$1" & disown
+      xdg-open "$1" >> /dev/null 2>&1 & disown
+    else
+      microsoft-edge-stable "$1" >> /dev/null 2>&1 & disown
     fi
-    microsoft-edge-stable "$1" & disown
+  }
+
+  open_with_nvim() {
+    if [ ! -f "usr/bin/nvim" ]; then
+      $EDITOR "$1"
+    else
+      nvim "$1"
+    fi
+
   }
 
   case $(file --mime-type "$f" -bL) in
-    text/*|application/json|application/javascript|inode/x-empty|application/octet-stream) nvim "$f";;
+    text/*|application/json|application/javascript|inode/x-empty|application/octet-stream) open_with_nvim "$f";;
     application/pdf) open_pdf "$f";;
-    image/*) feh --auto-zoom --scale-down "$f" & disown;;
-    *) xdg-open "$f" & disown;;
+    image/*) feh --auto-zoom --scale-down "$f" >> /dev/null 2>&1 & disown;;
+    *) xdg-open "$f" >> /dev/null 2>&1  & disown;;
   esac
 }}
 
@@ -194,11 +216,11 @@ cmd setavatar ${{
 # Chmod Command
 cmd chmod %{{
   printf "Mode Bits: "
-  read ans
+  read and
 
   for file in "$fx"
   do
-    chmod $ans $file
+    chmod $and $file
   done
 
   lf -remote 'send reload'
@@ -207,23 +229,23 @@ cmd chmod %{{
 # Make File Command
 cmd mkfile ${{
   printf "File Name: "
-  read ans
-  $EDITOR $ans
+  read and
+  $EDITOR $and
 }}
 
 # Make Directory Command
 cmd mkdir %{{
   printf "Directory Name: "
-  read ans
-  mkdir $ans
+  read and
+  mkdir $and
   reload
 }}
 
 # Make File With Sudo Command
 cmd sudomkfile ${{
   printf "File Name: "
-  read ans
-  sudo $EDITOR $ans
+  read and
+  sudo $EDITOR $and
 }}
 
 # Delete Command
@@ -231,8 +253,8 @@ cmd delete ${{
   set -f
   printf "$fx\n"
   printf "delete?[y/n]"
-  read ans
-  [ "$ans" = "y" ] && rm -rf $fx
+  read and
+  [ "$and" = "y" ] && rm -rf $fx
 }}
 
 # Trash-cli Command
