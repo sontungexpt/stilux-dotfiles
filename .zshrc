@@ -1,5 +1,6 @@
-export ZDOTDIR="$HOME/.config/zsh"
-source ${ZDOTDIR}/exports.zsh
+ZDOTDIR="$HOME/.config/zsh"
+
+source $ZDOTDIR/exports.zsh
 
 if [ ! -d "$ZSH" ]; then
 	if ! command -v curl &>/dev/null; then
@@ -10,8 +11,8 @@ if [ ! -d "$ZSH" ]; then
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
-source ${ZDOTDIR}/plug-installer.zsh
-source ${ZDOTDIR}/theme-installer.zsh
+source $ZDOTDIR/plug-installer.zsh
+source $ZDOTDIR/theme-installer.zsh
 
 theme "romkatv/powerlevel10k"
 plug "zsh-users/zsh-syntax-highlighting"

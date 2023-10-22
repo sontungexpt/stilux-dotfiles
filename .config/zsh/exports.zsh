@@ -6,7 +6,7 @@ export VISUAL="nvim"
 export ZSH="$HOME/.local/share/oh-my-zsh"
 export ZPLUGDIR="$ZSH/plugins"
 export ZTHEMEDIR="$ZSH/themes"
-export HISTFILE="$ZDOTDIR/.zhistory" # History filepath
+export HISTFILE="$HOME/.config/zsh/.zhistory" # History filepath
 
 bindkey -v
 export KEYTIMEOUT=1
