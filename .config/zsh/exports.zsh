@@ -28,4 +28,6 @@ export PATH="$PATH":"$ANDROID_HOME"/platform-tools
 export PATH="$PATH":"$HOME"/.cargo/bin
 
 # Nvm
+export NVM_LAZY_LOAD=true
+export NVM_COMPLETION=true
 source /usr/share/nvm/init-nvm.sh
