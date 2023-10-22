@@ -12,8 +12,7 @@ export HISTSIZE=1000 # Maximum events for internal history
 export SAVEHIST=1000 # Maximum events in history file
 
 # Old bash config
-export PATH="$PATH":"$HOME"/bin:/usr/local/bin
-export PATH="$PATH":"$HOME"/.local/bin
+export PATH="$PATH":"$HOME"/.local/bin:"$HOME"/bin:/usr/local/bin
 
 # Java
 export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
@@ -30,4 +29,24 @@ export PATH="$PATH":"$HOME"/.cargo/bin
 # Nvm
 export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
-source /usr/share/nvm/init-nvm.sh
+
+# source /usr/share/nvm/init-nvm.sh
+lazy_load_nvm() {
+	unset -f npm node nvm
+	[[ -f "/usr/share/nvm/init-nvm.sh" ]] && source /usr/share/nvm/init-nvm.sh
+}
+
+node() {
+	lazy_load_nvm
+	node $@
+}
+
+npm() {
+	lazy_load_nvm
+	npm $@
+}
+
+nvm() {
+	lazy_load_nvm
+	nvm $@
+}
