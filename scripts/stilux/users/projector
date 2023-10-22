@@ -1,0 +1,29 @@
+#!/bin/bash
+
+intern="eDP-1"
+extern="HDMI-1"
+
+case "$1" in
+"disconnect")
+	xrandr --output "$extern" --off --output $intern --auto
+	;;
+"right")
+	xrandr --output $extern --set audio force-dvi --mode 1920x1080 && xrandr --output $intern --auto --output $extern --right-of $intern
+	;;
+"left")
+	xrandr --output $extern --set audio force-dvi --mode 1920x1080 && xrandr --output $intern --auto --output $extern --left-of $intern
+	;;
+"above")
+	xrandr --output $extern --set audio force-dvi --mode 1920x1080 && xrandr --output $intern --auto --output $extern --above $intern
+	;;
+"below")
+	xrandr --output $extern --set audio force-dvi --mode 1920x1080 && xrandr --output $intern --auto --output $extern --below $intern
+	;;
+"mirror")
+	xrandr --output $extern --set audio force-dvi --mode 1920x1080 && xrandr --output $intern --auto --output $extern --same-as $intern
+	;;
+*)
+	echo "Usage: $0 {disconnect|right|left|above|below|mirror}"
+	exit 1
+	;;
+esac

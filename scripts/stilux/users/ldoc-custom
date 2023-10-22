@@ -1,0 +1,587 @@
+#!/bin/bash
+# The scripts is written by Tran Vo Son Tung
+# This script is used to generate documentation for lua project using ldoc and my custom css template
+# Dependencies: ldoc, penlight
+# Usage: ldoc-custom [option...]
+#
+VERSION="1.0.0"
+GIT_REPO_URL="https://github.com/sontungexpt/ldoc-css-styles.git"
+GIT_REPO_NAME="ldoc-css-styles"
+
+# GLOBAL COLOR
+NO='\033[0m' # No Color
+BLUE='\033[1;34m'
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+
+SCRIPT='\
+<script>\
+  let links = document.querySelectorAll("a[name]");\
+  links.forEach(function(link) {\
+    let parent = link.parentElement;\
+    let name = link.getAttribute("name");\
+    if (parent) parent.setAttribute("id", name);\
+  });\
+  // remove nowrap attribute from td tag \
+  let tds = document.querySelectorAll("td");\
+  tds.forEach(function(td) {\
+    td.removeAttribute("nowrap");\
+  });\
+</script>'
+
+CONFIG_LD='''
+title = "buffer-closer"
+project = "buffer-closer"
+description = "Automatically close buffers that are retired after a certain amount of time."
+format="discount"
+dir="docs"
+readme="README.md"
+sort=true
+file="./lua/"
+sort_modules=true
+
+local upat = "http://www.buffer-closer.org/docs/%s/%s.%s.html"
+custom_see_handler("^([%w_]+)%((%d)%)$",function(name,section)
+    local url = upat:format(section,name,section)
+    local name = name .. "(" ..section..")"
+    return name, url
+end)
+'''
+CSS_DEFAULT='''
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
+@import url("https://mshaugh.github.io/nerdfont-webfonts/build/firacode-nerd-font.css");
+@import url("https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css");
+
+:root {
+  --black-background-color: #1c2128;
+  --white-color: #ffffff;
+  --white-dark-color: #d4ecf5;
+  --text-color: #cdd9e5;
+  --blue-color: #007bff;
+  --red-color: #dc3545;
+  --pink-color: #e83e8c;
+  --green-color: #3ead45;
+  --yellow-color: #ffc107;
+  --light-yellow-color: #fff3cd;
+  --orange-color: #fd7e14;
+  --purple-color: #6f42c1;
+  --cyan-color: #17a2b8;
+  --gray-color: #6c757d;
+  --gray-dark-color: #343a40;
+  /* --primary-color: #f0e68c; */
+  --primary-color: var(--pink-color);
+  --separator-color: #80808080;
+}
+
+/* reset css  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+*:empty {
+  content: "";
+  display: none;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Hack Nerd Font", "Fira Code Nerd Font", "FiraCode", "Segoe UI",
+    "Noto Sans", "Helvetica,Arial", "Apple Color Emoji", "Segoe UI Emoji",
+    sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.8;
+  text-rendering: optimizeSpeed;
+  background-color: var(--black-background-color);
+  color: var(--text-color);
+}
+
+button,
+input,
+textarea {
+  font-family: "FiraCode", "Segoe UI", "Noto Sans", "Helvetica,Arial",
+    "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  outline: none;
+  border: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+  pointer-events: auto
+}
+
+a:hover {
+  color: var(--gray-color);
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+
+td {
+  padding: 14px;
+  border: 1px solid var(--separator-color);
+  font-size: 1.8rem;
+  line-height: 1.4;
+}
+
+br {
+  display: none;
+}
+
+#container {
+  width: 100%;
+  max-width: 1400px;
+  display: block;
+  margin: 0 auto;
+  /* padding: 36px 0px; */
+}
+
+#product {
+  margin: 30px;
+}
+
+#product_name {
+  font-size: 2.4rem;
+  text-transform: capitalize;
+  color: var(--primary-color);
+}
+
+#product_description {
+  font-size: 1.8rem;
+  margin-top: 10px;
+}
+
+#main {
+  display: flex;
+  /* flex-wrap: wrap; */
+  min-height: 100vh;
+
+  border: 1px solid var(--separator-color);
+}
+
+#navigation {
+  flex: 0 0 23%;
+}
+
+#navigation h1 {
+  display: none;
+}
+
+#navigation h2 {
+  display: flex;
+  align-items: center;
+  padding: 20px 33px;
+  border-top: 1px solid var(--separator-color);
+  border-bottom: 1px solid var(--separator-color);
+
+  color: var(--primary-color);
+  text-transform: capitalize;
+  font-size: 2.2rem;
+}
+
+#navigation h2:before {
+  content: " ";
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  margin-top: -21px;
+}
+
+#navigation h1 + h2 {
+  border-top: none;
+}
+
+#navigation ul {
+  display: flex;
+  flex-direction: column;
+}
+
+#navigation ul li a,
+#navigation ul li strong {
+  display: block;
+  font-size: 1.8rem;
+  padding: 12px 0px;
+  margin-left: 33px;
+  text-transform: capitalize;
+}
+
+#navigation ul a[href$="index.html"]::after {
+  content: "  Home page";
+  display: block;
+  width: 100%;
+  visibility: visible;
+  margin-left: -33px;
+  margin-top: -10px;
+
+  padding: 0px 50px 10px 33px;
+  color: var(--primary-color);
+  text-transform: capitalize;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+#navigation ul a[href$="index.html"] {
+  visibility: hidden;
+}
+
+#content {
+  flex: 0 0 77%;
+  padding: 30px;
+  border-left: 1px solid var(--separator-color);
+}
+
+#content h1 {
+  margin-bottom: 20px;
+
+  font-size: 2.4rem;
+  text-transform: capitalize;
+  color: var(--primary-color);
+}
+
+#content h2 {
+  display: block;
+
+  margin-top: 50px;
+  margin-bottom: 10px;
+
+  font-size: 2.2rem;
+  color: var(--purple-color);
+  text-transform: capitalize;
+}
+
+#content > h2:first-child {
+  color: var(--gray-color);
+}
+
+#content h2 a[href] {
+  color: var(--purple-color);
+}
+
+#content h2 a[href]:hover {
+  color: var(--gray-color);
+}
+#content h2.section-header {
+  display: flex;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--separator-color);
+}
+
+#content h2.section-header::before {
+  content: " ";
+  display: block;
+  color: var(--purple-color);
+  width: 10px;
+  height: 10px;
+  margin-right: 15px;
+}
+
+#content p {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+#content .module_list {
+  margin-top: 20px;
+}
+
+#content .module_list .name {
+  font-size: 1.8rem;
+}
+
+#content table td.name {
+  color: var(--white-gray-color);
+  font-weight: 600;
+  max-width: 500px;
+}
+
+#content dl {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 20px;
+  font-size: 1.8rem;
+}
+
+#content dt {
+  width: 100%;
+  padding: 10px 0;
+  margin: 0;
+  color: var(--yellow-color);
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+#content dd {
+  width: 100%;
+  margin: 0;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid var(--separator-color);
+}
+
+#content dd h3 {
+  width: 100%;
+  font-size: 1.8rem;
+  margin-top: 10px;
+  color: var(--cyan-color);
+}
+
+#content dd ol,
+#content dd ul {
+  margin-left: 20px;
+  /* list-style: disc; */
+  list-style: square;
+
+  list-style-position: inside;
+}
+#content dd li {
+  margin: 10px 0;
+}
+
+#content dd li span {
+  color: var(--white-gray-color);
+  font-weight: 600;
+}
+
+#content dd li .type {
+  color: var(--yellow-color);
+  font-weight: 600;
+}
+
+#content dd li .type::before {
+  content: "(";
+}
+
+#content dd li .type::after {
+  content: ")";
+}
+
+#content dd li ul {
+  margin-left: 40px;
+}
+
+#about {
+  display: none;
+}
+
+@media (max-width: 1193px) {
+  #navigation {
+    flex: 0 0 100%;
+  }
+
+  #content {
+    flex: 0 0 100%;
+  }
+}
+'''
+
+display_warning() {
+	echo -e "${YELLOW}WARNING:${NO} $1"
+	introduce_help
+}
+
+introduce_help() {
+	echo -e "${BLUE}MORE:${NO}Use ldoc-custom --help or ldoc-custom -h to get more information"
+}
+
+display_error() {
+	echo -e "${RED}ERROR:${NO} $1"
+	introduce_help
+	exit 1
+}
+
+display_help() {
+	echo -e "${BLUE}INFORMATION:${NO}"
+	echo "  This scripts is written by Tran Vo Son Tung"
+	echo "  This script is used to generate documentation for lua project using ldoc and my custom css template"
+	echo "  Dependencies: ldoc, penlight"
+	echo "  Version: $VERSION"
+
+	echo -e "\n${BLUE}USAGE:${NO}"
+	echo "  ldoc-custom [option...]"
+	echo -e "\n${GREEN}default:${NO} Generate documentation for lua project using default template"
+	echo "  ldoc-custom default"
+	echo -e "\n${GREEN}git:${NO} Generate documentation for lua project using git repository template, this features will help you get the lasted css template"
+	echo "  ldoc-custom git"
+	echo -e "\n${GREEN}config:${NO} Generate configuration file(config.ld) for ldoc"
+	echo "  ldoc-custom config"
+
+	echo -e "\n${BLUE}OPTIONS: ${NO}"
+	echo "  -h, --help		Display this help and exit"
+	echo "  -v, --version		Display version information and exit"
+
+	echo -e "\n${BLUE}EXAMPLES: ${NO}"
+	echo "  ldoc-custom default"
+	echo "  ldoc-custom git"
+	echo "  ldoc-custom config"
+	echo "  ldoc-custom -h"
+	echo "  ldoc-custom --help"
+	echo "  ldoc-custom -v"
+	echo "  ldoc-custom --version"
+	exit 0
+}
+
+is_ldoc_installed() {
+	if ! command -v ldoc &>/dev/null; then
+		display_error "ldoc is not installed"
+	fi
+	return 0
+}
+
+replace_css() {
+	echo "$CSS_DEFAULT" >"$1/ldoc.css"
+}
+
+replace_config() {
+	echo "$CONFIG_LD" >"$1/config.ld"
+}
+
+add_script() {
+	local file_paths
+	file_paths=$(find "$1" -type f -name "*.html")
+	for path in $file_paths; do
+		echo "add script to $path"
+		sed -i "s|</body>|$SCRIPT</body>|g" "$path"
+	done
+}
+
+get_file_path() {
+	local file_path
+	if [ "$1" = "." ] || [ -d "$1" ]; then
+		echo "$PWD"
+		return
+	fi
+	for arg in "$@"; do
+		if [ -f "$arg" ]; then
+			file_path="$arg"
+			echo "$file_path"
+			return
+		fi
+	done
+
+	display_error "No file found"
+}
+
+default() {
+	# Check if ldoc is installed
+	if is_ldoc_installed >/dev/null 2>&1; then
+		local file_path
+		file_path=$(get_file_path "$@")
+
+		if [ -f "$file_path/config.ld" ]; then
+
+			local dir
+			dir=$(sed -n 's/^dir=\"\(.*\)\"/\1/p' config.ld || echo "doc")
+
+			ldoc "$@" && add_script "$file_path/$dir" && replace_css "$file_path/$dir"
+
+			exit 0
+
+		else
+			display_warning "config.ld is not found, use ldoc-custom config to generate config.ld"
+			exit 1
+		fi
+	fi
+
+}
+
+config() {
+	local file_path
+	file_path=$(get_file_path "$@")
+	if [ -f "$file_path/config.ld" ]; then
+		display_warning "config.ld is already exist"
+		exit 1
+	fi
+
+	replace_config "$file_path"
+	exit 0
+}
+
+replace_css_with_git() {
+	# check if git is installed
+	if ! command -v git &>/dev/null; then
+		display_error "Git is not installed. Cannot replace css with git repository"
+
+	fi
+	echo "$1"
+
+	git clone "$GIT_REPO_URL" "$1/$GIT_REPO_NAME"
+
+	if [ -d "$1/$GIT_REPO_NAME" ]; then
+		cp "$1/$GIT_REPO_NAME/ldoc.css" "$1/ldoc.css"
+		rm -rf "$1/$GIT_REPO_NAME"
+	else
+		display_error "Cannot clone git repository"
+	fi
+}
+
+git_option() {
+
+	# Check if ldoc is installed
+	if is_ldoc_installed >/dev/null 2>&1; then
+		local file_path
+		file_path=$(get_file_path "$@")
+
+		if [ -f "$file_path/config.ld" ]; then
+			local dir
+
+			dir=$(sed -n 's/^dir=\"\(.*\)\"/\1/p' config.ld || echo "doc")
+
+			ldoc "$@" && add_script "$file_path/$dir" && replace_css_with_git "$file_path/$dir"
+
+			exit 0
+
+		else
+			display_warning "config.ld is not found, use ldoc-custom config to generate config.ld"
+			exit 1
+		fi
+	fi
+}
+
+if [ $# -eq 0 ]; then
+	display_help
+fi
+
+case $1 in
+default)
+	shift
+	default "$@"
+	;;
+git)
+	shift
+	git_option "$@"
+	;;
+config)
+	shift
+	config "$@"
+	;;
+-h | --help)
+	display_help
+	;;
+-v | --version)
+	echo -e "${BLUE}Version: $VERSION${NO}"
+	exit 0
+	;;
+*)
+	shift
+	ldoc "$@"
+	;;
+esac
