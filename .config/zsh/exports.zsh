@@ -27,27 +27,5 @@ export PATH="$PATH":"$ANDROID_HOME"/platform-tools
 # Cargo
 export PATH="$PATH":"$HOME"/.cargo/bin
 
-# Nvm
-export NVM_LAZY_LOAD=true
-export NVM_COMPLETION=true
-
+source "$HOME"/.config/zsh/lazynvm.zsh
 # source /usr/share/nvm/init-nvm.sh
-lazy_load_nvm() {
-	unset -f npm node nvm
-	[[ -f "/usr/share/nvm/init-nvm.sh" ]] && source /usr/share/nvm/init-nvm.sh
-}
-
-node() {
-	lazy_load_nvm
-	node $@
-}
-
-npm() {
-	lazy_load_nvm
-	npm $@
-}
-
-nvm() {
-	lazy_load_nvm
-	nvm $@
-}
