@@ -1,20 +1,11 @@
-ZDOTDIR="$HOME/.config/zsh"
+ZDOTDIR=$HOME/.config/zsh
 
 source $ZDOTDIR/options.zsh
 source $ZDOTDIR/exports.zsh
 
-if [ ! -d "$ZSH" ]; then
-	if ! command -v curl &>/dev/null; then
-		echo "curl could not be found"
-		return
-	fi
-
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-fi
-
-source $ZDOTDIR/plug-installer.zsh
-source $ZDOTDIR/theme-installer.zsh
-
+# Auto install plugins, themes
+source $ZDOTDIR/installer.zsh
+ohmyzsh
 theme "romkatv/powerlevel10k"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-autosuggestions"
