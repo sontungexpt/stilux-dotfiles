@@ -33,9 +33,6 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	# echo ">>> Installing calcurse..."
 	# eval "$PACMAN calcurse"
 
-	# echo "Installing brave..."
-	# eval "$YAY brave-bin"
-
 	# Ask if you want to install edge or chorme, default is edge
 	echo "Do you want to install edge or chrome? (e/c)"
 	read -r answer

@@ -29,9 +29,6 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	# echo ">>> Installing calcurse..."
 	# sudo pacman -S calcurse
 
-	# echo "Installing brave..."
-	# yay -S brave-bin
-
 	# Ask if you want to install edge or chorme, default is edge
 	echo "Do you want to install edge or chrome? (e/c)"
 	read -r answer

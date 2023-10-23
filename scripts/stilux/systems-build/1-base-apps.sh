@@ -4,7 +4,6 @@
 YAY="yay -S --answerclean All --noconfirm --needed"
 PACMAN="sudo pacman -S --noconfirm --needed"
 
-
 # Check if installed yay, if not install it
 if ! [ -x "$(command -v yay)" ]; then
 	echo ">>> Installing yay..."
@@ -209,3 +208,4 @@ rm -rf WhiteSur-icon-theme
 
 # Cursor Themes
 eval "$YAY catppuccin-cursors-mocha"
+
