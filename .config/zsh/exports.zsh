@@ -8,6 +8,7 @@ export ZSH_CUSTOM="$ZSH/custom"
 export ZPLUGDIR="$ZSH_CUSTOM/plugins/"
 export ZTHEMEDIR="$ZSH_CUSTOM/themes"
 export HISTFILE="$HOME/.config/zsh/.zhistory" # History filepath
+export NVM_LOAD_BEFORE_NEOVIM=1               # Load nvm before neovim to avoid errors with node provider
 
 export HISTSIZE=1000 # Maximum events for internal history
 export SAVEHIST=1000 # Maximum events in history file
@@ -27,5 +28,4 @@ export PATH="$PATH":"$ANDROID_HOME"/platform-tools
 # Cargo
 export PATH="$PATH":"$HOME"/.cargo/bin
 
-source "$HOME"/.config/zsh/lazynvm.zsh
-# source /usr/share/nvm/init-nvm.sh
+source "$HOME/.config/zsh/lazynvm.zsh"

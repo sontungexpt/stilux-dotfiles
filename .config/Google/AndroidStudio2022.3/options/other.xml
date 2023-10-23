@@ -1,6 +1,11 @@
 <application>
+  <component name="NotRoamableUiSettings">
+    <option name="fontScale" value="1.0" />
+    <option name="fontSize" value="17.5" />
+  </component>
   <component name="PropertyService"><![CDATA[{
   "keyToString": {
+    "MarketplacePluginsSearchHistory": "brack\ncopilot\ncopi\nicon\nmatt",
     "NonModalCommitCustomization.IsApplied": "true",
     "android.sdk.path": "/home/stilux/Android/Sdk",
     "ask.about.ctrl.y.shortcut.v2": "true",
@@ -10,7 +15,7 @@
     "fontSizeToResetEditor": "13.0",
     "input.method.disabler.muted": "true",
     "newly.installed.api.level": "33",
-    "previousColorScheme": "_@user_Darcula",
+    "previousColorScheme": "_@user_TokyoNightDark",
     "tasks.pass.word.conversion.enforced": "true",
     "updater.configure.platform.details.checkbox.selected": "true",
     "updater.configure.tools.details.checkbox.selected": "true"

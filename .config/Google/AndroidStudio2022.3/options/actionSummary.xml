@@ -1,13 +1,16 @@
 <application>
   <component name="ActionsLocalSummary">
+    <e n="EditorBackSpace">
+      <i c="11" l="1698057433916" />
+    </e>
     <e n="WelcomeScreen.RunAndroidSdkManager">
-      <i c="14" l="1696772374829" />
+      <i c="1" l="1698054308503" />
     </e>
     <e n="WelcomeScreen.RunDeviceManager">
-      <i c="11" l="1696773025778" />
+      <i c="1" l="1698057299026" />
     </e>
-    <e n="com.intellij.openapi.ui.impl.DialogWrapperPeerImpl$AnCancelAction">
-      <i c="4" l="1696743853055" />
+    <e n="com.intellij.openapi.wm.impl.welcomeScreen.WelcomeScreenComponentFactory$3">
+      <i c="2" l="1698057351091" />
     </e>
   </component>
 </application>

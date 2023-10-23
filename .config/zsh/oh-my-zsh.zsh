@@ -18,4 +18,4 @@ plugins+=(git)
 
 source "$ZSH"/oh-my-zsh.sh
 
-[[ -f ~/.config/zsh/.p10k.zsh ]] && source "$HOME"/.config/zsh/.p10k.zsh
+[[ -f ~/.config/zsh/.p10k.zsh ]] && source ~/.config/zsh/.p10k.zsh

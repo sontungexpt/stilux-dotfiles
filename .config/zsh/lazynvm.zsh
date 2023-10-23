@@ -3,7 +3,7 @@
 # * https://www.reddit.com/r/node/comments/4tg5jg/lazy_load_nvm_for_faster_shell_start/d5ib9fs
 # * http://broken-by.me/lazy-load-nvm/
 # * https://github.com/creationix/nvm/issues/781#issuecomment-236350067
-NVM_DIR="$HOME/.nvm"
+[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
 
 # Skip adding binaries if there is no node version installed yet
 if [ -d "$NVM_DIR"/versions/node ]; then
@@ -37,3 +37,11 @@ for cmd in "${NODE_GLOBALS[@]}"; do
 		eval "${cmd}() { unset -f ${cmd} &>/dev/null; [ -z \${NVM_LOADED+x} ] && load_nvm; ${cmd} \$@; }"
 	fi
 done
+
+if [[ "$NVM_LOAD_BEFORE_NEOVIM" == 1 ]] || [[ "$NVM_LOAD_BEFORE_NEOVIM" == true ]]; then
+	nvim() {
+		unset -f nvim &>/dev/null
+		[ -z "${NVM_LOADED+x}" ] && load_nvm
+		command nvim "$@"
+	}
+fi
