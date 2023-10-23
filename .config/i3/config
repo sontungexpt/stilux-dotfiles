@@ -306,7 +306,7 @@ bindsym --release $mod+g exec xdg-open https://github.com
 
 # Open UIT website and schedule
 bindsym --release $mod+u exec xdg-open https://courses.uit.edu.vn/
-bindsym --release $mod+shift+u exec xdg-open https://daa.uit.edu.vn/
+bindsym --release $mod+shift+u exec xdg-open https://data.uit.edu.vn/
 bindsym --release $mod+shift+t exec feh --auto-zoom --scale-down ~/Data/SonTung/uit-schedule.png
 
 # Emulator

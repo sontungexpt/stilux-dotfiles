@@ -5,7 +5,7 @@
 	<name>Open Terminal Here</name>
 	<submenu></submenu>
 	<unique-id>1672910977453083-1</unique-id>
-	<command>kitty %f</command>
+	<command>i3-sensible-terminal %f</command>
 	<description>Example for a custom action</description>
 	<range></range>
 	<patterns>*</patterns>
@@ -52,7 +52,7 @@
 	<other-files/>
 </action>
 <action>
-	<icon>preferences-desktop-wallpaper</icon>
+	<icon>insert-image</icon>
 	<name>Set background</name>
 	<submenu></submenu>
 	<unique-id>1676138041631139-1</unique-id>
@@ -126,5 +126,16 @@
 	<range>*</range>
 	<patterns>*.zip;*.rar;*.tar.bz;*.tar.bz2;*.tbz;*.tbz2;*.tar.gz;*.tgz;*.tar.xz;*.txz</patterns>
 	<other-files/>
+</action>
+<action>
+	<icon>neovim</icon>
+	<name>Open with Neovim</name>
+	<submenu></submenu>
+	<unique-id>1698069280814731-1</unique-id>
+	<command>i3-sensible-terminal -e nvim %f</command>
+	<description>Open with Neovim</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<text-files/>
 </action>
 </actions>

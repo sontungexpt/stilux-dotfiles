@@ -7,10 +7,34 @@
   <property name="last-show-hidden" type="bool" value="true"/>
   <property name="last-window-width" type="int" value="941"/>
   <property name="last-window-height" type="int" value="1022"/>
-  <property name="last-separator-position" type="int" value="170"/>
+  <property name="last-separator-position" type="int" value="292"/>
   <property name="misc-single-click" type="bool" value="false"/>
   <property name="misc-confirm-close-multiple-tabs" type="bool" value="false"/>
   <property name="last-details-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_38_PERCENT"/>
   <property name="last-details-view-visible-columns" type="string" value="THUNAR_COLUMN_DATE_MODIFIED,THUNAR_COLUMN_NAME,THUNAR_COLUMN_SIZE,THUNAR_COLUMN_TYPE"/>
-  <property name="last-details-view-column-widths" type="string" value="50,50,130,50,50,91,50,50,1308,50,50,67,50,127"/>
+  <property name="last-details-view-column-widths" type="string" value="50,50,129,50,50,91,50,50,1235,50,50,79,50,159"/>
+  <property name="misc-text-beside-icons" type="bool" value="false"/>
+  <property name="misc-thumbnail-draw-frames" type="bool" value="true"/>
+  <property name="misc-change-window-icon" type="bool" value="true"/>
+  <property name="misc-thumbnail-mode" type="string" value="THUNAR_THUMBNAIL_MODE_ONLY_LOCAL"/>
+  <property name="shortcuts-icon-size" type="string" value="THUNAR_ICON_SIZE_32"/>
+  <property name="tree-icon-size" type="string" value="THUNAR_ICON_SIZE_32"/>
+  <property name="misc-transfer-verify-file" type="string" value="THUNAR_VERIFY_FILE_MODE_NEVER"/>
+  <property name="misc-recursive-permissions" type="string" value="THUNAR_RECURSIVE_PERMISSIONS_ASK"/>
+  <property name="misc-image-preview-mode" type="string" value="THUNAR_IMAGE_PREVIEW_MODE_EMBEDDED"/>
+  <property name="misc-date-style" type="string" value="THUNAR_DATE_STYLE_SIMPLE"/>
+  <property name="misc-exec-shell-scripts-by-default" type="bool" value="true"/>
+  <property name="default-view" type="string" value="ThunarDetailsView"/>
+  <property name="last-side-pane" type="string" value="ThunarShortcutsPane"/>
+  <property name="last-image-preview-visible" type="bool" value="true"/>
+  <property name="last-statusbar-visible" type="bool" value="true"/>
+  <property name="last-menubar-visible" type="bool" value="true"/>
+  <property name="misc-middle-click-in-tab" type="bool" value="true"/>
+  <property name="misc-folders-first" type="bool" value="true"/>
+  <property name="misc-file-size-binary" type="bool" value="true"/>
+  <property name="misc-full-path-in-tab-title" type="bool" value="false"/>
+  <property name="last-location-bar" type="string" value="ThunarLocationEntry"/>
+  <property name="last-splitview-separator-position" type="int" value="801"/>
+  <property name="last-toolbar-item-order" type="string" value="0,12,10,13,11,1,2,3,4,15,5,6,14,16,17,18,19,20,21,9,8,7"/>
+  <property name="last-toolbar-visible-buttons" type="string" value="0,1,1,1,1,1,1,1,0,1,0,0,1,1,1,0,1,0,0,0,0,0"/>
 </channel>
