@@ -11,4 +11,4 @@ systems_dir="$(dirname "$curr_file_path")"
 stilux_dir="$(dirname "$systems_dir")"
 txts_dir="$stilux_dir/assets/txts"
 
-sudo cp "$txts_dir/captive-potals.txt" /etc/NetworkManager/dispatcher.d/90-open_captive_portal
+sudo cp "$txts_dir/captive-potals.txt" /etc/NetworkManager/dispatcher.d/90-open_captive_portal && echo "==> INFO: Create /etc/NetworkManager/dispatcher.d/90-open_captive_portal successfully"

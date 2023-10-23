@@ -19,20 +19,20 @@ mkdir -p ~/.config/
 rm -rf ~/.bashrc && cp "$dotfiles_dir/.bashrc" ~/
 
 if [ ! -f ~/.xinitrc ]; then
-	echo "xinitrc is not exist"
+	echo "==> WARNING: xinitrc is not exist"
 else
 	# I3
 	if cat <"$HOME/.xinitrc" | tr "," "\n" | grep -xqF "exec i3"; then
-		echo -e "\nExec I3 is already exist in .xinitrc"
+		echo "==> WARNING: exec I3 is already exist in .xinitrc"
 	else
-		echo -e "\n# I3" >>"$HOME/.xinitrc"
-		echo "exec i3" >>"$HOME/.xinitrc"
+		sudo echo -e "\n# I3" >>"$HOME/.xinitrc"
+		sudo echo -e "exec i3" >>"$HOME/.xinitrc"
 	fi
 
 	# betterlockscreen
 	echo -e "\n# Betterlockscreen" >"$HOME/.xinitrc"
-	echo "betterlockscreen -w dim" >>"$HOME/.xinitrc"
-	echo "source ~/.fehbg" >>"$HOME/.xinitrc"
+	echo -e "betterlockscreen -w dim" >>"$HOME/.xinitrc"
+	echo -e "source ~/.fehbg" >>"$HOME/.xinitrc"
 
 fi
 
@@ -43,7 +43,7 @@ cp -r "$configs_dir/background/" ~/.config/
 
 # Check if install betterlockscreen
 if [ ! -f /usr/bin/betterlockscreen ]; then
-	echo "betterlockscreen is not installed"
+	echo "==> WARNING: betterlockscreen is not installed"
 else
 	if [ -d ~/.config/betterlockscreen ]; then
 		rm -rf ~/.config/betterlockscreen
@@ -53,7 +53,7 @@ fi
 
 # Check if install calcurse
 if [ ! -f /usr/bin/calcurse ]; then
-	echo "calcurse is not installed"
+	echo "==> WARNING: calcurse is not installed"
 else
 	if [ -d ~/.config/calcurse ]; then
 		rm -rf ~/.config/calcurse
@@ -63,7 +63,7 @@ fi
 
 # Check if install dunst
 if [ ! -f /usr/bin/dunst ]; then
-	echo "dunst is not installed"
+	echo "==> WARNING: dunst is not installed"
 else
 	if [ -d ~/.config/dunst ]; then
 		rm -rf ~/.config/dunst
@@ -73,7 +73,7 @@ fi
 
 # Check if install feh
 if [ ! -f /usr/bin/feh ]; then
-	echo "feh is not installed"
+	echo "==> WARNING: feh is not installed"
 else
 	if [ -d ~/.config/feh ]; then
 		rm -rf ~/.config/feh
@@ -83,7 +83,7 @@ fi
 
 # Check if install i3
 if [ ! -f /usr/bin/i3 ]; then
-	echo "i3 is not installed"
+	echo "==> WARNING: i3 is not installed"
 else
 	if [ -d ~/.config/i3 ]; then
 		rm -rf ~/.config/i3
@@ -93,7 +93,7 @@ fi
 
 # Check if install kitty
 if [ ! -f /usr/bin/kitty ]; then
-	echo "kitty terminal is not installed"
+	echo "==> WARNING: kitty terminal is not installed"
 else
 	if [ -d ~/.config/kitty ]; then
 		rm -rf ~/.config/kitty
@@ -102,7 +102,7 @@ else
 fi
 
 if [ ! -f /usr/bin/alacritty ]; then
-	echo "alacritty terminal is not installed"
+	echo "==> WARNING: alacritty terminal is not installed"
 else
 	if [ -d ~/.config/alacritty ]; then
 		rm -rf ~/.config/alacritty
@@ -112,7 +112,7 @@ fi
 
 # Check if install lf file manager
 if [ ! -f /usr/bin/lf ]; then
-	echo "lf file manager is not installed"
+	echo "==> WARNING: lf file manager is not installed"
 else
 	if [ -d ~/.config/lf ]; then
 		rm -rf ~/.config/lf
@@ -122,7 +122,7 @@ fi
 
 # Check if install neofetch
 if [ ! -f /usr/bin/neofetch ]; then
-	echo "neofetch is not installed"
+	echo "==> WARNING: neofetch is not installed"
 else
 	if [ -d ~/.config/neofetch ]; then
 		rm -rf ~/.config/neofetch
@@ -132,7 +132,7 @@ fi
 
 # Check if install neovim
 if [ ! -f /usr/bin/nvim ]; then
-	echo "neovim is not installed"
+	echo "==> WARNING: neovim is not installed"
 else
 	if [ -d ~/.config/nvim ]; then
 		rm -rf ~/.config/nvim
@@ -143,7 +143,7 @@ fi
 
 # Check if install picom
 if [ ! -f /usr/bin/picom ]; then
-	echo "picom is not installed"
+	echo "==> WARNING: picom is not installed"
 else
 	if [ -d ~/.config/picom ]; then
 		rm -rf ~/.config/picom
@@ -153,7 +153,7 @@ fi
 
 # Check if install polybar
 if [ ! -f /usr/bin/polybar ]; then
-	echo "polybar is not installed"
+	echo "==> WARNING: polybar is not installed"
 else
 	if [ -d ~/.config/polybar ]; then
 		rm -rf ~/.config/polybar
@@ -163,7 +163,7 @@ fi
 
 # Check if install rofi
 if [ ! -f /usr/bin/rofi ]; then
-	echo "rofi is not installed"
+	echo "==> WARNING: rofi is not installed"
 else
 	if [ -d ~/.config/rofi ]; then
 		rm -rf ~/.config/rofi
@@ -173,7 +173,7 @@ fi
 
 # Check if install thunar
 if [ ! -f /usr/bin/thunar ]; then
-	echo "thunar is not installed"
+	echo "==> WARNING: thunar is not installed"
 else
 	if [ -d ~/.config/Thunar ]; then
 		rm -rf ~/.config/Thunar

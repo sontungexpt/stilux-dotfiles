@@ -199,9 +199,7 @@ git clone https://github.com/stronk-dev/Tokyo-Night-Linux.git && sudo cp -r ./To
 
 # Icons Themes
 mkdir -p ~/.icons
-git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git && cd WhiteSur-icon-theme && ./install.sh
-cd .. || exit 1
-rm -rf WhiteSur-icon-theme
+git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git && ./WhiteSur-icon-theme/install.sh && rm -rf WhiteSur-icon-theme
 
 # Cursor Themes
-yay -S catppuccin-cursors-mocha
+# yay -S catppuccin-cursors-mocha
