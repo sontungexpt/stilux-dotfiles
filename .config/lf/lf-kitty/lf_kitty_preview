@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+file=$1
+w=$2
+h=$3
+x=$4
+y=$5
+
+preview() {
+	kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$1" </dev/null >/dev/tty
+}
+
+[ -z "$LF_KITTY_CACHE" ] && export LF_KITTY_CACHE=${XDG_CACHE_HOME:-$HOME/.cache}/lf/lf-kitty
+[ ! -d "$LF_KITTY_CACHE" ] && mkdir -p "$LF_KITTY_CACHE"
+CACHE="$LF_KITTY_CACHE/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' \
+	-- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
+CACHE_PNG="$CACHE.png"
+
+file="$1"
+shift
+case "$(basename "$file" | tr '[A-Z]' '[a-z]')" in
+*.tar*) tar tf "$file" ;;
+*.zip) unzip -l "$file" ;;
+*.rar) unrar l "$file" ;;
+*.7z) 7z l "$file" ;;
+*.avi | *.mp4 | *.mkv)
+	ffmpeg -y -i "$file" -vframes 1 "$CACHE_PNG"
+	preview "$CACHE_PNG"
+	;;
+*.pdf)
+	pdftoppm -jpeg -f 1 -singlefile "$file" "$CACHE" >/dev/null
+	preview "$CACHE.jpg"
+	;;
+*.jpg | *.jpeg | *.png | *.bmp)
+	preview "$file"
+	;;
+*.ttf | *.otf | *.woff)
+	fontpreview -i "$file" -o "$CACHE_PNG"
+	preview "$CACHE_PNG"
+	;;
+*.svg)
+	convert "$file" "$CACHE_PNG"
+	preview "$CACHE_PNG"
+	;;
+*) lf_bat_preview "$file" ;;
+esac
+return 127 # nonzero retcode required for lf previews to reload

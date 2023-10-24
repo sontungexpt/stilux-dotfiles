@@ -1,7 +1,7 @@
 #!/bin/bash
 
 alias ls="ls --color=auto"
-alias lf="lfrun"
+# alias lf="lfrun"
 
 # ldoc
 alias ldoc='ldoc-custom default'
