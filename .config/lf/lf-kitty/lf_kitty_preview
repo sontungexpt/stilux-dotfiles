@@ -1,46 +1,96 @@
 #!/usr/bin/env bash
-file=$1
+file_path=$1
 w=$2
 h=$3
 x=$4
 y=$5
+[ -z "$CACHE_DIR" ] && export CACHE_DIR=${XDG_CACHE_HOME:-$HOME/.cache}/lf/lf-kitty
+[ ! -d "$CACHE_DIR" ] && mkdir -p "$CACHE_DIR"
+CACHE="$CACHE_DIR/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
+CACHE_PNG="$CACHE.png"
 
 preview() {
 	kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$1" </dev/null >/dev/tty
 }
 
-[ -z "$LF_KITTY_CACHE" ] && export LF_KITTY_CACHE=${XDG_CACHE_HOME:-$HOME/.cache}/lf/lf-kitty
-[ ! -d "$LF_KITTY_CACHE" ] && mkdir -p "$LF_KITTY_CACHE"
-CACHE="$LF_KITTY_CACHE/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' \
-	-- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
-CACHE_PNG="$CACHE.png"
+batorcat() {
+	if command -v bat >/dev/null 2>&1; then
+		bat --color=always --style=plain --pager=never "$1" "$@"
+	else
+		cat "$1"
+	fi
+}
 
-file="$1"
+glowormdcatorcat() {
+	if command -v glow >/dev/null 2>&1; then
+		glow "$1"
+	elif command -v mdcat >/dev/null 2>&1; then
+		mdcat "$1"
+	else
+		cat "$1"
+	fi
+}
+
+preview_unsupported() {
+	case $(file --mime-type "$1" -bL) in
+	text/*) batorcat "$1" ;;
+	application/json) batorcat "$1" --language=json ;;
+	application/javascript) batorcat "$1" --language=js ;;
+	application/x-ndjson) batorcat "$1" --language=json ;;
+	inode/x-empty) batorcat "$1" ;;
+	application/octet-stream) batorcat "$1" ;;
+	*) file -Lb "$1" ;;
+	esac
+}
+
 shift
-case "$(basename "$file" | tr '[A-Z]' '[a-z]')" in
-*.tar*) tar tf "$file" ;;
-*.zip) unzip -l "$file" ;;
-*.rar) unrar l "$file" ;;
-*.7z) 7z l "$file" ;;
-*.avi | *.mp4 | *.mkv)
-	[ ! -f "$CACHE_PNG" ] && ffmpeg -y -i "$file" -vframes 1 "$CACHE_PNG"
+case "$(basename "$file_path" | tr '[A-Z]' '[a-z]')" in
+*.tgz | *.tar.gz) tar tzf "$file_path" ;;
+*.tar.bz2 | *.tbz2) tar tjf "$file_path" ;;
+*.tar*) tar tf "$file_path" ;;
+*.zip | *.jar | *.war | *.ear | *.oxt) unzip -l "$file_path" ;;
+*.rar) unrar l "$file_path" ;;
+*.7z) 7z l "$file_path" ;;
+*.md) glowormdcatorcat "$file_path" ;;
+*.[1-8]) man "$file_path" | col -b ;;
+*.o) nm "$file_path" ;;
+*.torrent) transmission-show "$file_path" ;;
+*.iso) iso-info --no-header -l "$file_path" ;;
+*.odt | *.ods | *.odp | *.sxw) odt2txt "$file_path" ;;
+*.doc) catdoc "$file_path" ;;
+*.docx) docx2txt "$file_path" ;;
+*.xml | *.html) w3m -dump "$file_path" ;;
+*.xls | *.xlsx)
+	ssconvert --export-type=Gnumeric_stf:stf_csv "$file_path" "fd://1" | batorcat --language=csv
+	;;
+*.wav | *.mp3 | *.flac | *.m4a | *.wma | *.ape | *.ac3 | *.og[agx] | *.spx | *.opus | *.as[fx] | *.mka)
+	exiftool "$file_path"
+	;;
+*.avi | *.mp4 | *.wmv | *.dat | *.3gp | *.ogv | *.mkv | *.mpg | *.mpeg | *.vob | *.fl[icv] | *.m2v | *.mov | *.webm | *.ts | *.mts | *.m4v | *.r[am] | *.qt | *.divx)
+	[ ! -f "$CACHE_PNG" ] && ffmpeg -y -i "$file_path" -vframes 1 "$CACHE_PNG" >/dev/null 2>&1
 	preview "$CACHE_PNG"
 	;;
+*.ino) batorcat --language=cpp "$file_path" ;;
+*.epub)
+	[ ! -f "$CACHE" ] && epub-thumbnailer "$file_path" "$CACHE" 1024
+	preview "$CACHE"
+	;;
 *.pdf)
-	[ ! -f "$CACHE.jpg" ] && pdftoppm -jpeg -f 1 -singlefile "$file" "$CACHE" >/dev/null
+	[ ! -f "$CACHE.jpg" ] && pdftoppm -jpeg -f 1 -singlefile "$file_path" "$CACHE" >/dev/null 2>&1
 	preview "$CACHE.jpg"
 	;;
-*.jpg | *.jpeg | *.png | *.bmp)
-	preview "$file"
+*.bmp | *.jpg | *.jpeg | *.png | *.xpm | *.webp | *.tiff | *.gif | *.jfif | *.ico)
+	preview "$file_path"
 	;;
 *.ttf | *.otf | *.woff)
-	[ ! -f "$CACHE_PNG" ] && fontpreview -i "$file" -o "$CACHE_PNG"
+	[ ! -f "$CACHE_PNG" ] && fontpreview -i "$file_path" -o "$CACHE_PNG" >/dev/null 2>&1
 	preview "$CACHE_PNG"
 	;;
 *.svg)
-	[ ! -f "$CACHE_PNG" ] && convert "$file" "$CACHE_PNG"
+	[ ! -f "$CACHE_PNG" ] && convert "$file_path" "$CACHE_PNG" >/dev/null 2>&1
 	preview "$CACHE_PNG"
 	;;
-*) lf_bat_preview "$file" ;;
+*) preview_unsupported "$file_path" ;;
+
 esac
 return 127 # nonzero retcode required for lf previews to reload
