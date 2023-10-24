@@ -23,22 +23,22 @@ case "$(basename "$file" | tr '[A-Z]' '[a-z]')" in
 *.rar) unrar l "$file" ;;
 *.7z) 7z l "$file" ;;
 *.avi | *.mp4 | *.mkv)
-	ffmpeg -y -i "$file" -vframes 1 "$CACHE_PNG"
+	[ ! -f "$CACHE_PNG" ] && ffmpeg -y -i "$file" -vframes 1 "$CACHE_PNG"
 	preview "$CACHE_PNG"
 	;;
 *.pdf)
-	pdftoppm -jpeg -f 1 -singlefile "$file" "$CACHE" >/dev/null
+	[ ! -f "$CACHE.jpg" ] && pdftoppm -jpeg -f 1 -singlefile "$file" "$CACHE" >/dev/null
 	preview "$CACHE.jpg"
 	;;
 *.jpg | *.jpeg | *.png | *.bmp)
 	preview "$file"
 	;;
 *.ttf | *.otf | *.woff)
-	fontpreview -i "$file" -o "$CACHE_PNG"
+	[ ! -f "$CACHE_PNG" ] && fontpreview -i "$file" -o "$CACHE_PNG"
 	preview "$CACHE_PNG"
 	;;
 *.svg)
-	convert "$file" "$CACHE_PNG"
+	[ ! -f "$CACHE_PNG" ] && convert "$file" "$CACHE_PNG"
 	preview "$CACHE_PNG"
 	;;
 *) lf_bat_preview "$file" ;;
