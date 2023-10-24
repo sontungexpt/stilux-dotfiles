@@ -1,5 +1,5 @@
 #!/bin/bash
-# This scripts is wtitten by Tran Vo Son Tung
+# This scripts is wtitten by Tran Vo Son Tongue
 # This script is used to change the wallpaper of i3wm
 # Dependencies: feh, i3wm
 # Usage: setwallpaper <path_to_image>
@@ -13,7 +13,7 @@ YELLOW='\033[1;33m'
 
 display_help() {
 	echo -e "${BLUE}INFORMATION:${NO}"
-	echo -e "  This script is written by Tran Vo Son Tung"
+	echo -e "  This script is written by Tran Vo Son Tongue"
 	echo -e "  This script is used to change the wallpaper of i3wm"
 	echo -e "  Dependencies: feh, i3wm"
 
@@ -40,7 +40,6 @@ introduce_help() {
 display_error() {
 	echo -e "${RED}ERROR:${NO} $1"
 	introduce_help
-	exit 1
 }
 
 # Check if install feh
@@ -67,25 +66,30 @@ if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
 fi
 
 WALLPAPER_STORAGE_DIR="$HOME/.config/wallpaper"
+WALLPAPER="$WALLPAPER_STORAGE_DIR/wallpaper.png"
+RESOLUTION="1920x1080"
+if command -v xdpyinfo >/dev/null 2>&1; then
+	RESOLUTION=$(xdpyinfo | grep dimensions | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/')
+fi
 
-if [[ "$#" -eq 1 ]]; then
-	if cat "$HOME/.config/i3/config" | tr "," "\n" | grep -xqF "set \$wallpaper ~/.config/wallpaper/wallpaper.jpg"; then
-		# Check if the path is correct
-		if [[ ! -f "$1" ]]; then
-			display_error "Invalid path"
-		fi
-		# Make sure the wallpaper directory exists
-		mkdir -p "$WALLPAPER_STORAGE_DIR"
-		cp "$1" "$WALLPAPER_STORAGE_DIR/wallpaper.jpg" && i3 restart && [ -x "$(command -v dunstify)" ] && dunstify "Wallpaper changed" -i "$1" -a "setwallpaper-script"
+if cat "$HOME/.config/i3/config" | tr "," "\n" | grep -xqF "set \$wallpaper ~/.config/wallpaper/wallpaper.png"; then
+	# Check if the path is correct
+	if [[ ! -f "$1" ]]; then
+		display_error "Invalid path"
+		exit 1
+	fi
+	# Make sure the wallpaper directory exists
+	mkdir -p "$WALLPAPER_STORAGE_DIR"
+	if command -v convert >/dev/null 2>&1; then
+		convert "$1" -resize "$RESOLUTION"^ -gravity center -extent "$RESOLUTION" "$WALLPAPER" >/dev/null 2>&1 && i3 restart && [ -x "$(command -v dunstify)" ] && dunstify "Wallpaper changed" -i "$1" -a "setwallpaper-script"
 	else
-		echo -e "${RED} ERROR: ${NO} Wallpaper is not set in i3 config"
-		echo -e "${GREEN} HINTS: ${NO}"
-		echo "Please add two following lines to your i3 config file"
-		echo "set \$wallpaper ~/.config/wallpaper/wallpaper.jpg"
-		echo "exec_always feh --bg-fill \$wallpaper"
-		echo "Remove your other lines that you use to set wallpaper in your i3 config file to use this scripts"
-		exit 0
+		cp "$1" "$WALLPAPER" && i3 restart && [ -x "$(command -v dunstify)" ] && dunstify "Wallpaper changed" -i "$1" -a "setwallpaper-script"
 	fi
 else
-	display_error "Invalid number of arguments"
+	echo -e "${RED} ERROR: ${NO} Wallpaper is not set in i3 config"
+	echo -e "${GREEN} HINTS: ${NO}"
+	echo "Please add two following lines to your i3 config file"
+	echo "set \$wallpaper ~/.config/wallpaper/wallpaper.png"
+	echo "exec_always feh --bg-fill \$wallpaper"
+	echo "Remove your other lines that you use to set wallpaper in your i3 config file to use this scripts"
 fi

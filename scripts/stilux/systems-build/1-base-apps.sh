@@ -40,6 +40,14 @@ sudo sed -i -e "s/^#Color/Color/g" "/etc/pacman.conf"
 # backlight
 eval "$PACMAN light"
 
+# # Lock screen
+# eval "$YAY betterlockscreen"
+# # Check if installed betterlockscreen, enable service
+# if [ -x "$(command -v betterlockscreen)" ]; then
+# 	sudo systemctl enable "betterlockscreen@$USER"
+# fi
+eval "$PACMAN i3lock imagemagick"
+
 # UI
 eval "$PACMAN polybar picom rofi xorg-xrandr xcolor"
 
@@ -80,13 +88,6 @@ sudo sed -i -e "s/^webkit_theme\s*=\s*\(.*\)/webkit_theme = glorious/g" "/etc/li
 sudo sed -i -e "s/^debug_mode\s*=\s*\(.*\)/debug_mode = true/g" "/etc/lightdm/lightdm-webkit2-greeter.conf"
 # Ask to reboot
 echo ":: WARNING: You should reboot your system to apply changes."
-
-# Lock screen
-eval "$YAY betterlockscreen"
-# Check if installed betterlockscreen, enable service
-if [ -x "$(command -v betterlockscreen)" ]; then
-	sudo systemctl enable "betterlockscreen@$USER"
-fi
 
 # Sound
 eval "$PACMAN alsa-utils alsa-firmware alsa-ucm-conf sof-firmware"
