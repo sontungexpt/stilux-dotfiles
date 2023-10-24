@@ -1,7 +1,7 @@
 #!/bin/bash
 
 alias ls="ls --color=auto"
-# alias lf="lfrun"
+alias lf="export PATH=${XDG_CONFIG_HOME:-$HOME/.config}/lf/bin:$PATH;lf $@"
 
 # ldoc
 alias ldoc='ldoc-custom default'
