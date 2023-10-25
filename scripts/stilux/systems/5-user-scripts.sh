@@ -6,13 +6,8 @@ systems_dir="$(dirname "$curr_file_path")"
 stilux_dir="$(dirname "$systems_dir")"
 users_dir="$stilux_dir/users"
 
-file_paths=$(find "$users_dir" -type f)
+file_paths=$(find "$users_dir" -type f -not \( -name "*.unchecked" -o -name "*.old" \))
 
 for path in $file_paths; do
-	filename=$(basename "$path")
-	extension="${filename##*.}"
-	if [ "$extension" = "unchecked" ]; then
-		continue
-	fi
 	sudo cp "$path" /usr/bin/
 done
