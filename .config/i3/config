@@ -4,9 +4,8 @@
 # Mod5 (e.g. "Alt_Gr" on german QWERTZ layout)
 
 set $mod Mod4
-# set $wallpaper $HOME/Pictures/Wallpapers/wallpaper1.jpg
-set $wallpaper $HOME/Pictures/Wallpapers/wallpaper3.jpg
-set $altwallpaper $HOME/.config/wallpaper/wallpaper.png
+set $wallpaper $HOME/Pictures/Wallpapers/wallpaper1.jpg
+set $altwallpaper ${XDG_CONFIG_HOME:-$HOME/.config}/wallpaper/wallpaper.png
 set $lockscreen ${XDG_DATA_HOME:-$HOME/.local/share}/$USER/wallpaper/lockscreen.png
 
 # Font for window titles. Will also be used by the bar unless a different font

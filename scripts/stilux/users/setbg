@@ -4,10 +4,14 @@ NO='\033[0m' # No Color
 BLUE='\033[1;34m'
 RED='\033[1;31m'
 
+DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/$USER/wallpaper"
+LOCKSCREEN="$DATA_DIR/lockscreen.png"
+
 display_help() {
 	echo -e "${BLUE}INFORMATION:${NO}"
 	echo -e "  This script is written by TranVoSonTung"
 	echo -e "  This script is used to set the wallpaper of i3wm"
+	echo -e "  Add \`bindsym \$mod+x exec i3lock -e -t -i  $LOCKSCREEN\` to ~/.config/i3/config' for lockscreen background"
 	echo -e "  Dependencies: feh i3"
 
 	echo -e "\n${BLUE}USAGE:${NO}"
@@ -49,11 +53,9 @@ for i in "${DEPENDENCIES[@]}"; do
 	fi
 done
 
-DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/$USER/wallpaper"
-[ ! -d "$DATA_DIR" ] && mkdir -p "$DATA_DIR"
-LOCKSCREEN="$DATA_DIR/lockscreen.png"
 file_path="$1"
 nofehbg="$2"
+[ ! -d "$DATA_DIR" ] && mkdir -p "$DATA_DIR"
 
 set_bg_with_feh() {
 	feh "$nofehbg" --bg-fill "$1" && [ -x "$(command -v dunstify)" ] && dunstify "Wallpaper changed to" -i "$1" -a "setbg-script"
