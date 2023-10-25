@@ -54,20 +54,29 @@ for i in "${DEPENDENCIES[@]}"; do
 done
 
 file_path="$1"
-nofehbg="$2"
+shift
+fehopts="$@"
+SCREEN_RESOLUTION=$(xdpyinfo | grep dimensions | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/')
 [ ! -d "$DATA_DIR" ] && mkdir -p "$DATA_DIR"
 
 set_bg_with_feh() {
-	feh "$nofehbg" --bg-fill "$1" && [ -x "$(command -v dunstify)" ] && dunstify "Wallpaper changed to" -i "$1" -a "setbg-script"
+	if [[ $2 == "-s" ]] || [[ $2 == "--silent" ]]; then
+		feh --bg-fill "$1" "$fehopts"
+	else
+		feh --bg-fill "$1" "$fehopts" && [ -x "$(command -v dunstify)" ] && dunstify "Wallpaper changed to" -i "$1" -a "setbg-script"
+	fi
+
 }
 
 notify_screenshot_mirror() {
 	[ -x "$(command -v dunstify)" ] && dunstify "Mirror lockscreen image with wallpaper. Please add \"bindsym \$mod+x exec i3lock -e -t -i  $LOCKSCREEN\" to ~/.config/i3/config' " -i "$file_path" -a "setbg-lockscreen-script"
 }
 
-if [[ -f "$file_path" ]]; then
-	SCREEN_RESOLUTION=$(xdpyinfo | grep dimensions | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/')
+convert_image() {
+	convert "$1" -resize "$SCREEN_RESOLUTION"^ -gravity center -extent "$SCREEN_RESOLUTION" "$2" >/dev/null 2>&1
+}
 
+if [[ -f "$file_path" ]]; then
 	case "$(basename "$file_path" | tr '[:upper:]' '[:lower:]')" in
 	*.jpg | *.jpeg | *.png | *.tiff | *.gif | *.bmp | *.pnm | *.tga | *.xpm)
 
@@ -81,10 +90,6 @@ if [[ -f "$file_path" ]]; then
 
 			cache() {
 				find "$DATA_DIR" -maxdepth 1 -type f -name "*.png" -not -wholename "$LOCKSCREEN" -exec mv {} "$CACHE_DIR" \;
-			}
-
-			convert_image() {
-				convert "$1" -resize "$SCREEN_RESOLUTION"^ -gravity center -extent "$SCREEN_RESOLUTION" "$2" >/dev/null 2>&1
 			}
 
 			if [ ! -f "$WALLPAPER" ]; then # wallpaper is changing
@@ -146,6 +151,17 @@ if [[ -f "$file_path" ]]; then
 	esac
 else
 	CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/wallpaper"
-	alt_image=$(find "$CONFIG_DIR" "$DATA_DIR" -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.gif" \) -not -name "*lockscreen*" -print -quit)
-	[[ -f "$alt_image" ]] && set_bg_with_feh "$alt_image" && cp "$alt_image" "$LOCKSCREEN" && notify_screenshot_mirror
+	alt_image=$(find "$DATA_DIR" "$CONFIG_DIR" -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.gif" \) -not -name "*lockscreen*" -print -quit)
+	if [ -f "$alt_image" ]; then
+		set_bg_with_feh "$alt_image" -s
+		if command -v i3lock >/dev/null 2>&1; then
+			if [ ! -f "$LOCKSCREEN" ]; then
+				if command -v convert >/dev/null 2>&1; then
+					convert_image "$alt_image" "$LOCKSCREEN"
+				else
+					cp "$alt_image" "$LOCKSCREEN"
+				fi
+			fi
+		fi
+	fi
 fi
