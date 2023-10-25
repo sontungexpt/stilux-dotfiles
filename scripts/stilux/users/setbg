@@ -11,11 +11,11 @@ display_help() {
 	echo -e "${BLUE}INFORMATION:${NO}"
 	echo -e "  This script is written by TranVoSonTung"
 	echo -e "  This script is used to set the wallpaper of i3wm"
-	echo -e "  Add \`bindsym \$mod+x exec i3lock -e -t -i  $LOCKSCREEN\` to ~/.config/i3/config' for lockscreen background"
 	echo -e "  Dependencies: feh i3"
 
 	echo -e "\n${BLUE}USAGE:${NO}"
 	echo -e "  setbg <path_to_image>"
+	echo -e "  Add \`bindsym \$mod+x exec i3lock -e -t -i  $LOCKSCREEN\` to ~/.config/i3/config' for lockscreen background"
 
 	echo -e "\n${BLUE}OPTIONS:${NO}"
 	echo -e "  -h, --help         show help"
