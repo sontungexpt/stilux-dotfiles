@@ -44,7 +44,7 @@ preview_unsupported() {
 }
 
 shift
-case "$(basename "$file_path" | tr '[A-Z]' '[a-z]')" in
+case "$(basename "$file_path" | tr '[:upper:]' '[:lower:]')" in
 *.tgz | *.tar.gz) tar tzf "$file_path" ;;
 *.tar.bz2 | *.tbz2) tar tjf "$file_path" ;;
 *.tar*) tar tf "$file_path" ;;

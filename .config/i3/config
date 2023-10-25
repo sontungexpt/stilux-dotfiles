@@ -4,7 +4,10 @@
 # Mod5 (e.g. "Alt_Gr" on german QWERTZ layout)
 
 set $mod Mod4
-set $wallpaper ~/.config/wallpaper/wallpaper.png
+# set $wallpaper $HOME/Pictures/Wallpapers/wallpaper1.jpg
+set $wallpaper $HOME/Pictures/Wallpapers/wallpaper3.jpg
+set $altwallpaper $HOME/.config/wallpaper/wallpaper.png
+set $lockscreen ${XDG_DATA_HOME:-$HOME/.local/share}/$USER/wallpaper/lockscreen.png
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -225,7 +228,8 @@ exec_always setxkbmap us
 exec_always xrandr --output eDP1 --mode 1920x1080
 
 # Display Wallpaper
-exec_always feh --bg-fill $wallpaper
+exec --no-startup-id which setbg >> /dev/null 2>&1 && exec setbg $wallpaper
+exec_always --no-startup-id which setbg >> /dev/null 2>&1 || exec_always --no-startup-id feh --bg-fill $wallpaper
 
 # Diasable title-bar
 default_border pixel 1
@@ -253,7 +257,7 @@ exec_always --no-startup-id dunst
 # # Some programs can be stubborn since they open a splash window before opening
 # for_window [class="discord"] move to workspace number 5
 # for_window [class="Spotify"] move to workspace number 6
-# for_window [class="Gimp-2.10"] move to workspace number 7
+#  for_window [class="Gimp-2.10"] move to workspace number 7
 # for_window [class="Gimp"] move to workspace number 7
 
 
@@ -268,7 +272,8 @@ bindsym --release Print exec screenshot full
 bindsym --release $mod+Shift+f exec flameshot gui
 
 # Lock screen
-bindsym $mod+x exec i3lock -e -t -i $wallpaper
+# bindsym $mod+x exec i3lock -e -t -i $wallpaper
+bindsym $mod+x exec i3lock -e -t -i  $lockscreen
 
 # Open edge browser
 # bindsym $mod+b exec microsoft-edge-stable

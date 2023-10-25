@@ -98,6 +98,11 @@ cmd create_script_form %{{
 	    echo "PASS=\"\"" >> "$path"
 	    echo -e "\n# Use eval \"\$SUDO_COMMAND <Your command>\" to exec the command with no password" >> "$path"
 	    echo "SUDO_COMMAND=\"echo \\\"\$PASS\\\" | sudo -S -k\"" >> "$path"
+	    echo "" >> "$path"
+	    echo "NO=\"\\033[0m\"" >> "$path"
+	    echo "RED=\"\\033[1;31m\"" >> "$path"
+	    echo "GREEN=\"\\033[1;32m\"" >> "$path"
+	    echo "YELLOW=\"\\033[1;33m\"" >> "$path"
 	    echo -e "\nif [ \"\$FLAG\" = \"\$1\" ] && [ \"\$PASS\" != \"\" ]; then" >> "$path"
 	    echo "	# The scripts when  use flag \"--nopass\"" >> "$path"
 	    echo "	echo \"\$2\"" >> "$path"
@@ -106,7 +111,7 @@ cmd create_script_form %{{
 	    echo "	echo \"\$2\"" >> "$path"
 	    echo "fi" >> "$path"
 
-      kitty "$EDITOR" "$path"
+      kitty -e "$EDITOR" "$path"
     fi
   }
   printf "File Name: "
@@ -189,7 +194,13 @@ cmd open ${{
 }}
 
 # Set Background Command
-cmd setwallpaper %cp "$f" ~/.config/wallpaper/wallpaper.jpg && i3 restart
+cmd setwallpaper ${{
+  if command -v setbg &>/dev/null; then
+    setbg "$f"
+  else
+    cp "$f" ~/.config/wallpaper/wallpaper.jpg && i3 restart && cp "$f" ${XDG_DATA_HOME:-$HOME/.local/share}/$USER/wallpaper/lockscreen.png
+  fi
+}}
 
 
 # Change The Avatar Command

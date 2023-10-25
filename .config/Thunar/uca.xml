@@ -52,11 +52,11 @@
 	<other-files/>
 </action>
 <action>
-	<icon>insert-image</icon>
+	<icon>preferences-desktop-wallpaper</icon>
 	<name>Set background</name>
 	<submenu></submenu>
 	<unique-id>1676138041631139-1</unique-id>
-	<command>setwallpaper %f</command>
+	<command>setbg %f</command>
 	<description>Change the wallpaper of i3 window manager</description>
 	<range>*</range>
 	<patterns>*</patterns>
