@@ -56,7 +56,7 @@
 	<name>Set background</name>
 	<submenu></submenu>
 	<unique-id>1676138041631139-1</unique-id>
-	<command>setbg %f</command>
+	<command>setbg %f --no-fehbg</command>
 	<description>Change the wallpaper of i3 window manager</description>
 	<range>*</range>
 	<patterns>*</patterns>

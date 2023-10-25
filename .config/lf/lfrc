@@ -196,7 +196,7 @@ cmd open ${{
 # Set Background Command
 cmd setwallpaper ${{
   if command -v setbg &>/dev/null; then
-    setbg "$f"
+    setbg "$f" --no-fehbg
   else
     cp "$f" ~/.config/wallpaper/wallpaper.jpg && i3 restart && cp "$f" ${XDG_DATA_HOME:-$HOME/.local/share}/$USER/wallpaper/lockscreen.png
   fi

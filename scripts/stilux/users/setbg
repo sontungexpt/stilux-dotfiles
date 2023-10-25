@@ -53,13 +53,14 @@ DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/$USER/wallpaper"
 [ ! -d "$DATA_DIR" ] && mkdir -p "$DATA_DIR"
 LOCKSCREEN="$DATA_DIR/lockscreen.png"
 file_path="$1"
+nofehbg="$2"
 
 set_bg_with_feh() {
-	feh --bg-fill "$1" && dunstify "Wallpaper changed to" -i "$1" -a "setbg-script"
+	feh "$nofehbg" --bg-fill "$1" && [ -x "$(command -v dunstify)" ] && dunstify "Wallpaper changed to" -i "$1" -a "setbg-script"
 }
 
 notify_screenshot_mirror() {
-	dunstify "Mirror lockscreen image with wallpaper. Please add \"bindsym \$mod+x exec i3lock -e -t -i  $LOCKSCREEN\" to ~/.config/i3/config' " -i "$file_path" -a "setbg-lockscreen-script"
+	[ -x "$(command -v dunstify)" ] && dunstify "Mirror lockscreen image with wallpaper. Please add \"bindsym \$mod+x exec i3lock -e -t -i  $LOCKSCREEN\" to ~/.config/i3/config' " -i "$file_path" -a "setbg-lockscreen-script"
 }
 
 if [[ -f "$file_path" ]]; then
@@ -77,7 +78,11 @@ if [[ -f "$file_path" ]]; then
 			WALLPAPER_CACHE="$CACHE_DIR/$HASH.png"
 
 			cache() {
-				find "$DATA_DIR" -maxdepth 1 -type f -not -wholename "$LOCKSCREEN" -exec mv {} "$CACHE_DIR" \;
+				find "$DATA_DIR" -maxdepth 1 -type f -name "*.png" -not -wholename "$LOCKSCREEN" -exec mv {} "$CACHE_DIR" \;
+			}
+
+			convert_image() {
+				convert "$1" -resize "$SCREEN_RESOLUTION"^ -gravity center -extent "$SCREEN_RESOLUTION" "$2" >/dev/null 2>&1
 			}
 
 			if [ ! -f "$WALLPAPER" ]; then # wallpaper is changing
@@ -106,12 +111,12 @@ if [[ -f "$file_path" ]]; then
 						cache
 						cp "$file_path" "$WALLPAPER"
 						if command -v i3lock >/dev/null 2>&1; then
-							convert "$file_path" -resize "$SCREEN_RESOLUTION"^ -gravity center -extent "$SCREEN_RESOLUTION" "$LOCKSCREEN" >/dev/null 2>&1 && i3 restart && [ -x "$(command -v dunstify)" ] && notify_screenshot_mirror
+							convert_image "$file_path" "$LOCKSCREEN" && notify_screenshot_mirror
 						fi
 					else
 						# small image so it will be broken when set wallpaper
 						cache
-						convert "$file_path" -resize "$SCREEN_RESOLUTION"^ -gravity center -extent "$SCREEN_RESOLUTION" "$WALLPAPER" >/dev/null 2>&1 && i3 restart && [ -x "$(command -v dunstify)" ]
+						convert_image "$file_path" "$WALLPAPER"
 						set_bg_with_feh "$WALLPAPER"
 						if command -v i3lock >/dev/null 2>&1; then
 							cp "$WALLPAPER" "$LOCKSCREEN" && notify_screenshot_mirror
