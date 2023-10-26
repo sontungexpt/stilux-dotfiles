@@ -18,7 +18,21 @@ display_help() {
 
 	echo -e "\n${BLUE}USAGE:${NO}"
 	echo -e "  setbg <path_to_image>"
-	echo -e "  Add \`bindsym \$mod+x exec i3lock -e -t -i  $LOCKSCREEN\` to ~/.config/i3/config' for lockscreen background"
+
+	message='''
+  # Set lockscreen
+  set $lockscreen ${XDG_DATA_HOME:-$HOME/.local/share}/$USER/wallpaper/lockscreen.png
+  exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -e -t -i $lockscreen --nofork
+
+  # Lockscreen keybinding
+  bindsym $mod+x exec i3lock -e -t -i  $lockscreen
+
+  # Display Wallpaper
+  exec --no-startup-id which setbg >> /dev/null 2>&1 && exec setbg "default" --no-fehbg &
+  '''
+	echo -e "\n${BLUE}SETUP:${NO}"
+	echo -e "  Add all lines below to ~/.config/i3/config:"
+	echo -e "$message"
 
 	echo -e "\n${BLUE}OPTIONS:${NO}"
 	echo -e "  -h, --help         show help"
