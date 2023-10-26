@@ -4,14 +4,17 @@ NO='\033[0m' # No Color
 BLUE='\033[1;34m'
 RED='\033[1;31m'
 
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/wallpaper"
 DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/$USER/wallpaper"
+CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/$USER/wallpaper"
 LOCKSCREEN="$DATA_DIR/lockscreen.png"
+SCREEN_RESOLUTION=$(xdpyinfo | awk '/dimensions:/ {print $2}')
 
 display_help() {
 	echo -e "${BLUE}INFORMATION:${NO}"
 	echo -e "  This script is written by TranVoSonTung"
 	echo -e "  This script is used to set the wallpaper of i3wm"
-	echo -e "  Dependencies: feh i3"
+	echo -e "  Dependencies: feh i3 imagemagick"
 
 	echo -e "\n${BLUE}USAGE:${NO}"
 	echo -e "  setbg <path_to_image>"
@@ -25,27 +28,17 @@ display_help() {
 	echo -e "  setbg ~/Pictures/wallpaper.jpg"
 }
 
-if [[ "$#" -eq 0 ]]; then
+if [[ "$#" -eq 0 ]] || [[ "$1" == "-h" ]] || [[ "$1" = "--help" ]]; then
 	display_help
 	exit 0
 fi
-
-# Show help if -h or --help is passed
-if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
-	display_help
-	exit 0
-fi
-
-introduce_help() {
-	echo -e "${BLUE}MORE:${NO}Use setbg --help or setbg -h to get more information"
-}
 
 display_error() {
 	echo -e "${RED}ERROR:${NO} $1"
-	introduce_help
+	echo -e "${BLUE}MORE:${NO}Use setbg --help or setbg -h to get more information"
 }
 
-DEPENDENCIES=(feh i3 sha256sum stat awk readlink)
+DEPENDENCIES=(feh i3 sha256sum stat awk readlink convert identify)
 for i in "${DEPENDENCIES[@]}"; do
 	if ! command -v "$i" &>/dev/null; then
 		display_error "This script requires $i to run."
@@ -56,24 +49,49 @@ done
 file_path="$1"
 shift
 fehopts="$@"
-SCREEN_RESOLUTION=$(xdpyinfo | grep dimensions | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/')
 [ ! -d "$DATA_DIR" ] && mkdir -p "$DATA_DIR"
+
+notify() {
+	[ -x "$(command -v dunstify)" ] && dunstify "$@" -a "setbg-script"
+}
 
 set_bg_with_feh() {
 	if [[ $2 == "-s" ]] || [[ $2 == "--silent" ]]; then
 		feh --bg-fill "$1" "$fehopts"
 	else
-		feh --bg-fill "$1" "$fehopts" && [ -x "$(command -v dunstify)" ] && dunstify "Wallpaper changed to" -i "$1" -a "setbg-script"
+		feh --bg-fill "$1" "$fehopts" && notify "Wallpaper changed to $1" -i "$1"
 	fi
-
 }
 
-notify_screenshot_mirror() {
-	[ -x "$(command -v dunstify)" ] && dunstify "Mirror lockscreen image with wallpaper. Please add \"bindsym \$mod+x exec i3lock -e -t -i  $LOCKSCREEN\" to ~/.config/i3/config' " -i "$file_path" -a "setbg-lockscreen-script"
+notify_lockscreen_updated() {
+	local message="Lockscreen image update successfully.\nPlease add \"bindsym \$mod+x exec i3lock -e -t -i $LOCKSCREEN\" to ~/.config/i3/config"
+	notify "Screenshot mirror" "$message" -i "$LOCKSCREEN"
+}
+
+is_valid_resolution() {
+	identify -format "%wx%h" "$1" | grep -q "$SCREEN_RESOLUTION" >/dev/null 2>&1
+}
+
+is_png() {
+	identify -format "%m" "$1" | grep -q "PNG" >/dev/null 2>&1
 }
 
 convert_image() {
-	convert "$1" -resize "$SCREEN_RESOLUTION"^ -gravity center -extent "$SCREEN_RESOLUTION" "$2" >/dev/null 2>&1
+	convert "$1" -resize "$SCREEN_RESOLUTION^" -gravity center -extent "$SCREEN_RESOLUTION" "$2" >/dev/null 2>&1
+}
+
+create_lockscreen_from() {
+	if command -v i3lock >/dev/null 2>&1; then
+		if [[ -f "$1" ]] && is_png "$1" && is_valid_resolution "$1"; then
+			cp "$1" "$LOCKSCREEN"
+		else
+			convert_image "$1" "$LOCKSCREEN"
+		fi
+		if [[ "$2" == "-s" ]] || [[ "$2" == "--silent" ]]; then
+			return
+		fi
+		notify_lockscreen_updated
+	fi
 }
 
 if [[ -f "$file_path" ]]; then
@@ -82,66 +100,30 @@ if [[ -f "$file_path" ]]; then
 
 		HASH=$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$file_path")" | sha256sum | awk '{print $file_path}')
 		WALLPAPER="$DATA_DIR/$HASH.png"
+		WALLPAPER_CACHE="$CACHE_DIR/$HASH.png"
 
-		if command -v convert >/dev/null 2>&1; then
-			CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/$USER/wallpaper"
+		cache() {
 			[ ! -d "$CACHE_DIR" ] && mkdir -p "$CACHE_DIR"
-			WALLPAPER_CACHE="$CACHE_DIR/$HASH.png"
+			find "$DATA_DIR" -maxdepth 1 -type f -name "*.png" -not -wholename "$LOCKSCREEN" -exec mv {} "$CACHE_DIR" \;
+		}
 
-			cache() {
-				find "$DATA_DIR" -maxdepth 1 -type f -name "*.png" -not -wholename "$LOCKSCREEN" -exec mv {} "$CACHE_DIR" \;
-			}
-
-			if [ ! -f "$WALLPAPER" ]; then # wallpaper is changing
-				if [ -f "$WALLPAPER_CACHE" ]; then
-					set_bg_with_feh "$WALLPAPER_CACHE" # change wallpaper immediately
+		if [ ! -f "$WALLPAPER" ]; then # wallpaper is changing
+			if [ -f "$WALLPAPER_CACHE" ]; then
+				set_bg_with_feh "$WALLPAPER_CACHE" # change wallpaper immediately
+				cache
+				mv "$WALLPAPER_CACHE" "$WALLPAPER" # update new wallpaper
+			else
+				if is_valid_resolution "$file_path"; then
+					set_bg_with_feh "$file_path"
 					cache
-					mv "$WALLPAPER_CACHE" "$WALLPAPER"                        # update new wallpaper
-					cp "$WALLPAPER" "$LOCKSCREEN" && notify_screenshot_mirror # create lockscreen
+					cp "$file_path" "$WALLPAPER"
 				else
-					is_big_image() {
-						local image_resolution image_width image_height screen_width screen_height
-						image_resolution=$(file -Lb /home/stilux/Downloads/200w | grep -oP '\d+ x \d+' | sed -r 's/[[:space:]]//g')
-						image_width=$(echo "$image_resolution" | cut -d 'x' -f 1)
-						image_height=$(echo "$image_resolution" | cut -d 'x' -f 2)
-						screen_width=$(echo "$SCREEN_RESOLUTION" | cut -d 'x' -f 1)
-						screen_height=$(echo "$SCREEN_RESOLUTION" | cut -d 'x' -f 2)
-						if [[ $image_width -lt $screen_width || $image_height -lt $screen_height ]]; then
-							return 1
-						fi
-						return 0
-					}
-
-					if is_big_image; then
-						# big image so it will not be broken when set wallpaper
-						set_bg_with_feh "$file_path"
-						cache
-						cp "$file_path" "$WALLPAPER"
-						if command -v i3lock >/dev/null 2>&1; then
-							convert_image "$file_path" "$LOCKSCREEN" && notify_screenshot_mirror
-						fi
-					else
-						# small image so it will be broken when set wallpaper
-						cache
-						convert_image "$file_path" "$WALLPAPER"
-						set_bg_with_feh "$WALLPAPER"
-						if command -v i3lock >/dev/null 2>&1; then
-							cp "$WALLPAPER" "$LOCKSCREEN" && notify_screenshot_mirror
-						fi
-					fi
+					cache
+					convert_image "$file_path" "$WALLPAPER"
+					set_bg_with_feh "$WALLPAPER"
 				fi
 			fi
-		else
-			if [ ! -f "$WALLPAPER" ]; then # wallpaper is changing
-				set_bg_with_feh "$file_path"
-				rm -rf "$DATA_DIR"
-				mkdir -p "$DATA_DIR"
-				cp "$file_path" "$WALLPAPER"
-
-				if command -v i3lock >/dev/null 2>&1; then
-					cp "$file_path" "$LOCKSCREEN" && notify_screenshot_mirror
-				fi
-			fi
+			create_lockscreen_from "$WALLPAPER"
 		fi
 		;;
 	*)
@@ -150,18 +132,11 @@ if [[ -f "$file_path" ]]; then
 		;;
 	esac
 else
-	CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/wallpaper"
 	alt_image=$(find "$DATA_DIR" "$CONFIG_DIR" -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.gif" \) -not -name "*lockscreen*" -print -quit)
 	if [ -f "$alt_image" ]; then
 		set_bg_with_feh "$alt_image" -s
-		if command -v i3lock >/dev/null 2>&1; then
-			if [ ! -f "$LOCKSCREEN" ]; then
-				if command -v convert >/dev/null 2>&1; then
-					convert_image "$alt_image" "$LOCKSCREEN"
-				else
-					cp "$alt_image" "$LOCKSCREEN"
-				fi
-			fi
+		if [ ! -f "$LOCKSCREEN" ]; then
+			create_lockscreen_from "$alt_image" -s
 		fi
 	fi
 fi
