@@ -77,11 +77,6 @@ set_bg_with_feh() {
 	fi
 }
 
-notify_lockscreen_updated() {
-	local message="Lockscreen image update successfully.\nPlease add \"bindsym \$mod+x exec i3lock -e -t -i $LOCKSCREEN\" to ~/.config/i3/config"
-	notify "Screenshot mirror" "$message" -i "$LOCKSCREEN"
-}
-
 is_valid_resolution() {
 	identify -format "%wx%h" "$1" | grep -q "$SCREEN_RESOLUTION" >/dev/null 2>&1
 }
@@ -104,7 +99,7 @@ create_lockscreen_from() {
 		if [[ "$2" == "-s" ]] || [[ "$2" == "--silent" ]]; then
 			return
 		fi
-		notify_lockscreen_updated
+		notify 'Lockscreen image update successfully. Use setbg --help to know how to setup lockscreen for i3lock' -i "$LOCKSCREEN"
 	fi
 }
 
