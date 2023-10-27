@@ -19,6 +19,7 @@ display_help() {
 	echo -e "\n${BLUE}USAGE:${NO}"
 	echo -e "  setbg <path_to_image>"
 
+	local message
 	message='''
   # Set lockscreen
   set $lockscreen ${XDG_DATA_HOME:-$HOME/.local/share}/$USER/wallpaper/lockscreen.png
