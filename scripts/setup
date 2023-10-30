@@ -1,5 +1,5 @@
 #!/bin/bash
-# The scripts is written by Tran Vo Son Tung
+# The scripts is written by Tran Vo Son Tongue
 
 ACCOUNT=$(whoami)
 STORAGE=$(readlink -e "scripts/stilux")

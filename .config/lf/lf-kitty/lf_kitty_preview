@@ -49,7 +49,7 @@ case "$(basename "$file_path" | tr '[:upper:]' '[:lower:]')" in
 *.tar.bz2 | *.tbz2) tar tjf "$file_path" ;;
 *.tar*) tar tf "$file_path" ;;
 *.zip | *.jar | *.war | *.ear | *.oxt) unzip -l "$file_path" ;;
-*.rar) unrar l "$file_path" ;;
+*.rar) rar l "$file_path" ;;
 *.7z) 7z l "$file_path" ;;
 *.md) glowormdcatorcat "$file_path" ;;
 *.[1-8]) man "$file_path" | col -b ;;

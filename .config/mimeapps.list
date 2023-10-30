@@ -14,6 +14,7 @@ text/plain=nvim.desktop
 [Added Associations]
 application/x-shellscript=code.desktop;userapp-kitty nvim-TYYDD2.desktop;
 text/plain=nvim.desktop;
+text/x-lua=code.desktop;
 
 [Removed Associations]
 text/plain=avahi-discover.desktop;bvnc.desktop;bssh.desktop;i3.desktop;lf.desktop;rofi-theme-selector.desktop;rofi.desktop;kitty-open.desktop;kitty.desktop;userapp-kitty -e nvim-2JYED2.desktop;
