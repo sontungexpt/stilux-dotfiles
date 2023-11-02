@@ -348,8 +348,8 @@ for_window [class="Pycalendar.py"] floating enable
 for_window [class="Pycalendar.py"] move to position 1399px 38px
 
 # Chat Gpt
-bindsym --release $mod+o exec xdg-open https://voicegpt.us/chatgpt
-bindsym --release $mod+c exec xdg-open https://poe.com/ChatGPT
+bindsym --release $mod+c exec xdg-open https://chat.openai.com
+bindsym --release $mod+o exec xdg-open https://poe.com/ChatGPT
 
 # Virtual Manager
 for_window [class="Virt-manager"] floating enable

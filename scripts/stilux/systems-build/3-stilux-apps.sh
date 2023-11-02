@@ -2,13 +2,17 @@
 # The scripts is written by TranVoSonTung
 # The scripts is used to install stilux used apps in arch linux
 
+YAY="yay -S --answerclean All --noconfirm --needed"
+PACMAN="sudo pacman -S --noconfirm --needed"
+
+
 # Ask if you want to install stilux apps
 echo "Do you want to install stilux apps? (y/n)"
 read -r answer
 if [ "$answer" != "${answer#[Yy]}" ]; then
 	# Check if installed yay, if not install it
 	if ! [ -x "$(command -v yay)" ]; then
-		sudo pacman -S --needed git base-devel
+		eval "$PACMAN git base-devel"
 		echo "Installing yay..."
 		git clone https://aur.archlinux.org/yay.git
 		cd yay || exit 1
@@ -27,17 +31,17 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 
 	# Calendar apps
 	# echo ">>> Installing calcurse..."
-	# sudo pacman -S calcurse
+	# eval "$PACMAN calcurse"
 
 	# Ask if you want to install edge or chorme, default is edge
 	echo "Do you want to install edge or chrome? (e/c)"
 	read -r answer
 	if [ "$answer" != "${answer#[Ee]}" ]; then
 		echo ">>> Installing microsoft edge..."
-		yay -S microsoft-edge-stable-bin
+		eval "$YAY microsoft-edge-stable-bin"
 	else
 		echo ">>> Installing google chrome..."
-		yay -S google-chrome
+		eval "$YAY google-chrome"
 	fi
 
 	# Install desired apps
@@ -47,37 +51,37 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	read -r answer
 	if [ "$answer" != "${answer#[Yy]}" ]; then
 		echo ">>> Installing desired apps..."
-		sudo pacman -S gimp inkscape kdenlive
+		eval "$PACMAN gimp inkscape kdenlive"
 		# check if has kdenlive app
 		if [ -x "$(command -v kdenlive)" ]; then
 			echo ">>> Installing kdenlive dark-theme..."
-			yay -S arc-kde-git
+			eval "$YAY arc-kde-git"
 		fi
-		yay -S figma-linux-bin
+		eval "$YAY figma-linux-bin"
 	else
 		echo ":: Skip installing desired apps"
 	fi
 
 	# Install social apps
 	echo ">>> Installing discord..."
-	sudo pacman -S discord
+	eval "$PACMAN discord"
 
 	# Cloud sync tools
 	# echo ">>> Installing cloud sync tools..."
-	# sudo pacman -S rclone
+	# eval "$PACMAN rclone"
 
 	# Install development apps
 	echo ">>> Installing development apps..."
-	sudo pacman -S --needed neovim
-	yay -S --needed visual-studio-code-bin
+	eval "$PACMAN neovim"
+	eval "$YAY visual-studio-code-bin"
 
 	# Install dev environment
 	echo ">>> Installing dev environment..."
-	sudo pacman -S --needed clang cmake ninja pkgconf gtk3 xz
+	eval "$PACMAN clang cmake ninja pkgconf gtk3 xz"
 
 	# Python
 	echo ">>> Installing python, pip..."
-	sudo pacman -S --needed python python-pip
+	eval "$PACMAN python python-pip"
 	python3 -m venv .venv
 	source .venv/bin/activate
 	pip install --upgrade pip
@@ -85,8 +89,8 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 
 	# Nodejs
 	ehco ">>> Installing nvm, nodejs, npm..."
-	# sudo pacman -S nodejs npm
-	yay -S nvm
+	# eval "$PACMAN nodejs npm"
+	eval "$YAY nvm"
 	source "$HOME/.zshrc"
 	nvm install node
 	npm install -g neovim
@@ -95,8 +99,8 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	# echo ">>> Installing ruby, rbenv..."
 	# sed -i 's/eval "$(rbenv init -)"/# eval "$(rbenv init -)"/g' "$HOME/.zshrc"
 	# sed -i 's|export PATH="$HOME/.rbenv/bin:$PATH"|# export PATH="$HOME/.rbenv/bin:$PATH"|g' "$HOME/.zshrc"
-	# yay -S rbenv-git
-	# yay -S ruby-build
+	# eval "$YAY rbenv-git"
+	# eval "$YAY ruby-build"
 	# sed -i 's/# eval "$(rbenv init -)"\s*=\s*\(.*\)/eval "$(rbenv init -)"/g' "$HOME/.zshrc"
 	# sed -i 's|# export PATH="$HOME/.rbenv/bin:$PATH"|export PATH="$HOME/.rbenv/bin:$PATH"|g' "$HOME/.zshrc"
 
@@ -118,33 +122,33 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	# cd "$HOME/.developments" || exit
 	# git clone https://github.com/flutter/flutter.git
 	# cd "$HOME" || exit
-	# sudo pacman -S clang cmake ninja pkgconf gtk3 xz
+	# eval "$PACMAN clang cmake ninja pkgconf gtk3 xz"
 	# flutter doctor --android-licenses
 
 	# Install android studio
 	echo ">>> Installing android studio, jdk11, jdk17..."
-	sudo pacman -S openjdk11-src openjdk17-src
-	yay -S android-studio watchman
+	eval "$PACMAN openjdk11-src openjdk17-src"
+	eval "$YAY android-studio watchman"
 
 	echo ">>> Installing mongodb..."
-	yay -S mongodb-bin mongosh-bin mongodb-compass mongodb-tools
+	eval "$YAY mongodb-bin mongosh-bin mongodb-compass mongodb-tools"
 	sudo systemctl enable mongodb.service
 	sudo systemctl start mongodb.service
 
 	echo ">>> Installing rust..."
-	sudo pacman -S rustup
+	eval "$PACMAN rustup"
 	rustup default stable
 	rustup component add rust-analyzer
 
 	echo ">>> Installing ldoc..."
-	sudo pacman -S luarocks
+	eval "$PACMAN luarocks"
 	luarocks install ldoc
 
 	echo ">>> Installing plantuml"
-	sudo pacman -S plantuml graphviz
+	eval "$PACMAN plantuml graphviz"
 
 	echo ">>> Installing tree"
-	sudo pacman -S tree
+	eval "$PACMAN tree"
 
 else
 	echo "Skip installing stilux apps"

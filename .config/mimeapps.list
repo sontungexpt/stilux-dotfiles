@@ -13,7 +13,7 @@ text/plain=nvim.desktop
 
 [Added Associations]
 application/x-shellscript=code.desktop;userapp-kitty nvim-TYYDD2.desktop;
-text/plain=nvim.desktop;
+text/plain=code.desktop;nvim.desktop;
 text/x-lua=code.desktop;
 
 [Removed Associations]

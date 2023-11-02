@@ -189,8 +189,9 @@ cmd open ${{
     text/*|application/json|application/javascript|inode/x-empty|application/octet-stream) open_with_nvim "$f";;
     application/pdf) open_pdf "$f";;
     image/*) feh --auto-zoom --scale-down "$f" >> /dev/null 2>&1 & disown;;
-    *) xdg-open "$f" >> /dev/null 2>&1  & disown;;
+    *) xdg-open "$f" >> /dev/null 2>&1 & disown;;
   esac
+
 }}
 
 # Set Background Command
@@ -233,7 +234,8 @@ cmd mkdir %{{
   printf "Directory Name: "
   read and
   mkdir $and
-  reload
+
+  lf -remote 'send reload'
 }}
 
 # Make File With Sudo Command
@@ -250,6 +252,8 @@ cmd delete ${{
   printf "delete?[y/n]"
   read and
   [ "$and" = "y" ] && rm -rf $fx
+
+  lf -remote 'send reload'
 }}
 
 # Trash-cli Command
@@ -264,6 +268,8 @@ cmd trash ${{
     files="${files#*;}"
     fi
   done
+
+  lf -remote 'send reload'
 }}
 
 # Extract Command

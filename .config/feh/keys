@@ -1,0 +1,37 @@
+# https://man.finalrewind.org/1/feh/
+# Remove default key bindings
+next_img
+prev_img
+
+scroll_right
+scroll_left
+scroll_up
+scroll_down
+scroll_up_page
+scroll_down_page
+scroll_left_page
+scroll_right_page
+
+zoom_in
+zoom_out
+
+# Custom key bindings
+# zoom
+zoom_in C-equal
+zoom_out C-minus
+
+# scrolling
+scroll_up j
+scroll_down k
+scroll_left h
+scroll_right l
+
+# scrolling page
+scroll_up_page C-u C-e C-k
+scroll_down_page C-d C-y C-j
+scroll_left_page C-h
+scroll_right_page C-l
+
+# assigning new keys for showing next/previous image
+next_img Right
+prev_img Left
