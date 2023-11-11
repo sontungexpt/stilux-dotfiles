@@ -1,5 +1,5 @@
 #!/bin/bash
-# The scripts is written by TranVoSonTung
+# The scripts is written by Tran Vo Son Tung
 # The scripts will add more background of the lightdm with the theme "lightdm-webkit2-greeter"
 # Dependencies: lightdm, lightdm-webkit2-greeter, lightdm-webkit2-theme-glorious
 

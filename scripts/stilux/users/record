@@ -1,0 +1,117 @@
+#!/bin/bash
+# The scripts is written by Tran Vo Son Tongue
+# This script is used to record desktop screen
+
+NO='\033[0m' # No Color
+BLUE='\033[1;34m'
+RED='\033[1;31m'
+
+display_error() {
+	echo -e "${RED}ERROR:${NO} $1"
+	echo -e "${BLUE}MORE:${NO}Use $0 --help or $0 -h to get more information"
+}
+
+DEPENDENCIES=(ffmpeg)
+for i in "${DEPENDENCIES[@]}"; do
+	if ! command -v "$i" &>/dev/null; then
+		display_error "This script requires $i to run."
+		exit 1
+	fi
+done
+
+STORAGE_DIR="$HOME/Videos/Recordings"
+DEFAULT_OUTPUT_FILE="$STORAGE_DIR/$(date '+%Y-%m-%d_%T')-recording.mp4"
+
+mkdir -p "$STORAGE_DIR"
+
+display_help() {
+	echo -e "${BLUE}INFORMATION:${NO}"
+	echo -e "  This script is written by TranVoSonTung"
+	echo -e "  This script is used to record desktop screen and cut video"
+	echo -e "  This script requires ffmpeg to run"
+	echo -e "  STORAGE_DIR: $STORAGE_DIR"
+
+	echo -e "\n${BLUE}USAGE:${NO}"
+	echo -e "  $0 [OPTIONS] [FILE]"
+	echo -e "  To cut a video: $0 cut <file_path_to_cut> [<file_path_after_cutted>]"
+	echo -e "  To record screen: $0 [OPTIONS] [<output_file_path>]"
+	echo -e "  To record screen with high quality: $0 high [<output_file_path>] or $0 --high [<output_file_path>]"
+
+	echo -e "\n${BLUE}EXAMPLE:${NO}"
+	echo -e "  $0"
+	echo -e "  $0 -h"
+	echo -e "  $0 --help "
+	echo -e "  $0 /home/stilux/Videos/test.mp4"
+	echo -e "  $0 high /home/stilux/Videos/test.mp4"
+	echo -e "  $0 --high /home/stilux/Videos/test.mp4"
+	echo -e "  $0 cut /home/stilux/Videos/test.mp4"
+}
+
+record_video() {
+	#case record_video
+	local output_file="$DEFAULT_OUTPUT_FILE"
+
+	#case record_video --high output_path
+	if [[ "$1" == "--high" ]] && [[ -n "$2" ]]; then
+		output_file="$2"
+	#case record_video output_path --high
+	elif [ -n "$1" ] && [[ "$1" != "--high" ]]; then
+		output_file="$1"
+	fi
+
+	if [ "$1" == "--high" ] || [ "$2" == "--high" ]; then
+		echo -e "${BLUE}==> Record in high quality${NO}"
+		ffmpeg -framerate 60 -f x11grab -i "$DISPLAY" -c:v libx264rgb -crf 0 -preset ultrafast -color_range 2 "$output_file"
+	else
+		ffmpeg -framerate 60 -f x11grab -i "$DISPLAY" -pix_fmt yuv420p "$output_file"
+	fi
+}
+
+if [ $# -eq 0 ]; then
+	record_video
+	exit 0
+fi
+
+cut_video() {
+	local input_file="$1"
+	local output_file="$2"
+
+	if [ ! -f "$input_file" ]; then
+		display_error "File $input_file does not exist"
+		exit 1
+	fi
+
+	# default output file has same path with input file and name is input file name + _cut + extension
+	# example: input_file = /home/user/video.mp4
+	# output_file = /home/user/video_cut.mp4
+	if [ -z "$output_file" ]; then
+		output_file="${input_file%.*}_cut-$(date '+%Y-%m-%d_%T').${input_file##*.}"
+	fi
+
+	## get the start time and end time from user
+	read -r -p "Enter cutting start time (in hh:mm:ss format): " start_time
+	read -r -p "Enter cutting end time (in hh:mm:ss format): " end_time
+
+	if ! date -d "$start_time" &>/dev/null || ! date -d "$end_time" &>/dev/null; then
+		display_error "Invalid time format. Please use hh:mm:ss format."
+		exit 1
+	fi
+
+	ffmpeg -i "$input_file" -ss "$start_time" -to "$end_time" -c copy "$output_file"
+
+}
+
+case "$1" in
+"cut")
+	cut_video "$2" "$3"
+	;;
+"high")
+	record_video "$2" --high
+	;;
+"--help" | "-h")
+	display_help
+	;;
+*)
+	record_video $@
+	;;
+esac

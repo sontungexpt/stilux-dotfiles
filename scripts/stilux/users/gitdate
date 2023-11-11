@@ -1,5 +1,5 @@
 #!/bin/bash
-# The scripts is written by Tran Vo Son Tongue
+# The scripts is written by Tran Vo Son Tung
 # The scripts is use to change the date of git commit to the date of the file
 # Dependencies: git
 # Version: 1.0.0

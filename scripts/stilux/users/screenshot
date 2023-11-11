@@ -1,5 +1,5 @@
 #!/bin/bash
-# The scripts is wtitten by Tran Vo Son Tung
+# The scripts is wtitten by Tran Vo Son Tongue
 # Screenshot scripts
 # Dependencies: scrot, xclip, dunstify
 # Usage: screenshot [select-save|select-clipboard|window]
@@ -10,12 +10,10 @@
 NO='\033[0m' # No Color
 BLUE='\033[1;34m'
 RED='\033[1;31m'
-GREEN='\033[1;32m'
-YELLOW='\033[1;33m'
 
 display_help() {
 	echo -e "${BLUE}INFORMATION:${NO}"
-	echo -e "  This script is written by Tran Vo Son Tung"
+	echo -e "  This script is written by Tran Vo Son Tongue"
 	echo -e "  Dependencies: scrot, xclip, dunstify"
 	echo -e "  USAGE: screenshot [OPTIONS] [FUNCTION]\n"
 
