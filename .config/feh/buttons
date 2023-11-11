@@ -1,0 +1,7 @@
+# Unset the default key bindings
+zoom_in
+zoom_out
+
+# Set the new key bindings
+zoom_in C-4
+zoom_out C-5

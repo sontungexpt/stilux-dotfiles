@@ -21,8 +21,8 @@ zoom_in C-equal
 zoom_out C-minus
 
 # scrolling
-scroll_up j
-scroll_down k
+scroll_up k
+scroll_down j
 scroll_left h
 scroll_right l
 
