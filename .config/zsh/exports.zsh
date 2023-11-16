@@ -28,4 +28,5 @@ export PATH="$PATH":"$ANDROID_HOME"/platform-tools
 # Cargo
 export PATH="$PATH":"$HOME"/.cargo/bin
 
-source "$HOME/.config/zsh/lazynvm.zsh"
+# source "$HOME/.config/zsh/lazynvm.zsh"
+eval "$(fnm env --use-on-cd)"

@@ -84,11 +84,14 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	pip install neovim
 
 	# Nodejs
-	ehco ">>> Installing nvm, nodejs, npm..."
+	# echo ">>> Installing nodejs, npm with nvm"
 	# sudo pacman -S nodejs npm
-	yay -S nvm
+	# yay -S nvm
+	# nvm install node
+	echo ">>> Installing fnm, nodejs, npm..."
+	yay -S fnm
+	fnm install "$(fnm ls-remote | grep -v - | tail -1)"
 	source "$HOME/.zshrc"
-	nvm install node
 	npm install -g neovim
 
 	# ruby

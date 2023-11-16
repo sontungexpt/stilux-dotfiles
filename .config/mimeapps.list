@@ -9,7 +9,8 @@ x-scheme-handler/mailto=microsoft-edge.desktop
 text/markdown=userapp-kitty nvim-QVOFC2.desktop
 application/x-shellscript=userapp-kitty nvim-TYYDD2.desktop
 application/x-zerosize=userapp-kitty nvim-QVOFC2.desktop
-text/plain=nvim.desktop
+text/plain=code.desktop
+x-scheme-handler/webcal=microsoft-edge.desktop
 
 [Added Associations]
 application/x-shellscript=code.desktop;userapp-kitty nvim-TYYDD2.desktop;
