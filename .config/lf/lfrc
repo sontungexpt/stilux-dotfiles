@@ -145,25 +145,25 @@ cmd thunar %{{
 cmd sudoopen ${{
   open_pdf() {
     if [ ! -f "/usr/bin/microsoft-edge-stable" ]; then
-      sudo xdg-open "$1" >> /dev/null 2>&1 & disown
+      lf -remote "send $id \$xdg-open $1 >> /dev/null 2>&1"
     else
-      sudo microsoft-edge-stable "$1" >> /dev/null 2>&1 & disown
+      lf -remote "send $id \$microsoft-edge-stable $1 >> /dev/null 2>&1"
     fi
   }
 
   open_with_nvim() {
-    if [ ! -f "usr/bin/nvim" ]; then
-      sudo $EDITOR "$1"
+    if [ -f "usr/bin/nvim" ]; then
+      lf -remote "send $id \$sudo \$nvim $1"
     else
-      sudo nvim "$1"
+      lf -remote "send $id \$sudo $EDITOR $1"
     fi
   }
 
   case $(file --mime-type "$f" -bL) in
     text/*|application/json|application/javascript|inode/x-empty|application/octet-stream) open_with_nvim "$f";;
     application/pdf) open_pdf "$f";;
-    image/*)sudo feh --auto-zoom --scale-down "$f" >> /dev/null 2>&1 & disown;;
-    *)sudo xdg-open "$f" >> /dev/null 2>&1  & disown;;
+    image/*) lf -remote "send $id \$sudo \$feh --auto-zoom --scale-down $f >> /dev/null 2>&1 &" ;;
+    *) lf -remote "send $id \$sudo \$xdg-open \$f >> /dev/null 2>&1 &" ;;
   esac
 }}
 
@@ -171,27 +171,26 @@ cmd sudoopen ${{
 cmd open ${{
   open_pdf() {
     if [ ! -f "/usr/bin/microsoft-edge-stable" ]; then
-      xdg-open "$1" >> /dev/null 2>&1 & disown
+      lf -remote "send $id \$xdg-open $1 >> /dev/null 2>&1"
     else
-      microsoft-edge-stable "$1" >> /dev/null 2>&1 & disown
+      lf -remote "send $id \$microsoft-edge-stable $1 >> /dev/null 2>&1"
     fi
   }
 
   open_with_nvim() {
-    if [ ! -f "usr/bin/nvim" ]; then
-      $EDITOR "$1"
+    if [ -f "usr/bin/nvim" ]; then
+      lf -remote "send $id \$nvim $1"
     else
-      nvim "$1"
+      lf -remote "send $id $EDITOR $1"
     fi
   }
 
   case $(file --mime-type "$f" -bL) in
-    text/*|application/json|application/javascript|inode/x-empty|application/octet-stream) open_with_nvim "$f";;
+    text/*|application/json|application/javascript|inode/x-empty|application/octet-stream) open_with_nvim $f;;
     application/pdf) open_pdf "$f";;
-    image/*) feh --auto-zoom --scale-down "$f" >> /dev/null 2>&1 & disown;;
-    *) xdg-open "$f" >> /dev/null 2>&1 & disown;;
+    image/*) lf -remote "send $id \$feh --auto-zoom --scale-down $f >> /dev/null 2>&1 &" ;;
+    *) lf -remote "send $id \$xdg-open \$f >> /dev/null 2>&1 &" ;;
   esac
-
 }}
 
 # Set Background Command

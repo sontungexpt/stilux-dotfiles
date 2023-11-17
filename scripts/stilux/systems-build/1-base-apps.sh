@@ -7,31 +7,31 @@ PACMAN="sudo pacman -S --noconfirm --needed"
 
 # Check if installed yay, if not install it
 if ! [ -x "$(command -v yay)" ]; then
-  echo ">>> Installing yay..."
-  eval "$PACMAN git base-devel"
-  git clone https://aur.archlinux.org/yay.git
-  cd yay || exit 1
-  makepkg -si
-  cd ..
-  rm -rf yay
+	echo ">>> Installing yay..."
+	eval "$PACMAN git base-devel"
+	git clone https://aur.archlinux.org/yay.git
+	cd yay || exit 1
+	makepkg -si
+	cd ..
+	rm -rf yay
 fi
 
 # Check if install git, if not install it
 if ! [ -x "$(command -v git)" ]; then
-  echo ">>> Installing git..."
-  eval "$PACMAN git"
+	echo ">>> Installing git..."
+	eval "$PACMAN git"
 fi
 
 # Check if install curl, if not install it
 if ! [ -x "$(command -v curl)" ]; then
-  echo ">>> Installing curl..."
-  eval "$PACMAN curl"
+	echo ">>> Installing curl..."
+	eval "$PACMAN curl"
 fi
 
 # Check if install wget, if not install it
 if ! [ -x "$(command -v wget)" ]; then
-  echo ">>> Installing wget..."
-  eval "$PACMAN wget"
+	echo ">>> Installing wget..."
+	eval "$PACMAN wget"
 fi
 
 # add color to pacman
@@ -75,7 +75,7 @@ eval "$PACMAN lightdm lightdm-webkit2-greeter"
 
 # Check if installed lightdm, enable service
 if [ -x "$(command -v lightdm)" ]; then
-  sudo systemctl enable lightdm.service
+	sudo systemctl enable lightdm.service
 fi
 
 echo ">>> Installing lightdm-webkit2-theme-glorious..."
@@ -95,8 +95,8 @@ eval "$PACMAN pipewire pipewire-pulse pipewire-alsa pipewire-media-session pipew
 
 # Check if installed pipewire, enable service
 if [ -x "$(command -v pipewire)" ]; then
-  systemctl --user enable pipewire pipewire-pulse
-  systemctl --user start pipewire pipewire-pulse
+	systemctl --user enable pipewire pipewire-pulse
+	systemctl --user start pipewire pipewire-pulse
 fi
 
 # Bluetooth
@@ -104,11 +104,11 @@ eval "$PACMAN bluez bluez-utils blueman pipewire-audio pipewire-pulse"
 
 # Check if installed bluez, enable service
 if [ -x "$(command -v bluez)" ]; then
-  sudo systemctl enable bluetooth.service
-  sudo systemctl start bluetooth.service
-  if [ -f "/etc/bluetooth/main.conf" ]; then
-    sudo sed -i -e "s/^#AutoEnable\s*=\s*\(.*\)/AutoEnable=true/g" "/etc/bluetooth/main.conf"
-  fi
+	sudo systemctl enable bluetooth.service
+	sudo systemctl start bluetooth.service
+	if [ -f "/etc/bluetooth/main.conf" ]; then
+		sudo sed -i -e "s/^#AutoEnable\s*=\s*\(.*\)/AutoEnable=true/g" "/etc/bluetooth/main.conf"
+	fi
 fi
 
 # Vietnamese input
