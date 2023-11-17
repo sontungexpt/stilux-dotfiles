@@ -8,9 +8,11 @@
 **/scripts/stilux/users/binaries
 
 **/.config/microsoft-edge/
-**/.config/google-chrome/ **/.config/figma-linux/
+**/.config/google-chrome/
+**/.config/figma-linux/
 MongoDB Compass/
 Postman/
+JetBrains/
 
 bspwm/
 teams/
