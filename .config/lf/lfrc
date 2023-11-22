@@ -145,9 +145,9 @@ cmd thunar %{{
 cmd sudoopen ${{
   open_pdf() {
     if [ ! -f "/usr/bin/microsoft-edge-stable" ]; then
-      lf -remote "send $id \$xdg-open $1 >> /dev/null 2>&1"
+      sudo setsid -f xdg-open "$f" >> /dev/null 2>&1 & ;;
     else
-      lf -remote "send $id \$microsoft-edge-stable $1 >> /dev/null 2>&1"
+      sudo setsid -f microsoft-edge-stable "$f" >> /dev/null 2>&1 &
     fi
   }
 
@@ -162,8 +162,8 @@ cmd sudoopen ${{
   case $(file --mime-type "$f" -bL) in
     text/*|application/json|application/javascript|inode/x-empty|application/octet-stream) open_with_nvim "$f";;
     application/pdf) open_pdf "$f";;
-    image/*) lf -remote "send $id \$sudo \$feh --auto-zoom --scale-down $f >> /dev/null 2>&1 &" ;;
-    *) lf -remote "send $id \$sudo \$xdg-open \$f >> /dev/null 2>&1 &" ;;
+    image/*) sudo setsid -f feh --auto-zoom --scale-down $f >> /dev/null 2>&1 & ;;
+    *) sudo setsid -f xdg-open "$f" >> /dev/null 2>&1 & ;;
   esac
 }}
 
@@ -171,9 +171,9 @@ cmd sudoopen ${{
 cmd open ${{
   open_pdf() {
     if [ ! -f "/usr/bin/microsoft-edge-stable" ]; then
-      lf -remote "send $id \$xdg-open $1 >> /dev/null 2>&1"
+      setsid -f xdg-open "$f" >> /dev/null 2>&1 &
     else
-      lf -remote "send $id \$microsoft-edge-stable $1 >> /dev/null 2>&1"
+      setsid -f microsoft-edge-stable "$f" >> /dev/null 2>&1 &
     fi
   }
 
@@ -188,8 +188,8 @@ cmd open ${{
   case $(file --mime-type "$f" -bL) in
     text/*|application/json|application/javascript|inode/x-empty|application/octet-stream) open_with_nvim $f;;
     application/pdf) open_pdf "$f";;
-    image/*) lf -remote "send $id \$feh --auto-zoom --scale-down $f >> /dev/null 2>&1 &" ;;
-    *) lf -remote "send $id \$xdg-open \$f >> /dev/null 2>&1 &" ;;
+    image/*) setsid -f feh --auto-zoom --scale-down $f >> /dev/null 2>&1 & ;;
+    *) setsid -f xdg-open "$f" >> /dev/null 2>&1 & ;;
   esac
 }}
 
