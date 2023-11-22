@@ -1,0 +1,7 @@
+(defwidget volume
+           :valign "center"
+           :halign "center"
+           :class "volume"
+  progress
+ )
+)

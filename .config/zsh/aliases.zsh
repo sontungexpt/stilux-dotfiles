@@ -1,5 +1,6 @@
 #!/bin/bash
 
+alias gradlew17='./gradlew -Dorg.gradle.java.home=/usr/lib/jvm/java-17-openjdk'
 alias ls="ls --color=auto"
 alias lf="export PATH=${XDG_CONFIG_HOME:-$HOME/.config}/lf/bin:$PATH;lf $@"
 
@@ -26,3 +27,4 @@ alias kittyconfig='nvim ~/.config/kitty/kitty.conf'
 alias alacrittyconfig='nvim ~/.config/alacritty/alacritty.yml'
 alias fishconfig='nvim ~/.config/fish/config.fish'
 alias dunstconfig='nvim ~/.config/dunst/dunstrc'
+alias ewwconfig='nvim ~/.config/eww/eww.yuck'

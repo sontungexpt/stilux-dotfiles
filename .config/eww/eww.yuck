@@ -1,0 +1,58 @@
+(include "volume.yuck")
+
+(defpoll time :interval "10s"
+  "date '+%H:%M %b %d, %Y'")
+
+;; (defpoll volume
+;;         :interval "1s"
+;;         "scripts/getvol")
+
+(defwidget bar []
+  (box :orientation "h"
+    (sidestuff)))
+
+(defwidget metric [label value onchange]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+    (box :class "label" label)
+    (scale :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
+
+(defwidget sidestuff []
+  (box :class "sidestuff"
+       :orientation "h"
+       :space-evenly false
+       :halign "end"
+
+    (metric :label "🔊"
+            :value volume
+            :onchange "amixer -D pulse sset Master {}%")
+    (metric :label ""
+            :value {EWW_RAM.used_mem_perc}
+            :onchange "")
+    (metric :label ""
+            :value time
+            :onchange "")
+    ))
+
+
+(defwindow statusbar
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "0%"
+                               :width "100%"
+                               :height "28px"
+                               :anchor "top center")
+           :stacking "fg"
+           :reserve (struts :distance "30px" :side "top")
+           :windowtype "dock"
+           :wm-ignore false
+    (bar))
+
+
+
+

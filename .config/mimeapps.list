@@ -11,12 +11,15 @@ application/x-shellscript=userapp-kitty nvim-TYYDD2.desktop
 application/x-zerosize=userapp-kitty nvim-QVOFC2.desktop
 text/plain=code.desktop
 x-scheme-handler/webcal=microsoft-edge.desktop
+image/svg+xml=feh.desktop
+image/png=feh.desktop
 
 [Added Associations]
 application/x-shellscript=code.desktop;userapp-kitty nvim-TYYDD2.desktop;
 text/plain=code.desktop;nvim.desktop;
 text/x-lua=code.desktop;
-image/png=microsoft-edge.desktop;
+image/png=feh.desktop;microsoft-edge.desktop;
+image/svg+xml=feh.desktop;
 
 [Removed Associations]
 text/plain=avahi-discover.desktop;bvnc.desktop;bssh.desktop;i3.desktop;lf.desktop;rofi-theme-selector.desktop;rofi.desktop;kitty-open.desktop;kitty.desktop;userapp-kitty -e nvim-2JYED2.desktop;
