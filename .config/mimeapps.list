@@ -9,17 +9,23 @@ x-scheme-handler/mailto=microsoft-edge.desktop
 text/markdown=userapp-kitty nvim-QVOFC2.desktop
 application/x-shellscript=userapp-kitty nvim-TYYDD2.desktop
 application/x-zerosize=userapp-kitty nvim-QVOFC2.desktop
-text/plain=code.desktop
+text/plain=userapp-setsid -f kitty nvim-KJ9UE2.desktop
 x-scheme-handler/webcal=microsoft-edge.desktop
 image/svg+xml=feh.desktop
 image/png=feh.desktop
+text/x-java=userapp-setsid -f kitty nvim-KJ9UE2.desktop
+text/x-maven+xml=userapp-setsid -f kitty nvim-KJ9UE2.desktop
+x-scheme-handler/postman=Postman.desktop
 
 [Added Associations]
 application/x-shellscript=code.desktop;userapp-kitty nvim-TYYDD2.desktop;
-text/plain=code.desktop;nvim.desktop;
+text/plain=code.desktop;nvim.desktop;userapp-setsid -f kitty nvim-KJ9UE2.desktop;
 text/x-lua=code.desktop;
 image/png=feh.desktop;microsoft-edge.desktop;
 image/svg+xml=feh.desktop;
+image/jpeg=microsoft-edge.desktop;
+text/x-java=userapp-setsid -f kitty nvim-KJ9UE2.desktop;
+text/x-maven+xml=userapp-setids -f kitty nvim-6K35E2.desktop;userapp-setsid -f kitty nvim-KJ9UE2.desktop;
 
 [Removed Associations]
 text/plain=avahi-discover.desktop;bvnc.desktop;bssh.desktop;i3.desktop;lf.desktop;rofi-theme-selector.desktop;rofi.desktop;kitty-open.desktop;kitty.desktop;userapp-kitty -e nvim-2JYED2.desktop;

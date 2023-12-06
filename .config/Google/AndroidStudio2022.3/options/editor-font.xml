@@ -1,5 +1,8 @@
 <application>
   <component name="DefaultFont">
     <option name="VERSION" value="1" />
+    <option name="FONT_SIZE" value="26" />
+    <option name="FONT_SIZE_2D" value="26.0" />
+    <option name="FONT_FAMILY" value="Monaspace Argon" />
   </component>
 </application>

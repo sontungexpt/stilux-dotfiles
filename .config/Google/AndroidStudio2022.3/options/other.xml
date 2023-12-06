@@ -1,27 +1,39 @@
 <application>
   <component name="NotRoamableUiSettings">
     <option name="fontScale" value="1.0" />
-    <option name="fontSize" value="17.5" />
+    <option name="fontSize" value="20.0" />
   </component>
   <component name="PropertyService"><![CDATA[{
   "keyToString": {
     "MarketplacePluginsSearchHistory": "java\nj\nbrack\ncopilot\ncopi",
     "NonModalCommitCustomization.IsApplied": "true",
+    "RunOnceActivity.cidr.test.framework.showIndexingAsTask": "true",
+    "RunOnceActivity.se.text.search": "true",
     "SAVED_ANDROID_NPW_LANGUAGE": "Kotlin",
     "android.sdk.path": "/home/stilux/Android/Sdk",
+    "appcds.runOnSecondStart": "AI-223.8836.35.2231.11090377-9d1b5b540ee0af2ad5acd829a9ea6897f01899c9cff1c3d45d24a71674ac7adf",
     "ask.about.ctrl.y.shortcut.v2": "true",
-    "bundled.plugins.list.saved.version": "AI-223.8836.35.2231.11005911",
+    "bundled.plugins.list.saved.version": "AI-223.8836.35.2231.11090377",
+    "defaultJdkConfigured": "true",
     "fileTypeChangedCounter": "1",
-    "fontSizeToResetConsole": "13.0",
-    "fontSizeToResetEditor": "13.0",
+    "fontSizeToResetConsole": "26.0",
+    "fontSizeToResetEditor": "26.0",
+    "gotit.previous.run": "AI-223.8836.35.2231.11090377",
     "input.method.disabler.muted": "true",
+    "installed.kotlin.plugin.version": "223-1.9.0-release-358-AS8836.35.2231.11090377",
+    "last_opened_file_path": "/lib/jvm/java-17-openjdk",
     "newly.installed.api.level": "33",
     "previousColorScheme": "_@user_TokyoNightDark",
+    "registry.to.advanced.settings.migration.build": "AI-223.8836.35.2231.11090377",
     "tasks.pass.word.conversion.enforced": "true",
     "updater.configure.platform.details.checkbox.selected": "true",
     "updater.configure.tools.details.checkbox.selected": "true"
   },
   "keyToStringList": {
+    "file.chooser.recent.files": [
+      "/lib/jvm/java-17-openjdk",
+      "/home/stilux/Data/Workspace/Foodey/foodey-service"
+    ],
     "fileTypeDetectors": [
       "com.intellij.ide.scratch.ScratchFileServiceImpl$Detector",
       "com.jetbrains.cidr.lang.OCHeaderFileTypeDetector",
@@ -29,6 +41,11 @@
       "com.android.tools.idea.profilers.capture.MemoryCaptureFileType$Detector",
       "org.jetbrains.plugins.textmate.TextMateFileType$TextMateFileDetector"
     ]
+  }
+}]]></component>
+  <component name="ShownTips"><![CDATA[{
+  "shownTips": {
+    "InjectSQLLanguage": 1700804898194
   }
 }]]></component>
 </application>

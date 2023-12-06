@@ -350,6 +350,7 @@ for_window [class="Pycalendar.py"] move to position 1399px 38px
 # Chat Gpt
 bindsym --release $mod+c exec xdg-open https://chat.openai.com
 bindsym --release $mod+o exec xdg-open https://poe.com/ChatGPT
+bindsym --release $mod+Shift+b exec xdg-open https://bard.google.com/chat
 
 # Virtual Manager
 for_window [class="Virt-manager"] floating enable
@@ -359,7 +360,7 @@ for_window [class="Virt-manager" title="win10 on QEMU/KVM"] floating disable
 for_window [class="Virt-manager" title="RDPWindows on QEMU/KVM"] floating disable
 
 # xcolor
-bindsym --release $mod+Shift+c exec xcolor | tr -d '\n' | xclip -selection clipboard && dunstify "Copied color to clipboard $(xclip -selection clipboard -o)" -a "xcolor"
+bindsym --release $mod+Shift+c exec xcolor | tr -d '\n' | xclip -selection clipboard && dunstify "Copied color to clipboard: $(xclip -selection clipboard -o)" -a "xcolor"
 
 # live-server vscode
 bindsym --release $mod+Mod1+l exec xdg-open http://localhost:5500

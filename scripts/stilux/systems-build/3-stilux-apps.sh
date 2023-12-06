@@ -94,7 +94,7 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	# nvm install node
 	echo ">>> Installing fnm, nodejs, npm..."
 	eval "$YAY fnm"
-	fnm install "$(fnm ls-remote | grep -v - | tail -1)"
+	fnm install "$(fnm ls-remote | grep -v - | tail -1)" && fnm default "$(fnm ls-remote | grep -v - | tail -1)"
 	source "$HOME/.zshrc"
 	npm install -g neovim
 

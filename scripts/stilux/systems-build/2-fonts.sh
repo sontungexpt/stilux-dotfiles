@@ -18,13 +18,13 @@ fi
 
 # Install fonts
 eval "$YAY ttf-meslo-nerd-font-powerlevel10k"
-eval "$YAY ttf-jetbrains-mono-nerd"
 eval "$YAY ttf-adobe-source-code-pro-fonts"
 eval "$YAY ttf-hack-nerd"
 eval "$YAY ttf-iosevka-nerd"
 eval "$YAY ttf-firacode-nerd"
 eval "$YAY ttf-ms-fonts"
 eval "$YAY ttf-material-design-icons"
+# eval "$YAY ttf-jetbrains-mono-nerd"
 # eval "$YAY ttf-font-awesome"
 # eval "$YAY ttf-fira-code"
 # eval "$YAY siji-git"
