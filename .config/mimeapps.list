@@ -23,9 +23,10 @@ text/plain=code.desktop;nvim.desktop;userapp-setsid -f kitty nvim-KJ9UE2.desktop
 text/x-lua=code.desktop;
 image/png=feh.desktop;microsoft-edge.desktop;
 image/svg+xml=feh.desktop;
-image/jpeg=microsoft-edge.desktop;
+image/jpeg=feh.desktop;microsoft-edge.desktop;
 text/x-java=userapp-setsid -f kitty nvim-KJ9UE2.desktop;
 text/x-maven+xml=userapp-setids -f kitty nvim-6K35E2.desktop;userapp-setsid -f kitty nvim-KJ9UE2.desktop;
+application/json=userapp-setsid -f kitty nvim-KJ9UE2.desktop;
 
 [Removed Associations]
 text/plain=avahi-discover.desktop;bvnc.desktop;bssh.desktop;i3.desktop;lf.desktop;rofi-theme-selector.desktop;rofi.desktop;kitty-open.desktop;kitty.desktop;userapp-kitty -e nvim-2JYED2.desktop;

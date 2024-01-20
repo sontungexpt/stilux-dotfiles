@@ -3,6 +3,7 @@ set cleaner ~/.config/lf/lf-kitty/lf_kitty_clean
 #set cleaner ~/.config/lf/lfimg/cleaner
 #set previewer ~/.config/lf/lfimg/preview
 
+set shell sh
 set ratios 1:2:3
 set icons true
 set preview true

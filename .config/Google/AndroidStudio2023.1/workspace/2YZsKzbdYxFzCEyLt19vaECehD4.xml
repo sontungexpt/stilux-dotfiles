@@ -1,0 +1,174 @@
+<project version="4">
+  <component name="BookmarksManager">
+    <option name="groups">
+      <GroupState>
+        <option name="name" value="foodey-service" />
+      </GroupState>
+    </option>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="-1">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/foodey/foodeyservice/repositories/ProductRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="39">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTypeUsageLocalSummary">
+    <fileType name="JAVA">
+      <summary usageCount="3" lastUsed="1700804951686" />
+    </fileType>
+  </component>
+  <component name="IdeDocumentHistory">
+    <changedPaths>
+      <option value="$PROJECT_DIR$/src/main/java/com/foodey/foodeyservice/repositories/ProductRepository.java" />
+    </changedPaths>
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="LanguageUsageStatistics">
+    <language id="JAVA">
+      <summary usageCount="3" lastUsage="1700804951687" />
+    </language>
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="foodey-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="foodey-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="foodey-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="foodey-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="foodey-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="foodey-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="foodey-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="foodey-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="foodey-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="foodey-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="foodey-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="foodey-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="foodey" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="foodey-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="foodey-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="foodey" type="462c0819:PsiDirectoryNode" />
+              <item name="foodeyservice" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="foodey-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="foodey-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="foodey" type="462c0819:PsiDirectoryNode" />
+              <item name="foodeyservice" type="462c0819:PsiDirectoryNode" />
+              <item name="repositories" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="foodey-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="foodey-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="ToolWindowManager">
+    <editor active="true" />
+    <layout>
+      <window_info id="Bookmarks" order="0" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.50318813" />
+      <window_info id="Structure" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="4" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Problems View" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Logcat" order="8" />
+      <window_info anchor="bottom" id="App Quality Insights" order="9" />
+      <window_info anchor="bottom" id="Services" order="10" />
+      <window_info anchor="bottom" id="App Inspection" order="11" />
+      <window_info anchor="right" id="Device Explorer" order="0" side_tool="true" />
+      <window_info anchor="right" id="Assistant" order="1" weight="0.33025342" />
+      <window_info anchor="right" id="App Links Assistant" order="2" />
+      <window_info anchor="right" id="Device Manager" order="3" />
+      <window_info anchor="right" id="Notifications" order="4" weight="0.25" />
+      <window_info anchor="right" id="Running Devices" order="5" side_tool="true" />
+    </layout>
+    <recentWindows>
+      <value>Project</value>
+      <value>Assistant</value>
+    </recentWindows>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="673" y="243" key="FileChooserDialogImpl" timestamp="1700803865914">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="673" y="243" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1700803865914" />
+    <state x="426" y="175" key="SettingsEditor" timestamp="1700804938422">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="426" y="175" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1700804938422" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/foodey/foodeyservice/repositories/ProductRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

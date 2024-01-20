@@ -9,20 +9,27 @@ function fnm() {
   fi
 }
 
-ROOT_MARKER=(".git", ".project", ".prettierrc", "pom.xml")
+ROOT_MARKER=(".project", ".prettierrc", "pom.xml")
 function cdg() {
   local dir=$PWD
 
+  local git_dir="$(git rev-parse --show-toplevel 2>/dev/null)"
+  if [[ -n "$git_dir" ]]; then
+    cd "$git_dir"
+    return
+  fi
+
   while [[ "$dir" != "/" ]]; do
     for marker in "${ROOT_MARKER[@]}"; do
-      if [[ -f "$dir/$marker" ]] || [[ -d "$dir/$marker" ]]; then
+      local marker_path="$dir/$marker"
+      if [[ -f "$marker_path" ]]; then
         cd "$dir"
         return
       fi
     done
     dir="$(dirname "$dir")"
   done
-  echo "No project root found"
+  echo "No project root found" && return 1
 }
 
 function mvnw17() {
@@ -34,16 +41,16 @@ function mvnw17() {
 
   while [[ "$dir" != "/" ]]; do
     if [[ -f "$dir/mvnw" ]]; then
-      # cd "$dir"
+      cd "$dir"
       export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-      # eval "$dir/mvnw" "$@"
+      eval "$dir/mvnw" "$@"
 
       # don't need to move to the root directory if you want to move to the root directory,
       # just uncomment 3 lines in the while loop block code and comment the following line
-      eval "$dir/mvnw -f $dir/pom.xml" "$@"
+      # eval "$dir/mvnw -f $dir/pom.xml" "$@"
 
       export JAVA_HOME=$current_java_home
-      # cd "$current_dir"
+      cd "$current_dir"
       return
     fi
     dir="$(dirname "$dir")"
