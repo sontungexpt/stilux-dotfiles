@@ -17,7 +17,6 @@ sg      g       # SETGID
 ex             # EXEC
 fi             # FILE
 
-'~/.config/i3/config'              
 '*.cts'                            
 '*.cobol'                          ⚙
 '*.exe'                            
@@ -319,6 +318,11 @@ fi             # FILE
 '*.puml'                           
 '*.properties'                     
 '*.example'                        
+'~/.config/i3/config'              
+'~/.config/lf/lfrc'                
+'~/.config/lf/colors'              
+'~/.config/lf/icons'               
+
 
 # Adobe
 '*.ai'                             
