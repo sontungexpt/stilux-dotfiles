@@ -17,6 +17,7 @@ sg      g       # SETGID
 ex             # EXEC
 fi             # FILE
 
+'~/.config/i3/config'              
 '*.cts'                            
 '*.cobol'                          ⚙
 '*.exe'                            
@@ -148,6 +149,7 @@ fi             # FILE
 '*.scss'                           
 '*.h'                              
 '*.license'                        
+'*LICENSE'                         
 '*.sln'                            
 '*.c'                              
 '*.d'                              
@@ -161,7 +163,6 @@ fi             # FILE
 '*.sbt'                            
 '*.leex'                           
 '*.hrl'                            
-'*.ogg'                            
 '*.cmake'                          
 '*.sqlite3'                        
 '*.rproj'                          󰗆
@@ -170,7 +171,6 @@ fi             # FILE
 '*.resi'                           
 '*.pm'                             
 '*.eot'                            
-'*.mkv'                            
 '*.razor'                          󱦘
 '*.spec.ts'                        
 '*.markdown'                       
@@ -228,7 +228,6 @@ fi             # FILE
 '*.wasm'                           
 '*.ini'                            
 '*.rmd'                            
-'*.ico'                            
 '*.hxx'                            
 '*.godot'                          
 '*.go'                             
@@ -280,7 +279,9 @@ fi             # FILE
 '*gulpfile'                        
 '*.zprofile'                       
 '*.zshrc'                          
+'*.xinitrc'                        
 '*.ds_store'                       
+'*.prettierrc'                     
 '*.dockerignore'                   󰡨
 '*license'                         
 '*.eslintrc'                       
@@ -301,7 +302,6 @@ fi             # FILE
 '*tsconfig.json'                   
 '*R'                               󰟔
 '*_vimrc'                          
-'*avif'                            
 '*gnumakefile'                     
 '*makefile'                        
 '*build'                           
@@ -310,7 +310,15 @@ fi             # FILE
 '*_gvimrc'                         
 '*.gvimrc'                         
 '*.npmrc'                          
+'*.yarnrc'                         
 '*.old'                            󰁯
+'*.plantuml'                       
+'*.wsd'                            
+'*.iuml'                           
+'*.pu'                             
+'*.puml'                           
+'*.properties'                     
+'*.example'                        
 
 # Adobe
 '*.ai'                             
@@ -386,9 +394,13 @@ fi             # FILE
 '*.mng'                            
 '*.pcx'                            
 '*.xcf'                            
+'*avif'                            
 '*.drawio'                         󰽉
 '*.svg'                            󰜡
 '*.svgz'                           󰜡
+
+# disk
+'*.ico'                            
 
 # Music formats
 '*.mp3'                            󰎆
@@ -428,6 +440,7 @@ fi             # FILE
 '*.dl'                             
 '*.ogm'                            
 '*.ogx'                            
+
 
 # Documents formats
 '*.pdf'                            
