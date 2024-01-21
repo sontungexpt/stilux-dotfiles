@@ -43,54 +43,58 @@ preview_unsupported() {
 	esac
 }
 
-shift
-case "$(basename "$file_path" | tr '[:upper:]' '[:lower:]')" in
-*.tgz | *.tar.gz) tar tzf "$file_path" ;;
-*.tar.bz2 | *.tbz2) tar tjf "$file_path" ;;
-*.tar*) tar tf "$file_path" ;;
-*.zip | *.jar | *.war | *.ear | *.oxt) unzip -l "$file_path" ;;
-*.rar) rar l "$file_path" ;;
-*.7z) 7z l "$file_path" ;;
-*.md) glowormdcatorcat "$file_path" ;;
-*.[1-8]) man "$file_path" | col -b ;;
-*.o) nm "$file_path" ;;
-*.torrent) transmission-show "$file_path" ;;
-*.iso) iso-info --no-header -l "$file_path" ;;
-*.odt | *.ods | *.odp | *.sxw) odt2txt "$file_path" ;;
-*.doc) catdoc "$file_path" ;;
-*.docx) docx2txt "$file_path" ;;
-*.xml | *.html) w3m -dump "$file_path" ;;
-*.xls | *.xlsx)
-	ssconvert --export-type=Gnumeric_stf:stf_csv "$file_path" "fd://1" | batorcat --language=csv
-	;;
-*.wav | *.mp3 | *.flac | *.m4a | *.wma | *.ape | *.ac3 | *.og[agx] | *.spx | *.opus | *.as[fx] | *.mka)
-	exiftool "$file_path"
-	;;
-*.avi | *.mp4 | *.wmv | *.dat | *.3gp | *.ogv | *.mkv | *.mpg | *.mpeg | *.vob | *.fl[icv] | *.m2v | *.mov | *.webm | *.ts | *.mts | *.m4v | *.r[am] | *.qt | *.divx)
-	[ ! -f "$CACHE_PNG" ] && ffmpeg -y -i "$file_path" -vframes 1 "$CACHE_PNG" >/dev/null 2>&1
-	preview "$CACHE_PNG"
-	;;
-*.ino) batorcat --language=cpp "$file_path" ;;
-*.epub)
-	[ ! -f "$CACHE" ] && epub-thumbnailer "$file_path" "$CACHE" 1024
-	preview "$CACHE"
-	;;
-*.pdf)
-	[ ! -f "$CACHE.jpg" ] && pdftoppm -jpeg -f 1 -singlefile "$file_path" "$CACHE" >/dev/null 2>&1
-	preview "$CACHE.jpg"
-	;;
-*.bmp | *.jpg | *.jpeg | *.png | *.xpm | *.webp | *.tiff | *.gif | *.jfif | *.ico)
-	preview "$file_path"
-	;;
-*.ttf | *.otf | *.woff)
-	[ ! -f "$CACHE_PNG" ] && fontpreview -i "$file_path" -o "$CACHE_PNG" >/dev/null 2>&1
-	preview "$CACHE_PNG"
-	;;
-*.svg)
-	[ ! -f "$CACHE_PNG" ] && convert "$file_path" "$CACHE_PNG" >/dev/null 2>&1
-	preview "$CACHE_PNG"
-	;;
-*) preview_unsupported "$file_path" ;;
+preview_supported() {
+	case "$(basename "$1" | tr '[:upper:]' '[:lower:]')" in
+	*.tgz | *.tar.gz) tar tzf "$1" ;;
+	*.tar.bz2 | *.tbz2) tar tjf "$1" ;;
+	*.tar*) tar tf "$1" ;;
+	*.zip | *.jar | *.war | *.ear | *.oxt) unzip -l "$1" ;;
+	*.rar) rar l "$1" ;;
+	*.7z) 7z l "$1" ;;
+	*.md) glowormdcatorcat "$1" ;;
+	*.[1-8]) man "$1" | col -b ;;
+	*.o) nm "$1" ;;
+	*.torrent) transmission-show "$1" ;;
+	*.iso) iso-info --no-header -l "$1" ;;
+	*.odt | *.ods | *.odp | *.sxw) odt2txt "$1" ;;
+	*.doc) catdoc "$1" ;;
+	*.docx) docx2txt "$1" ;;
+	*.xml | *.html) w3m -dump "$1" ;;
+	*.xls | *.xlsx)
+		ssconvert --export-type=Gnumeric_stf:stf_csv "$1" "fd://1" | batorcat --language=csv
+		;;
+	*.wav | *.mp3 | *.flac | *.m4a | *.wma | *.ape | *.ac3 | *.og[agx] | *.spx | *.opus | *.as[fx] | *.mka)
+		exiftool "$1"
+		;;
+	*.avi | *.mp4 | *.wmv | *.dat | *.3gp | *.ogv | *.mkv | *.mpg | *.mpeg | *.vob | *.fl[icv] | *.m2v | *.mov | *.webm | *.ts | *.mts | *.m4v | *.r[am] | *.qt | *.divx)
+		[ ! -f "$CACHE_PNG" ] && ffmpeg -y -i "$1" -vframes 1 "$CACHE_PNG" >/dev/null 2>&1
+		preview "$CACHE_PNG"
+		;;
+	*.ino) batorcat --language=cpp "$1" ;;
+	*.epub)
+		[ ! -f "$CACHE" ] && epub-thumbnailer "$1" "$CACHE" 1024
+		preview "$CACHE"
+		;;
+	*.pdf)
+		[ ! -f "$CACHE.jpg" ] && pdftoppm -jpeg -f 1 -singlefile "$1" "$CACHE" >/dev/null 2>&1
+		preview "$CACHE.jpg"
+		;;
+	*.bmp | *.jpg | *.jpeg | *.png | *.xpm | *.webp | *.tiff | *.gif | *.jfif | *.ico)
+		preview "$1"
+		;;
+	*.ttf | *.otf | *.woff)
+		[ ! -f "$CACHE_PNG" ] && fontpreview -i "$1" -o "$CACHE_PNG" >/dev/null 2>&1
+		preview "$CACHE_PNG"
+		;;
+	*.svg)
+		[ ! -f "$CACHE_PNG" ] && convert "$1" "$CACHE_PNG" >/dev/null 2>&1
+		preview "$CACHE_PNG"
+		;;
+	*) preview_unsupported "$1" ;;
+	esac
+}
 
-esac
+shift
+preview_supported "$file_path" || preview_unsupported "$file_path"
+
 return 127 # nonzero retcode required for lf previews to reload
