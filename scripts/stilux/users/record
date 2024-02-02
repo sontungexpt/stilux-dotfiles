@@ -1,14 +1,23 @@
 #!/bin/bash
 # The scripts is written by Tran Vo Son Tongue
 # This script is used to record desktop screen
-
+#
 NO='\033[0m' # No Color
 BLUE='\033[1;34m'
 RED='\033[1;31m'
+YELLOW='\033[1;33m'
 
 display_error() {
 	echo -e "${RED}ERROR:${NO} $1"
 	echo -e "${BLUE}MORE:${NO}Use $0 --help or $0 -h to get more information"
+}
+
+display_info() {
+	echo -e "${BLUE}INFO:${NO} $1"
+}
+
+display_warning() {
+	echo -e "${YELLOW}WARNING:${NO} $1"
 }
 
 DEPENDENCIES=(ffmpeg)
@@ -21,6 +30,102 @@ done
 
 STORAGE_DIR="$HOME/Videos/Recordings"
 DEFAULT_OUTPUT_FILE="$STORAGE_DIR/$(date '+%Y-%m-%d_%T')-recording.mp4"
+
+has_argument() {
+	# check if passed more than 1 argument to the script
+	local arg_check="$1"
+	local args=("${@:2}")
+
+	for arg in "${args[@]}"; do
+		if [[ "$arg" == "$arg_check" ]]; then
+			return 0
+		fi
+	done
+	return 1
+}
+
+get_argument_value() {
+	local arg="$1"
+	local args=("${@:2}")
+
+	for i in "${!args[@]}"; do
+		if [ "${args[$i]}" == "$arg" ]; then
+			local value="${args[$i + 1]}"
+
+			if [ "$value" != "" ] && [[ "$value" != -* ]]; then
+				echo "$value"
+				return
+			fi
+		fi
+	done
+}
+
+remove_arg() {
+	local arg_check="$1"
+	local args=("${@:2}")
+
+	for i in "${!args[@]}"; do
+		if [[ "${args[$i]}" == "$arg_check" ]]; then
+			unset "args[$i]"
+			echo "${args[@]}"
+			return
+		fi
+	done
+
+	echo "${args[@]}"
+	return
+}
+
+remove_arg_at_index() {
+	declare -i index
+	index="$1"
+
+	declare -a args
+	args=("${@:2}")
+
+	local last_index=$((${#args[@]} - 1))
+
+	if [ "$index" -lt 0 ] || [ "$index" -gt $last_index ]; then
+		echo "${args[@]}"
+		return
+	fi
+
+	unset "args[$index]"
+
+	echo "${args[@]}"
+	return
+}
+
+find_index() {
+	local arg_check="$1"
+	local args=("${@:2}")
+
+	for i in "${!args[@]}"; do
+		if [ "${args[$i]}" == "$arg_check" ]; then
+			echo "$i"
+			return
+		fi
+	done
+	echo -1
+	return
+}
+
+find_argument_value_index() {
+	local arg_check="$1"
+	local args=("${@:2}")
+
+	for i in "${!args[@]}"; do
+		if [ "${args[$i]}" == "$arg_check" ]; then
+			local value="${args[$i + 1]}"
+			if [ "$value" != "" ] && [[ "$value" != -* ]]; then
+				echo "$((i + 1))"
+				return
+			fi
+		fi
+	done
+	echo -1
+	return
+}
 
 mkdir -p "$STORAGE_DIR"
 
@@ -36,6 +141,8 @@ display_help() {
 	echo -e "  To cut a video: $0 cut <file_path_to_cut> [<file_path_after_cutted>]"
 	echo -e "  To record screen: $0 [OPTIONS] [<output_file_path>]"
 	echo -e "  To record screen with high quality: $0 high [<output_file_path>] or $0 --high [<output_file_path>]"
+	echo -e "  To convert video to gif: $0 gif <input_file_path> [<output_file_path>]"
+	echo -e "  To display help: $0 --help or $0 -h"
 
 	echo -e "\n${BLUE}EXAMPLE:${NO}"
 	echo -e "  $0"
@@ -47,34 +154,98 @@ display_help() {
 	echo -e "  $0 cut /home/stilux/Videos/test.mp4"
 }
 
-record_video() {
-	#case record_video
-	local output_file="$DEFAULT_OUTPUT_FILE"
+is_id_valid() {
+	declare -i id
+	id="$1"
 
-	#case record_video --high output_path
-	if [[ "$1" == "--high" ]] && [[ -n "$2" ]]; then
-		output_file="$2"
-	#case record_video output_path --high
-	elif [ -n "$1" ] && [[ "$1" != "--high" ]]; then
-		output_file="$1"
-	fi
-
-	if [ "$1" == "--high" ] || [ "$2" == "--high" ]; then
-		echo -e "${BLUE}==> Record in high quality${NO}"
-		ffmpeg -framerate 60 -f x11grab -i "$DISPLAY" -c:v libx264rgb -crf 0 -preset ultrafast -color_range 2 "$output_file"
-	else
-		ffmpeg -framerate 60 -f x11grab -i "$DISPLAY" -pix_fmt yuv420p "$output_file"
-	fi
+	[[ "$id" -gt -1 ]]
 }
 
-if [ $# -eq 0 ]; then
-	record_video
-	exit 0
-fi
+convert_gif() {
+	if [ $# -gt 3 ]; then
+		display_error "Invalid arguments for convert_gif function call, number of arguments must be less than 3"
+		exit 1
+	fi
+
+	local args=("$@")
+
+	local id_replace=
+	id_replace=$(find_index "--replace" "${args[@]}")
+	args=($(remove_arg_at_index "$id_replace" "${args[@]}"))
+
+	local input_file=${args[0]}
+	local output_file=${args[1]}
+
+	display_warning "Converting video to gif may take a long time"
+
+	if [ ! -f "$input_file" ]; then
+		display_error "File $input_file does not exist"
+		exit 1
+	fi
+
+	if [ -z "$output_file" ]; then
+		output_file="${input_file%.*}.gif"
+	fi
+
+	ffmpeg -i "$input_file" -vf "fps=10,format=rgb24" -c:v gif "$output_file"
+
+	if is_id_valid "$id_replace"; then
+		display_warning "Removing original video file"
+		rm "$input_file"
+	fi
+
+	display_info "Gif file is saved at $output_file"
+}
 
 cut_video() {
-	local input_file="$1"
-	local output_file="$2"
+	if [ $# -gt 8 ]; then
+		display_error "Invalid arguments for cut_video function call, number of arguments must be less than 8"
+		exit 1
+	fi
+
+	declare -a args
+	args=("$@")
+
+	local id_gif
+	id_gif=$(find_index "--gif" "${args[@]}")
+	args=($(remove_arg_at_index "$id_gif" "${args[@]}"))
+
+	local id_replace
+	id_replace=$(find_index "--replace" "${args[@]}")
+	args=($(remove_arg_at_index "$id_replace" "${args[@]}"))
+
+	local id_start_time
+	id_start_time=$(find_argument_value_index "--start" "${args[@]}")
+
+	local start_time
+
+	if is_id_valid "$id_start_time"; then
+		start_time=${args[$id_start_time]}
+
+		args=($(remove_arg_at_index "$id_start_time" "${args[@]}"))
+		args=($(remove_arg_at_index "$((id_start_time - 1))" "${args[@]}"))
+	else
+		read -r -p "Enter cutting start time (in hh:mm:ss format): " temp_start_time
+		start_time="$temp_start_time"
+	fi
+
+	local id_end_time
+	id_end_time=$(find_argument_value_index "--end" "${args[@]}")
+
+	local end_time
+
+	if is_id_valid "$id_end_time"; then
+		end_time=${args[$id_end_time]}
+
+		args=($(remove_arg_at_index "$id_end_time" "${args[@]}"))
+		args=($(remove_arg_at_index "$((id_end_time - 1))" "${args[@]}"))
+	else
+		read -r -p "Enter cutting end time (in hh:mm:ss format): " temp_end_time
+		end_time="$temp_end_time"
+	fi
+
+	local input_file=${args[0]}
+	local output_file=${args[1]}
 
 	if [ ! -f "$input_file" ]; then
 		display_error "File $input_file does not exist"
@@ -88,10 +259,6 @@ cut_video() {
 		output_file="${input_file%.*}_cut-$(date '+%Y-%m-%d_%T').${input_file##*.}"
 	fi
 
-	## get the start time and end time from user
-	read -r -p "Enter cutting start time (in hh:mm:ss format): " start_time
-	read -r -p "Enter cutting end time (in hh:mm:ss format): " end_time
-
 	if ! date -d "$start_time" &>/dev/null || ! date -d "$end_time" &>/dev/null; then
 		display_error "Invalid time format. Please use hh:mm:ss format."
 		exit 1
@@ -99,19 +266,133 @@ cut_video() {
 
 	ffmpeg -i "$input_file" -ss "$start_time" -to "$end_time" -c copy "$output_file"
 
+	if is_id_valid "$id_replace"; then
+		display_warning "Removing original video file"
+		rm "$input_file"
+	else
+		display_info "Cutting video finished. File is saved at $output_file"
+	fi
+
+	if is_id_valid "$id_gif"; then
+		if is_id_valid "$id_replace"; then
+			convert_gif "$output_file" --replace
+		else
+			convert_gif "$output_file"
+		fi
+	fi
 }
+
+record_video() {
+	if [ $# -gt 7 ]; then
+		display_error "Invalid arguments for record_video function call, number of arguments must be less than 7"
+		exit 1
+	fi
+
+	local args=("$@")
+
+	local id_gif
+	id_gif="$(find_index "--gif" "${args[@]}")"
+	args=($(remove_arg_at_index "$id_gif" "${args[@]}"))
+
+	local id_replace
+	id_replace=$(find_index "--replace" "${args[@]}")
+	args=($(remove_arg_at_index "$id_replace" "${args[@]}"))
+
+	local id_high
+	id_high=$(find_index "--high" "${args[@]}")
+	args=($(remove_arg_at_index "$id_high" "${args[@]}"))
+
+	local id_start_time
+	id_start_time=$(find_argument_value_index "--start" "${args[@]}")
+
+	local start_time
+
+	if is_id_valid "$id_start_time"; then
+		start_time=${args[$id_start_time]}
+
+		args=($(remove_arg_at_index "$id_start_time" "${args[@]}"))
+		args=($(remove_arg_at_index "$((id_start_time - 1))" "${args[@]}"))
+	fi
+
+	local id_end_time
+	id_end_time=$(find_argument_value_index "--end" "${args[@]}")
+
+	local end_time
+
+	if is_id_valid "$id_end_time"; then
+		end_time=${args[$id_end_time]}
+
+		args=($(remove_arg_at_index "$id_end_time" "${args[@]}"))
+		args=($(remove_arg_at_index "$((id_end_time - 1))" "${args[@]}"))
+	fi
+
+	local output_file=${args[0]}
+
+	if [ -z "$output_file" ]; then
+		output_file="$DEFAULT_OUTPUT_FILE"
+	fi
+
+	display_warning "Press Ctrl+C to stop recording"
+
+	if is_id_valid "$id_high"; then
+		echo -e "${BLUE}==> Record in high quality${NO}"
+		ffmpeg -framerate 60 -f x11grab -i "$DISPLAY" -c:v libx264rgb -crf 0 -preset ultrafast -color_range 2 "$output_file"
+	else
+		ffmpeg -framerate 60 -f x11grab -i "$DISPLAY" -pix_fmt yuv420p "$output_file"
+	fi
+
+	if [ -n "$start_time" ] && [ -n "$end_time" ]; then
+		display_warning "Cutting video"
+
+		if is_id_valid "$id_gif"; then
+			if is_id_valid "$id_replace"; then
+				cut_video --start "$start_time" --end "$end_time" "$output_file" --gif --replace
+			else
+				cut_video --start "$start_time" --end "$end_time" "$output_file" --gif
+			fi
+		else
+			cut_video --start "$start_time" --end "$end_time" "$output_file"
+		fi
+		exit 0
+	else
+		if is_id_valid "$id_gif"; then
+			if is_id_valid "$id_replace"; then
+				convert_gif "$output_file" --replace
+			else
+				convert_gif "$output_file"
+			fi
+			exit 0
+		fi
+	fi
+
+	display_info "Recording finished. File is saved at $output_file"
+}
+
+# main
+#
+
+if has_argument "--help" "$@" || has_argument "-h" "$@"; then
+	display_help
+	exit 0
+fi
+
+if [ $# -eq 0 ]; then
+	record_video
+	exit 0
+fi
 
 case "$1" in
 "cut")
-	cut_video "$2" "$3"
-	;;
-"high")
-	record_video "$2" --high
+	shift
+	cut_video "$@"
 	;;
 "--help" | "-h")
 	display_help
 	;;
+"gif")
+	convert_gif "$@"
+	;;
 *)
-	record_video $@
+	record_video "$@"
 	;;
 esac
