@@ -281,6 +281,7 @@ fi             # FILE
 '*.xinitrc'                        
 '*.ds_store'                       
 '*.prettierrc'                     
+'*.prettierignore'                 
 '*.dockerignore'                   󰡨
 '*license'                         
 '*.eslintrc'                       
@@ -383,7 +384,6 @@ fi             # FILE
 '*.mjpg'                           
 '*.mjpeg'                          
 '*.png'                            
-'*.gif'                            
 '*.webp'                           
 '*.webm'                           
 '*.bmp'                            
@@ -402,6 +402,10 @@ fi             # FILE
 '*.drawio'                         󰽉
 '*.svg'                            󰜡
 '*.svgz'                           󰜡
+
+'*.gif'                            󰤚
+
+
 
 # disk
 '*.ico'                            

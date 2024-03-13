@@ -144,9 +144,13 @@ cmd thunar %{{
 
 # Sudo Open Command
 cmd sudoopen ${{
-  open_pdf() {
+  browser() {
     if [ ! -f "/usr/bin/microsoft-edge-stable" ]; then
-      sudo setsid -f xdg-open "$f" >> /dev/null 2>&1 & ;;
+      if [ -f "/usr/bin/firefox" ]; then
+        setsid -f firefox "$f" >> /dev/null 2>&1 &
+      else
+        setsid -f xdg-open "$f" >> /dev/null 2>&1 &
+      fi
     else
       sudo setsid -f microsoft-edge-stable "$f" >> /dev/null 2>&1 &
     fi
@@ -162,7 +166,8 @@ cmd sudoopen ${{
 
   case $(file --mime-type "$f" -bL) in
     text/*|application/json|application/javascript|inode/x-empty|application/octet-stream) open_with_nvim "$f";;
-    application/pdf) open_pdf "$f";;
+    application/pdf) browser "$f";;
+    image/gif) sudo setsid -f mpv --loop $f >> /dev/null 2>&1 & ;;
     image/*) sudo setsid -f feh --auto-zoom --scale-down $f >> /dev/null 2>&1 & ;;
     *) sudo setsid -f xdg-open "$f" >> /dev/null 2>&1 & ;;
   esac
@@ -170,9 +175,13 @@ cmd sudoopen ${{
 
 # Open Command
 cmd open ${{
-  open_pdf() {
+  browser() {
     if [ ! -f "/usr/bin/microsoft-edge-stable" ]; then
-      setsid -f xdg-open "$f" >> /dev/null 2>&1 &
+      if [ -f "/usr/bin/firefox" ]; then
+        setsid -f firefox "$f" >> /dev/null 2>&1 &
+      else
+        setsid -f xdg-open "$f" >> /dev/null 2>&1 &
+      fi
     else
       setsid -f microsoft-edge-stable "$f" >> /dev/null 2>&1 &
     fi
@@ -188,7 +197,8 @@ cmd open ${{
 
   case $(file --mime-type "$f" -bL) in
     text/*|application/json|application/javascript|inode/x-empty|application/octet-stream) open_with_nvim $f;;
-    application/pdf) open_pdf "$f";;
+    image/gif) setsid -f mpv --loop $f >> /dev/null 2>&1 & ;;
+    application/pdf) browser "$f";;
     image/*) setsid -f feh --auto-zoom --scale-down $f >> /dev/null 2>&1 & ;;
     *) setsid -f xdg-open "$f" >> /dev/null 2>&1 & ;;
   esac
@@ -279,11 +289,11 @@ cmd extract ${{
       echo "ERROR: You need to install unrar to extract file"
       exit 1
     fi
-	  destination="$(echo $1 | sed -e 's/.rar//')"
-	  if [ ! -d "$destination" ]; then
-		  mkdir "$destination"
-	  fi
-	  unrar e "$1" "$destination"
+    local destination="${1//.rar/}"
+    if [ ! -d "$destination" ]; then
+      mkdir "$destination"
+    fi
+    unrar e "$1" "$destination"
   }
 
   un_zip() {
@@ -292,13 +302,12 @@ cmd extract ${{
       exit 1
     fi
 
-    destination="$(echo $1 | sed -e 's/.zip//')"
+    local destination="${1//.zip/}"
     if [ ! -d "$destination" ]; then
       mkdir "$destination"
     fi
     unzip "$1" -d "$destination"
   }
-
 
   un_7z() {
     if [ ! -f "/usr/bin/7z" ]; then
@@ -306,7 +315,7 @@ cmd extract ${{
       exit 1
     fi
 
-    destination="$(echo $1 | sed -e 's/.7z//')"
+    local destination="${1//.7z/}"
     if [ ! -d "$destination" ]; then
       mkdir "$destination"
     fi

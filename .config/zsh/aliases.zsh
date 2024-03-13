@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# ya shell wrapper that provides the ability to change the current working directory when exiting Yazi.
+# https://yazi-rs.github.io/docs/quick-start
+function yazi() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+	command yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 function fnm() {
   if [[ "$1" == "install" ]] &&  [[ "$2" == "node" ]]; then
   local new_node_version="$(command fnm ls-remote | grep -v - | tail -1)"
@@ -9,8 +20,8 @@ function fnm() {
   fi
 }
 
-ROOT_MARKER=(".project", ".prettierrc", "pom.xml")
 function cdg() {
+  local root_markers=(".project", ".prettierrc", "pom.xml")
   local dir=$PWD
 
   local git_dir="$(git rev-parse --show-toplevel 2>/dev/null)"
@@ -20,7 +31,7 @@ function cdg() {
   fi
 
   while [[ "$dir" != "/" ]]; do
-    for marker in "${ROOT_MARKER[@]}"; do
+    for marker in "${root_markers[@]}"; do
       local marker_path="$dir/$marker"
       if [[ -f "$marker_path" ]]; then
         cd "$dir"
@@ -73,7 +84,6 @@ function gradlew17() {
   echo "No gradlew found"
 }
 
-# alias gradlew17='./gradlew -Dorg.gradle.java.home=/usr/lib/jvm/java-17-openjdk'
 alias ls="ls --color=auto"
 alias lf="export PATH=${XDG_CONFIG_HOME:-$HOME/.config}/lf/bin:$PATH;lf $@"
 
@@ -101,3 +111,5 @@ alias alacrittyconfig='nvim ~/.config/alacritty/alacritty.yml'
 alias fishconfig='nvim ~/.config/fish/config.fish'
 alias dunstconfig='nvim ~/.config/dunst/dunstrc'
 alias ewwconfig='nvim ~/.config/eww/eww.yuck'
+alias yaziconfig='nvim ~/.config/yazi/yazi.toml'
+alias ya=yazi

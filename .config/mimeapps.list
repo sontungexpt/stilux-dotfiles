@@ -8,7 +8,7 @@ x-scheme-handler/unknown=microsoft-edge.desktop
 x-scheme-handler/mailto=microsoft-edge.desktop
 text/markdown=userapp-kitty nvim-QVOFC2.desktop
 application/x-shellscript=userapp-kitty nvim-TYYDD2.desktop
-application/x-zerosize=userapp-kitty nvim-QVOFC2.desktop
+application/x-zerosize=userapp-kitty nvim-5GK7J2.desktop
 text/plain=userapp-setsid -f kitty nvim-KJ9UE2.desktop
 x-scheme-handler/webcal=microsoft-edge.desktop
 image/svg+xml=feh.desktop
@@ -27,6 +27,7 @@ image/jpeg=feh.desktop;microsoft-edge.desktop;
 text/x-java=userapp-setsid -f kitty nvim-KJ9UE2.desktop;
 text/x-maven+xml=userapp-setids -f kitty nvim-6K35E2.desktop;userapp-setsid -f kitty nvim-KJ9UE2.desktop;
 application/json=userapp-setsid -f kitty nvim-KJ9UE2.desktop;
+application/x-zerosize=userapp-nvim -NY29J2.desktop;userapp-kitty nvim-5GK7J2.desktop;
 
 [Removed Associations]
 text/plain=avahi-discover.desktop;bvnc.desktop;bssh.desktop;i3.desktop;lf.desktop;rofi-theme-selector.desktop;rofi.desktop;kitty-open.desktop;kitty.desktop;userapp-kitty -e nvim-2JYED2.desktop;
