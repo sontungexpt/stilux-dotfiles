@@ -143,7 +143,7 @@ rules = [
 
   # Fallback
   # { name = "*", fg = "white" },
-  { name = "*/", fg = "blue" },
+  { name = "*/", fg = "#7aa2f7" },
 ]
 
 [icon]

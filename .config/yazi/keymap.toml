@@ -6,11 +6,9 @@
 
 prepend_keymap = [
   { on = [
-    "l",
-  ], run = "plugin --sync smart-enter", desc = "Enter the child directory, or open the file" },
-  { on = [
-    "c",
+    "U",
     "b",
+    "g",
   ], run = '''shell --confirm
     'if command -v setbg &>/dev/null; then
       setbg "$1" --no-fehbg
@@ -19,9 +17,13 @@ prepend_keymap = [
     fi'
   ''', desc = "Change background" },
   { on = [
-    "c",
+    "U",
     "a",
+    "v",
   ], run = '''shell --confirm 'setavatar "$1"'''', desc = "Change avatar" },
+  { on = [
+    "z",
+  ], run = '''shell --confirm 'zip -r "$1" "$1"'''', desc = "Zip folder" },
 ]
 
 keymap = [
@@ -97,7 +99,10 @@ keymap = [
   ], run = "leave", desc = "Go back to the parent directory" },
   { on = [
     "l",
-  ], run = "enter", desc = "Enter the child directory" },
+  ], run = "plugin --sync smart-enter", desc = "Enter the child directory, or open the file" },
+  # { on = [
+  #   "l",
+  # ], run = "enter", desc = "Enter the child directory" },
 
   { on = [
     "H",
@@ -130,7 +135,10 @@ keymap = [
   ], run = "leave", desc = "Go back to the parent directory" },
   { on = [
     "<Right>",
-  ], run = "enter", desc = "Enter the child directory" },
+  ], run = "plugin --sync smart-enter", desc = "Enter the child directory, or open the file" },
+  # { on = [
+  #   "<Right>",
+  # ], run = "enter", desc = "Enter the child directory" },
 
   { on = [
     "g",
@@ -203,9 +211,10 @@ keymap = [
   { on = [
     "d",
     "d",
-  ], run = "remove", desc = "Move the files to the trash" },
+  ], run = "remove --force", desc = "Move the files to the trash" },
   { on = [
-    "DD",
+    "D",
+    "D",
   ], run = "remove --permanently", desc = "Permanently delete the files" },
   { on = [
     "a",

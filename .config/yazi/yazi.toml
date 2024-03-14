@@ -4,7 +4,15 @@
 
 [manager]
 ratio = [2, 3, 5]
-sort_by = "alphabetical"
+# sort_by: "none" | "modified" | "created" | "extension" | "alphabetical" | "natural" | "size"
+# "none": Don't sort.
+# "modified": Sort by last modified time.
+# "created": Sort by creation time. (Due to a Rust bug, this is not available at the moment, see sxyazi/yazi#356 and rust-lang/rust#108277)
+# "extension": Sort by file extension.
+# "alphabetical": Sort alphabetically, e.g. 1.md < 10.md < 2.md
+# "natural": Sort naturally, e.g. 1.md < 2.md < 10.md
+# "size": Sort by file size.
+sort_by = "natural"
 sort_sensitive = false
 sort_reverse = false
 sort_dir_first = true
@@ -41,7 +49,7 @@ reveal = [
   { run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 extract = [
-  { run = 'unar "$1"', desc = "Extract here", for = "unix" },
+  { run = '$HOME/.config/yazi/shell/extract.sh "$1"', desc = "Extract here", for = "unix" },
   { run = 'unar "%1"', desc = "Extract here", for = "windows" },
 ]
 play = [
@@ -127,6 +135,7 @@ rules = [
 ]
 
 [tasks]
+
 micro_workers = 10
 macro_workers = 25
 bizarre_retry = 5
@@ -170,7 +179,6 @@ previewers = [
   { mime = "application/x-bzip2", run = "archive" },
   { mime = "application/x-7z-compressed", run = "archive" },
   { mime = "application/x-rar", run = "archive" },
-  { mime = "application/xz", run = "archive" },
   # Fallback
   { name = "*", run = "file" },
 ]
