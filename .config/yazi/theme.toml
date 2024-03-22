@@ -181,6 +181,7 @@ rules = [
   { name = "*.tsx", text = "", fg = "#1354bf" },
   { name = "*.vim", text = "", fg = "#019833" },
   { name = "*.vue", text = "󰡄", fg = "#8dc149" },
+  { name = "*.xml", text = "󰗀", fg = "#e37933" },
 
   # Text
   { name = "*.conf", text = "", fg = "#6d8086" },

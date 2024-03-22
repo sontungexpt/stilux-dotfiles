@@ -1,0 +1,66 @@
+# https://alacritty.org/config-alacritty.html
+import = [
+  # "~/.config/alacritty/colors.yaml",
+  # "~/.config/alacritty/fonts.yml",
+  # "~/.config/alacritty/keymaps.yml",
+]
+live_config_reload = true
+
+# [shell]
+# program = "/bin/zsh"
+# args = ["-l"]
+
+
+[window]
+dynamic_padding = true
+decorations = "Full"   # "Full" | "None" | "Transparent" | "Buttonless"
+
+[font]
+normal = { family = "Hack Nerd Font", style = "Regular" }
+bold = { family = "Hack Nerd Font", style = "Medium" }
+italic = { family = "Hack Nerd Font", style = "Light Italic" }
+bold_italic = { family = "Hack Nerd Font", style = "Bold Italic" }
+size = 10.5
+
+[colors]
+
+[colors.primary]
+background = "#161f31"
+foreground = "#bbc2cf"
+
+[colors.normal]
+black = "#000403"
+red = "#e5255c"
+green = "#4ac770"
+yellow = "0xfefa67"
+blue = "#51afef"
+magenta = "#c678dd"
+cyan = "0x8afeff"
+white = "#f8fcff"
+
+[colors.bright]
+black = "0x323232"
+red = "#ee2c4a"
+green = "#47d864"
+yellow = "0xfeff57"
+blue = "#89b4fa"
+magenta = "0xfe78ff"
+cyan = "0x8affff"
+white = "#ffffff"
+
+# cursor:
+#   cursor: "#a7ccff"
+#   text: "#24253b"
+
+# selection:
+#   text: "#1b1e1c"
+#   background: "#a7ccff"
+
+# color = { text = "#a7ccff", cursor = "#a7ccff" }
+
+[cursor]
+style = { shape = "Beam", blinking = "Off" }
+# blink_interval = 750
+# blink_timeout = 5
+
+# [mouse]

@@ -216,6 +216,7 @@ bindsym $mod+minus  scratchpad show
 # Ibus
 # Auto start ibus
 exec_always --no-startup-id ibus-daemon -drx
+exec_always --no-startup-id ibus engine Bamboo
 # exec_always ibus restart
 
 # Keyboard Layout

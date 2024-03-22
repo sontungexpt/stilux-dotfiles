@@ -1,3 +1,12 @@
 {
-  "diagnostics.globals": ["Manager", "Parent", "Current", "Preview", "ui", "ya"]
+  "diagnostics.globals": [
+    "Manager",
+    "Parent",
+    "Current",
+    "Preview",
+    "Command",
+    "ui",
+    "ya",
+    "cx"
+  ]
 }

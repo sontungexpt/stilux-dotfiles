@@ -24,7 +24,12 @@ prepend_keymap = [
   { on = [
     "z",
   ], run = '''shell --confirm 'zip -r "$1" "$1"'''', desc = "Zip folder" },
+  # { on = [
+  #   "U",
+  #   "e",
+  # ], run = "plugin smart-extract --sync", desc = "Extract folder" },
 ]
+
 
 keymap = [
   { on = [
