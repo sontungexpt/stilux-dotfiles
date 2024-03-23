@@ -2,17 +2,13 @@
 # The scripts is written by TranVoSonTung
 # The scripts is used to install stilux used apps in arch linux
 
-YAY="yay -S --answerclean All --noconfirm --needed"
-PACMAN="sudo pacman -S --noconfirm --needed"
-
-
 # Ask if you want to install stilux apps
 echo "Do you want to install stilux apps? (y/n)"
 read -r answer
 if [ "$answer" != "${answer#[Yy]}" ]; then
 	# Check if installed yay, if not install it
 	if ! [ -x "$(command -v yay)" ]; then
-		eval "$PACMAN git base-devel"
+sudo pacman -S --needed git base-devel --noconfirm
 		echo "Installing yay..."
 		git clone https://aur.archlinux.org/yay.git
 		cd yay || exit 1
@@ -31,17 +27,17 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 
 	# Calendar apps
 	# echo ">>> Installing calcurse..."
-	# eval "$PACMAN calcurse"
+	# sudo pacman -S calcurse
 
 	# Ask if you want to install edge or chorme, default is edge
 	echo "Do you want to install edge or chrome? (e/c)"
 	read -r answer
 	if [ "$answer" != "${answer#[Ee]}" ]; then
 		echo ">>> Installing microsoft edge..."
-		eval "$YAY microsoft-edge-stable-bin"
+yay -S microsoft-edge-stable-bin --answerclean All --noconfirm --needed
 	else
 		echo ">>> Installing google chrome..."
-		eval "$YAY google-chrome"
+yay -S google-chrome --answerclean All --noconfirm --needed
 	fi
 
 	# Install desired apps
@@ -51,37 +47,37 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	read -r answer
 	if [ "$answer" != "${answer#[Yy]}" ]; then
 		echo ">>> Installing desired apps..."
-		eval "$PACMAN gimp inkscape kdenlive"
+sudo pacman -S gimp inkscape kdenlive --noconfirm --needed
 		# check if has kdenlive app
 		if [ -x "$(command -v kdenlive)" ]; then
 			echo ">>> Installing kdenlive dark-theme..."
-			eval "$YAY arc-kde-git"
+yay -S arc-kde-git --answerclean All --noconfirm --needed
 		fi
-		eval "$YAY figma-linux-bin"
+yay -S figma-linux-bin --answerclean All --noconfirm --needed
 	else
 		echo ":: Skip installing desired apps"
 	fi
 
 	# Install social apps
 	echo ">>> Installing discord..."
-	eval "$PACMAN discord"
+sudo pacman -S discord --noconfirm --needed
 
 	# Cloud sync tools
 	# echo ">>> Installing cloud sync tools..."
-	# eval "$PACMAN rclone"
+	# sudo pacman -S rclone
 
 	# Install development apps
 	echo ">>> Installing development apps..."
-	eval "$PACMAN neovim"
-	eval "$YAY visual-studio-code-bin"
+sudo pacman -S --needed neovim --noconfirm
+yay -S --needed visual-studio-code-bin --answerclean All --noconfirm
 
 	# Install dev environment
 	echo ">>> Installing dev environment..."
-	eval "$PACMAN clang cmake ninja pkgconf gtk3 xz"
+sudo pacman -S --needed clang cmake ninja pkgconf gtk3 xz --noconfirm
 
 	# Python
 	echo ">>> Installing python, pip..."
-	eval "$PACMAN python python-pip"
+sudo pacman -S --needed python python-pip --noconfirm
 	python3 -m venv .venv
 	source .venv/bin/activate
 	pip install --upgrade pip
@@ -89,11 +85,11 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 
 	# Nodejs
 	# echo ">>> Installing nodejs, npm with nvm"
-	# eval "$PACMAN nodejs npm"
-	# eval "$YAY nvm"
+	# sudo pacman -S nodejs npm
+	# yay -S nvm
 	# nvm install node
 	echo ">>> Installing fnm, nodejs, npm..."
-	eval "$YAY fnm"
+yay -S fnm --answerclean All --noconfirm --needed
 	fnm install "$(fnm ls-remote | grep -v - | tail -1)" && fnm default "$(fnm ls-remote | grep -v - | tail -1)"
 	source "$HOME/.zshrc"
 	npm install -g neovim
@@ -102,8 +98,8 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	# echo ">>> Installing ruby, rbenv..."
 	# sed -i 's/eval "$(rbenv init -)"/# eval "$(rbenv init -)"/g' "$HOME/.zshrc"
 	# sed -i 's|export PATH="$HOME/.rbenv/bin:$PATH"|# export PATH="$HOME/.rbenv/bin:$PATH"|g' "$HOME/.zshrc"
-	# eval "$YAY rbenv-git"
-	# eval "$YAY ruby-build"
+	# yay -S rbenv-git
+	# yay -S ruby-build
 	# sed -i 's/# eval "$(rbenv init -)"\s*=\s*\(.*\)/eval "$(rbenv init -)"/g' "$HOME/.zshrc"
 	# sed -i 's|# export PATH="$HOME/.rbenv/bin:$PATH"|export PATH="$HOME/.rbenv/bin:$PATH"|g' "$HOME/.zshrc"
 
@@ -125,33 +121,33 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 	# cd "$HOME/.developments" || exit
 	# git clone https://github.com/flutter/flutter.git
 	# cd "$HOME" || exit
-	# eval "$PACMAN clang cmake ninja pkgconf gtk3 xz"
+	# sudo pacman -S clang cmake ninja pkgconf gtk3 xz
 	# flutter doctor --android-licenses
 
 	# Install android studio
 	echo ">>> Installing android studio, jdk11, jdk17..."
-	eval "$PACMAN openjdk11-src openjdk17-src"
-	eval "$YAY android-studio watchman"
+sudo pacman -S openjdk11-src openjdk17-src --noconfirm --needed
+yay -S android-studio watchman --answerclean All --noconfirm --needed
 
 	echo ">>> Installing mongodb..."
-	eval "$YAY mongodb-bin mongosh-bin mongodb-compass mongodb-tools"
+yay -S mongodb-bin mongosh-bin mongodb-compass mongodb-tools --answerclean All --noconfirm --needed
 	sudo systemctl enable mongodb.service
 	sudo systemctl start mongodb.service
 
 	echo ">>> Installing rust..."
-	eval "$PACMAN rustup"
+sudo pacman -S rustup --noconfirm --needed
 	rustup default stable
 	rustup component add rust-analyzer
 
 	echo ">>> Installing ldoc..."
-	eval "$PACMAN luarocks"
+sudo pacman -S luarocks --noconfirm --needed
 	luarocks install ldoc
 
 	echo ">>> Installing plantuml"
-	eval "$PACMAN plantuml graphviz"
+sudo pacman -S plantuml graphviz --noconfirm --needed
 
 	echo ">>> Installing tree"
-	eval "$PACMAN tree"
+sudo pacman -S tree --noconfirm --needed
 
 else
 	echo "Skip installing stilux apps"

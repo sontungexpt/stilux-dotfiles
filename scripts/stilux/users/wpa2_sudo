@@ -1,0 +1,153 @@
+#!/bin/bash
+# The scripts is written by Tran Vo Son Tung
+# The scipts is used to configure wpa2 connection
+
+# check if has sudo permission
+if [[ $EUID -ne 0 ]]; then
+	echo "This script must be run as root or sudo"
+	exit 1
+fi
+
+NO='\033[0m' # No Color
+BLUE='\033[1;34m'
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+
+display_help() {
+	echo -e "${BLUE}INFORMATION:${NO}"
+	echo -e "  This script is written by Tran Vo Son Tung"
+	echo -e "  The script is used to configure wpa2 connection"
+	echo -e "  Dependencies: NetworkManager, uuidgen, tee"
+
+	echo -e "\n${BLUE}USAGE:${NO}"
+	echo -e "  wpa2 [OPTIONS] [wifi name]"
+
+	echo -e "\n${BLUE}OPTIONS:${NO}"
+	echo -e "  -h, --help                    show help"
+	echo -e "  rm <wifi name>                remove wifi connection with name"
+	echo -e "  ls                            list all wifi connection names"
+	echo -e "  conf <wifi name>              edit wifi connection with name"
+
+	echo -e "\n${BLUE}EXAMPLES:${NO}"
+	echo -e "  wpa2"
+	echo -e "  wpa2 <wifi name> "
+	echo -e "  wpa2 rm <wifi name>"
+	echo -e "  Note: If wifi name has space, enclose with quotes"
+}
+
+display_error() {
+	echo -e "${RED}ERROR:${NO} $1"
+}
+
+display_info() {
+	echo -e "${GREEN}INFO:${NO} $1"
+}
+
+display_warning() {
+	echo -e "${YELLOW}WARNING:${NO} $1"
+}
+
+CONNECTION_DIR="/etc/NetworkManager/system-connections"
+EXTENSION=".nmconnection"
+
+case "$1" in
+rm)
+	read -r -p "Are you sure to remove connection for $2? [y/N]: " response
+	if [[ $response == "y" || $response == "Y" ]]; then
+		rm -f "$CONNECTION_DIR/$2$EXTENSION"
+		systemctl restart NetworkManager
+		display_warning "Removed connection for $2"
+	else
+		display_warning "No changes have been made"
+	fi
+	exit 0
+	;;
+conf)
+	"${EDITOR:-nvim}" "$CONNECTION_DIR/$2$EXTENSION"
+	exit 0
+	;;
+ls)
+	case "$2" in
+	-f | --full)
+		find "$CONNECTION_DIR" -type f -name "*$EXTENSION"
+		;;
+	-e | --extension)
+		ls "$CONNECTION_DIR"
+		;;
+	*)
+		find "$CONNECTION_DIR" -type f -name "*$EXTENSION" -printf "%f\n" | sed 's/'$EXTENSION'//g'
+		;;
+	esac
+	exit 0
+	;;
+-h | --help)
+	display_help
+	exit 0
+	;;
+esac
+
+# main script
+if [[ $# -gt 1 ]]; then
+	display_help
+	exit 0
+fi
+
+require_packages=(NetworkManager uuidgen tee)
+for package in "${require_packages[@]}"; do
+	if ! command -v "$package" &>/dev/null; then
+		display_info "Use -h or --help to show help"
+		display_error "$package is not installed"
+		exit 1
+	fi
+done
+
+wifi="$1"
+if [[ -z "$wifi" ]]; then
+	read -r -p "Enter wifi name (No need to enclose with quotes): " wifi
+fi
+file="$CONNECTION_DIR/$wifi$EXTENSION"
+
+if [ -f "$file" ]; then
+	read -r -p "Are you sure to overwrite connection for $wifi? [y/N]: " response
+	if [[ $response != "y" && $response != "Y" ]]; then
+		display_warning "No changes have been made"
+		exit 0
+	fi
+fi
+
+read -r -p "Enter account identity: " account
+read -r -p "Enter password: " pass
+
+echo '''
+[wifi-security]
+key-mgmt=wpa-eap
+
+[connection]
+id='''"$wifi"'''
+uuid='''"$(uuidgen)"'''
+type=wifi
+
+[ipv6]
+method=auto
+
+[wifi]
+ssid='''"$wifi"'''
+mode=infrastructure
+security=802-11-wireless-security
+
+[802-1x]
+eap=peap
+identity='''"$account"'''
+phase2-auth=mschapv2
+password='''"$pass"'''
+
+[ipv4]
+method=auto
+''' | tee "$file" &>/dev/null
+
+chown root "$file"
+chmod 600 "$file"
+systemctl restart NetworkManager
+
+display_info "Added connection for $wifi"

@@ -1,14 +1,10 @@
 #!/bin/bash
 # The scripts is written by TranVoSonTung
 
-YAY="yay -S --answerclean All --noconfirm --needed"
-PACMAN="sudo pacman -S --noconfirm --needed"
-
-
 # Check if installed yay, if not install it
 if ! [ -x "$(command -v yay)" ]; then
 	echo ">>> Installing yay..."
-	eval "$PACMAN git base-devel"
+	sudo pacman -S --needed git base-devel --noconfirm
 	git clone https://aur.archlinux.org/yay.git
 	cd yay || exit 1
 	makepkg -si
@@ -19,59 +15,59 @@ fi
 # Check if install git, if not install it
 if ! [ -x "$(command -v git)" ]; then
 	echo ">>> Installing git..."
-	eval "$PACMAN git"
+	sudo pacman -S git --noconfirm --needed
 fi
 
 # Check if install curl, if not install it
 if ! [ -x "$(command -v curl)" ]; then
 	echo ">>> Installing curl..."
-	eval "$PACMAN curl"
+	sudo pacman -S curl --noconfirm --needed
 fi
 
 # Check if install wget, if not install it
 if ! [ -x "$(command -v wget)" ]; then
 	echo ">>> Installing wget..."
-	eval "$PACMAN wget"
+	sudo pacman -S wget --noconfirm --needed
 fi
 
 # add color to pacman
 sudo sed -i -e "s/^#Color/Color/g" "/etc/pacman.conf"
 
 # backlight
-eval "$PACMAN light"
+sudo pacman -S light --noconfirm --needed
 
 # # Lock screen
-# eval "$YAY betterlockscreen"
+# yay -S betterlockscreen
 # # Check if installed betterlockscreen, enable service
 # if [ -x "$(command -v betterlockscreen)" ]; then
 # 	sudo systemctl enable "betterlockscreen@$USER"
 # fi
-eval "$PACMAN i3lock imagemagick"
+sudo pacman -S i3lock imagemagick --noconfirm --needed
 
 # UI
-eval "$PACMAN polybar picom rofi xorg-xrandr xcolor"
+sudo pacman -S polybar picom rofi xorg-xrandr xcolor --noconfirm --needed
 
-eval "$PACMAN gnome-keyring"
+sudo pacman -S gnome-keyring --noconfirm --needed
 
 # Manage multiple monitors
-eval "$PACMAN arandr"
+sudo pacman -S arandr --noconfirm --needed
 
 # System info
-eval "$PACMAN neofetch"
+sudo pacman -S --needed neofetch --noconfirm
 
 # g++ compiler
-eval "$PACMAN gcc"
+sudo pacman -S --needed gcc --noconfirm
 
 # User directories folder
-eval "$PACMAN xdg-user-dirs"
+sudo pacman -S xdg-user-dirs --noconfirm --needed
 xdg-user-dirs-update
 
 # Trash manager
-eval "$PACMAN trash-cli"
+sudo pacman -S --needed trash-cli --noconfirm
 
 # Login manager
 echo ">>> Installing lightdm, lightdm-webkit2-greeter..."
-eval "$PACMAN lightdm lightdm-webkit2-greeter"
+sudo pacman -S lightdm lightdm-webkit2-greeter --noconfirm --needed
 
 # Check if installed lightdm, enable service
 if [ -x "$(command -v lightdm)" ]; then
@@ -79,7 +75,7 @@ if [ -x "$(command -v lightdm)" ]; then
 fi
 
 echo ">>> Installing lightdm-webkit2-theme-glorious..."
-eval "$YAY lightdm-webkit2-theme-glorious"
+yay -S lightdm-webkit2-theme-glorious --answerclean All --noconfirm --needed
 
 # Set default lightdm greeter to lightdm-webkit2-greeter
 sudo sed -i -e "s/^#greeter-session\s*=\s*\(.*\)/greeter-session=lightdm-webkit2-greeter/g" "/etc/lightdm/lightdm.conf"
@@ -90,8 +86,8 @@ sudo sed -i -e "s/^debug_mode\s*=\s*\(.*\)/debug_mode = true/g" "/etc/lightdm/li
 echo ":: WARNING: You should reboot your system to apply changes."
 
 # Sound
-eval "$PACMAN alsa-utils alsa-firmware alsa-ucm-conf sof-firmware"
-eval "$PACMAN pipewire pipewire-pulse pipewire-alsa pipewire-media-session pipewire-audio pavucontrol"
+sudo pacman -S alsa-utils alsa-firmware alsa-ucm-conf sof-firmware --noconfirm --needed
+sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-media-session pipewire-audio pavucontrol --noconfirm --needed
 
 # Check if installed pipewire, enable service
 if [ -x "$(command -v pipewire)" ]; then
@@ -100,7 +96,7 @@ if [ -x "$(command -v pipewire)" ]; then
 fi
 
 # Bluetooth
-eval "$PACMAN bluez bluez-utils blueman pipewire-audio pipewire-pulse"
+sudo pacman -S bluez bluez-utils blueman pipewire-audio pipewire-pulse --noconfirm --needed
 
 # Check if installed bluez, enable service
 if [ -x "$(command -v bluez)" ]; then
@@ -113,7 +109,7 @@ fi
 
 # Vietnamese input
 echo ">>> Installing ibus, ibus-bamboo..."
-eval "$YAY ibus ibus-bamboo"
+yay -S ibus ibus-bamboo --answerclean All --noconfirm --needed
 # Add ibus to /etc/environment
 echo '''
 GTK_IM_MODULE=ibus
@@ -124,78 +120,78 @@ echo ":: WARNING: To auto start ibus when login, you should add ibus-daemon -drx
 
 # Notification
 echo ">>> Installing dunst..."
-eval "$PACMAN dunst"
+sudo pacman -S dunst --noconfirm --needed
 
 # System monitor
 echo ">>> Installing gotop..."
-eval "$YAY gotop"
+yay -S gotop --answerclean All --noconfirm --needed
 
 # Clipboard manager
 echo ">>> Installing xclip..."
-eval "$PACMAN xclip"
+sudo pacman -S xclip --noconfirm --needed
 
 # Screenshot tools
 echo ">>> Installing scrot, flameshot..."
-eval "$PACMAN scrot flameshot"
+sudo pacman -S scrot flameshot --noconfirm --needed
 
 # Picture viewer
 echo ">>> Installing feh..."
-eval "$PACMAN feh"
+sudo pacman -S feh --noconfirm --needed
 
 # Video player
 echo ">>> Installing mpv..."
-eval "$PACMAN mpv"
+sudo pacman -S mpv --noconfirm --needed
 
 # Disk manager
 echo ">>> Installing gparted..."
-eval "$PACMAN gparted"
+sudo pacman -S gparted --noconfirm --needed
 
 # NTFS support
 echo ">>> Installing ntfs-3g..."
-eval "$PACMAN ntfs-3g"
+sudo pacman -S ntfs-3g --noconfirm --needed
 
 # Grub manager
 echo ">>> Installing grub-customizer..."
-eval "$PACMAN grub-customizer"
+sudo pacman -S grub-customizer --noconfirm --needed
 
 # File manager
 echo ">>> Installing lf, thunar..."
-eval "$PACMAN lf thunar imagemagick ffmpegthumbnailer poppler chafa"
-eval "$YAY epub-thumbnailer-git wkhtmltopdf-static ueberzugpp"
+sudo pacman -S lf thunar imagemagick ffmpegthumbnailer poppler chafa --noconfirm --needed
+yay -S epub-thumbnailer-git wkhtmltopdf-static ueberzugpp --answerclean All --noconfirm --needed
 git clone https://github.com/thimc/lfimg.git
 sudo cp ./lfimg/lfrun /usr/bin/
 rm -rf lfimg
 
 # Text editor
 echo ">>> Installing neovim..."
-eval "$PACMAN neovim fd ripgrep"
+sudo pacman -S --needed neovim fd ripgrep --noconfirm
 
 # Wifi hotspot
 echo ">>> Installing linux-wifi-hotspot..."
-eval "$YAY linux-wifi-hotspot"
+yay -S linux-wifi-hotspot --answerclean All --noconfirm --needed
 
 # Terminal
-eval "$PACMAN kitty"
+sudo pacman -S --needed kitty --noconfirm
 
 # Browser
-eval "$PACMAN firefox"
+sudo pacman -S --needed firefox --noconfirm
 
 # Achrive tools
 # zip and unzip
 echo ">>> Installing zip, unzip..."
-eval "$PACMAN zip unzip"
+sudo pacman -S zip unzip --noconfirm --needed
 # tar
-eval "$PACMAN tar"
+sudo pacman -S --needed tar --noconfirm
 # rar and unrar
 echo ">>> Installing rar..."
-eval "$YAY rar"
+yay -S rar --answerclean All --noconfirm --needed
 
 # Office suite
 echo ">>> Installing onlyffice..."
-eval "$YAY onlyoffice-bin"
+yay -S onlyoffice-bin --answerclean All --noconfirm --needed
 
 # Themes manager
-eval "$PACMAN lxappearance-gtk3"
+sudo pacman -S --needed lxappearance-gtk3 --noconfirm
 
 # Themes
 # tokonight themes
@@ -207,4 +203,4 @@ mkdir -p ~/.icons
 git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git && ./WhiteSur-icon-theme/install.sh && rm -rf WhiteSur-icon-theme
 
 # Cursor Themes
-# eval "$YAY catppuccin-cursors-mocha"
+# yay -S catppuccin-cursors-mocha
