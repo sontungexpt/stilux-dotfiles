@@ -25,8 +25,12 @@ display_help() {
 
 	echo -e "\n${BLUE}EXAMPLES:${NO}"
 	echo -e "  wpa2"
-	echo -e "  wpa2 <wifi name> "
-	echo -e "  wpa2 rm <wifi name>"
+	echo -e "  wpa2 stilux"
+	echo -e "  wpa2 rm stilux"
+	echo -e "  wpa2 conf stilux"
+	echo -e "  wpa2 ls"
+	echo -e "  wpa2 ls -f"
+	echo -e "  wpa2 ls -e"
 	echo -e "  Note: If wifi name has space, enclose with quotes"
 }
 
